@@ -70,7 +70,7 @@ async function processRemoteImages(records) {
         outputDir: IMAGES_OUTPUT_DIR,
         formats: ["webp", "jpeg", "svg", "jpg"],
         cacheOptions: {
-          duration: process.env.CACHE_DUR,
+          duration: process.env.IMAGE_CACHE_DUR,
         },
       });
 
@@ -94,7 +94,7 @@ async function processRemoteImages(records) {
 
 module.exports = async function () {
   const imagesCache = new AssetCache("Images");
-  if (imagesCache.isCacheValid(process.env.CACHE_DUR)) {
+  if (imagesCache.isCacheValid(process.env.IMAGE_CACHE_DUR)) {
     return imagesCache.getCachedValue(); // This returns a promise
   }
   console.log("Cache expired. Fetching data from Airtable");
