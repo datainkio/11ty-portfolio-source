@@ -1,22 +1,18 @@
-<footer class="footer p-10 bg-neutral-950 text-neutral">
-  <aside>
-    {% block graphic %}{% endblock %}
-    <div class="byline flex items-center my-4">
-
-      <div class="pl-4">
-        <p class="prose-2xl">Russell Lebo</p>
-        <p class="prose">I am a dad, a perpetual tinkerer, and a full-stack experience designer. I am always looking for
-          interesting
-          challenges to solve. If you are looking for new talent, let's talk.</p>
-      </div>
-    </div>
-  </aside>
-  <nav>
-    <h6 class="footer-title">Contact</h6>
-    <div class="grid grid-flow-col gap-4">
-      {% for item in social %}
-      <a class="w-12" href="{{ item.URL }}">{{ item.pictureElement | safe }}</a>
-      {% endfor %}
-    </div>
+{# TODO: Match style definitions to homepage sections #}
+{% set section_style = "prose max-w-none col-span-12 py-8" %}
+{% set heading_style = "text-4xl leading-none font-black mb-2" %}
+{% set styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-300 hover:text-orange-600" %}
+<footer class="px-6 pb-12">
+  <!-- AVATAR -->
+  <!-- CTA -->
+  <section class="footer {{ section_style }}">
+    <h2 class="{{ heading_style }}">If you are looking
+      for an experience designer, please do say hello - I look forward to hearing about your company and project.</h2>
+  </section>
+  <!-- SOCIAL -->
+  <nav class="grid grid-flow-col gap-12 max-w-96">
+    {% for item in social %}
+    <a class="w-12 saturate-0" href="{{ item.URL }}">{{ item.pictureElement | safe }}</a>
+    {% endfor %}
   </nav>
 </footer>
