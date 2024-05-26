@@ -6,7 +6,7 @@ const airtableTableView = "Published";
 const Image = require("@11ty/eleventy-img");
 
 const IMAGES_URL_PATH = "/assets/content/images/";
-const IMAGES_OUTPUT_DIR = `./_site${IMAGES_URL_PATH}`;
+const IMAGES_OUTPUT_DIR = `../dist${IMAGES_URL_PATH}`;
 
 async function getImageRecords() {
   console.log("::: getImageRecords :::");
