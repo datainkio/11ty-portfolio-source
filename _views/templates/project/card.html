@@ -1,0 +1,19 @@
+{% if position == "bottom" %}
+{% extends "cells/cards/imageBottom.html" %}
+{% else %}
+{% extends "cells/cards/imageTop.html" %}
+{% endif %}
+{% block title %}{{ project.Title }}{% endblock %}
+{% block content %}{% endblock %}
+{% block picture %}
+{% for img in images | find("id", project.Thumbnail) %}
+{{ img.pictureElement | safe }}
+{% endfor %}
+{% endblock %}
+{% block exit %}<a class="btn btn-outline"
+  href="/projects/{{ project.Name | slugify }}/">{{ project.Name }}</a>{% endblock %}
+{% block height %}h-72{% endblock %}
+{% block imageHeight %}h-1/2{% endblock %}
+{% block span %}col-span-3{% endblock %}
+{% block bodyStyles %}text-center{% endblock %}
+{% block headingStyles %}mx-auto{% endblock %}

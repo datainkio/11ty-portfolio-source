@@ -1,0 +1,6 @@
+{% extends "_views/cells/heroes/overlay.html" %}
+{% block image %}
+{% for img in images | find("id", project.Banner) %}
+{{ img.pictureElement | safe }}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if nuggets.length %}
+<ol>
+  {% for nugget in nuggets %}
+  <li>{% include "templates/nugget/link.html" %}</li>
+  {% endfor %}
+</ol>
+{% endif %}

@@ -1,0 +1,11 @@
+{% extends "species/base.html" %}
+{% block main %}
+Title
+<h1>{{ nugget.Name }}</h1>
+Projects
+<ul>
+  {% for project in projects | find('id', nugget.Projects) %}
+  <li>{% include "templates/project/link.html" %}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

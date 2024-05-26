@@ -1,0 +1,13 @@
+{% extends "species/base.html" %}
+{% block main %}
+{% if images.length %}
+<ul>
+  {% for image in images %}
+  <li>
+    {{ image.Caption }}
+    {{ image.pictureElement | safe }}
+  </li>
+  {% endfor %}
+</ul>
+{%- endif -%}
+{% endblock %}

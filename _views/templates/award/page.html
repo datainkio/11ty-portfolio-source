@@ -1,0 +1,9 @@
+{% extends "species/base.html" %}
+{% block main %}
+<h1>{{ award.Organization }}: {{ award.Title }}</h1>
+<ul>
+  {% for project in projects | find('id', award.Projects) %}
+  <li>{% include "templates/project/link.html" %}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

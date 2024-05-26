@@ -1,0 +1,35 @@
+{# 
+  banner: header stuff goes in here
+  bodyStyles: good for adding classes that provide context for the entire page
+  grid: specify the layout for the main element
+  containerStyles: add any other styles for the main element
+  main: page content goes here
+  #}
+
+{# Add to class declaration for any element(s) to test responsiveness #}
+{% set responsive = "bg-slate-100 xs:bg-slate-200 sm:bg-slate-300 md:bg-slate-400 lg:bg-slate-500 xl:bg-slate-600
+  xxl:bg-slate-700" %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <!-- HEAD -->
+  {% include "partials/head.html" %}
+
+  <body class="{% block bodyStyles %}{% endblock %}">
+    <!-- NAVIGATION -->
+    {% include "organisms/headers/global.html" %}
+    {% block banner %}
+    <p>No specific banner defined</p>
+    {% endblock %}
+    <!-- CONTENT -->
+    <main tabindex=" -1" class="{% block grid %}{% endblock %} {% block containerStyles %}{% endblock %}">
+      {% block main %} The page has no defined content for the <em>main</em> block. {% endblock %}
+    </main>
+    <!-- FOOTER -->
+    {% block footer %}
+    <p>No specific footer defined</p>
+    {% endblock %}
+    {% include "organisms/footers/global.html" %}
+  </body>
+
+</html>

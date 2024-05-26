@@ -1,0 +1,7 @@
+{% if projects.length %}
+<ol>
+  {% for project in projects %}
+  <li>{% include "templates/project/link.html" %}</li>
+  {% endfor %}
+</ol>
+{% endif %}

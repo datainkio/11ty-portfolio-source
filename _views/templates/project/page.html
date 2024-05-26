@@ -1,0 +1,45 @@
+{% extends "species/base.html" %}
+{% block main %}
+<article class="prose">
+  <section class="grid grid-cols-3">
+    <div class="col-span-2">
+      <h1>{{ project.Name }}</h1>
+      {{ project.Teaser }}{{ project.Teaser }}
+    </div>
+    <section>
+      {% include "templates/project/meta.html" %}
+    </section>
+
+  </section>
+
+  <p>Recognition</p>
+  <ul>
+    {% for award in awards | find('id', project.Recognition) %}
+    <li>{% include "templates/award/link.html" %}</li>
+    {% endfor %}
+  </ul>
+
+  <p>Activities</p>
+  <ul>
+    {% for activity in activities | find('id', project.Activities) %}
+    <li>{% include "templates/activity/link.html" %}</li>
+    {% endfor %}
+  </ul>
+
+  <p>Nuggets</p>
+  <ul>
+    {% for nugget in nuggets | find('id', project.Nuggets) %}
+    <li>{% include "templates/nugget/link.html" %}</li>
+    {% endfor %}
+  </ul>
+  <p>Galleries</p>
+  <ul>
+    {% for gallery in galleries | find('id', project.Galleries) %}
+    <li>{% include "templates/gallery/link.html" %}</li>
+    {% endfor %}
+  </ul>
+  <p>Description</p>
+  {{ project.Description }}
+</article>
+
+{% endblock %}

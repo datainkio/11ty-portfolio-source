@@ -1,0 +1,7 @@
+{% if galleries.length %}
+<ol>
+  {% for gallery in galleries %}
+  <li>{% include "templates/gallery/link.html" %}</li>
+  {% endfor %}
+</ol>
+{% endif %}

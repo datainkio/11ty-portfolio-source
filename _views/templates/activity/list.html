@@ -1,0 +1,7 @@
+{% if activities.length %}
+<ol>
+  {% for activity in activities %}
+  <li>{% include "templates/activity/link.html" %}</li>
+  {% endfor %}
+</ol>
+{% endif %}

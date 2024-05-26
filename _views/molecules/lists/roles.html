@@ -1,0 +1,8 @@
+<h1>Let's light this candle</h1>
+{% if roles.length %}
+<ol>
+  {% for role in roles %}
+  <li><a href="/roles/{{ role.Name | slugify }}/">{{ role.Name }}</a></li>
+  {% endfor %}
+</ol>
+{%- endif -%}

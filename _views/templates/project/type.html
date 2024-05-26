@@ -1,0 +1,26 @@
+<!---
+  id: 'reczia31LbVaTGYF8',
+  Slug: 'experiential',
+  Parent: [ 'recmAUl2uTCq2j6Mh' ],
+  Title: 'Experiential',
+  Published: true,
+  Projects: [
+    'recFSoJXAbO1hGdoJ',
+    'recB6yG9VLrddfC94',
+    'recaw0V1VC1Q9VVGW',
+    'recfApOYjAqr88Obf'
+  ],
+  Body:
+--->
+
+
+{% extends "species/landing.html" %}
+{% block banner %}
+<h1>{{ type.Title }}</h1>
+{{ type.Body }}
+{% endblock %}
+{% block main %}
+{% for p in projects | find("Category", type.id) %}
+{{ p.Name }}
+{% endfor %}
+{% endblock %}

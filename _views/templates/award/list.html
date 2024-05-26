@@ -1,0 +1,7 @@
+{% if awards.length %}
+<ol>
+  {% for award in awards %}
+  <li>{% include "templates/award/link.html" %}</li>
+  {% endfor %}
+</ol>
+{%- endif -%}

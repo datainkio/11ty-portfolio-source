@@ -1,0 +1,6 @@
+{% extends "species/base.html" %}
+{% block main %}
+{% for project in projects %}
+{% include "templates/project/card.html" %}
+{% endfor %}
+{% endblock %}

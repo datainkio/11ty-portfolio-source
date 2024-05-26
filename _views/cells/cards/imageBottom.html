@@ -1,0 +1,21 @@
+{#
+  layout: determines placement of the image
+  span: number of columns to span (optional. only relevant if the container has a grid. obvs.)
+  bgColor: background color
+  img: the aforementioned image
+  title: the title. durr.
+  content: the content. durr.
+  action: the href value for the button
+  label: the label for the aforementioned button
+  btnType: primary, secondary, etc.
+  btnSize: xs, sm, lg, etc.
+#}
+{% extends "cells/cards/abstract.html" %}
+{% block bottom %}
+<figure class="{% block imageHeight %}h-24{% endblock %}">
+  {% block picture %}
+  <img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    class="object-center object-cover w-full" />
+  {% endblock %}
+</figure>
+{% endblock %}

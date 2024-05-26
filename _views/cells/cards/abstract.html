@@ -1,0 +1,36 @@
+{#
+  layout: determines placement of the image
+  span: number of columns to span (optional. only relevant if the container has a grid. obvs.)
+  bgColor: background color
+  img: the aforementioned image
+  title: the title. durr.
+  content: the content. durr.
+  action: the href value for the button
+  label: the label for the aforementioned button
+  btnType: primary, secondary, etc.
+  btnSize: xs, sm, lg, etc.
+#}
+<div class="card 
+    {% block layout %}{% endblock%} 
+    {% block aspect_ratio %}{% endblock %} 
+    {% block span %}{% endblock %} 
+    {% block bgColor %}bg-none{% endblock %} 
+    {% block height %}{% endblock %}">
+
+  {% block top %}{% endblock %}
+  <div class="card-body p-4 h-1/2 relative {% block bodyStyles %}{% endblock %}">
+    {% block badge %}{% endblock %}
+    <h2
+      class="card-title leading-tight {% block headingStyles %}{% endblock %} {% if position == "bottom" %}absolute bottom-2{% endif %}">
+      {% block title %}Card
+      Title{% endblock %}</h2>
+    {% block content %}<p>Card Content</p>{% endblock %}
+    {% if action %}
+    <div class="card-actions justify-end">
+      <a class="btn btn-{% block btnType %}primary{% endblock %} btn-outline btn-{% block btnSize %}sm{% endblock %}"
+        href="{% block action %}{% endblock %}">{% block label %}Label{% endblock %}</a>
+    </div>
+    {% endif %}
+  </div>
+  {% block bottom %}{% endblock %}
+</div>

@@ -1,0 +1,22 @@
+<footer class="footer p-10 bg-neutral-950 text-neutral">
+  <aside>
+    {% block graphic %}{% endblock %}
+    <div class="byline flex items-center my-4">
+
+      <div class="pl-4">
+        <p class="prose-2xl">Russell Lebo</p>
+        <p class="prose">I am a dad, a perpetual tinkerer, and a full-stack experience designer. I am always looking for
+          interesting
+          challenges to solve. If you are looking for new talent, let's talk.</p>
+      </div>
+    </div>
+  </aside>
+  <nav>
+    <h6 class="footer-title">Contact</h6>
+    <div class="grid grid-flow-col gap-4">
+      {% for item in social %}
+      <a class="w-12" href="{{ item.URL }}">{{ item.pictureElement | safe }}</a>
+      {% endfor %}
+    </div>
+  </nav>
+</footer>

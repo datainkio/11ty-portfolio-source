@@ -1,0 +1,8 @@
+{% for project in projects %}
+{% if position == "top" %}
+{% set position = "bottom" %}
+{% else %}
+{% set position = "top" %}
+{% endif %}
+{% include "templates/project/card.html" %}
+{% endfor %}

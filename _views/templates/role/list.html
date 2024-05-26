@@ -1,0 +1,7 @@
+{% if roles.length %}
+<ol>
+  {% for role in roles %}
+  <li>{% include "templates/role/link.html" %}</li>
+  {% endfor %}
+</ol>
+{% endif %}

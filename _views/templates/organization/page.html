@@ -1,0 +1,17 @@
+{% extends "species/base.html" %}
+{% block main %}
+Title
+<h1>{{ organization.Name }}</h1>
+Projects as Company
+<ul>
+  {% for project in projects | find('id', organization.Company) %}
+  <li>{% include "templates/project/link.html" %}</li>
+  {% endfor %}
+</ul>
+Projects as Client
+<ul>
+  {% for project in projects | find('id', organization.Client) %}
+  <li>{% include "templates/project/link.html" %}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if insights.length %}
+<ol>
+  {% for insight in insights %}
+  <li><a href="/{{ insight.parent }}/{{ insight.Name | slugify }}/">{{ insight.Name }}</a></li>
+  {% endfor %}
+</ol>
+{%- endif -%}

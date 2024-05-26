@@ -1,0 +1,64 @@
+{% extends "species/base.html" %}
+{% block grid %}grid grid-cols-12{% endblock %}
+{% block containerStyles %}px-6{% endblock %}
+{% block banner %}
+{% endblock %}
+{% block main %}
+{% set section_style = "prose max-w-none col-span-12 py-8" %}
+{% set heading_style = "text-4xl leading-none font-black mb-2" %}
+{% set styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-300 hover:text-orange-600" %}
+
+<!-- INTRO -->
+<section class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">I design digital
+    services and products.</h2>
+  {% for category in ia %}
+  <a class="link link-hover text-4xl font-thin leading-none text-slate-300 hover:text-orange-600"
+    href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a>
+  {% endfor %}
+</section>
+
+<!-- ACCOMPLISHMENTS -->
+<section class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">I have
+    <a class="link link-hover font-black hover:text-orange-600" href="/projects/types/government/">led teams for
+      $650M in
+      federal
+      programs</a>,
+    <a class="link link-hover font-black hover:text-orange-600"
+      href="/projects/digital-transformation-for-public-health">helped
+      reduce cases of foodborne illness by seven
+      million annually,</a> and
+    <a class="link link-hover font-black hover:text-orange-600" href="/projects/">contributed to our understanding of
+      the genetic
+      causes of disease.</a>
+  </h2>
+  {% for project in projects %}
+  {% include "templates/project/link.html" %}
+  {% endfor %}
+</section>
+
+<!-- RECOGNITION -->
+<section class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">I produce award-winning work.</h2>
+  {% for award in awards %}
+  {% include "templates/award/link.html" %}
+  {% endfor %}
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">I think (<a class="link link-hover font-black hover:text-orange-600"
+      href="/lessons-learned">and write</a>) a lot about design culture and how to develop it within teams and
+    organizations</h2>
+  {% for insight in insights %}
+  {% include "templates/insight/link.html" %}
+  {% endfor %}
+</section>
+
+<!-- CTA -->
+<section class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">If you are looking
+    for an experience designer, please do say hello - I look forward to hearing about your company and project.</h2>
+</section>
+{% endblock %}

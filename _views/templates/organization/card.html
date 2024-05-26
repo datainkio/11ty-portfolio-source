@@ -1,0 +1,6 @@
+{% extends "_views/cells/cards/card.html" %}
+{% block image %}{% endblock %}
+{% block title %}{{ organization.Name }}{% endblock %}
+{% block text %}{{ organization.Teaser }}{% endblock %}
+{% block exit %}<a class="btn btn-outline"
+  href="/projects/{{ project.Name | slugify }}/">{{ project.Name }}</a>{% endblock %}

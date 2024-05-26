@@ -1,0 +1,27 @@
+/* src/_assets/css/tailwind.css*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+
+}
+
+@layer base {
+  body {
+    @apply bg-white;
+  }
+}
+
+@layer components {
+
+}
+
+@layer utilities {
+
+
+}
+
+@layer variants {
+  
+}

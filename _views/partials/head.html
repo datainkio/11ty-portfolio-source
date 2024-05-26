@@ -1,0 +1,31 @@
+<head>
+  {# TEMPLATES/PARTIALS/HEAD/INDEX.HTML #}
+
+  <!-- 1: charset/http-equiv/viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- 2: title -->
+  <title>{{ title }}</title>
+
+  <!-- 3 preconnect/async js -->
+  <!-- 4 synchronous js  -->
+  <!-- load theme toggle first to avoid color flashing on page load and inline render blocking js  -->
+
+  <!-- include inline base schema application/ld+jso -->
+  {% include "partials/base-schema.html" %}
+  <!-- 5 synchronous css / inline css (and fonts) -->
+  {% include "partials/styles.html" %}
+  <!-- 6 preload -->
+  {% include "partials/preload.html" %}
+  <!-- 7 deferred js  -->
+  {% include "partials/deferred-js.html" %}
+
+  <!-- 8 everything else: meta tags, icons, open graph etc.  -->
+  {% include "partials/meta.html" %}
+  {% include "partials/social.html" %}
+  {% include "partials/favicon.html" %}
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#FF7F5C" />
+</head>
