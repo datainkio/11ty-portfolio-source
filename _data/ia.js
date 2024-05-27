@@ -40,7 +40,7 @@ module.exports = () => {
             reject(err);
           } else {
             asset.save(allEvents, "json");
-            console.log(allEvents);
+            // console.log(allEvents);
             resolve(allEvents);
           }
         }

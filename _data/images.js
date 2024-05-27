@@ -42,8 +42,18 @@ async function getImageRecords() {
   // Pick URLs from Image object array
   // I'm picking the URL to the full Image, as this will be post processed
   // through Eleventy Image later in the pipeline
+  var png = {};
+  var svg = {};
   fields = fields.map((f) => {
     const photo = f.File;
+    switch (f.type) {
+      case "png":
+        png = photo;
+        break;
+      case "svg":
+        console.log(photo);
+        break;
+    }
     return {
       ...f,
       Photo: photo?.map((p) => p?.url),
@@ -62,13 +72,12 @@ async function processRemoteImages(records) {
   return Promise.all(
     records.map(async (r) => {
       // Picking the first photo from the array
-
       const url = r.Photo[0];
       const metadata = await Image(url, {
         widths: [800, 600, 400],
         urlPath: IMAGES_URL_PATH,
         outputDir: IMAGES_OUTPUT_DIR,
-        formats: ["webp", "jpeg", "svg", "jpg"],
+        formats: ["webp", "jpeg"],
         cacheOptions: {
           duration: process.env.IMAGE_CACHE_DUR,
         },
@@ -101,5 +110,6 @@ module.exports = async function () {
   let records = await getImageRecords();
   records = await processRemoteImages(records);
   await imagesCache.save(records, "json");
+  // console.log(records);
   return records;
 };
