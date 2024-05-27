@@ -1,0 +1,11 @@
+<div class="card {{ card_styles }}">
+  <div class="card-body">
+    <h2 class="card-title">{{ nugget.Name }}</h2>
+    <p>{{ nugget.Description }}</p>
+    <div class="card-actions justify-end">
+      {% for insight in insights | find("id", nugget.Insights) %}
+      <button class="btn btn-primary">{{ insight.Name }}</button>
+      {% endfor %}
+    </div>
+  </div>
+</div>

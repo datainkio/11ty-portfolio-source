@@ -1,4 +1,7 @@
-{% set figcaption_styles = "text-white" %}
+{% set figcaption_styles = "text-slate-400" %}
+{% set link_styles = "text-white text-xl" %}
+
+<!-- COMPANY -->
 {% if project.Company %}
 <figure>
   <figcaption class="{{ figcaption_styles }}">Company</figcaption>
@@ -10,6 +13,7 @@
 </figure>
 {% endif %}
 
+<!-- CLIENT -->
 {% if project.Client %}
 <figure>
   <figcaption class="{{ figcaption_styles }}">Clients</figcaption>
@@ -21,13 +25,27 @@
 </figure>
 {% endif %}
 
+<!-- ROLE -->
 {% if project.Role %}
 <figure>
-  <figcaption class="{{ figcaption_styles }}">Role</figcaption>
+  <figcaption class="{{ figcaption_styles }}">Roles</figcaption>
   <ul>
     {% for role in roles | find('id', project.Role) %}
     <li>{% include "templates/role/link.html" %}</li>
     {% endfor %}
   </ul>
 </figure>
+{% endif %}
+
+<!-- RECOGNITION -->
+{% if project.Recognition %}
+<figure>
+  <figcaption class="{{ figcaption_styles }}">Recognition</figcaption>
+  <ul>
+    {% for award in awards | find('id', project.Recognition) %}
+    <li>{% include "templates/award/link.html" %}</li>
+    {% endfor %}
+  </ul>
+</figure>
+
 {% endif %}

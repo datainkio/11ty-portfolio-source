@@ -15,14 +15,14 @@
   <!-- HEAD -->
   {% include "partials/head.html" %}
 
-  <body class="{% block bodyStyles %}{% endblock %}">
+  <body class="{{ body_styles }}">
     <!-- NAVIGATION -->
     {% include "organisms/headers/global.html" %}
     {% block banner %}
     <p>No specific banner defined</p>
     {% endblock %}
     <!-- CONTENT -->
-    <main tabindex=" -1" class="{% block grid %}{% endblock %} {% block containerStyles %}{% endblock %}">
+    <main tabindex=" -1" class="{{ grid }} {{ container_styles }}">
       {% block main %} The page has no defined content for the <em>main</em> block. {% endblock %}
     </main>
     <!-- FOOTER -->
