@@ -1,6 +1,9 @@
-{% extends "_views/cells/heroes/overlay.html" %}
-{% block image %}
-{% for img in images | find("id", project.Banner) %}
-{{ img.pictureElement | safe }}
-{% endfor %}
-{% endblock %}
+<section class="grid grid-cols-3 bg-black">
+  <div class="col-span-2">
+    <h1 class="text-white font-black text-8xl">{{ project.Title }}</h1>
+    <p class="prose text-white">{{ project.Teaser }}</p>
+  </div>
+  <section>
+    {% include "templates/project/meta.html" %}
+  </section>
+</section>

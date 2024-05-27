@@ -1,21 +1,33 @@
-<p>Company</p>
-<ul>
-  {% for organization in organizations | find('id', project.Company) %}
-  <li>{% include "templates/organization/link.html" %}</li>
-  {% endfor %}
-</ul>
+{% set figcaption_styles = "text-white" %}
+{% if project.Company %}
+<figure>
+  <figcaption class="{{ figcaption_styles }}">Company</figcaption>
+  <ul>
+    {% for organization in organizations | find('id', project.Company) %}
+    <li>{% include "templates/organization/link.html" %}</li>
+    {% endfor %}
+  </ul>
+</figure>
+{% endif %}
 
-<p>Clients</p>
-<ul>
-  {% for organization in organizations | find('id', project.Client) %}
-  <li>{% include "templates/organization/link.html" %}</li>
-  {% endfor %}
-</ul>
+{% if project.Client %}
+<figure>
+  <figcaption class="{{ figcaption_styles }}">Clients</figcaption>
+  <ul>
+    {% for organization in organizations | find('id', project.Client) %}
+    <li>{% include "templates/organization/link.html" %}</li>
+    {% endfor %}
+  </ul>
+</figure>
+{% endif %}
 
-
-<p>Role</p>
-<ul>
-  {% for role in roles | find('id', project.Role) %}
-  <li>{% include "templates/role/link.html" %}</li>
-  {% endfor %}
-</ul>
+{% if project.Role %}
+<figure>
+  <figcaption class="{{ figcaption_styles }}">Role</figcaption>
+  <ul>
+    {% for role in roles | find('id', project.Role) %}
+    <li>{% include "templates/role/link.html" %}</li>
+    {% endfor %}
+  </ul>
+</figure>
+{% endif %}

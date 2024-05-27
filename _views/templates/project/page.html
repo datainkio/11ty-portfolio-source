@@ -1,17 +1,9 @@
 {% extends "species/base.html" %}
+{% block banner %}
+{% include "templates/project/hero.html" %}
+{% endblock %}
 {% block main %}
 <article class="prose">
-  <section class="grid grid-cols-3">
-    <div class="col-span-2">
-      <h1>{{ project.Name }}</h1>
-      {{ project.Teaser }}{{ project.Teaser }}
-    </div>
-    <section>
-      {% include "templates/project/meta.html" %}
-    </section>
-
-  </section>
-
   <p>Recognition</p>
   <ul>
     {% for award in awards | find('id', project.Recognition) %}
