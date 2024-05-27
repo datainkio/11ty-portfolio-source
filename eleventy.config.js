@@ -11,16 +11,6 @@ module.exports = function (eleventyConfig) {
     ".nojekyll": ".nojekyll",
   });
 
-  // FILTERS
-
-  eleventyConfig.addNunjucksAsyncShortcode("svgIcon", async (filename) => {
-    const metadata = await Image(`./src/_includes/assets/${filename}`, {
-      formats: ["svg"],
-      dryRun: true,
-    });
-    return metadata.svg[0].buffer.toString();
-  });
-
   /**
    * Return a specific item from a given array
    */

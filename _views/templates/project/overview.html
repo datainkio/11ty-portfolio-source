@@ -1,9 +1,11 @@
 {% extends "species/base.html" %}
 {% block main %}
-<section class="grid grid-cols-4">
-  {% set position = "bottom" %}
+<section class="grid grid-cols-4 gap-4">
   {% for project in projects %}
-  {% include "templates/project/card.html" %}
+  {# Display the card view for the project #}
+  <a href="{{ ["/projects/", project.Name | slugify, "/"] | join }}">
+    {% include "templates/project/card.html" %}
+  </a>
   {% endfor %}
 </section>
 {% endblock %}

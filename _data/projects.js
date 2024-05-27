@@ -28,7 +28,7 @@ module.exports = () => {
     console.log("Serving " + airtableTable + " data from the cache…");
     return asset.getCachedValue();
   } else {
-    console.log(":::: Getting new " + airtableTable + " data");
+    console.log("Refreshing " + airtableTable + " data");
   }
 
   return new Promise((resolve, reject) => {

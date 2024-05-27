@@ -1,21 +1,25 @@
-{# Determine which version of the card view we want #}
-{% if position == "bottom" %}
-{% extends "cells/cards/imageBottom.html" %}
-{% else %}
-{% extends "cells/cards/imageTop.html" %}
-{% endif %}
-{# Define the content #}
-{% block title %}{{ project.Title }}{% endblock %}
-{% block content %}{% endblock %}
+{% extends "cells/cards/abstract.html" %}
+
+{# STYLES #}
+{% set layout = "" %}
+{% set aspect_ratio = "" %}
+{% set bgColor = "bg-none" %}
+{% set height = "h-96" %}
+{% set imageHeight = "h-1/2" %}
+{% set bodyStyles = "text-left" %}
+
+{# TITLE #}
+{% set client = organizations | find("id", project.Client) %}
+{% set title = client[0].Name %}
+
+{# IMAGE #}
 {% block picture %}
 {% for img in images | find("id", project.Thumbnail) %}
 {{ img.pictureElement | safe }}
 {% endfor %}
 {% endblock %}
-{% block exit %}<a class="btn btn-outline"
-  href="/projects/{{ project.Name | slugify }}/">{{ project.Name }}</a>{% endblock %}
-{% block height %}h-72{% endblock %}
-{% block imageHeight %}h-1/2{% endblock %}
-{% block span %}{% endblock %}
-{% block bodyStyles %}text-center{% endblock %}
-{% block headingStyles %}mx-auto{% endblock %}
+
+{# COPY #}
+{% block content %}
+<p class="prose">{{ project.Teaser }}</p>
+{% endblock %}
