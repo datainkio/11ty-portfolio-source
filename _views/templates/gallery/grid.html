@@ -1,0 +1,10 @@
+<figure>
+  <figcaption>{{ gallery.Title }}</figcaption>
+  <ul class="columns-3">
+    {% for image in images | find('id', gallery.Images) %}
+    <li>
+      {{ image.pictureElement | safe }}
+    </li>
+    {% endfor %}
+  </ul>
+</figure>

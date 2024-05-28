@@ -8,7 +8,7 @@
 
   <!-- DESCRIPTION -->
   <section class="prose col-span-8">
-    {{ project.Description }}
+    {{ project.Description | expand(images) | format | safe }}
   </section>
 
   <!-- LESSONS LEARNED -->
@@ -21,8 +21,8 @@
   </section>
   {% endif %}
 
+  {% if project.Activities %}
   <section class="row-start-1 col-start-9 col-span-4 pl-4">
-    {% if project.Activities %}
     <figure>
       <figcaption>Activities</figcaption>
       <ul>
@@ -31,19 +31,8 @@
         {% endfor %}
       </ul>
     </figure>
-    {% endif %}
-
-    {% if project.Galleries %}
-    <figure>
-      <figcaption>Galleries</figcaption>
-      <ul>
-        {% for gallery in galleries | find('id', project.Galleries) %}
-        <li><a class="link link-hover" href="/galleries/{{ gallery.Title | slugify }}/">{{ gallery.Title }}</a></li>
-        {% endfor %}
-      </ul>
-    </figure>
-    {% endif %}
   </section>
+  {% endif %}
 </article>
 
 {% endblock %}
