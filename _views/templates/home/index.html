@@ -1,8 +1,10 @@
 {% extends "species/base.html" %}
-{% block grid %}grid grid-cols-12{% endblock %}
-{% block containerStyles %}px-6{% endblock %}
 {% block banner %}{% endblock %}
 {% block footer %}{% endblock %}
+
+{% set grid =  "grid-cols-12" %}
+{% set container_styles = "px-6" %}
+
 {% block main %}
 {% set section_style = "prose max-w-none col-span-12 py-8" %}
 {% set heading_style = "text-4xl leading-none font-black mb-2" %}

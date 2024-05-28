@@ -38,7 +38,7 @@
       <figcaption>Galleries</figcaption>
       <ul>
         {% for gallery in galleries | find('id', project.Galleries) %}
-        <li>{% include "templates/gallery/link.html" %}</li>
+        <li><a class="link link-hover" href="/galleries/{{ gallery.Title | slugify }}/">{{ gallery.Title }}</a></li>
         {% endfor %}
       </ul>
     </figure>
