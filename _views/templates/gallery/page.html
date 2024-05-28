@@ -4,7 +4,6 @@ Title
 <h1>{{ gallery.Title }}</h1>
 
 <ul>
-
   {% for image in images | find('id', gallery.Images) %}
   <li>
     {{ image.pictureElement | safe }}

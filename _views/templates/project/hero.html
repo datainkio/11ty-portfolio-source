@@ -1,9 +1,9 @@
-<section class="grid grid-cols-3 bg-black pb-12 gap-12 px-12">
+<section class="grid grid-cols-3 bg-black pb-12 gap-12 p-12">
   <div class="col-span-2">
-    <h1 class="text-white font-black text-8xl">{{ project.Title }}</h1>
+    <h1 class="text-white font-black text-8xl leading-none mb-8 ">{{ project.Title }}</h1>
     <p class="prose text-white text-2xl">{{ project.Teaser }}</p>
   </div>
-  <section class="pt-12">
+  <section>
     {% include "templates/project/meta.html" %}
   </section>
 </section>
