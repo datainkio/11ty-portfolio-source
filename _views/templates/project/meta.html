@@ -1,5 +1,5 @@
 {% set figcaption_styles = "text-slate-400" %}
-{% set link_styles = "text-white text-xl" %}
+{% set link_styles = "text-white" %}
 
 <!-- COMPANY -->
 {% if project.Company %}
@@ -37,6 +37,18 @@
 </figure>
 {% endif %}
 
+<!-- ACTIITIES -->
+{% if project.Activities %}
+<figure>
+  <figcaption class="{{ figcaption_styles }}">Activities</figcaption>
+  <ul class="list-none pl-0">
+    {% for activity in activities | find('id', project.Activities) %}
+    <li>{% include "templates/activity/link.html" %}</li>
+    {% endfor %}
+  </ul>
+</figure>
+{% endif %}
+
 <!-- RECOGNITION -->
 {% if project.Recognition %}
 <figure>
@@ -47,5 +59,4 @@
     {% endfor %}
   </ul>
 </figure>
-
 {% endif %}

@@ -9,23 +9,25 @@
 
 @layer base {
   body {
-    @apply bg-white;
+    @apply bg-white sm:bg-slate-100 md:bg-slate-200 lg:bg-slate-300 xl:bg-slate-400;
   }
-
+  h1 {
+    @apply leading-none mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+  }
   p {
-    @apply prose;
+    @apply prose text-lg;
+  }
+  figcaption {
+    @apply text-sm;
   }
 }
 
 @layer components {
-
 }
 
 @layer utilities {
-
-
 }
 
 @layer variants {
-  
+
 }

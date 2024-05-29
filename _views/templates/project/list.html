@@ -1,6 +1,6 @@
-{% if projects.length %}
+{% if data.length %}
 <ol>
-  {% for project in projects %}
+  {% for project in data %}
   <li>{% include "templates/project/link.html" %}</li>
   {% endfor %}
 </ol>

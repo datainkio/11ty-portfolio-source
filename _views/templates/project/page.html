@@ -4,33 +4,32 @@
 {% endblock %}
 {% set grid = "grid grid-cols-12" %}
 {% block main %}
-<article class="prose grid grid-cols-subgrid col-span-full p-12">
+<article class="prose col-span-full grid grid-cols-subgrid p-12">
   <!-- DESCRIPTION -->
-  <section class="prose col-span-full md:col-span-8">
+  <section class="col-span-8">
     {{ project.Description | expand(images) | format | safe }}
   </section>
-
-  <!-- LESSONS LEARNED -->
+  <!-- NUGGETS -->
   {% if project.Nuggets %}
-  {% set card_styles = "col-span-4" %}
-  <section class="grid grid-cols-subgrid col-span-12">
-    {% for nugget in nuggets | find('id', project.Nuggets) %}
-    {% include "templates/nugget/card.html" %}
-    {% endfor %}
-  </section>
-  {% endif %}
-
-  {% if project.Activities %}
-  <section class="row-start-1 col-start-9 col-span-4 pl-4">
-    <figure>
-      <figcaption>Activities</figcaption>
-      <ul>
-        {% for activity in activities | find('id', project.Activities) %}
-        <li>{% include "templates/activity/link.html" %}</li>
+  {% for nugget in nuggets | find('id', project.Nuggets) %}
+  <section class="col-span-full grid grid-cols-subgrid">
+    <div class="col-span-8">
+      <h2 class="mt-0">{{ nugget.Name }}</h2>
+      {{ nugget.Description | format | safe }}
+    </div>
+    {% if nugget.Insights %}
+    <figure class="col-span-4">
+      <figcaption>Related</figcaption>
+      <ul class="list-none pl-0">
+        {% for insight in insights | find("id", nugget.Insights) %}
+        <li>{% include "templates/insight/link.html" %}</li>
         {% endfor %}
       </ul>
     </figure>
+    {% endif %}
+
   </section>
+  {% endfor %}
   {% endif %}
 </article>
 
