@@ -33,7 +33,7 @@ module.exports = () => {
       .select({
         view: airtableTableView,
         // filterByFormula: "IS_AFTER({ShowDate}, TODAY())",
-        // sort: [{ field: "ShowDate", direction: "asc" }],
+        sort: [{ field: "CONFIG Created", direction: "desc" }],
       })
       .eachPage(
         function page(records, fetchNextPage) {

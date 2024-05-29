@@ -12,8 +12,19 @@
 {% endblock %}
 {% set grid = "grid grid-cols-12" %}
 {% block main %}
-<article class="prose grid grid-cols-subgrid col-span-full p-12">
-  {{ insight.Body | format }}
+<article class="prose col-span-full p-12">
+  {{ insight.Body | format | safe }}
+  {% if insight.Related %}
+  {% endif %}
 </article>
-
+{% if insight.Projects %}
+<figure>
+  <figcaption>Related Work</figcaption>
+  <ul>
+    {% for project in projects | find('id', insight.Projects) %}
+    <li>{% include "templates/project/link.html" %}</li>
+    {% endfor %}
+  </ul>
+</figure>
+{% endif %}
 {% endblock %}
