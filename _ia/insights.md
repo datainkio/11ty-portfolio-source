@@ -1,4 +1,5 @@
 ---
+title: "Lessons Learned"
 layout: "insight/landing.html"
 pagination:
   data: insights

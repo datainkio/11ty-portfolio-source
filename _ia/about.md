@@ -1,4 +1,5 @@
 ---
+title: "Now"
 pagination:
   data: images
   size: 1000

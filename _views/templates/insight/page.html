@@ -5,10 +5,7 @@
 <figure>
   <figcaption>Posted</figcaption>
 </figure>
-<p>{{ insight.Created }} {% if insight.Updated != insight.Created %}
-  (updated {{ insight.Updated }})
-  {% endif %}
-</p>
+{% include "templates/insight/meta.html %" %}
 {% endblock %}
 {% set grid = "grid grid-cols-12" %}
 {% block main %}
