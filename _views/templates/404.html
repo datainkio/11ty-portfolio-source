@@ -1,5 +1,35 @@
 {% extends "species/base.html" %}
+{% block banner %}
+<section class="grid grid-cols-3 bg-black pb-12 gap-12 p-12">
+  <div class="col-span-full md:col-span-2">
+    <h1 class="text-white font-black leading-none mb-8 text-6xl xl:text-8xl ">Hmmm...</h1>
+    <p class="text-white text-lg lg:text-2xl">The page you're looking for doesn't seem to exist. Perhaps you can get to it through one of these links?</p>
+  </div>
+</section>
+{% endblock %}
 {% block main %}
-{{ title }}
-
+<figure>
+	<figcaption>Lessons Learned</figcaption>
+	{% include "templates/insight/list.html" %}
+</figure>
+<figure>
+	<figcaption>Work</figcaption>
+	{% include "templates/project/list.html" %}
+</figure>
+<figure>
+	<figcaption>Roles</figcaption>
+	{% include "templates/role/list.html" %}
+</figure>
+<figure>
+	<figcaption>Recognition</figcaption>
+	{% include "templates/award/list.html" %}
+</figure>
+<figure>
+	<figcaption>Organizations</figcaption>
+	{% include "templates/organization/list.html" %}
+</figure>
+<figure>
+	<figcaption>Image Galleries</figcaption>
+	{% include "templates/gallery/list.html" %}
+</figure>
 {% endblock %}

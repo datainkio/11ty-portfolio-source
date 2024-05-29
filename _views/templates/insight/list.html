@@ -1,0 +1,7 @@
+{% if insights.length %}
+<ul>
+  {% for insight in insights %}
+  <li>{% include "templates/insight/link.html" %}</li>
+  {% endfor %}
+</ul>
+{% endif %}

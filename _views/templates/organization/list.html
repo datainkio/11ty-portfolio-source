@@ -1,7 +1,7 @@
 {% if organizations.length %}
-<ol>
+<ul>
   {% for organization in organizations %}
   <li>{% include "templates/organization/link.html" %}</li>
   {% endfor %}
-</ol>
+</ul>
 {%- endif -%}
