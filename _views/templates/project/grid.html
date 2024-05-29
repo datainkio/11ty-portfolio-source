@@ -1,8 +1,6 @@
 {% for project in projects %}
-{% if position == "top" %}
-{% set position = "bottom" %}
-{% else %}
-{% set position = "top" %}
-{% endif %}
-{% include "templates/project/card.html" %}
+{# Display the card view for the project #}
+<a href="{{ ["/projects/", project.Name | slugify, "/"] | join }}">
+	{% include "templates/project/card.html" %}
+</a>
 {% endfor %}

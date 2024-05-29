@@ -12,10 +12,6 @@
     @apply bg-white;
   }
 
-  h1 {
-    @apply text-white font-black leading-none mb-8;
-  }
-
   p {
     @apply prose;
   }

@@ -5,9 +5,8 @@
 {% set grid = "grid grid-cols-12" %}
 {% block main %}
 <article class="prose grid grid-cols-subgrid col-span-full p-12">
-
   <!-- DESCRIPTION -->
-  <section class="prose col-span-8">
+  <section class="prose col-span-full md:col-span-8">
     {{ project.Description | expand(images) | format | safe }}
   </section>
 
