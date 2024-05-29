@@ -1,2 +1,19 @@
 {% extends "species/base.html" %}
-<h1>LESSON LEARNED</h1>
+{% block banner %}
+<h1>{{ insight.Name }}</h1>
+<p>{{ insight.Teaser }}</p>
+<figure>
+  <figcaption>Posted</figcaption>
+</figure>
+<p>{{ insight.Created }} {% if insight.Updated != insight.Created %}
+  (updated {{ insight.Updated }})
+  {% endif %}
+</p>
+{% endblock %}
+{% set grid = "grid grid-cols-12" %}
+{% block main %}
+<article class="prose grid grid-cols-subgrid col-span-full p-12">
+  {{ insight.Body | format }}
+</article>
+
+{% endblock %}
