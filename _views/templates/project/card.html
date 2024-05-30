@@ -1,12 +1,15 @@
 {% extends "cells/cards/abstract.html" %}
 
 {# STYLES #}
-{% set layout = "" %}
+{% set card_styles = "size-72 bg-none" %}
 {% set aspect_ratio = "" %}
 {% set bgColor = "bg-none" %}
-{% set height = "h-96" %}
 {% set imageHeight = "h-1/2" %}
 {% set bodyStyles = "text-left" %}
+
+{% set btn_styles = "btn-ghost btn-sm" %}
+{% set exit = ["/projects/",project.Name | slugify, "/"] | join %}
+{% set label = "read more" %}
 
 {# ROLE #}
 {% set link_styles = "text-sm font-thin leading-none display-inline" %}

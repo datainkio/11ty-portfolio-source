@@ -1,9 +1,4 @@
-<div class="card 
-    {{ layout }} 
-    {{ aspect_ratio }} 
-    {{ span }} 
-    {{ bgColor }} 
-    {{ height }}">
+<div class="card {{ card_styles }}">
   {# IMAGE #}
   <figure class="{{ img_height }}">
     {% block picture %}{% endblock %}
@@ -18,7 +13,7 @@
     {# DESTINATION #}
     {% if exit %}
     <div class="card-actions justify-end">
-      <a class="btn btn-{{ btnType }} btn-outline btn-{{ btnSize }}" href="{{ exit }}">{{ label }}</a>
+      <a class="btn {{ btn_styles }}" href="{{ exit }}">{{ label }}</a>
     </div>
     {% endif %}
   </div>
