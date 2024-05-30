@@ -8,9 +8,15 @@
 {% set imageHeight = "h-1/2" %}
 {% set bodyStyles = "text-left" %}
 
+{# ROLE #}
+{% set link_styles = "text-sm font-thin leading-none display-inline" %}
+{% block category %}
+{% for role in roles | find("id", project.Role) %}
+{% include "templates/role/link.html" %}
+{% endfor %}
+{% endblock %}
 {# TITLE #}
-{% set client = organizations | find("id", project.Client) %}
-{% set title = client[0].Name %}
+{% set title = project.Title %}
 
 {# IMAGE #}
 {% block picture %}

@@ -19,8 +19,7 @@
     {% endfor %}
   </ul>
 </figure>
-<section>
-  {% set data = projects %}
-  {% include "templates/project/grid.html" %}
+{% set data = projects %}
+{% include "templates/project/grid.html" %}
 </section>
 {% endblock %}

@@ -5,11 +5,12 @@
     {{ bgColor }} 
     {{ height }}">
   {# IMAGE #}
-  <figure class="h-2/3">
+  <figure class="{{ img_height }}">
     {% block picture %}{% endblock %}
   </figure>
   <div class="card-body p-4 h-1/3 {{ bodyStyles }}">
     {% block badge %}{% endblock %}
+    {% block category %}{% endblock %}
     {# TITLE #}
     <h2 class="card-title leading-tight {{ headingStyles }}">{{ title }}</h2>
     {# CONTENT #}

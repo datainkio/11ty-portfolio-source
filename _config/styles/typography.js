@@ -14,7 +14,7 @@ module.exports = {
     black: "700",
   },
   fontSize: {
-    sm: "0.8rem",
+    sm: "0.85rem",
     base: "1rem",
     xl: "1.25rem",
     "2xl": "1.563rem",
