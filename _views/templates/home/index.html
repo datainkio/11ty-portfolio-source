@@ -1,15 +1,10 @@
 {% extends "species/base.html" %}
-{% block banner %}{% endblock %}
-{% block footer %}{% endblock %}
-
-{% set grid =  "grid-cols-12" %}
 {% set container_styles = "px-6" %}
-
-{% block main %}
 {% set section_style = "prose max-w-none col-span-12 py-8" %}
 {% set heading_style = "text-4xl leading-none font-black mb-2" %}
 {% set link_styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-400 hover:text-orange-600" %}
 
+{% block content %}
 <!-- INTRO -->
 <section class="{{ section_style }}">
   <h2 class="{{ heading_style }}">I design digital

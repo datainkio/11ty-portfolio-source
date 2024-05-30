@@ -1,19 +1,13 @@
-{% extends "species/landing.html" %}
-{% block banner %}
-<section class="pb-12 gap-12 p-12">
-  <h1 class="font-black">{{ title }}</h1>
+{% extends "species/base.html" %}
+{% block hero %}
+<section class="grid grid-cols-3 pb-12 gap-12 p-12">
+  <h1>Lessons Learned</h1>
 </section>
 {% endblock %}
-{% set grid = "grid grid-cols-12" %}
-{% block main %}
+{% block content %}
 <!-- DESCRIPTION -->
 <article class="prose col-span-full p-12">
-  <section>
-    {{ type.Body | format | safe }}
-  </section>
-  <section>
-    {% set data = insights %}
-    {% include "templates/insight/feed.html" %}
-  </section>
+  {% set data = insights %}
+  {% include "templates/insight/feed.html" %}
 </article>
 {% endblock %}

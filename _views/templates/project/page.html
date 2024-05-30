@@ -1,36 +1,88 @@
-{% extends "species/base.html" %}
-{% block banner %}
-{% include "templates/project/hero.html" %}
-{% endblock %}
-{% set grid = "grid grid-cols-12" %}
-{% block main %}
-<article class="prose col-span-full grid grid-cols-subgrid p-12">
-  <!-- DESCRIPTION -->
-  <section class="col-span-8">
-    {{ project.Description | expand(images) | format | safe }}
-  </section>
-  <!-- NUGGETS -->
-  {% if project.Nuggets %}
-  {% for nugget in nuggets | find('id', project.Nuggets) %}
-  <section class="col-span-full grid grid-cols-subgrid">
-    <div class="col-span-8">
-      <h2 class="mt-0">{{ nugget.Name }}</h2>
-      {{ nugget.Description | format | safe }}
-    </div>
-    {% if nugget.Insights %}
-    <figure class="col-span-4">
-      <figcaption>Related</figcaption>
-      <ul class="list-none pl-0">
-        {% for insight in insights | find("id", nugget.Insights) %}
-        <li>{% include "templates/insight/link.html" %}</li>
+{% extends "species/article.html" %}
+<!-- WE DON'T NEED ANOTHER HERO -->
+{% block hero %}
+<section class="bg-black p-12">
+  <div class="pb-8">
+    <h1 class="text-white font-black text-center md:text-left">{{ project.Title }}</h1>
+    <p class="text-white text-center md:text-left">{{ project.Teaser }}</p>
+  </div>
+  <!-- HERE BE PROJECT METADATA -->
+  <section class="text-center md:text-left md:flex md:flex-wrap gap-4">
+    {% set figcaption_styles = "text-slate-400" %}
+    {% set link_styles = "text-white text-med font-light" %}
+
+    <!-- COMPANY -->
+    {% if project.Company %}
+    <figure>
+      <figcaption class="{{ figcaption_styles }}">Company</figcaption>
+      <ul>
+        {% for organization in organizations | find('id', project.Company) %}
+        <li>{% include "templates/organization/link.html" %}</li>
         {% endfor %}
       </ul>
     </figure>
     {% endif %}
 
+    <!-- CLIENT -->
+    {% if project.Client %}
+    <figure>
+      <figcaption class="{{ figcaption_styles }}">Clients</figcaption>
+      <ul>
+        {% for organization in organizations | find('id', project.Client) %}
+        <li>{% include "templates/organization/link.html" %}</li>
+        {% endfor %}
+      </ul>
+    </figure>
+    {% endif %}
+
+    <!-- ROLE -->
+    {% if project.Role %}
+    <figure>
+      <figcaption class="{{ figcaption_styles }}">Roles</figcaption>
+      <ul>
+        {% for role in roles | find('id', project.Role) %}
+        <li>{% include "templates/role/link.html" %}</li>
+        {% endfor %}
+      </ul>
+    </figure>
+    {% endif %}
+
+    <!-- ACTIITIES -->
+    {% if project.Activities %}
+    <figure>
+      <figcaption class="{{ figcaption_styles }}">Activities</figcaption>
+      <ul class="list-none pl-0">
+        {% for activity in activities | find('id', project.Activities) %}
+        <li>{% include "templates/activity/link.html" %}</li>
+        {% endfor %}
+      </ul>
+    </figure>
+    {% endif %}
+
+    <!-- RECOGNITION -->
+    {% if project.Recognition %}
+    <figure>
+      <figcaption class="{{ figcaption_styles }}">Recognition</figcaption>
+      <ul>
+        {% for award in awards | find('id', project.Recognition) %}
+        <li>{% include "templates/award/link.html" %}</li>
+        {% endfor %}
+      </ul>
+    </figure>
+    {% endif %}
   </section>
-  {% endfor %}
-  {% endif %}
-</article>
+</section>
+{% endblock %}
+{% block content %}
+<!-- DESCRIPTION -->
+<section class="p-12">
+  {{ project.Description | expand(images) | format | safe }}
+</section>
+<!-- NUGGETS -->
+{% if project.Nuggets %}
+{% for nugget in nuggets | find('id', project.Nuggets) %}
+{% include "templates/nugget/card.html" %}
+{% endfor %}
+{% endif %}
 
 {% endblock %}

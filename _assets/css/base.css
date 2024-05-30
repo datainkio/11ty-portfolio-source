@@ -12,17 +12,26 @@
     @apply bg-white sm:bg-slate-100 md:bg-slate-200 lg:bg-slate-300 xl:bg-slate-400;
   }
   h1 {
-    @apply leading-none mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+    @apply font-black leading-none mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+  }
+  h2 {
+    @apply font-bold;
   }
   p {
-    @apply prose text-lg;
+    @apply prose;
   }
+
   figcaption {
     @apply text-sm;
+  }
+
+  button picture {
+  
   }
 }
 
 @layer components {
+
 }
 
 @layer utilities {

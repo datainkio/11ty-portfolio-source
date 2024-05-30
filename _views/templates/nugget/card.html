@@ -1,11 +1,29 @@
-<div class="card {{ card_styles }}">
+<div class="card lg:card-side px-4">
   <div class="card-body">
     <h2 class="card-title">{{ nugget.Name }}</h2>
-    <p>{{ nugget.Description }}</p>
-    <div class="card-actions justify-end">
-      {% for insight in insights | find("id", nugget.Insights) %}
-      <button class="btn btn-primary">{{ insight.Name }}</button>
-      {% endfor %}
-    </div>
+    {{ nugget.Description | format | safe }}
   </div>
+
+  <figure class="max-w-96 columns-3xl">
+    {# 
+      DON'T BOTH WITH MULTIPLE IMAGES - JUST COMBINE RELATED ONES INTO A SINGLE FILE 
+      SO MUCH SIMPLER
+    #}
+    {% for image in images | find('id', nugget.Images) %}
+    <div class="w-full">
+      {% set action = ["modal_", image.id, ".showModal()"] | join %}
+      <button class="picture object-contain" onclick="{{ action }}">{{ image.pictureElement | safe }}</button>
+      <dialog id="modal_{{ image.id }}" class="modal">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">{{ image.Title }}</h3>
+          <p>{{ image.Caption | format | safe }}</p>
+          {{ image.pictureElement | safe }}
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+    </div>
+    {% endfor %}
+  </figure>
 </div>

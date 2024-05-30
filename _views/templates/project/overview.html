@@ -1,20 +1,17 @@
-{% extends "species/base.html" %}
-{% block banner %}
+{% extends "species/landing.html" %}
+{% block hero %}
 <section class="grid grid-cols-3 pb-12 gap-12 p-12">
   <div class="col-span-full md:col-span-2">
-    <h1 class="font-black leading-none mb-8 text-4xl lg:text-6xl xl:text-8xl ">{{ title }}</h1>
-
+    <h1>Work</h1>
   </div>
 </section>
 {% endblock %}
-{% set grid = "grid grid-cols-12" %}
-{% set container_styles = "" %}
-{% block main %}
-<figure class="col-span-8">
+{% block content %}
+<figure>
   <figcaption>Roles</figcaption>
   {% include "templates/role/list.html" %}
 </figure>
-<figure class="col-span-8">
+<figure>
   <figcaption>Industries</figcaption>
   <ul>
     {% for category in ia %}
@@ -22,7 +19,8 @@
     {% endfor %}
   </ul>
 </figure>
-<section class="col-span-4">
+<section>
+  {% set data = projects %}
   {% include "templates/project/grid.html" %}
 </section>
 {% endblock %}

@@ -1,13 +1,12 @@
 {% extends "species/landing.html" %}
 {% block banner %}
-<section class="bg-black pb-12 gap-12 p-12">
-  <h1 class="text-white font-black">{{ type.Title }}</h1>
+<section class="pb-12 gap-12 p-12">
+  <h1 class="font-black">{{ type.Title }}</h1>
 </section>
 {% endblock %}
-{% set grid = "grid grid-cols-12" %}
-{% block main %}
+{% block content %}
 <!-- DESCRIPTION -->
-<article class="prose col-span-full p-12">
+<article class="prose p-12">
   <section>
     {{ type.Body | format | safe }}
   </section>
