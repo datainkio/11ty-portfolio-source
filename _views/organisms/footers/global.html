@@ -10,9 +10,10 @@
       for an experience designer, please do say hello - I look forward to hearing about your company and project.</h2>
   </section>
   <!-- SOCIAL -->
-  <nav class="grid grid-flow-col gap-12 max-w-96">
+  <nav class="grid grid-flow-col gap-2 max-w-96">
     {% for item in social %}
-    <a class="w-12 saturate-0" href="{{ item.URL }}">{{ item.pictureElement | safe }}</a>
+    <a class="opacity-50 saturate-0 hover:opacity-100 hover:saturate-100"
+      href="{{ item.URL }}">{{ item.pictureElement | safe }}</a>
     {% endfor %}
   </nav>
 </footer>
