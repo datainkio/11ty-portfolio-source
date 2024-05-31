@@ -1,18 +1,18 @@
-{% extends "species/landing.html" %}
-{% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% extends "species/article.html" %}
 {% block hero %}
-<h1 class="md:col-span-12">{{ role.Name }}</h1>
+<section class="p-12 bg-black md:col-span-12 grid grid-cols-12 text-white">
+    <h1 class="font-black text-center md:text-left md:col-span-8">{{ role.Name }}</h1>
+    <section class="md:col-span-3 text-white text-center md:text-left md:text-xl font-extralight">
+      {% if role.Description %}
+      {{ role.Description | markdownify | safe }}
+      {% endif %}
+    </section>
+</section>
 {% endblock %}
 {% block content %}
-<article class="prose md:col-span-8">
-  {% if role.Description %}
-  {{ role.Description | markdownify | safe }}
-  {% endif %}
-</article>
-<figure class="md:col-span-4">
-  <figcaption>Related Work</figcaption>
+<figure class="md:col-span-8 pt-4">
   {% set data = projects | find("id", role.Projects) %}
-  {% set grid = "" %}
+  {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
   {% include "templates/project/grid.html" %}
 </figure>
 {% endblock %}

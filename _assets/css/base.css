@@ -18,7 +18,11 @@
     @apply font-bold;
   }
   p {
-    @apply prose;
+
+  }
+
+  section.hero_teaser p {
+    @apply text-white;
   }
 
   figcaption {
