@@ -4,7 +4,7 @@
 <section class="bg-black p-12">
   <div class="pb-8">
     <h1 class="text-white font-black text-center md:text-left">{{ project.Title }}</h1>
-    <p class="text-white text-center md:text-left">{{ project.Teaser }}</p>
+    <p class="text-white text-center md:text-left md:text-2xl font-extralight">{{ project.Teaser }}</p>
   </div>
   <!-- HERE BE PROJECT METADATA -->
   <section class="text-center md:text-left md:flex md:flex-wrap gap-4">
@@ -12,23 +12,11 @@
     {% set link_styles = "text-white text-med font-light" %}
 
     <!-- COMPANY -->
-    {% if project.Company %}
+    {% if project.Organization %}
     <figure>
-      <figcaption class="{{ figcaption_styles }}">Company</figcaption>
+      <figcaption class="{{ figcaption_styles }}">Company/Client</figcaption>
       <ul>
-        {% for organization in organizations | find('id', project.Company) %}
-        <li>{% include "templates/organization/link.html" %}</li>
-        {% endfor %}
-      </ul>
-    </figure>
-    {% endif %}
-
-    <!-- CLIENT -->
-    {% if project.Client %}
-    <figure>
-      <figcaption class="{{ figcaption_styles }}">Clients</figcaption>
-      <ul>
-        {% for organization in organizations | find('id', project.Client) %}
+        {% for organization in organizations | find('id', project.Organization) %}
         <li>{% include "templates/organization/link.html" %}</li>
         {% endfor %}
       </ul>

@@ -1,11 +1,18 @@
-{% extends "species/base.html" %}
-{% block main %}
-Title
-<h1>{{role.Name }}</h1>
-Projects
-<ul>
-  {% for project in projects | find('id', role.Projects) %}
-  <li>{% include "templates/project/link.html" %}</li>
-  {% endfor %}
-</ul>
+{% extends "species/landing.html" %}
+{% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% block hero %}
+<h1 class="md:col-span-12">{{ role.Name }}</h1>
+{% endblock %}
+{% block content %}
+<article class="prose md:col-span-8">
+  {% if role.Description %}
+  {{ role.Description | markdownify | safe }}
+  {% endif %}
+</article>
+<figure class="md:col-span-4">
+  <figcaption>Related Work</figcaption>
+  {% set data = projects | find("id", role.Projects) %}
+  {% set grid = "" %}
+  {% include "templates/project/grid.html" %}
+</figure>
 {% endblock %}

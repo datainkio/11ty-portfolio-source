@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply bg-white /** sm:bg-slate-100 md:bg-slate-200 lg:bg-slate-300 xl:bg-slate-400; **/
+    @apply bg-slate-100 /** sm:bg-slate-100 md:bg-slate-200 lg:bg-slate-300 xl:bg-slate-400; **/
   }
   h1 {
     @apply font-black leading-none mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
@@ -36,6 +36,10 @@
 
   .card img {
     @apply w-full h-full object-cover object-center;
+  }
+
+  picture.logo img {
+    @apply w-full h-full object-contain;
   }
 }
 

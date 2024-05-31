@@ -1,10 +1,9 @@
 {% extends "cells/cards/abstract.html" %}
 
 {# STYLES #}
-{% set card_styles = "w-full bg-none" %}
+{% set card_styles = "w-full bg-white h-96" %}
 {% set aspect_ratio = "" %}
 {% set bgColor = "bg-none" %}
-{% set imageHeight = "h-1/2" %}
 {% set bodyStyles = "text-left" %}
 
 {% set btn_styles = "btn-ghost btn-sm" %}
@@ -35,3 +34,11 @@
 {# COPY #}
 {% block content %}
 {% endblock %}
+
+{# ORGANIZATIONS #}
+{% block metadata %}
+{% for organization in organizations | find("id", project.Organization) %}
+{% include "templates/organization/link.html" %}
+{% endfor %}
+{% endblock %}
+

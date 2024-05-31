@@ -12,7 +12,7 @@
     "build:css": "tailwindcss -i ./_assets/css/base.css -o ../dist/styles.css"
   },
   "keywords": [],
-  "author": "",
+  "author": "Russell Lebo",
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
@@ -24,6 +24,7 @@
     "daisyui": "^4.11.1",
     "dotenv": "^16.4.5",
     "install": "^0.13.0",
+    "markdown-it": "^14.1.0",
     "npm-run-all": "^4.1.5",
     "run-all": "^1.0.1",
     "tailwindcss": "^3.4.3"

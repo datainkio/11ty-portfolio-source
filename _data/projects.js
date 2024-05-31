@@ -38,7 +38,7 @@ module.exports = () => {
       .select({
         view: airtableTableView,
         // filterByFormula: "IS_AFTER({ShowDate}, TODAY())",
-        // sort: [{ field: "ShowDate", direction: "asc" }],
+        sort: [{ field: "Weight", direction: "asc" }],
       })
       .eachPage(
         function page(records, fetchNextPage) {

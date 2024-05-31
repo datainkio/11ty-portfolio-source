@@ -1,9 +1,20 @@
-{% extends "species/base.html" %}
-{% block main %}
-<h1>{{ award.Organization }}: {{ award.Title }}</h1>
-<ul>
-  {% for project in projects | find('id', award.Projects) %}
-  <li>{% include "templates/project/link.html" %}</li>
-  {% endfor %}
-</ul>
+{% extends "species/article.html" %}
+{% block hero %}
+<section class="p-12 grid grid-cols-12 gap-6">
+    {% for logo in images | find("id", award.logo_id) %}
+    {{ logo.pictureElement | stylePicture("logo col-span-3 bg-black p-6") | safe }}
+    {% endfor %}
+    <h1 class="text-black font-black text-center md:text-left col-span-9">{{ award.Organization }}: {{ award.Title }}</h1>
+</section>
+{% endblock %}
+{% block content %}
+<section class="p-12 prose">
+  {{ award.Description | markdownify | safe }}
+</section>
+<figure class="md:col-span-4">
+  <figcaption>Related Work</figcaption>
+  {% set data = projects | find("id", award.Projects) %}
+  {% set grid = "" %}
+  {% include "templates/project/grid.html" %}
+</figure>
 {% endblock %}

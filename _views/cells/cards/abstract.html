@@ -3,20 +3,19 @@
   <figure class="{{ img_height }}">
     {% block picture %}{% endblock %}
   </figure>
-  <div class="card-body p-4 h-1/3 {{ bodyStyles }}">
+  <div class="card-body p-4 {{ bodyStyles }}">
     {% block badge %}{% endblock %}
     {% block category %}{% endblock %}
     {# TITLE #}
     <h2 class="card-title leading-tight {{ headingStyles }}">{{ title }}</h2>
     {# CONTENT #}
     {% block content %}<p>Card Content</p>{% endblock %}
+    {% block metadata %}{% endblock %}
     {# DESTINATION #}
     {% if exit %}
-    <div class="card-actions justify-end">
+    <div class="card-actions bottom-0 right-0 absolute">
       <a class="btn {{ btn_styles }}" href="{{ exit }}">{{ label }}</a>
     </div>
     {% endif %}
   </div>
-  {# IMAGE #}
-  {% block bottom %}{% endblock %}
 </div>

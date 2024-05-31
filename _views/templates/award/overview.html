@@ -1,7 +1,7 @@
 {% extends "species/landing.html" %}
 {% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
 {% block hero %}
-<h1 class="md:col-span-12">Work</h1>
+<h1 class="md:col-span-12">Recognition</h1>
 {% endblock %}
 {% block content %}
 <article class="prose md:col-span-4">
@@ -13,8 +13,9 @@
     focus on human-centered design.</p>
 </article>
 <figure class="md:col-span-8">
-  {% set data = projects %}
   {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
-  {% include "templates/project/grid.html" %}
+	{% for award in awards %}
+  {% include "templates/award/link.html" %}
+	{% endfor %}
 </figure>
 {% endblock %}
