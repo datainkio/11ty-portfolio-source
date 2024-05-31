@@ -1,7 +1,7 @@
 {% extends "cells/cards/abstract.html" %}
 
 {# STYLES #}
-{% set card_styles = "size-72 bg-none" %}
+{% set card_styles = "w-full bg-none" %}
 {% set aspect_ratio = "" %}
 {% set bgColor = "bg-none" %}
 {% set imageHeight = "h-1/2" %}
@@ -12,11 +12,15 @@
 {% set label = "read more" %}
 
 {# ROLE #}
-{% set link_styles = "text-sm font-thin leading-none display-inline" %}
+{% set link_styles = "text-sm font-thin leading-none" %}
 {% block category %}
-{% for role in roles | find("id", project.Role) %}
-{% include "templates/role/link.html" %}
-{% endfor %}
+<section>
+  {% for role in roles | find("id", project.Role) %}
+  {% include "templates/role/link.html" %}
+  {% if loop.index < loop.length %}<span class="text-sm font-thin leading-none">/</span>
+  {% endif %}
+  {% endfor %}
+</section>
 {% endblock %}
 {# TITLE #}
 {% set title = project.Title %}

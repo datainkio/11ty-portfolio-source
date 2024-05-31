@@ -1,25 +1,20 @@
 {% extends "species/landing.html" %}
+{% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
 {% block hero %}
-<section class="grid grid-cols-3 pb-12 gap-12 p-12">
-  <div class="col-span-full md:col-span-2">
-    <h1>Work</h1>
-  </div>
-</section>
+<h1 class="md:col-span-12">Work</h1>
 {% endblock %}
 {% block content %}
-<figure>
-  <figcaption>Roles</figcaption>
-  {% include "templates/role/list.html" %}
-</figure>
-<figure>
-  <figcaption>Industries</figcaption>
-  <ul>
-    {% for category in ia %}
-    <li><a class="link link-hover" href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a></li>
-    {% endfor %}
-  </ul>
-</figure>
-
+<article class="prose md:col-span-4">
+  <p>
+    I am a lucky guy. In my 20+ years designing and building digital products and services I have worked with museums,
+    artists, scientists, hospitals, banks, schools, global brands, and even the federal government.
+  </p>
+  <p>Each project brings a unique set of challenges and puzzles to solve, and I thrive on finding solutions shaped by a
+    focus on human-centered design.</p>
+</article>
+<figure class="md:col-span-8">
   {% set data = projects %}
+  {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
   {% include "templates/project/grid.html" %}
-{% endblock %}
+  {% endblock %}
+</figure>

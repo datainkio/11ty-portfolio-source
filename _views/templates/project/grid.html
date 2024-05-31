@@ -1,6 +1,6 @@
-<section class="grid grid-cols-1 gap-8">
-{% for project in data %}
-{# Display the card view for the project #}
+<section class="{{ grid }}">
+	{% for project in data %}
+	{# Display the card view for the project #}
 	{% include "templates/project/card.html" %}
-{% endfor %}
+	{% endfor %}
 </section>
