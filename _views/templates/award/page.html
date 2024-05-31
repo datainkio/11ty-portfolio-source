@@ -8,13 +8,15 @@
 </section>
 {% endblock %}
 {% block content %}
-<section class="p-12 prose">
-  {{ award.Description | markdownify | safe }}
+<section class="p-12 md:grid md:grid-cols-12">
+  <section class="prose md:col-span-8">
+    {{ award.Description | markdownify | safe }}
+  </section>
+  <figure class="md:col-span-4">
+    {% set data = projects | find("id", award.Projects) %}
+    {% set grid = "" %}
+    {% include "templates/project/grid.html" %}
+  </figure>
 </section>
-<figure class="md:col-span-4">
-  <figcaption>Related Work</figcaption>
-  {% set data = projects | find("id", award.Projects) %}
-  {% set grid = "" %}
-  {% include "templates/project/grid.html" %}
-</figure>
+
 {% endblock %}

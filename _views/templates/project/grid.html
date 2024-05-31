@@ -1,6 +1,8 @@
 <section class="{{ grid }}">
 	{% for project in data %}
 	{# Display the card view for the project #}
+	{% if project.Title %}
 	{% include "templates/project/card.html" %}
+	{% endif %}
 	{% endfor %}
 </section>

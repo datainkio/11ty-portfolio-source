@@ -14,9 +14,9 @@
       {% set action = ["modal_", image.id, ".showModal()"] | join %}
       <button class="picture object-contain" onclick="{{ action }}">{{ image.pictureElement | safe }}</button>
       <dialog id="modal_{{ image.id }}" class="modal">
-        <div class="modal-box">
+        <div class="modal-box w-9/12 max-w-none">
           <h3 class="font-bold text-lg">{{ image.Title }}</h3>
-          <p>{{ image.Caption | format | safe }}</p>
+          <p class="prose">{{ image.Caption | format | safe }}</p>
           {{ image.pictureElement | safe }}
         </div>
         <form method="dialog" class="modal-backdrop">
