@@ -1,34 +1,16 @@
-{% extends "species/base.html" %}
-{% set grid = "grid grid-cols-12" %}
-{% block main %}
-<article class="prose col-span-full">
-  <div class="hero min-h-screen bg-black">
-    <div class="hero-content flex-col lg:flex-row">
-      <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-        class="max-w-sm rounded-lg shadow-2xl" />
-      <div>
-        <h1 class="font-black text-white">Box Office News!</h1>
-        <p class="py-6 text-white">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-          exercitationem
-          quasi.
-          In deleniti eaque aut repudiandae et a id nisi.</p>
-        <button class="btn btn-primary">Get Started</button>
-      </div>
-    </div>
-  </div>
-  <figure>
-    <figcaption>Posted</figcaption>
-  </figure>
-  {{ insight.Body | format | safe }}
+{% extends "species/landing.html" %}
+{% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% block hero %}
+<h1 class="md:col-span-12">{{ insight.Name }}</h1>
+{% endblock %}
+{% block content %}
+<article class="prose md:col-span-8">
+  {{ insight.Body | markdownify | safe }}
 </article>
-{% if insight.Projects %}
-<figure>
+<figure class="md:col-span-4">
   <figcaption>Related Work</figcaption>
-  <ul>
-    {% for project in projects | find('id', insight.Projects) %}
-    <li>{% include "templates/project/link.html" %}</li>
-    {% endfor %}
-  </ul>
+  {% set data = projects | find("id", insight.Projects) %}
+  {% set grid = "" %}
+  {% include "templates/project/grid.html" %}
 </figure>
-{% endif %}
 {% endblock %}

@@ -7,7 +7,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
-
   const md = require("markdown-it")({
     html: false,
     breaks: true,
@@ -15,7 +14,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addNunjucksFilter("markdownify", (markdownString) =>
-    md.render(markdownString),
+    md.render(markdownString)
   );
 
   eleventyConfig.addPassthroughCopy({
@@ -29,7 +28,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("stylePicture", (pe, styles) => {
     return pe.replace("<picture>", '<picture class="' + styles + '">');
-  })
+  });
 
   /**
    * Format content from Airtable into proper HTML
