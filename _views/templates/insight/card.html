@@ -1,11 +1,7 @@
 <div class="card lg:card-side">
-  <figure><img src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
   <div class="card-body">
     {% include "templates/insight/meta.html" %}
-    <h2 class="card-title">{{ insight.Name }}</h2>
+    <h2 class="card-title">{% include "templates/insight/link.html" %}</h2>
     <p>{{ insight.Teaser }}</p>
-    <div class="card-actions justify-end">
-      {% include "templates/insight/link.html" %}
-    </div>
   </div>
 </div>
