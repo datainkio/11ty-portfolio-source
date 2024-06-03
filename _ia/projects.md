@@ -7,4 +7,7 @@ pagination:
 permalink: "projects/"
 eleventyNavigation:
   key: Work
+  order: 1
 ---
+
+<!-- @format -->

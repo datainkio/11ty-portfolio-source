@@ -23,24 +23,14 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("postDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
+    let d = new Date(dateObj);
+    return DateTime.fromJSDate(d).toLocaleString(DateTime.DATE_MED);
   });
 
   eleventyConfig.addFilter("stylePicture", (pe, styles) => {
     return pe.replace("<picture>", '<picture class="' + styles + '">');
   });
 
-  /**
-   * Format content from Airtable into proper HTML
-   */
-  eleventyConfig.addFilter("format", function (str) {
-    var formatted = str;
-    if (str) {
-      formatted = str.split("\n");
-      formatted = "<p>" + formatted.join("</p><p>") + "</p>";
-    }
-    return formatted;
-  });
 
   /**
    * Insert referenced content into text.

@@ -41,7 +41,7 @@
       <figcaption class="{{ figcaption_styles }}">Activities</figcaption>
       <ul class="list-none pl-0">
         {% for activity in activities | find('id', project.Activities) %}
-        <li>{% include "templates/activity/link.html" %}</li>
+        <li class="{{ link_styles }}">{{ activity.Name }}</li>
         {% endfor %}
       </ul>
     </figure>
@@ -62,10 +62,22 @@
 </section>
 {% endblock %}
 {% block content %}
+<div class="grid grid-cols-12">
+  
+</div>
 <!-- DESCRIPTION -->
 <section class="p-12 prose">
-  {{ project.Description | expand(images) | format | safe }}
+  {% if project.Description is string %}
+  {{ project.Description | markdownify | safe }}
+  {% endif %}
 </section>
+
+<!-- GALLERY -->
+{% if project.Galleries %}
+{% for gallery in galleries | find('id', project.Galleries) %}
+{% include "templates/gallery/carousel.html" %}
+{% endfor %}
+{% endif %}
 <!-- NUGGETS -->
 {% if project.Nuggets %}
 {% for nugget in nuggets | find('id', project.Nuggets) %}
