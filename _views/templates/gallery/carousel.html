@@ -1,15 +1,15 @@
 <!-- Open the modal using ID.showModal() method -->
 <button class="btn" onclick="gallery.showModal()">Samples</button>
 <dialog id="gallery" class="modal">
-  <div class="modal-box">
+  <div class="modal-box w-9/12 max-w-none">
     <h3 class="font-bold text-lg">{{ gallery.Title }}</h3>
-		<div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral w-full rounded-box">
-			{% for image in images | find('id', gallery.Images) %}
-			<div class="carousel-item">
-				{{ image.pictureElement | safe }}
-			</div> 
-			{% endfor %}
-		</div>
+    <div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
+      {% for image in images | find('id', gallery.Images) %}
+      <div class="carousel-item">
+        {{ image.pictureElement | safe }}
+      </div>
+      {% endfor %}
+    </div>
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->

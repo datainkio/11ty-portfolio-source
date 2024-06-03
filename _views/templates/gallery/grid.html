@@ -1,10 +1,24 @@
-<figure>
-  <figcaption>{{ gallery.Title }}</figcaption>
-  <ul class="columns-3">
-    {% for image in images | find('id', gallery.Images) %}
-    <li>
-      {{ image.pictureElement | safe }}
-    </li>
-    {% endfor %}
-  </ul>
+<figure class="grid grid-cols-4">
+  {# 
+      DON'T BOTHER WITH MULTIPLE IMAGES - JUST COMBINE RELATED ONES INTO A SINGLE FILE 
+      SO MUCH SIMPLER
+    #}
+  {% for image in images | find('id', gallery.Images) %}
+  <div class="w-full h-full">
+    {% set action = ["gallery_", image.id, ".showModal()"] | join %}
+    <button class="picture object-contain" onclick="{{ action }}">{{ image.pictureElement | safe }}</button>
+    <dialog id="gallery_{{ image.id }}" class="modal">
+      <div class="modal-box w-9/12 max-w-none">
+        <h3 class="font-bold text-lg">{{ image.Title }}</h3>
+        {% if image.Caption is string %}
+        <p class="prose">{{ image.Caption | markdownify | safe }}</p>
+        {% endif %}
+        {{ image.pictureElement | safe }}
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  </div>
+  {% endfor %}
 </figure>

@@ -51,9 +51,10 @@
     {% if project.Recognition %}
     <figure>
       <figcaption class="{{ figcaption_styles }}">Recognition</figcaption>
+      {% set link_styles = "text-white" %}
       <ul>
         {% for award in awards | find('id', project.Recognition) %}
-        <li>{% include "templates/award/link.html" %}</li>
+        {% include "templates/award/link_detailed.html" %}
         {% endfor %}
       </ul>
     </figure>
@@ -62,22 +63,25 @@
 </section>
 {% endblock %}
 {% block content %}
-<div class="grid grid-cols-12">
-  
-</div>
 <!-- DESCRIPTION -->
 <section class="p-12 prose">
   {% if project.Description is string %}
   {{ project.Description | markdownify | safe }}
   {% endif %}
 </section>
+{#
+  <!-- GALLERY -->
+  <section class="col-span-4">
+    {% if project.Galleries %}
+    {% for gallery in galleries | find('id', project.Galleries) %}
+    {% include "templates/gallery/grid.html" %}
+    {% endfor %}
+    {% endif %}
+  </section>
+#}
 
-<!-- GALLERY -->
-{% if project.Galleries %}
-{% for gallery in galleries | find('id', project.Galleries) %}
-{% include "templates/gallery/carousel.html" %}
-{% endfor %}
-{% endif %}
+
+
 <!-- NUGGETS -->
 {% if project.Nuggets %}
 {% for nugget in nuggets | find('id', project.Nuggets) %}
