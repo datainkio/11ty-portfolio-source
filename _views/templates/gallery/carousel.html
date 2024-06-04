@@ -5,7 +5,7 @@
   <div class="modal-box w-9/12 max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">
       {% set index = 1 %}
-      {% for image in images | find('id', gallery.Images) %}
+      {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
       <figure id="item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
         <figcaption class="p-4">
@@ -20,7 +20,7 @@
     </div>
     <div class="hidden md:flex justify-center w-full py-2 gap-2">
       {% set index = 1 %}
-      {% for image in images | find('id', gallery.Images) %}
+      {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
       <a href="#item{{ index }}" class="btn btn-xs">{{ index }}</a> 
       {% set index = index + 1 %}

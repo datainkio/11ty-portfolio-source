@@ -72,6 +72,7 @@
   </section>
   <section class="object-top">
     {% for gallery in galleries | find("id", project.Galleries) %}
+    {% set data = gallery %}
     {% include "templates/gallery/carousel.html" %}
     {% endfor %}
   </section>
