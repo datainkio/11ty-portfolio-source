@@ -6,6 +6,10 @@ const { DateTime } = require("luxon");
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPassthroughCopy({
+    "_assets/styles/base.css": "styles.css",
+    ".nojekyll": ".nojekyll",
+  });
 
   const md = require("markdown-it")({
     html: false,
@@ -17,18 +21,25 @@ module.exports = function (eleventyConfig) {
     md.render(markdownString)
   );
 
-  eleventyConfig.addPassthroughCopy({
-    "_assets/styles/base.css": "styles.css",
-    ".nojekyll": ".nojekyll",
-  });
-
   eleventyConfig.addFilter("postDate", (dateObj) => {
     let d = new Date(dateObj);
     return DateTime.fromJSDate(d).toLocaleString(DateTime.DATE_MED);
   });
 
-  eleventyConfig.addFilter("stylePicture", (pe, styles) => {
-    return pe.replace("<picture>", '<picture class="' + styles + '">');
+  eleventyConfig.addFilter("stylePicture", (pe, peStyles = "", imgStyles = "") => {
+    /** 
+     * It's possible for a gallery to contain IDs for unpublished images, in 
+     * which case the template will throw up a little bit. So let's deal with
+     * that.
+     **/
+    if (pe) {
+      // Style the picture element
+      let result = pe.replace("<picture>", '<picture class="' + peStyles + '">');
+      // Style the img element
+      return result.replace("<img", '<img class="' + imgStyles + '" ');
+    } else {
+      return;
+    }
   });
 
 

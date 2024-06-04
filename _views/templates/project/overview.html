@@ -11,7 +11,16 @@
   </p>
   <p>Each project brings a unique set of challenges and puzzles to solve, and I thrive on finding solutions shaped by a
     focus on human-centered design.</p>
+    <figure class="not-prose">
+      <h3>Focus</h3>
+      <ul>
+        {% for category in ia %}
+        <li><a class="link link-hover {{ link_styles }}" href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a></li>
+        {% endfor %}
+      </ul>
+    </figure>
 </article>
+
 <figure class="md:col-span-8">
   {% set data = projects %}
   {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}

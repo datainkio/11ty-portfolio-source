@@ -5,17 +5,19 @@
 {% endblock %}
 {% block content %}
 <article class="prose md:col-span-4">
-  <p>
-    I am a lucky guy. In my 20+ years designing and building digital products and services I have worked with museums,
-    artists, scientists, hospitals, banks, schools, global brands, and even the federal government.
-  </p>
-  <p>Each project brings a unique set of challenges and puzzles to solve, and I thrive on finding solutions shaped by a
-    focus on human-centered design.</p>
+	<p>I've worked with amazing, multitalented teams producing award-winning work with a real impact. People like <a
+    href="https://www.joshgoldblum.com/">Josh Goldblum</a> at <a href="https://www.bluecadet/">Bluecadet</a>, who gave
+  me my first paying gig back when the company was still operating out of his living room. <a
+    href="https://www.linkedin.com/in/adamcutler/">Adam Cutler</a> and <a
+    href="https://www.arup.com/our-firm/jeff-berg">Jeff Berg</a>, two people who introduced me to IBM and what it
+  means to work on a global scale. And <a href="https://www.linkedin.com/in/willweems/">Will Weems</a> and <a
+    href="https://world.hey.com/philip.levy">Phil Levy</a>, two colleagues and friends from Bixal who showed me what
+  it means to grow and develop design culture in organizations.</p>
 </article>
 <figure class="md:col-span-8">
   {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
 	{% for award in awards %}
-  {% include "templates/award/link.html" %}
+  {% include "templates/award/link_detailed.html" %}
 	{% endfor %}
 </figure>
 {% endblock %}

@@ -69,18 +69,11 @@
   {{ project.Description | markdownify | safe }}
   {% endif %}
 </section>
-{#
-  <!-- GALLERY -->
-  <section class="col-span-4">
-    {% if project.Galleries %}
-    {% for gallery in galleries | find('id', project.Galleries) %}
-    {% include "templates/gallery/grid.html" %}
-    {% endfor %}
-    {% endif %}
-  </section>
-#}
-
-
+<section>
+  {% for gallery in galleries | find("id", project.Galleries) %}
+  {% include "templates/gallery/carousel.html" %}
+  {% endfor %}
+</section>
 
 <!-- NUGGETS -->
 {% if project.Nuggets %}
