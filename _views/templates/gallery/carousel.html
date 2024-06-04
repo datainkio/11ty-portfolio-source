@@ -9,8 +9,8 @@
       {% if image.Published %}
       <figure id="item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
         <figcaption class="p-4">
-          <h3>{{ image.Title }}</h3>
-          <p>{{ image.Caption }}</p>
+          <h3 class="text-xl">{{ image.Title }}</h3>
+          <p class="prose">{{ image.Caption }}</p>
         </figcaption>
         {{ image.pictureElement | stylePicture("md:col-span-2", "object-center object-cover")  | safe }}
       </figure>
