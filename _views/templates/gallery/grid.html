@@ -1,7 +1,7 @@
-<figure class="grid grid-cols-4">
+<div class="grid grid-cols-4">
   {% for image in images | find('id', gallery.Images) %}
   {% if image.Published %}
   {{ image.pictureElement | stylePicture("w-full", "aspect-square object-center object-cover")  | safe }}
   {% endif %}
   {% endfor %}
-</figure>
+</div>

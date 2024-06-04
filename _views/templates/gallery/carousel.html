@@ -1,17 +1,29 @@
-<!-- Open the modal using ID.showModal() method -->
-<button class="btn w-full h-full" onclick="gallery.showModal()">{% include "templates/gallery/grid.html" %}</button>
+{# Display a grid of thumbnails that when clicked produces a modal with the full views #}
+<!-- By default this is a button, but that introduced a 1px border that I didn't want and could not get rid of -->
+<a class="cursor-pointer" onclick="gallery.showModal()">{% include "templates/gallery/grid.html" %}</a>
 <dialog id="gallery" class="modal">
-  <div class="modal-box w-9/12 max-w-none bg-black shadow-none">
-    <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box text-white ">
+  <div class="modal-box w-9/12 max-w-none shadow-none">
+    <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">
+      {% set index = 1 %}
       {% for image in images | find('id', gallery.Images) %}
       {% if image.Published %}
-      <figure class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
+      <figure id="item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
         <figcaption class="p-4">
           <h3>{{ image.Title }}</h3>
           <p>{{ image.Caption }}</p>
         </figcaption>
         {{ image.pictureElement | stylePicture("md:col-span-2", "object-center object-cover")  | safe }}
       </figure>
+      {% set index = index + 1 %}
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="hidden md:flex justify-center w-full py-2 gap-2">
+      {% set index = 1 %}
+      {% for image in images | find('id', gallery.Images) %}
+      {% if image.Published %}
+      <a href="#item{{ index }}" class="btn btn-xs">{{ index }}</a> 
+      {% set index = index + 1 %}
       {% endif %}
       {% endfor %}
     </div>

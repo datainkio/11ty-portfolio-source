@@ -63,18 +63,19 @@
 </section>
 {% endblock %}
 {% block content %}
-<!-- DESCRIPTION -->
-<section class="p-12 prose">
-  {% if project.Description is string %}
-  {{ project.Description | markdownify | safe }}
-  {% endif %}
-</section>
-<section>
-  {% for gallery in galleries | find("id", project.Galleries) %}
-  {% include "templates/gallery/carousel.html" %}
-  {% endfor %}
-</section>
-
+<div class="md:grid md:grid-cols-2">
+  <!-- DESCRIPTION -->
+  <section class="p-12 prose">
+    {% if project.Description is string %}
+    {{ project.Description | markdownify | safe }}
+    {% endif %}
+  </section>
+  <section class="object-top">
+    {% for gallery in galleries | find("id", project.Galleries) %}
+    {% include "templates/gallery/carousel.html" %}
+    {% endfor %}
+  </section>
+</div>
 <!-- NUGGETS -->
 {% if project.Nuggets %}
 {% for nugget in nuggets | find('id', project.Nuggets) %}
