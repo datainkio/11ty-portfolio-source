@@ -12,7 +12,7 @@
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>
         </figcaption>
-        {{ image.pictureElement | stylePicture("md:col-span-2", "object-center object-cover")  | safe }}
+        {{ image.pictureElement | stylePicture("md:col-span-2", "object-center object-cover object-scale-down max-h-[724px]")  | safe }}
       </figure>
       {% set index = index + 1 %}
       {% endif %}
