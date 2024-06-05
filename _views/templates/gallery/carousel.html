@@ -4,18 +4,18 @@
 </a>
 <dialog id="gallery_{{ data.id }}" class="modal">
   <div class="modal-box w-9/12 max-w-none shadow-none">
-    <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">
+    <div class="md:carousel md:carousel-center md:max-w-none space-x-4 md:rounded-box ">
       <!-- TITLE CARD -->
-      <div id="{{ data.id }}_title" class="mb-4 md:mb-0 md:carousel-item md:w-fit md:block">
-        <h2 class="text-xl">{{ data.Title }}</h2>
-        <p class="prose">{{ data.Description }}</p>
+      <div id="{{ data.id }}_title" class="mb-4 p-4 md:mb-0 md:carousel-item md:w-full md:block md:text-center md:object-center">
+        <div class="divider"><h2 class="text-2xl">{{ data.Title }}</h2></div>
+        <p class="prose mx-auto align-middle">{{ data.Description }}</p>
       </div>
       <!-- IMAGES -->
       {% set index = 1 %}
-      {% for image in images | find('id', data.Images) %}
+      {% for image in images | find('id', data.Images) | sort(false,false,"Weight") %}
       {% if image.Published %}
       <figure id="{{ data.id }}_item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:gap-4 md:w-fit">
-        <figcaption>
+        <figcaption class="p-4">
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>
         </figcaption>

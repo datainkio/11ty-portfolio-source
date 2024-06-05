@@ -22,7 +22,7 @@ async function getImageRecords() {
       .select({
         view: airtableTableView,
         // filterByFormula: "{InStock} = 1",
-        // sort: [{ field: "Title", direction: "asc" }],
+        sort: [{ field: "Weight", direction: "asc" }],
       })
       .all();
   } catch (e) {
