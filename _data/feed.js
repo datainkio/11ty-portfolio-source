@@ -43,7 +43,7 @@ module.exports = () => {
       .eachPage(
         function page(records, fetchNextPage) {
           records.forEach((record) => {
-            console.log(record)
+            // console.log(record)
             allEvents.push({
               id: record._rawJson.id,
               ...record._rawJson.fields,

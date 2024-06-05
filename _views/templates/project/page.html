@@ -1,4 +1,5 @@
 {% extends "species/article.html" %}
+{% set title = [project.Name, project.Title] | join(": ") %}
 <!-- WE DON'T NEED ANOTHER HERO -->
 {% block hero %}
 <section class="bg-black p-12 pb-20">
