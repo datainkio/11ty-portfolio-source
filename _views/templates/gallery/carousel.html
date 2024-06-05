@@ -1,5 +1,7 @@
 {# Display a grid of thumbnails that when clicked produces a modal with the full views #}
-<a class="cursor-pointer" onclick="gallery_{{ data.id }}.showModal()">{% include "templates/gallery/grid.html" %}</a>
+<a class="cursor-pointer" onclick="gallery_{{ data.id }}.showModal()">
+  {% include "templates/gallery/grid.html" %}
+</a>
 <dialog id="gallery_{{ data.id }}" class="modal">
   <div class="modal-box w-9/12 max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">

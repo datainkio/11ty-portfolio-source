@@ -74,6 +74,10 @@
     {% for gallery in galleries | find("id", project.Galleries) %}
     {% set data = gallery %}
     {% include "templates/gallery/carousel.html" %}
+    {% if loop.last %}
+    {% else %}
+    <div class="divider h-8"></div> 
+    {% endif %}
     {% endfor %}
   </section>
 </div>
