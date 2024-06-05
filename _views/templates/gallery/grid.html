@@ -1,7 +1,11 @@
 <div class="grid grid-cols-4">
   {% for image in images | find('id', gallery.Images | sort(false,false,"Weight")) %}
   {% if image.Published %}
-  {{ image.pictureElement | stylePicture("w-full", "aspect-square object-center object-cover")  | safe }}
+  {% set style = "w-full" %}
+  {% if image.Invert %}
+  {% set style = "w-full bg-black" %}
+  {% endif %}
+  {{ image.pictureElement | stylePicture(style, "aspect-square object-center object-cover")  | safe }}
   {% endif %}
   {% endfor %}
 </div>

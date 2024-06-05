@@ -1,5 +1,6 @@
 ---
 layout: "award/overview.html"
+title: "Recognition"
 pagination:
   data: awards
   size: 100

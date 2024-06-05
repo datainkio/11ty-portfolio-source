@@ -19,7 +19,11 @@
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>
         </figcaption>
-        {{ image.pictureElement | stylePicture("md:col-span-2", "object-center object-cover object-scale-down max-h-[724px]")  | safe }}
+        {% set style = "md:col-span-2" %}
+        {% if image.Invert %}
+        {% set style = "md:col-span-2 bg-black" %}
+        {% endif %}
+        {{ image.pictureElement | stylePicture(style, "object-center object-cover object-scale-down max-h-[724px]")  | safe }}
       </figure>
       {% set index = index + 1 %}
       {% endif %}

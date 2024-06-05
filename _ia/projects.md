@@ -1,5 +1,6 @@
 ---
 layout: "project/overview.html"
+title: "Work"
 pagination:
   data: projects
   size: 100
