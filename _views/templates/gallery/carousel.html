@@ -6,12 +6,16 @@
   <div class="modal-box w-9/12 max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">
       <!-- TITLE CARD -->
+      <div id="{{ data.id }}_title" class="mb-4 md:mb-0 md:carousel-item md:w-fit md:block">
+        <h2 class="text-xl">{{ data.Title }}</h2>
+        <p class="prose">{{ data.Description }}</p>
+      </div>
       <!-- IMAGES -->
       {% set index = 1 %}
       {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
       <figure id="{{ data.id }}_item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
-        <figcaption class="p-4">
+        <figcaption>
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>
         </figcaption>
@@ -23,6 +27,7 @@
     </div>
     <!-- NAVIGATION -->
     <div class="hidden md:flex justify-center w-full py-2 gap-2">
+      <a href="#{{ data.id }}_title" class="btn btn-xs">Intro</a> 
       {% set index = 1 %}
       {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
