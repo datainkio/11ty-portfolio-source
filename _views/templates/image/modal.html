@@ -1,0 +1,16 @@
+<div class="w-full">
+	{% set action = ["modal_", image.id, ".showModal()"] | join %}
+	<button class="picture object-contain" onclick="{{ action }}">{{ image.pictureElement | safe }}</button>
+	<dialog id="modal_{{ image.id }}" class="modal">
+		<figure class="modal-box w-9/12 max-w-none shadow-none md:grid md:grid-cols-3 md:gap-4">
+			<figcaption>
+				<h2 class="text-xl m-0">{{ image.Title }}</h2>
+				<p class="prose">{{ image.Caption }}</p>
+			</figcaption>
+			{{ image.pictureElement | stylePicture("md:col-span-2 p-4", "object-center object-cover object-scale-down max-h-[724px]")  | safe }}
+		</figure>
+		<form method="dialog" class="modal-backdrop">
+			<button>close</button>
+		</form>
+	</dialog>
+</div>

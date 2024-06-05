@@ -14,7 +14,7 @@
       {% set index = 1 %}
       {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
-      <figure id="{{ data.id }}_item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
+      <figure id="{{ data.id }}_item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:gap-4 md:w-fit">
         <figcaption>
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>

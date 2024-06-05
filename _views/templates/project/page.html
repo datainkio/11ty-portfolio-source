@@ -64,27 +64,33 @@
 {% endblock %}
 {% block content %}
 <div class="md:grid md:grid-cols-2">
-  <!-- DESCRIPTION -->
-  <section class="p-12 prose">
+  <!-- BODY COPY -->
+  <section class="p-12 prose md:col-start-1">
     {% if project.Description is string %}
     {{ project.Description | markdownify | safe }}
     {% endif %}
   </section>
-  <section class="object-top">
+  <!-- NUGGETS -->
+  <section class="prose p-12 md:col-start-1 md:row-start-2">
+    {% for nugget in nuggets | find('id', project.Nuggets) %}
+      <h2>{{ nugget.Name }}</h2>
+      {% if nugget.Description is string %}
+        {{ nugget.Description | markdownify | safe }}
+      {% endif %}
+      {% for image in images | find('id', nugget.Images) %}
+        {% include "templates/image/modal.html" %}
+      {% endfor %}
+    {% endfor %}
+  </section>
+  <!-- IMAGE GALLERIES -->
+  <section class="object-top md:col-start-2 md:row-span-2">
     {% for gallery in galleries | find("id", project.Galleries) %}
-    {% set data = gallery %}
-    {% include "templates/gallery/carousel.html" %}
-    {% if loop.last %}
-    {% else %}
-    <div class="divider h-8"></div> 
-    {% endif %}
+      {% set data = gallery %}
+      {% include "templates/gallery/carousel.html" %}
+      {% if loop.last %}{% else %}
+        <div class="divider h-8"></div> 
+      {% endif %}
     {% endfor %}
   </section>
 </div>
-<!-- NUGGETS -->
-{% if project.Nuggets %}
-{% for nugget in nuggets | find('id', project.Nuggets) %}
-{% include "templates/nugget/card.html" %}
-{% endfor %}
-{% endif %}
 {% endblock %}

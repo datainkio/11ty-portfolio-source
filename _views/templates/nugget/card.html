@@ -6,7 +6,7 @@
     {% endif %}
   </div>
 
-  <figure class="max-w-96 columns-3xl">
+  <figure>
     {# 
       DON'T BOTHER WITH MULTIPLE IMAGES - JUST COMBINE RELATED ONES INTO A SINGLE FILE 
       SO MUCH SIMPLER
@@ -17,7 +17,7 @@
       <button class="picture object-contain" onclick="{{ action }}">{{ image.pictureElement | safe }}</button>
       <dialog id="modal_{{ image.id }}" class="modal">
         <div class="modal-box w-9/12 max-w-none">
-          <h3 class="font-bold text-lg">{{ image.Title }}</h3>
+          <h2 class="font-bold text-lg">{{ image.Title }}</h2>
           {% if image.Caption is string %}
           <p class="prose">{{ image.Caption | markdownify | safe }}</p>
           {% endif %}
