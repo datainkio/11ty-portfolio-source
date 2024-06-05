@@ -1,7 +1,6 @@
 {# Display a grid of thumbnails that when clicked produces a modal with the full views #}
-<!-- By default this is a button, but that introduced a 1px border that I didn't want and could not get rid of -->
-<a class="cursor-pointer" onclick="gallery.showModal()">{% include "templates/gallery/grid.html" %}</a>
-<dialog id="gallery" class="modal">
+<a class="cursor-pointer" onclick="gallery_{{ data.id }}.showModal()">{% include "templates/gallery/grid.html" %}</a>
+<dialog id="gallery_{{ data.id }}" class="modal">
   <div class="modal-box w-9/12 max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">
       {% set index = 1 %}
