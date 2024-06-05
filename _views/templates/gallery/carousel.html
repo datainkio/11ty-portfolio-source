@@ -5,10 +5,12 @@
 <dialog id="gallery_{{ data.id }}" class="modal">
   <div class="modal-box w-9/12 max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none p-4 space-x-4 md:rounded-box ">
+      <!-- TITLE CARD -->
+      <!-- IMAGES -->
       {% set index = 1 %}
       {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
-      <figure id="item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
+      <figure id="{{ data.id }}_item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:w-fit">
         <figcaption class="p-4">
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>
@@ -19,11 +21,12 @@
       {% endif %}
       {% endfor %}
     </div>
+    <!-- NAVIGATION -->
     <div class="hidden md:flex justify-center w-full py-2 gap-2">
       {% set index = 1 %}
       {% for image in images | find('id', data.Images) %}
       {% if image.Published %}
-      <a href="#item{{ index }}" class="btn btn-xs">{{ index }}</a> 
+      <a href="#{{ data.id }}_item{{ index }}" class="btn btn-xs">{{ index }}</a> 
       {% set index = index + 1 %}
       {% endif %}
       {% endfor %}
