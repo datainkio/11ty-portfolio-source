@@ -1,4 +1,5 @@
 {% extends "species/article.html" %}
+{% set title = ["Russ Lebo: ", award.Organization, award.Title] | join(": ") %}
 {% block hero %}
 <section class="p-12 grid grid-cols-12 gap-6">
     {% for logo in images | find("id", award.logo_id) %}
