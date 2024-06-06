@@ -1,5 +1,6 @@
 ---
 layout: "activity/page.html"
+title: "{{ activity.Name }}"
 pagination:
   data: activities
   size: 1

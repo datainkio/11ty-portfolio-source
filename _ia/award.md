@@ -1,5 +1,6 @@
 ---
 layout: "award/page.html"
+title: "{{ award.Organization }}: {{ award.Title }}"
 pagination:
   data: awards
   size: 1

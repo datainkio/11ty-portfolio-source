@@ -1,5 +1,6 @@
 ---
 layout: "gallery/section.html"
+title: "Galleries"
 pagination:
   data: galleries
   size: 100

@@ -1,5 +1,6 @@
 ---
 layout: "insight/page.html"
+title: "{{ insight.Name }}"
 pagination:
   data: insights
   size: 1

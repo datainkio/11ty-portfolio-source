@@ -1,5 +1,6 @@
 ---
 layout: "role/page.html"
+title: "{{ role.Name }}"
 pagination:
   data: roles
   size: 1
