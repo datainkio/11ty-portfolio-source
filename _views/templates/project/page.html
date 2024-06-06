@@ -60,6 +60,10 @@
       </ul>
     </figure>
     {% endif %}
+    <!-- EXPLORE -->
+    {% if project.URL %}
+    <a class="btn btn-outline text-white border-white w-32" href="{{ project.URL }}">View</a>
+    {% endif %}
   </section>
 </section>
 {% endblock %}

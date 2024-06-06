@@ -8,7 +8,10 @@
       <!-- TITLE CARD -->
       <div id="{{ data.id }}_title" class="mb-4 p-4 md:mb-0 md:carousel-item md:w-full md:block md:text-center md:object-center">
         <div class="divider"><h2 class="text-2xl">{{ data.Title }}</h2></div>
+        {% if "ipsum" in data.Description %}
+        {% else %}
         <p class="prose mx-auto align-middle">{{ data.Description }}</p>
+        {% endif %}
       </div>
       <!-- IMAGES -->
       {% set index = 1 %}
