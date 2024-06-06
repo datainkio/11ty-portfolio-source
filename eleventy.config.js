@@ -35,14 +35,14 @@ module.exports = function (eleventyConfig) {
       } else {
         switch (size) {
           case "sm":
-            return srcset[0];
+            return srcset[0].split(" ")[0];
             break;
           case "md":
-            return srcset[1];
+            return srcset[1].split(" ")[0];
             break;
           case "lg":
           default:
-            return srcset[2];
+            return srcset[2].split(" ")[0];
         }
       }
     }
