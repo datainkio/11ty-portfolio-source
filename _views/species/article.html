@@ -7,7 +7,9 @@
   <!-- HEAD -->
   {% include "partials/head.html" %}
 
-  <body class="{{ body_styles }}">
+<body class="{{ body_styles }}">
+    <!-- A11Y -->
+    {% block accessibility %}{% endblock %}
     <!-- NAVIGATION -->
     {% include "organisms/headers/global.html" %}
     <!-- CONTENT -->
