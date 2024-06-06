@@ -1,0 +1,12 @@
+<meta property="og:url" content="https://dataink.io/projects/{{ project.Name | slugify }}" />
+<meta property="og:site_name" content="dataink.io" />
+<meta property="og:title" content="{{ project.Title }}" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="{{ project.Teaser }}" />
+{% for image in images | find("id", project.Thumbnail) %}
+<meta property="og:image" content="https://dataink.io{{image.pictureElement | imgURL("lg")}}" />
+<meta property="og:image:alt" content="{{ project.Title }}" />
+<meta property="og:image:type" content="{{ image.File[0].type }}" />
+<meta property="og:image:width" content="{{ image.File[0].width }}" />
+<meta property="og:image:height" content="{{ image.File[0].height }}" />
+{% endfor %}

@@ -2,6 +2,7 @@ require("dotenv").config();
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const { DateTime } = require("luxon");
+const { DOMParser } = require("xmldom");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -21,27 +22,58 @@ module.exports = function (eleventyConfig) {
     md.render(markdownString)
   );
 
+  eleventyConfig.addFilter("imgURL", (pe, size = "") => {
+    if (pe) {
+      var picture = new DOMParser().parseFromString(pe, "text/html");
+      var source = picture.getElementsByTagName("source");
+      // Assume that only one element is returned,
+      // Pull out the URLs for the different versions of the image file, and
+      // return the requested size
+      var srcset = source[0].attributes[1].nodeValue.split(", "); // note the space following the comma
+      if (srcset.length == 1) {
+        return srcset[0];
+      } else {
+        switch (size) {
+          case "sm":
+            return srcset[0];
+            break;
+          case "md":
+            return srcset[1];
+            break;
+          case "lg":
+          default:
+            return srcset[2];
+        }
+      }
+    }
+  });
+
   eleventyConfig.addFilter("postDate", (dateObj) => {
     let d = new Date(dateObj);
     return DateTime.fromJSDate(d).toLocaleString(DateTime.DATE_MED);
   });
 
-  eleventyConfig.addFilter("stylePicture", (pe, peStyles = "", imgStyles = "") => {
-    /** 
-     * It's possible for a gallery to contain IDs for unpublished images, in 
-     * which case the template will throw up a little bit. So let's deal with
-     * that.
-     **/
-    if (pe) {
-      // Style the picture element
-      let result = pe.replace("<picture>", '<picture class="' + peStyles + '">');
-      // Style the img element
-      return result.replace("<img", '<img class="' + imgStyles + '" ');
-    } else {
-      return;
+  eleventyConfig.addFilter(
+    "stylePicture",
+    (pe, peStyles = "", imgStyles = "") => {
+      /**
+       * It's possible for a gallery to contain IDs for unpublished images, in
+       * which case the template will throw up a little bit. So let's deal with
+       * that.
+       **/
+      if (pe) {
+        // Style the picture element
+        let result = pe.replace(
+          "<picture>",
+          '<picture class="' + peStyles + '">'
+        );
+        // Style the img element
+        return result.replace("<img", '<img class="' + imgStyles + '" ');
+      } else {
+        return;
+      }
     }
-  });
-
+  );
 
   /**
    * Insert referenced content into text.
