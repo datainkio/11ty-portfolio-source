@@ -1,6 +1,6 @@
 ---
 layout: "project/page.html"
-title: { { project.Name } }
+title: "{{ project.Title }}"
 pagination:
   data: projects
   size: 1
