@@ -3,11 +3,17 @@
 {% set container_styles = "px-6" %}
 {% set section_style = "prose max-w-none col-span-12 py-8" %}
 {% set heading_style = "text-4xl leading-none font-black mb-2" %}
-{% set link_styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-400 hover:text-orange-600" %}
+{% set link_styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-500 hover:text-orange-600" %}
 
-{% block content %}
+{% block accessibility %}
+<a href="#audiences" class="sr-only">audiences</a>
+<a href="#work" class="sr-only">projects</a>
+<a href="#recognition" class="sr-only">recognition</a>
+<a href="#lessons_learned" class="sr-only">lessons learned</a>
+{% endblock %} {% block content %}
+
 <!-- INTRO -->
-<section class="{{ section_style }}">
+<section id="audiences" class="{{ section_style }}">
   <h1 class="{{ heading_style }}">I design digital
     services and products.</h1>
   {% for category in ia %}
@@ -15,8 +21,8 @@
   {% endfor %}
 </section>
 
-<!-- ACCOMPLISHMENTS -->
-<section class="{{ section_style }}">
+<!-- WORK -->
+<section id="work" class="{{ section_style }}">
   <h2 class="{{ heading_style }}">I have
     <a class="link link-hover font-black hover:text-orange-600" href="/projects/types/government/">led teams for
       $65.5M in

@@ -1,11 +1,3 @@
-{# 
-  banner: header stuff goes in here
-  bodyStyles: good for adding classes that provide context for the entire page
-  grid: specify the layout for the main element
-  containerStyles: add any other styles for the main element
-  main: page content goes here
-  #}
-
 {# Add to class declaration for any element(s) to test responsiveness #}
 {% set responsive = "bg-slate-100 xs:bg-slate-200 sm:bg-slate-300 md:bg-slate-400 lg:bg-slate-500 xl:bg-slate-600
   xxl:bg-slate-700" %}
@@ -16,6 +8,9 @@
   {% include "partials/head.html" %}
 
   <body class="{{ body_styles }}">
+    <!-- A11Y -->
+    {% block accessibility %}
+    {% endblock %}
     <!-- NAVIGATION -->
     {% include "organisms/headers/global.html" %}
     <!-- CONTENT -->
