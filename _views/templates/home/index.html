@@ -8,8 +8,8 @@
 {% block content %}
 <!-- INTRO -->
 <section class="{{ section_style }}">
-  <h2 class="{{ heading_style }}">I design digital
-    services and products.</h2>
+  <h1 class="{{ heading_style }}">I design digital
+    services and products.</h1>
   {% for category in ia %}
   <a class="{{ link_styles }}" href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a>
   {% endfor %}
