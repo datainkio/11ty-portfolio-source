@@ -1,14 +1,18 @@
 {% extends "species/landing.html" %}
 {% set title = ["Lessons Learned", insight.Name] | join(": ") %}
 {% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% block accessibility %}
+<a href="#body" class="sr-only">body</a>
+<a href="#related" class="sr-only">related work</a>
+{% endblock %} 
 {% block hero %}
 <h1 class="md:col-span-12">{{ insight.Name }}</h1>
 {% endblock %}
 {% block content %}
-<article class="prose md:col-span-8">
+<article id="body" class="prose md:col-span-8">
   {{ insight.Body | markdownify | safe }}
 </article>
-<figure class="md:col-span-4">
+<figure id="related" class="md:col-span-4">
   <figcaption>Related Work</figcaption>
   {% set data = projects | find("id", insight.Projects) %}
   {% set grid = "" %}

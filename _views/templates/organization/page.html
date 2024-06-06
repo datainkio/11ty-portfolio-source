@@ -1,15 +1,19 @@
 {% extends "species/landing.html" %}
 {% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% block accessibility %}
+<a href="#description" class="sr-only">description</a>
+<a href="#related" class="sr-only">related work</a>
+{% endblock %} 
 {% block hero %}
 <h1 class="md:col-span-12">{{ organization.Title }}</h1>
 {% endblock %}
 {% block content %}
-<article class="prose md:col-span-8">
+<article id="description" class="prose md:col-span-8">
   {% if organization.Description %}
   {{ organization.Description | markdownify | safe }}
   {% endif %}
 </article>
-<figure class="md:col-span-4">
+<figure id="related" class="md:col-span-4">
   <figcaption>Related Work</figcaption>
   {% set data = projects | find("id", organization.Projects) %}
   {% set grid = "" %}

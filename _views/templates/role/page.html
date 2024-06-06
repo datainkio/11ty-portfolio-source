@@ -1,9 +1,13 @@
 {% extends "species/article.html" %}
 {% set title = ["Russ Lebo", role.Name] | join(": ") %}
+{% block accessibility %}
+<a href="#description" class="sr-only">description</a>
+<a href="#related" class="sr-only">related work</a>
+{% endblock %} 
 {% block hero %}
 <section class="p-12 bg-black md:col-span-12 text-white">
   <h1 class="font-black text-center md:text-left md:col-span-8">{{ role.Name }}</h1>
-  <section class="prose text-white text-center md:text-left md:text-xl font-extralight">
+  <section id="description" class="prose text-white text-center md:text-left md:text-xl font-extralight">
     {% if role.Description %}
     {{ role.Description | markdownify | safe }}
     {% endif %}
@@ -11,7 +15,7 @@
 </section>
 {% endblock %}
 {% block content %}
-<figure class="md:col-span-8 pt-4">
+<figure id="related" class="md:col-span-8 pt-4">
   {% set data = projects | find("id", role.Projects) %}
   {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
   {% include "templates/project/grid.html" %}

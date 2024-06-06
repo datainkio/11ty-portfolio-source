@@ -1,16 +1,20 @@
 
 {% extends "species/landing.html" %}
 {% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% block accessibility %}
+<a href="#introduction" class="sr-only">introduction</a>
+<a href="#feed" class="sr-only">posts</a>
+{% endblock %}
 {% block hero %}
 <h1 class="md:col-span-12">Lessons Learned</h1>
 {% endblock %}
 {% block content %}
-<article class="prose md:col-span-4">
+<article id="introduction" class="prose md:col-span-4">
   <p>In the context of experience design, a "lesson learned" refers to a key insight or understanding gained from the evaluation of a design process or project. These insights typically arise from reflecting on what worked well and what didn't during the creation and implementation of an experience, whether it be a product, service, or interaction.</p>
   <p>I am long overdue for gathering the insights I've gained from my own work and putting them down on paper in a (somewhat) coherent form.</p> 
   <p>Let's remedy that.</p>
 </article>
-<figure class="md:col-span-8">
+<figure id="feed" class="md:col-span-8">
   {% set data = insights %}
   {% include "templates/insight/feed.html" %}
 </figure>
