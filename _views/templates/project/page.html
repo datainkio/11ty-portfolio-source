@@ -76,6 +76,10 @@
 {% endblock %}
 {% block content %}
 <div class="md:grid md:grid-cols-2">
+  <!-- LEAD VIDEO -->
+  {% if project.Videos %}
+  {{ project.Videos | youtube(project.Title) | safe }}
+  {% endif %}
   <!-- BODY COPY -->
   <section id="body" class="p-12 prose md:col-start-1">
     {% if project.Description is string %}

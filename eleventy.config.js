@@ -22,6 +22,11 @@ module.exports = function (eleventyConfig) {
     md.render(markdownString)
   );
 
+  eleventyConfig.addFilter("youtube", (id, title="", w="560", h="315") => {
+    var result = "";
+    return result.concat('<iframe width="', w, '" height="', h, '" src="https://youtube.com/embed/', id, '" title="', title, '" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>');
+  })
+
   eleventyConfig.addFilter("imgURL", (pe, size = "") => {
     if (pe) {
       var picture = new DOMParser().parseFromString(pe, "text/html");
