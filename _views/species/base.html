@@ -9,7 +9,9 @@
 
   <body class="{{ body_styles }}">
     <!-- A11Y -->
-    {% block accessibility %}{% endblock %}
+    <section id="skip" tabindex=" -2" class="sr-only">
+      {% block accessibility %}{% endblock %}
+      </section>
     <!-- NAVIGATION -->
     {% include "organisms/headers/global.html" %}
     <!-- CONTENT -->
