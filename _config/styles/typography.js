@@ -30,7 +30,7 @@ module.exports = {
     jumbo: "12rem",
   },
   lineHeight: {
-    none: ".8",
+    none: ".95",
   },
   prose: ({ theme }) => ({}),
 };
