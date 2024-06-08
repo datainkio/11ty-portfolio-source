@@ -1,13 +1,6 @@
 {% extends "species/base.html" %}
 {% block accessibility %}
-<a href="#lessons" class="sr-only">lessons learned</a>
-<a href="#work" class="sr-only">work</a>
-<a href="#roles" class="sr-only">roles</a>
-<a href="#recognition" class="sr-only">recognition</a>
-<a href="#organizations" class="sr-only">organizations</a>
-<a href="#galleries" class="sr-only">galleries</a>
 {% endblock %} 
-a href="#work" class="sr-only">work</a>
 {% block hero%}
 <section class="bg-black p-12">
   <div>
@@ -16,28 +9,4 @@ a href="#work" class="sr-only">work</a>
 </section>
 {% endblock %}
 {% block main %}
-<figure id="lessons">
-	<figcaption>Lessons Learned</figcaption>
-	{% include "templates/insight/list.html" %}
-</figure>
-<figure id="work">
-	<figcaption>Work</figcaption>
-	{% include "templates/project/list.html" %}
-</figure>
-<figure id="roles">
-	<figcaption>Roles</figcaption>
-	{% include "templates/role/list.html" %}
-</figure>
-<figure id="recognition">
-	<figcaption>Recognition</figcaption>
-	{% include "templates/award/list.html" %}
-</figure>
-<figure id="organizations">
-	<figcaption>Organizations</figcaption>
-	{% include "templates/organization/list.html" %}
-</figure>
-<figure id="galleries">
-	<figcaption>Image Galleries</figcaption>
-	{% include "templates/gallery/list.html" %}
-</figure>
 {% endblock %}
