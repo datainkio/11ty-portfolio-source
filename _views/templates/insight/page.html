@@ -10,7 +10,7 @@
 {% endblock %}
 {% block content %}
 <article id="body" class="prose md:col-span-8">
-  {{ insight.Body | markdownify | safe }}
+  {{ insight.Body | markdownify | expand(images) | safe }}
 </article>
 <figure id="related" class="md:col-span-4">
   <figcaption>Related Work</figcaption>

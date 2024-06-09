@@ -22,11 +22,17 @@ module.exports = function (eleventyConfig) {
     md.render(markdownString)
   );
 
+  /**
+   * Receive a YouTube video ID and return an iframe for display
+   */
   eleventyConfig.addFilter("youtube", (id, title="", w="560", h="315") => {
     var result = "";
     return result.concat('<iframe width="', w, '" height="', h, '" src="https://youtube.com/embed/', id, '" title="', title, '" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>');
   })
 
+  /**
+   * Receive the picture element field from the 11ty image plugin and return the URL for a specific size
+   */
   eleventyConfig.addFilter("imgURL", (pe, size = "") => {
     if (pe) {
       var picture = new DOMParser().parseFromString(pe, "text/html");
@@ -53,11 +59,17 @@ module.exports = function (eleventyConfig) {
     }
   });
 
+  /**
+   * Format the date for a post
+   */
   eleventyConfig.addFilter("postDate", (dateObj) => {
     let d = new Date(dateObj);
     return DateTime.fromJSDate(d).toLocaleString(DateTime.DATE_MED);
   });
 
+  /**
+   * Apply styles to a picture element produced by the 11ty image plugin
+   */
   eleventyConfig.addFilter(
     "stylePicture",
     (pe, peStyles = "", imgStyles = "") => {
@@ -108,12 +120,30 @@ module.exports = function (eleventyConfig) {
     return expanded;
   });
 
+  /**
+   * Receive an Airtable record with an image attachment and render it as a figure that displays as a modal on click.
+   * Intended for use with the expand filter (above), when images are embedded in body text.
+   * Duplicates the code for the image/modal.html template
+   * @param {*} image 
+   * @returns 
+   */
   function figure(image) {
     var result = "";
-    result += "<figure id='" + image.id + "'>";
+    result += '<div class="w-full">';
+    result += '<button class="picture object-contain" onclick="modal_';
+    result += image.id;
+    result += '.showModal()">';
+    result += image.pictureElement;
+    result += '</button>';
+    result += '<dialog id="modal_';
+    result += image.id;
+    result += '" class="modal">';
+    result += '<figure class="modal-box w-full max-w-none shadow-none" id="' + image.id + '">';
     result += image.pictureElement;
     result += "<figcaption>" + image.Description + "</figcaption>";
     result += "</figure>";
+    result += '<form method="dialog" class="modal-backdrop"><button>close</button></form>';
+    result += "</div>";
     return result;
   }
 
