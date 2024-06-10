@@ -110,7 +110,7 @@ module.exports = function (eleventyConfig) {
           case "image":
             // Let's find ourselves an image...
             var image = ds.find((img) => img["id"] == item[1].trim());
-            expanded = expanded.replace("{" + result[1] + "}", figure(image));
+            expanded = expanded.replace("{" + result[1] + "}", figure(image, true));
             break;
           default:
           // do nothing
@@ -127,23 +127,35 @@ module.exports = function (eleventyConfig) {
    * @param {*} image 
    * @returns 
    */
-  function figure(image) {
+  function figure(image, isModal) {
     var result = "";
-    result += '<div class="w-full">';
-    result += '<button class="picture object-contain" onclick="modal_';
-    result += image.id;
-    result += '.showModal()">';
+    var styles = "";
+    if (isModal) {
+      result += '<div class="w-full">';
+      result += '<button class="picture object-contain" onclick="modal_';
+      result += image.id;
+      result += '.showModal()">';
+      result += image.pictureElement;
+      result += '</button>';
+      result += '<dialog id="modal_';
+      result += image.id;
+      result += '" class="modal">';
+      styles = "modal-box w-full shadow-none";
+    }
+
+    result += '<figure class="' + styles * '" id="' + image.id + '">';
     result += image.pictureElement;
-    result += '</button>';
-    result += '<dialog id="modal_';
-    result += image.id;
-    result += '" class="modal">';
-    result += '<figure class="modal-box w-full max-w-none shadow-none" id="' + image.id + '">';
-    result += image.pictureElement;
-    result += "<figcaption>" + image.Description + "</figcaption>";
+    if(image.Description) {
+      result += "<figcaption>" + image.Description + "</figcaption>";
+    }
     result += "</figure>";
-    result += '<form method="dialog" class="modal-backdrop"><button>close</button></form>';
-    result += "</div>";
+
+    if (isModal) {
+      result += '<form method="dialog" class="modal-backdrop"><button>close</button></form>';
+      result += "</dialog>";
+      result += "</div>";
+    }
+
     return result;
   }
 

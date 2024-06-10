@@ -1,0 +1,20 @@
+{% extends "species/landing.html" %}
+{% set container_styles = "p-12 prose" %}
+{% block accessibility %}
+{% endblock %}
+{% block hero %}
+<h1>Now</h1>
+{% endblock %}
+{% block content %}
+<h2>1. Tarting up the portfolio</h2>
+<p>Welllll... What I'm doing is a bit more than just making it pretty. I've rebuilt it from scratch. A new approach to content. A new visual design. And an entirely new (to me) strategy for developing and releasing web projects.</p>
+<h3>Content Strategy</h3>
+<p>I've never been one for blogging. Past designs always had a laser-beam focus on presenting past work. Thing is, as my career has progressed I've increasingly taken on leaderships roles where my contributions to projects are not as easily captured in screenshots and simple case studies. This new version still presents past work but does so within the context of more thougtful material centered on process and best practices.</p>
+<p>I call this material <a class="link" href="/lessons_learned">Lessons Learned</a> as a shout out to <a class="link" href="https://www.nasa.gov/nasa-lessons-learned/">NASA's database of successes, failures, and the insights gained from both</a>.</p>
+<h3>Visual Design</h3>
+<p>Ah hell. I can't claim to be doing anything new here. It's my standard go-to for flexible, scalable design: type-heavy, Brutalist minimalism.</p>
+<p>Why? Because it works and frees me up to focus on writing rather than pushing pixels.</p>
+<h3>Development</h3>
+<p>The last version ran on SquareSpace. SquareSpace worked great for taking a relatively small set of static content, getting it online, and making it look good. It was a pain in the butt to <em>live</em> with, though: No batch updates. No custom content models. No relationships among different pieces of content. Those things were possible, sure, but making them happen were prohibitively expensive in terms of the effort required, the cost of maintenance, and the risks for errors.</p>
+<p>This version takes a more flexible and resilient headless approach using <a class="link" href="https://airtable.com/developers/web/api/introduction">Airtable</a> for content management, <a class="link" href="https://www.11ty.dev/">11ty</a> to produce a static site, and <a class="link" href="https://github.com/datainkio/dataink.io">Github Pages</a> to serve it all up. Styling is handled via <a class="link" href="https://tailwindcss.com/">Tailwind CSS</a> with a heavy dose of <a class="link" href="https://daisyui.com/">DaisyUI</a></p>
+{% endblock %}
