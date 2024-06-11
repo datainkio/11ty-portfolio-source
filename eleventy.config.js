@@ -79,14 +79,8 @@ module.exports = function (eleventyConfig) {
        * that.
        **/
       if (pe) {
-        // Style the picture element
-        let result = pe.replace(
-          "<picture>",
-          '<picture class="' + peStyles + '">'
-        );
-        // Style the img element
-        return result.replace("<img", '<img class="' + imgStyles + '" ');
-      } else {
+       return stylePE(pe, peStyles, imgStyles)
+;      } else {
         return;
       }
     }
@@ -110,7 +104,7 @@ module.exports = function (eleventyConfig) {
           case "image":
             // Let's find ourselves an image...
             var image = ds.find((img) => img["id"] == item[1].trim());
-            expanded = expanded.replace("{" + result[1] + "}", figure(image, true));
+            expanded = expanded.replace("{" + result[1] + "}", figure(image));
             break;
           default:
           // do nothing
@@ -120,6 +114,16 @@ module.exports = function (eleventyConfig) {
     return expanded;
   });
 
+  function stylePE(pe, peStyles, imgStyles) {
+    // Style the picture element
+    let result = pe.replace(
+      "<picture>",
+      '<picture class="' + peStyles + '">'
+    );
+    // Style the img element
+    return result.replace("<img", '<img class="' + imgStyles + '" ');
+  }
+
   /**
    * Receive an Airtable record with an image attachment and render it as a figure that displays as a modal on click.
    * Intended for use with the expand filter (above), when images are embedded in body text.
@@ -127,36 +131,28 @@ module.exports = function (eleventyConfig) {
    * @param {*} image 
    * @returns 
    */
-  function figure(image, isModal) {
-    var result = "";
-    var styles = "";
-    if (isModal) {
-      result += '<div class="w-full">';
-      result += '<button class="picture object-contain" onclick="modal_';
-      result += image.id;
-      result += '.showModal()">';
-      result += image.pictureElement;
-      result += '</button>';
-      result += '<dialog id="modal_';
-      result += image.id;
-      result += '" class="modal">';
-      styles = "modal-box w-full shadow-none";
+  function figure(image) {
+    // set the size and background for the image
+    var style = "p-4"
+    if (image.Invert) {
+      style = "p-4 bg-black";
+    }
+    // apply styles to the picture element supplied by 11ty
+    if (image.pictureElement) {
+      return `<div class="w-full">
+      <button class="picture object-contain" onclick="modal_${image.id}.showModal()">${image.pictureElement}</button>
+      <dialog id="modal_${image.id}" class="modal">
+      <figure class="modal-box w-11/12 max-w-none shadow-none" id="${image.id}">
+      ${stylePE(image.pictureElement, style, "w-full")}
+      <figcaption class="md:col-span-2">${image.Caption}</figcaption>
+      </figure>
+      <form method="dialog" class="modal-backdrop"><button>close</button></form>
+      </dialog>
+    </div>`;
+    } else {
+      return;
     }
 
-    result += '<figure class="' + styles * '" id="' + image.id + '">';
-    result += image.pictureElement;
-    if(image.Description) {
-      result += "<figcaption>" + image.Description + "</figcaption>";
-    }
-    result += "</figure>";
-
-    if (isModal) {
-      result += '<form method="dialog" class="modal-backdrop"><button>close</button></form>';
-      result += "</dialog>";
-      result += "</div>";
-    }
-
-    return result;
   }
 
   /**
