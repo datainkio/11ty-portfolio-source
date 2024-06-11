@@ -37,7 +37,9 @@
       causes of disease.</a>
   </h2>
   {% for project in projects %}
+  {% if project.Weight <= 3 %}
   {% include "templates/project/link.html" %}
+  {% endif %}
   {% endfor %}
 </section>
 
