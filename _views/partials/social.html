@@ -5,6 +5,8 @@
 
 {% if project %}
 {% include "templates/project/meta.html" %}
+{% elif insight %}
+{% include "templates/insight/meta.html" %}
 {% else %}
 <meta property="og:url" content="https://dataink.io" />
 <meta property="og:type" content="website" />

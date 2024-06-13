@@ -16,6 +16,7 @@ module.exports = function (eleventyConfig) {
     html: false,
     breaks: true,
     linkify: true,
+    typographer: true,
   });
 
   eleventyConfig.addNunjucksFilter("markdownify", (markdownString) =>

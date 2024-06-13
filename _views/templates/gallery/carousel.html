@@ -6,12 +6,13 @@
   <div class="modal-box w-9/12 max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none space-x-4 md:rounded-box ">
       <!-- TITLE CARD -->
-      <div id="{{ data.id }}_title" class="mb-4 p-4 md:mb-0 md:carousel-item md:w-full md:block md:text-center md:object-center">
-        <div class="divider"><h2 class="text-2xl">{{ data.Title }}</h2></div>
-        {% if "ipsum" in data.Description %}
-        {% else %}
-        <p class="prose mx-auto align-middle">{{ data.Description }}</p>
-        {% endif %}
+      <div id="{{ data.id }}_title" class="mb-4 p-4 md:carousel-item w-full">
+        <div class="prose mx-auto"><h2 class="divider text-xl md:text-2xl">{{ data.Title }}</h2>
+          {% if data.Description %}
+          <p class="prose">{{ data.Description | markdownify | safe }}</p>
+          {% endif %}
+        </div>
+
       </div>
       <!-- IMAGES -->
       {% set index = 1 %}
