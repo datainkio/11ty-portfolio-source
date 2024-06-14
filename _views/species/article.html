@@ -7,7 +7,9 @@
   <!-- HEAD -->
   {% include "partials/head.html" %}
 
-<body class="{{ body_styles }}">
+  <body class="{{ body_styles }}">
+    <!-- GTM -->
+    {% include "partials/gtm_body.html" %}
     <!-- A11Y -->
     <section id="skip" tabindex=" -2" class="sr-only">
     {% block accessibility %}{% endblock %}
