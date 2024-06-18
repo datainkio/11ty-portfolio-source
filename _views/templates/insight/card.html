@@ -1,7 +1,36 @@
-<div class="card lg:card-side">
-  <div class="card-body">
-    {% include "templates/insight/byline.html" %}
-    <h2 class="card-title">{% include "templates/insight/link.html" %}</h2>
-    <p>{{ insight.Teaser }}</p>
-  </div>
-</div>
+{% extends "cells/cards/abstract.html" %}
+
+{# STYLES #}
+{% set card_styles = "w-full bg-white h-96 mb-12" %}
+{% set aspect_ratio = "" %}
+{% set bgColor = "bg-none" %}
+{% set bodyStyles = "text-left p-6" %}
+
+{% set btn_styles = "btn-ghost btn-xl" %}
+{% set exit = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
+{% set label = "read more" %}
+
+{# ROLE #}
+{% set link_styles = "text-sm font-thin leading-none" %}
+{% block category %}
+<section>
+  {% include "templates/insight/byline.html" %}
+</section>
+{% endblock %}
+{# TITLE #}
+{% set title = insight.Name %}
+
+{# IMAGE #}
+{% if insight.Thumbnail %}
+{% block picture %}
+{% for img in images | find("id", insight.Thumbnail) %}
+{{ img.pictureElement | safe }}
+{% endfor %}
+{% endblock %}
+{% endif %}
+
+{# COPY #}
+{% block content %}
+<p>{{ insight.Teaser }}</p>
+{% endblock %}
+

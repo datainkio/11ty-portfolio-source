@@ -1,7 +1,10 @@
 {
   "name": "dataink.io",
   "version": "1.0.0",
+  "author": "Russell S. Lebo",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "start": "npm-run-all -p dev:*",
@@ -11,9 +14,6 @@
     "build:11ty": "eleventy",
     "build:css": "tailwindcss -i ./_assets/css/base.css -o ../dist/styles.css"
   },
-  "keywords": [],
-  "author": "Russell Lebo",
-  "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-fetch": "^4.0.1",

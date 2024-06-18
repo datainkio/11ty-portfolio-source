@@ -135,6 +135,7 @@ module.exports = function (eleventyConfig) {
   function figure(image) {
     // set the size and background for the image
     var style = "p-4"
+    // If Invert is undefined, make sure the image is published
     if (image.Invert) {
       style = "p-4 bg-black";
     }
