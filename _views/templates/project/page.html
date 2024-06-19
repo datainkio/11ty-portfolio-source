@@ -77,9 +77,11 @@
 {% block content %}
 <div class="md:grid md:grid-cols-2">
   <!-- LEAD VIDEO -->
-  {% if project.Videos %}
-  {{ project.Videos | youtube(project.Title) | safe }}
-  {% endif %}
+  <section id="video" class="md:col-start-1">
+    {% for video in videos | find("id", project.Videos) %}
+    {% include "templates/video/embed.html" %}
+    {% endfor %}
+  </section>
   <!-- BODY COPY -->
   <section id="body" class="p-12 prose md:col-start-1">
     {% if project.Description is string %}
@@ -87,7 +89,7 @@
     {% endif %}
   </section>
   <!-- NUGGETS -->
-  <section id="nuggets" class="prose p-12 md:col-start-1 md:row-start-2">
+  <section id="nuggets" class="prose p-12 md:col-start-1">
     {% for nugget in nuggets | find('id', project.Nuggets) %}
       <h2>{{ nugget.Name }}</h2>
       {% if nugget.Description is string %}
@@ -99,7 +101,7 @@
     {% endfor %}
   </section>
   <!-- IMAGE GALLERIES -->
-  <section id="examples" class="object-top md:col-start-2 md:row-span-2">
+  <section id="examples" class="object-top md:col-start-2 md:row-start-1 md:row-span-2">
     {% for gallery in galleries | find("id", project.Galleries) %}
       {% set data = gallery %}
       {% include "templates/gallery/carousel.html" %}

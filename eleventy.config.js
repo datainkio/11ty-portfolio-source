@@ -24,14 +24,6 @@ module.exports = function (eleventyConfig) {
   );
 
   /**
-   * Receive a YouTube video ID and return an iframe for display
-   */
-  eleventyConfig.addFilter("youtube", (id, title="", w="560", h="315") => {
-    var result = "";
-    return result.concat('<iframe width="', w, '" height="', h, '" src="https://youtube.com/embed/', id, '" title="', title, '" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>');
-  })
-
-  /**
    * Receive the picture element field from the 11ty image plugin and return the URL for a specific size
    */
   eleventyConfig.addFilter("imgURL", (pe, size = "") => {
