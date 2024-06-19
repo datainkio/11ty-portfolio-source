@@ -1,0 +1,64 @@
+{% extends "species/base.html" %}
+{% set body_styles = "bg-white" %}
+{% set container_styles = "px-6" %}
+{% set section_style = "prose max-w-none col-span-12 py-8" %}
+{% set heading_style = "text-4xl leading-none font-black mb-2" %}
+{% set link_styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-500 hover:text-orange-600" %}
+
+{% block accessibility %}
+<a href="#audiences">audiences</a>
+<a href="#work">projects</a>
+<a href="#recognition">recognition</a>
+<a href="#lessons_learned">lessons learned</a>
+{% endblock %} {% block content %}
+
+<!-- INTRO -->
+<section id="audiences" class="{{ section_style }}">
+  <h1 class="{{ heading_style }}">I design digital
+    services and products.</h1>
+  {% for category in ia %}
+  <a class="{{ link_styles }}" href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a>
+  {% endfor %}
+</section>
+
+<!-- WORK -->
+<section id="work" class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">I have
+    <a class="link link-hover font-black hover:text-orange-600" href="/projects/types/government/">led teams for
+      $65.5M in
+      federal
+      contracts</a>,
+    <a class="link link-hover font-black hover:text-orange-600"
+      href="/projects/digital-transformation-for-public-health">helped
+      reduce foodborne illness by seven
+      million cases annually,</a> and
+    <a class="link link-hover font-black hover:text-orange-600" href="/projects/">contributed to our understanding of
+      the genetic
+      causes of disease.</a>
+  </h2>
+  {% for project in projects %}
+  {% if project.Weight <= 3 %}
+  {% include "templates/project/link.html" %}
+  {% endif %}
+  {% endfor %}
+</section>
+
+<!-- RECOGNITION -->
+<section class="{{ section_style }} bg-black">
+  <h2 class="{{ heading_style }} text-white"><a class="link link-hover font-black hover:text-orange-600" href="/recognition/">I
+      produce award-winning work.</a></h2>
+  {% for award in awards %}
+  {% include "templates/award/link_icon.html" %}
+  {% endfor %}
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="{{ section_style }}">
+  <h2 class="{{ heading_style }}">I think (<a class="link link-hover font-black hover:text-orange-600"
+      href="/lessons-learned">and write</a>) a lot about design culture and how to develop it within teams and
+    organizations</h2>
+  {% for insight in insights %}
+  {% include "templates/insight/link.html" %}
+  {% endfor %}
+</section>
+{% endblock %}
