@@ -9,6 +9,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPassthroughCopy({
     "_assets/styles/base.css": "styles.css",
+    "_assets/js/": "assets/js/",
     ".nojekyll": ".nojekyll",
   });
 
@@ -72,8 +73,8 @@ module.exports = function (eleventyConfig) {
        * that.
        **/
       if (pe) {
-       return stylePE(pe, peStyles, imgStyles)
-;      } else {
+        return stylePE(pe, peStyles, imgStyles);
+      } else {
         return;
       }
     }
@@ -109,10 +110,7 @@ module.exports = function (eleventyConfig) {
 
   function stylePE(pe, peStyles, imgStyles) {
     // Style the picture element
-    let result = pe.replace(
-      "<picture>",
-      '<picture class="' + peStyles + '">'
-    );
+    let result = pe.replace("<picture>", '<picture class="' + peStyles + '">');
     // Style the img element
     return result.replace("<img", '<img class="' + imgStyles + '" ');
   }
@@ -121,12 +119,12 @@ module.exports = function (eleventyConfig) {
    * Receive an Airtable record with an image attachment and render it as a figure that displays as a modal on click.
    * Intended for use with the expand filter (above), when images are embedded in body text.
    * Duplicates the code for the image/modal.html template
-   * @param {*} image 
-   * @returns 
+   * @param {*} image
+   * @returns
    */
   function figure(image) {
     // set the size and background for the image
-    var style = "p-4"
+    var style = "p-4";
     // If Invert is undefined, make sure the image is published
     if (image.Invert) {
       style = "p-4 bg-black";
@@ -134,7 +132,9 @@ module.exports = function (eleventyConfig) {
     // apply styles to the picture element supplied by 11ty
     if (image.pictureElement) {
       return `<div class="w-full">
-      <button class="picture object-contain" onclick="modal_${image.id}.showModal()">${image.pictureElement}</button>
+      <button class="picture object-contain" onclick="modal_${
+        image.id
+      }.showModal()">${image.pictureElement}</button>
       <dialog id="modal_${image.id}" class="modal">
       <figure class="modal-box w-11/12 max-w-none shadow-none" id="${image.id}">
       ${stylePE(image.pictureElement, style, "w-full")}
@@ -146,7 +146,6 @@ module.exports = function (eleventyConfig) {
     } else {
       return;
     }
-
   }
 
   /**

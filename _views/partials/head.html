@@ -21,11 +21,13 @@
   {% include "partials/preload.html" %}
   <!-- 7 deferred js  -->
   {% include "partials/deferred-js.html" %}
-
+  <!-- Template-defined js -->
+  {{ scripts | safe }}
   <!-- 8 everything else: meta tags, icons, open graph etc.  -->
   {% include "partials/meta.html" %}
   {% include "partials/social.html" %}
   {% include "partials/favicon.html" %}
+
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#FF7F5C" />
 </head>
