@@ -76,12 +76,14 @@
 {% endblock %}
 {% block content %}
 <div class="md:grid md:grid-cols-2">
+  {% if project.Videos is string %}
   <!-- LEAD VIDEO -->
   <section id="video" class="md:col-start-1">
     {% for video in videos | find("id", project.Videos) %}
     {% include "templates/video/embed.html" %}
     {% endfor %}
   </section>
+  {% endif %}
   <!-- BODY COPY -->
   <section id="body" class="p-12 prose md:col-start-1">
     {% if project.Description is string %}
