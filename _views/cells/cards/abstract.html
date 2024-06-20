@@ -3,11 +3,11 @@
   <figure class="{{ img_height }}">
     {% block picture %}{% endblock %}
   </figure>
-  <div class="card-body p-4 {{ bodyStyles }}">
+  <div class="card-body p-4 {{ body_styles }}">
     {% block badge %}{% endblock %}
     {% block category %}{% endblock %}
     {# TITLE #}
-    <h2 class="card-title leading-tight {{ headingStyles }}">{{ title }}</h2>
+    <h2 class="card-title leading-tight {{ heading_styles }}">{{ title }}</h2>
     {# CONTENT #}
     {% block content %}<p>Card Content</p>{% endblock %}
     {% block metadata %}{% endblock %}

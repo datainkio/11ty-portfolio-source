@@ -1,17 +1,20 @@
 {% extends "cells/cards/abstract.html" %}
 
 {# STYLES #}
+{% if card_styles %}{% else %}
 {% set card_styles = "w-full bg-white h-96" %}
+{% endif %}
 {% set aspect_ratio = "" %}
-{% set bgColor = "bg-none" %}
-{% set bodyStyles = "text-left" %}
-
+{% set bgColor = "bg-white" %}
+{% set body_styles = "text-left" %}
 {% set btn_styles = "btn-ghost btn-sm" %}
 {% set exit = ["/projects/",project.Name | slugify, "/"] | join %}
 {% set label = "read more" %}
 
 {# ROLE #}
+{% if link_styles %}{% else %}
 {% set link_styles = "text-sm font-thin leading-none" %}
+{% endif %}
 {% block category %}
 <section>
   {% for role in roles | find("id", project.Role) %}

@@ -1,11 +1,12 @@
 {% extends "species/base.html" %}
 
 {# STYLES #}
-{% set body_styles = "bg-white" %}
-{% set container_styles = "px-6" %}
-{% set section_style = "prose max-w-none col-span-12 py-8" %}
-{% set heading_style = "text-4xl leading-none font-black mb-2" %}
-{% set link_styles = "link link-hover lowercase text-4xl leading-none font-thin text-slate-500 hover:text-orange-600" %}
+{% set body_styles = "bg-black text-white" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "prose max-w-none col-span-12 text-white bg-black h-dvh flex snap-y" %}
+{% set heading_styles = "text-4xl leading-none font-black mb-8 text-white" %}
+{% set link_styles = "link link-hover lowercase block text-xl leading-none font-thin text-white hover:text-orange-600" %}
+{% set body_styles = "font-thin text-white" %}
 
 {# ACCESSIBILITY #}
 {% block accessibility %}
@@ -18,54 +19,92 @@
 {# CONTENT #}
 {% block content %}
 
-<!-- INTRO -->
-<section id="audiences" class="{{ section_style }}">
-  <h1 class="{{ heading_style }}">I design digital
-    services and products.</h1>
-  {% for category in ia %}
-  <a class="{{ link_styles }}" href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a>
-  {% endfor %}
+<!-- TITLE -->
+<section id="title" class="{{ section_styles }}">
+	<h1 class="text-6xl text-white my-auto">Russell S. Lebo</h1>
 </section>
 
-<!-- WORK -->
-<section id="work" class="{{ section_style }}">
-  <h2 class="{{ heading_style }}">I have
-    <a class="link link-hover font-black hover:text-orange-600" href="/projects/types/government/">led teams for
-      $65.5M in
-      federal
-      contracts</a>,
-    <a class="link link-hover font-black hover:text-orange-600"
-      href="/projects/digital-transformation-for-public-health">helped
-      reduce foodborne illness by seven
-      million cases annually,</a> and
-    <a class="link link-hover font-black hover:text-orange-600" href="/projects/">contributed to our understanding of
-      the genetic
-      causes of disease.</a>
-  </h2>
-  {% for project in projects %}
-  {% if project.Weight <= 3 %}
-  {% include "templates/project/link.html" %}
-  {% endif %}
-  {% endfor %}
+<!-- INTRO -->
+<section id="audiences" class="{{ section_styles }}">
+	<div class="my-auto">
+		<h2 class="{{ heading_styles }}">I am an experience designer.</h2>
+		<p class="prose {{ body_styles }}">I work with researchers, engineers, visual designers, interaction designers, and accessibility experts to deliver digital products and services that put people first</p>
+	</div>
+</section>
+
+<!-- LESSONS LEARNED -->
+<section id="lessons_learned" class="{{ section_styles }}">
+	<div class="my-auto">
+		<h2 class="{{ heading_styles }}">I think a lot about design culture and how to develop it within teams and organizations</h2>
+		{% for insight in insights %}
+		{% include "templates/insight/link.html" %}
+		{% endfor %}
+	</div>
+</section>
+
+<!-- ORGANIZATIONS -->
+<section id="organizations" class="{{ section_styles }}">
+	<div class="my-auto">
+		<h2 class="{{ heading_styles }} text-white"><a class="link link-hover font-black text-white hover:text-orange-600"
+				href="/organizations/">I collaborate with amazing organizations and people</a></h2>
+		<div class="columns-3">
+			{% for organization in organizations %}
+			{% include "templates/organization/link.html" %}
+			{% endfor %}
+		</div>
+	</div>
 </section>
 
 <!-- RECOGNITION -->
-<section id="recognition" class="{{ section_style }} bg-black">
-  <h2 class="{{ heading_style }} text-white"><a class="link link-hover font-black hover:text-orange-600"
-      href="/recognition/">I
-      produce award-winning work.</a></h2>
-  {% for award in awards %}
-  {% include "templates/award/link_icon.html" %}
-  {% endfor %}
+<section id="recognition" class="{{ section_styles }}">
+	<div class="my-auto">
+		<h2 class="{{ heading_styles }} text-white">Together, we produce <a class="link link-hover font-black text-white hover:text-orange-600"
+				href="/recognition/">award-winning work</a></h2>
+		<div class="columns-9">
+			{% for image in images | sort(attribute="Weight") %}
+			{% if image.Recognition %}
+			{{ image.pictureElement | stylePicture("logo bg-black p-1 w-16 h-16 flex-none not-prose") | safe }}
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
 </section>
 
-<!-- PHILOSOPHY -->
-<section id="lessons_learned" class="{{ section_style }}">
-  <h2 class="{{ heading_style }}">I think (<a class="link link-hover font-black hover:text-orange-600"
-      href="/lessons-learned">and write</a>) a lot about design culture and how to develop it within teams and
-    organizations</h2>
-  {% for insight in insights %}
-  {% include "templates/insight/link.html" %}
-  {% endfor %}
+<!-- WORK -->
+<section id="work" class="{{ section_styles }}">
+	<div class="my-auto">
+		<h2 class="{{ heading_styles }}">It is work with a real impact, from
+			<a class="link link-hover font-black text-white hover:text-orange-600" href="/projects/types/government/">managing design for
+				$65.5M in
+				federal
+				contracts</a>,
+			<a class="link link-hover font-black text-white hover:text-orange-600"
+				href="/projects/digital-transformation-for-public-health">helping
+				reduce foodborne illness by seven
+				million cases annually,</a> and
+			<a class="link link-hover font-black text-white qhover:text-orange-600" href="/projects/">contributing to our understanding of the genetic causes of disease.</a>
+		</h2>
+		<div class="grid grid-cols-3 gap-12">
+			{% for project in projects %}
+			{% if loop.index <= 3 %}
+			{% if project.Weight == 0 %}
+			{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
+			<a href="{{ href }}" class="card no-underline">
+				{# IMAGE #}
+				<figure class="h-72 m-0">
+					{% for img in images | find("id", project.Thumbnail) %}
+					{{ img.pictureElement | safe }}
+					{% endfor %}
+				</figure>
+				<div class="card-body p-0 my-4">
+					<h2 class="card-title leading-none text-white text-3xl p-0 m-0">{{ project.Title }}</h2>
+				</div>
+			</a>
+			{% endif %}
+			{% endif %}
+			{% endfor %}		
+		</div>
+		<a href="/projects/" class="btn">All Work</a>
+	</div>
 </section>
 {% endblock %}

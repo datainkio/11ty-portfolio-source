@@ -1,4 +1,4 @@
-<div class="navbar bg-none">
+<div class="navbar bg-none absolute">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" id="hamburger" aria-label="mobile menu" class="btn btn-ghost lg:hidden">
@@ -14,7 +14,13 @@
         {% endfor %}
       </ul>
     </div>
-    <a href="/" class="btn btn-ghost text-xl">Russ Lebo</a>
+    {% if (page.url != "/") and (page.url != "/dev/") %}
+    <a href="/" class="btn btn-ghost text-xl">Russell S. Lebo</a>
+    {% endif %}
+
+  </div>
+  <div class="navbar-center hidden lg:flex"></div>
+  <div class="navbar-end">
     <ul class="menu menu-horizontal px-1 hidden lg:flex">
       {% for item in collections.all | eleventyNavigation %}
       <li>
@@ -22,11 +28,5 @@
       </li>
       {% endfor %}
     </ul>
-  </div>
-  <div class="navbar-center hidden lg:flex">
-
-  </div>
-  <div class="navbar-end">
-
   </div>
 </div>

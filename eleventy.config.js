@@ -10,6 +10,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "_assets/styles/base.css": "styles.css",
     "_assets/js/": "assets/js/",
+    "site.webmanifest": "site.webmanifest",
     ".nojekyll": ".nojekyll",
   });
 
