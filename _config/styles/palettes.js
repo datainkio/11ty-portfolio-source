@@ -29,7 +29,7 @@ module.exports = {
       industries: "#577590",
     },
     /**
-     * White, black, or different shades of grey for ackgrounds or written text.
+     * White, black, or different shades of grey for backgrounds or written text.
      * Useful for accessibility to manage contrast.
      * */
     neutral: {
