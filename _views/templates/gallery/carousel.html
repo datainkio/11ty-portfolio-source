@@ -7,7 +7,7 @@
     <div class="md:carousel md:carousel-center md:max-w-none space-x-4 md:rounded-box ">
       <!-- TITLE CARD -->
       <div id="{{ data.id }}_title" class="mb-4 p-4 md:carousel-item w-full">
-        <div class="prose mx-auto"><h2 class="divider text-xl md:text-2xl">{{ data.Title }}</h2>
+        <div class="prose m-auto"><h2 class="divider text-xl md:text-2xl">{{ data.Title }}</h2>
           {% if data.Description %}
           <p class="prose">{{ data.Description | markdownify | safe }}</p>
           {% endif %}
