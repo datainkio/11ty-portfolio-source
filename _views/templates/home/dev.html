@@ -3,16 +3,16 @@
 {# STYLES #}
 {% set body_styles = "bg-black text-white" %}
 {% set container_styles = "px-0" %}
-{% set section_styles = "prose max-w-none col-span-12 text-white bg-black h-dvh flex snap-y" %}
-{% set heading_styles = "text-4xl leading-none font-black mb-8 text-white" %}
+{% set section_styles = "prose max-w-none col-span-12 text-white h-dvh flex snap-y" %}
+{% set heading_styles = "prose text-4xl leading-none font-black mb-8 text-white" %}
 {% set link_styles = "link link-hover lowercase block text-xl leading-none font-thin text-white hover:text-orange-600" %}
-{% set body_styles = "font-thin text-white" %}
+{% set copy_styles = "font-thin text-white" %}
 
 {# ACCESSIBILITY #}
 {% block accessibility %}
 <a href="#audiences">audiences</a>
 <a href="#work">projects</a>
-<a href="#recognition">recognition</a>
+<a href="#impact">impact</a>
 <a href="#lessons_learned">lessons learned</a>
 {% endblock %}
 
@@ -28,7 +28,7 @@
 <section id="audiences" class="{{ section_styles }}">
 	<div class="my-auto">
 		<h2 class="{{ heading_styles }}">I am an experience designer.</h2>
-		<p class="prose {{ body_styles }}">I work with researchers, engineers, visual designers, interaction designers, and accessibility experts to deliver digital products and services that put people first</p>
+		<p class="prose {{ copy_styles }}">I work with researchers, engineers, visual designers, interaction designers, and accessibility experts to deliver digital products and services that put people first</p>
 	</div>
 </section>
 
@@ -55,18 +55,20 @@
 	</div>
 </section>
 
-<!-- RECOGNITION -->
-<section id="recognition" class="{{ section_styles }}">
-	<div class="my-auto">
-		<h2 class="{{ heading_styles }} text-white">Together, we produce <a class="link link-hover font-black text-white hover:text-orange-600"
-				href="/recognition/">award-winning work</a></h2>
-		<div class="columns-9">
+<!-- IMPACT -->
+<section id="impact" class="{{ section_styles }}">
+	<div class="my-auto grid grid-cols-12">
+		<h2 class="{{ heading_styles }} text-white col-span-full">Together, we produce <a class="link link-hover font-black text-white hover:text-orange-600"
+				href="/recognition/">award-winning work</a> that improves lives</h2>
+		<figure class="grid grid-cols-3 col-span-4 border-r-2">
+			<figcaption class="col-span-full">Recognition</figcaption>
 			{% for image in images | sort(attribute="Weight") %}
 			{% if image.Recognition %}
-			{{ image.pictureElement | stylePicture("logo bg-black p-1 w-16 h-16 flex-none not-prose") | safe }}
+			{{ image.pictureElement | stylePicture("logo bg-black py-4 w-36 h-36 gap-4") | safe }}
 			{% endif %}
 			{% endfor %}
-		</div>
+			<a href="/recognition/" class="link link-hover">More</a>
+		</figure>
 	</div>
 </section>
 
@@ -84,26 +86,26 @@
 				million cases annually,</a> and
 			<a class="link link-hover font-black text-white qhover:text-orange-600" href="/projects/">contributing to our understanding of the genetic causes of disease.</a>
 		</h2>
-		<div class="grid grid-cols-3 gap-12">
+		<figure class="grid grid-cols-3 gap-12 px-8">
 			{% for project in projects %}
 			{% if loop.index <= 3 %}
 			{% if project.Weight == 0 %}
 			{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
 			<a href="{{ href }}" class="card no-underline">
 				{# IMAGE #}
-				<figure class="h-72 m-0">
+				<div class="h-72 m-0">
 					{% for img in images | find("id", project.Thumbnail) %}
 					{{ img.pictureElement | safe }}
 					{% endfor %}
-				</figure>
+				</div>
 				<div class="card-body p-0 my-4">
-					<h2 class="card-title leading-none text-white text-3xl p-0 m-0">{{ project.Title }}</h2>
+					<h3 class="card-title leading-none text-white text-3xl p-0 m-0">{{ project.Title }}</h2>
 				</div>
 			</a>
 			{% endif %}
 			{% endif %}
 			{% endfor %}		
-		</div>
+		</figure>
 		<a href="/projects/" class="btn">All Work</a>
 	</div>
 </section>
