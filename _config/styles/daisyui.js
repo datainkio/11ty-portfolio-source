@@ -11,7 +11,7 @@ module.exports = {
     pending: "#9DB7B0",
     disabled: "#65C0E7",
   },
-  neutral: "#ABA6BA",
+  neutral: "#FFFFFF",
   "base-100": "#F4F4F6",
   "--rounded-box": "0rem", // border radius rounded-box utility class, used in card and other large boxes
   "--rounded-btn": "0rem", // border radius rounded-btn utility class, used in buttons and similar element
