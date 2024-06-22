@@ -20,8 +20,8 @@
 {# CONTENT #}
 {% block content %}
 <!-- TITLE -->
-<section id="title" class="{{ section_styles }} h-dvh">
-	<h1 class="text-6xl text-white my-auto col-span-full">Russell S. Lebo</h1>
+<section id="title" class="{{ section_styles }} h-dvh anim">
+	<h1 class="text-5xl text-white my-auto col-span-full">Russell S. Lebo</h1>
 </section>
 <!-- INTRO -->
 <section id="intro" class="{{ section_styles }}">
@@ -36,7 +36,7 @@
 		<h2 class="{{ heading_styles }}"><a class="link link-hover font-black text-white hover:text-orange-600"
 				href="/organizations/">I collaborate with amazing organizations and people</a> delivering <a class="link link-hover font-black text-white hover:text-orange-600"
 				href="/projects/">digital services and products</a></h2>
-		<div class="col-span-full columns-4">
+		<div class="col-span-full columns-2">
 			{% for organization in organizations %}
 			{% include "templates/organization/link.html" %}
 			{% endfor %}
@@ -48,7 +48,7 @@
 	<div class="my-auto col-span-full grid grid-cols-subgrid">
 		<h2 class="{{ heading_styles }}">Together, we produce <a class="link link-hover font-black text-white hover:text-orange-600"
 				href="/recognition/">award-winning work</a> that solves real human needs</h2>
-		<figure class="col-span-full grid grid-cols-subgrid gap-8 pb-24">
+		<figure class="col-span-full">
 			{% for project in projects %}
 			{% if (loop.index <= 6) and (project.Weight == 0) %}
 			{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
@@ -69,19 +69,19 @@
 </section>
 <!-- IMPACT -->
 <section id="impact" class="{{ section_styles}}">
-	<div class="my-auto col-span-full grid grid-cols-subgrid">
-		<figure id="recognition" class="flex flex-wrap col-span-4">
+	<div class="my-auto col-span-full">
+		<figure id="recognition" class="flex flex-wrap">
 			<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral w-full">Recognition</figcaption>
 			{% for image in images | sort(attribute="Weight") %}
 			{% if image.Recognition %}
-			{{ image.pictureElement | stylePicture("logo p-0 w-24 h-24 mx-auto my-0") | safe }}
+			{{ image.pictureElement | stylePicture("logo p-4 w-24 h-24 mx-auto my-0") | safe }}
 			{% endif %}
 			{% endfor %}
 			<a href="/recognition/" class="{{ button_styles }} col-span-full w-full mt-12">More</a>
 		</figure>
-		<figure id="metrics" class="col-span-8 px-36">
+		<figure id="metrics" class="col-span-full">
 			<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral">Results</figcaption>
-			<div class="columns-3">
+			<div class="columns-2">
 			{% for outcome in outcomes %}
 			{% if (outcome.Type == "Success Metric") and (outcome.Weight == 1) %}
 			{% set href = "" %}
@@ -102,8 +102,8 @@
 <!-- LESSONS LEARNED -->
 <section id="lessons_learned" class="{{ section_styles }}">
 	<div class="my-auto col-span-full grid grid-cols-subgrid">
-		<h2 class="{{ heading_styles }}">I also think a lot about design culture and how to develop it within teams and organizations. I even <a href="/lessons-learned/">write about it a bit.</a></h2>
-		<figure class="col-span-full grid grid-cols-subgrid gap-8 pb-24">
+		<h2 class="{{ heading_styles }}">I also think a lot about design culture and how to develop it within teams and organizations. I even <a href="/lessons-learned/" class="{{ link_styles }}">write about it a bit.</a></h2>
+		<figure class="col-span-full">
 			{% for insight in insights %}
 			{% if insight.Featured %}
 			{% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
@@ -117,7 +117,8 @@
 				</div>
 			</a>
 			{% endif %}
-			{% endfor %}		
+			{% endfor %}
+			<a href="/lessons-learned/" class="{{ button_styles }} col-span-full w-full mt-12">More</a>	
 		</figure>
 	</div>
 </section>
