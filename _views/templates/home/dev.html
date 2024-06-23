@@ -20,13 +20,13 @@
 {# CONTENT #}
 {% block content %}
 <!-- TITLE -->
-<section id="title" class="{{ section_styles }} h-dvh anim">
-	<h1 class="text-5xl text-white my-auto col-span-full">Russell S. Lebo</h1>
+<section id="title" class="{{ section_styles }} h-dvh">
+	<h1 class="text-5xl text-white my-auto col-span-full">Hi there.</h1>
 </section>
 <!-- INTRO -->
 <section id="intro" class="{{ section_styles }}">
 	<div class="my-auto col-span-full">
-		<h2 class="{{ heading_styles }}">I am an experience designer</h2>
+		<h2 class="{{ heading_styles }} bleurg">I am an experience designer</h2>
 		<p class="{{ copy_styles }} prose">I specialize in crafting user experiences that are intuitive, engaging, and impactful. My role involves understanding the needs and behaviors of users to create seamless and enjoyable interactions across digital and physical platforms. By employing design thinking and user-centered design principles, I focus on enhancing usability, accessibility, and overall satisfaction. My process includes research, prototyping, testing, and iterating on designs to ensure they meet both user needs and business goals. </p>
 	</div>
 </section>
@@ -36,11 +36,11 @@
 		<h2 class="{{ heading_styles }}"><a class="link link-hover font-black text-white hover:text-orange-600"
 				href="/organizations/">I collaborate with amazing organizations and people</a> delivering <a class="link link-hover font-black text-white hover:text-orange-600"
 				href="/projects/">digital services and products</a></h2>
-		<div class="col-span-full columns-2">
+		<figure class="col-span-full columns-2">
 			{% for organization in organizations %}
 			{% include "templates/organization/link.html" %}
 			{% endfor %}
-		</div>
+		</figure>
 	</div>
 </section>
 <!-- WORK -->
@@ -70,15 +70,16 @@
 <!-- IMPACT -->
 <section id="impact" class="{{ section_styles}}">
 	<div class="my-auto col-span-full">
-		<figure id="recognition" class="flex flex-wrap">
-			<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral w-full">Recognition</figcaption>
-			{% for image in images | sort(attribute="Weight") %}
-			{% if image.Recognition %}
-			{{ image.pictureElement | stylePicture("logo p-4 w-24 h-24 mx-auto my-0") | safe }}
-			{% endif %}
-			{% endfor %}
-			<a href="/recognition/" class="{{ button_styles }} col-span-full w-full mt-12">More</a>
-		</figure>
+		<a href="/recognition/" class="col-span-full">
+			<figure id="recognition" class="flex flex-wrap">
+				<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral w-full">Recognition</figcaption>
+				{% for image in images | sort(attribute="Weight") %}
+				{% if image.Recognition %}
+				{{ image.pictureElement | stylePicture("logo p-4 w-24 h-24 mx-auto my-0") | safe }}
+				{% endif %}
+				{% endfor %}
+			</figure>
+		</a>
 		<figure id="metrics" class="col-span-full">
 			<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral">Results</figcaption>
 			<div class="columns-2">
@@ -118,7 +119,7 @@
 			</a>
 			{% endif %}
 			{% endfor %}
-			<a href="/lessons-learned/" class="{{ button_styles }} col-span-full w-full mt-12">More</a>	
+			<a href="/lessons-learned/" class="{{ button_styles }} col-span-full w-full mt-12">Lessons Learned</a>	
 		</figure>
 	</div>
 </section>
