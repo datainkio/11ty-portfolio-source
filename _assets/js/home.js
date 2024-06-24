@@ -1,65 +1,61 @@
+/**
+ * Define the presentation of the homepage.
+ * - Assign intro sequences to key blocks
+ */
 document.addEventListener("DOMContentLoaded", (event) => {
   let dur = 1; // base value for animation duration (in seconds)
   let y_delta = 50; // vertical origin of elements
   let pos = "-=.75"; // offset (in seconds) of animation relative to the previous
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-  /** INTRO */
+  /** TITLE */
   let intro = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#intro h2',
-      start: 'top center',
-    }
-  });
-  intro.from('#intro h2', {duration: dur, y: y_delta, autoAlpha: 0})
-  .from('#intro p', {duration: dur, y: y_delta, autoAlpha: 0}, pos)
 
-  /** ORGANIZATIONS */
-  let organizations = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#organizations h2',
-      start: 'top center',
-    }
   });
-  organizations.from('#organizations h2', {duration: dur, y:y_delta, autoAlpha: 0})
-  .from("#organizations figure", {duration: dur, y:y_delta, autoAlpha: 0}, pos)
+  intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0}));
+  const pars = gsap.utils.toArray("#title p");
+  pars.forEach(p => {
+    intro.add(gsap.from(p, {duration: dur, y:y_delta, autoAlpha: 0}), pos);
+  })
 
-  /** WORK */
-  let work = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#work h2',
-      start: 'top center'
-    }
-  });
-  work.from('#work h2', {duration: dur, y:y_delta, autoAlpha: 0});
-  const projects = gsap.utils.toArray('#work figure .card');
+
+  const projects = gsap.utils.toArray('#work .card');
   projects.forEach(p => {
     gsap.from(p, {
       scrollTrigger: {
         trigger: p,
-        start: 'top center'
+        start: 'center bottom'
       }, 
     autoAlpha: 0,
   y: y_delta})
   })
 
   /** RECOGNITION */
+  gsap.from('#impact h2', {
+    scrollTrigger: {
+      trigger: '#impact h2',
+      start: 'top center'
+    },
+    duration: dur, 
+    y:y_delta, 
+    autoAlpha: 0
+  });
+
   let recognition = gsap.timeline({
     scrollTrigger: {
-      trigger: '#recognition figcaption',
-      start: 'top center'
+      trigger: '#recognition',
+      start: 'bottom bottom'
     }
   });
-  recognition.from('#recognition figcaption', {duration: dur, y:y_delta, autoAlpha: 0});
   const awards = gsap.utils.toArray('#recognition picture');
   awards.forEach(p => {
     recognition.add(gsap.from(p, {autoAlpha: 0, duration: dur*.1}));
   })
 
   /** METRICS */
-  gsap.from('#metrics figcaption', {
+  gsap.from('#metrics', {
     scrollTrigger: {
-      trigger: '#metrics figcaption',
+      trigger: '#metrics',
       start: 'top center'
     },
     autoAlpha: 0,
@@ -71,7 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.from(stat, {
       scrollTrigger: {
         trigger: stat,
-        start: 'top center'
+        start: 'bottom bottom'
       },
       autoAlpha: 0,
       y: y_delta,
@@ -80,9 +76,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   })
 
   /** LESSONS LEARNED */
-  gsap.from('#lessons_learned h2', {
+  gsap.from('#lessons_learned figcaption', {
     scrollTrigger: {
-      trigger: '#lessons_learned h2',
+      trigger: '#lessons_learned figcaption',
       start: 'top center'
     },
     autoAlpha: 0,
@@ -93,7 +89,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   lessons.forEach(lesson => {
     gsap.from(lesson, {
       scrollTrigger: {
-        trigger: lesson,
+        trigger: "#lessons_learned figcaption",
         start: 'top center'
       }, 
     autoAlpha: 0,

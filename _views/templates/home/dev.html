@@ -2,16 +2,17 @@
 
 {# STYLES #}
 {% set body_styles = "bg-black" %}
-{% set container_styles = "px-0 grid grid-cols-12" %}
-{% set section_styles = "prose max-w-none flex snap-y col-span-full grid grid-cols-subgrid p-12" %}
-{% set heading_styles = "prose text-4xl leading-none font-black mb-8 text-neutral-50 col-span-full text-balance" %}
-{% set link_styles = "link link-hover text-balance lowercase block text-xl leading-none font-thin text-neutral-50 hover:text-orange-600" %}
-{% set copy_styles = "font-thin text-neutral-50" %}
-{% set button_styles = "btn btn-outline border-white rounded-full text-white" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "prose text-4xl leading-none font-thin mb-8 text-neutral-50 text-pretty col-span-full" %}
+{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
+{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
+{% set button_styles = "btn btn-circle btn-primary w-24 h-24 my-auto mx-auto" %}
 
 {# ACCESSIBILITY #}
 {% block accessibility %}
-<a href="#audiences">audiences</a>
+<a href="#intro">introduction</a>
 <a href="#work">projects</a>
 <a href="#impact">impact</a>
 <a href="#lessons_learned">lessons learned</a>
@@ -19,108 +20,83 @@
 
 {# CONTENT #}
 {% block content %}
-<!-- TITLE -->
-<section id="title" class="{{ section_styles }} h-dvh">
-	<h1 class="text-5xl text-white my-auto col-span-full">Hi there.</h1>
-</section>
 <!-- INTRO -->
-<section id="intro" class="{{ section_styles }}">
-	<div class="my-auto col-span-full">
-		<h2 class="{{ heading_styles }} bleurg">I am an experience designer</h2>
-		<p class="{{ copy_styles }} prose">I specialize in crafting user experiences that are intuitive, engaging, and impactful. My role involves understanding the needs and behaviors of users to create seamless and enjoyable interactions across digital and physical platforms. By employing design thinking and user-centered design principles, I focus on enhancing usability, accessibility, and overall satisfaction. My process includes research, prototyping, testing, and iterating on designs to ensure they meet both user needs and business goals. </p>
-	</div>
+<section id="title" class="{{ section_styles }} h-screen content-end">
+	<h1 class="text-6xl leading-none font-black text-neutral-50">Russell S. Lebo</h1>
+	<p class="{{ heading_styles }}">
+		I am an experience designer. I work with user researchers, UI designers, engineers, and accessibility experts creating digital products and services.</p>
+	<p class="{{ heading_styles }}">
+		Together, we produce award-winning solutions that answer real human needs.</p>
 </section>
-<!-- ORGANIZATIONS -->
-<section id="organizations" class="{{ section_styles }}">
-	<div class="my-auto col-span-full grid grid-cols-subgrid">
-		<h2 class="{{ heading_styles }}"><a class="link link-hover font-black text-white hover:text-orange-600"
-				href="/organizations/">I collaborate with amazing organizations and people</a> delivering <a class="link link-hover font-black text-white hover:text-orange-600"
-				href="/projects/">digital services and products</a></h2>
-		<figure class="col-span-full columns-2">
-			{% for organization in organizations %}
-			{% include "templates/organization/link.html" %}
-			{% endfor %}
-		</figure>
-	</div>
-</section>
+
 <!-- WORK -->
-<section id="work" class="{{ section_styles }}">
-	<div class="my-auto col-span-full grid grid-cols-subgrid">
-		<h2 class="{{ heading_styles }}">Together, we produce <a class="link link-hover font-black text-white hover:text-orange-600"
-				href="/recognition/">award-winning work</a> that solves real human needs</h2>
-		<figure class="col-span-full">
-			{% for project in projects %}
-			{% if (loop.index <= 6) and (project.Weight == 0) %}
-			{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
-			<a href="{{ href }}" class="card no-underline col-span-4">
-				{# IMAGE #}
-				<div class="h-64">
-					{% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | safe }}{% endfor %}
-				</div>
-				<div class="card-body p-0">
-					<h3 class="card-title leading-none text-white font-thin text-2xl">{{ project.Title }}</h3>
-					<p class="prose text-balance {{ copy_styles }}">{{ project.Teaser }}</p>
-				</div>
-			</a>
-			{% endif %}
-			{% endfor %}
-		</figure>
-	</div>
+<section id="work" class="{{ section_styles }} {{ grid }}">
+	{% for project in projects %}
+	{% if (loop.index <= 6) and (project.Weight == 0) %}
+	{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
+	<a href="{{ href }}" class="card no-underline col-span-full md:col-span-6 lg:col-span-4 hover:bg-neutral-800 p-0 my-4 sm:my-12">
+		{# IMAGE #}
+		<div class="h-64 md:h-48">
+			{% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
+		</div>
+		<div class="card-body px-4">
+			<h3 class="card-title leading-none text-white font-medium text-2xl my-0">{{ project.Title }}</h3>
+			<p class="prose text-balance {{ copy_styles }} my-0">{{ project.Teaser }}</p>
+		</div>
+	</a>
+	{% endif %}
+	{% endfor %}
+	<a href="/projects/" class="{{ button_styles }} mx-auto">Work</a>	
 </section>
+
 <!-- IMPACT -->
-<section id="impact" class="{{ section_styles}}">
-	<div class="my-auto col-span-full">
-		<a href="/recognition/" class="col-span-full">
-			<figure id="recognition" class="flex flex-wrap">
-				<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral w-full">Recognition</figcaption>
-				{% for image in images | sort(attribute="Weight") %}
-				{% if image.Recognition %}
-				{{ image.pictureElement | stylePicture("logo p-4 w-24 h-24 mx-auto my-0") | safe }}
-				{% endif %}
-				{% endfor %}
-			</figure>
-		</a>
-		<figure id="metrics" class="col-span-full">
-			<figcaption class="col-span-full text-white text-2xl font-thin divider divider-neutral">Results</figcaption>
-			<div class="columns-2">
+<section id="impact" class="{{ section_styles}} {{ grid }}">
+	<figure id="recognition" class="col-span-full flex flex-wrap my-24">
+		{% for image in images | sort(attribute="Weight") %}
+		{% if image.Recognition %}
+		{{ image.pictureElement | stylePicture("logo p-4 w-24 h-24 mx-auto my-0") | safe }}
+		{% endif %}
+		{% endfor %}
+	</figure>
+	<figure id="metrics" class="col-span-full">
+		<div class="columns-2 md:columns-3 xl:columns-4 gap-4 md:gap-8">
 			{% for outcome in outcomes %}
+			{# Display selected Success Metrics #}
 			{% if (outcome.Type == "Success Metric") and (outcome.Weight == 1) %}
 			{% set href = "" %}
 			{% for project in projects | find("id", outcome.Projects) %}
 				{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
 			{% endfor %}
-			<a class="stat no-underline link link-hover h-min" href="{{ href }}">
-				<div class="stat-title text-white">{{ outcome.Title }}</div>
-				<div class="stat-value text-white">{{ outcome.Value }}</div>
-				<div class="stat-desc text-white text-balance">{{ outcome.Description }}</div>
+			<a class="stat no-underline link link-hover h-min p-0 mb-4 hover:bg-neutral-800 p-2" href="{{ href }}">
+				<div class="stat-title text-white text-wrap leading-tight">{{ outcome.Title }}</div>
+				<div class="stat-value text-white text-2xl sm:text-4xl">{{ outcome.Value }}</div>
+				<div class="stat-desc {{ copy_styles }}">{{ outcome.Description }}</div>
 			</a>
 			{% endif %}
 			{% endfor %}
-		</div>
-		</figure>
 	</div>
+	</figure>
 </section>
+
 <!-- LESSONS LEARNED -->
-<section id="lessons_learned" class="{{ section_styles }}">
-	<div class="my-auto col-span-full grid grid-cols-subgrid">
-		<h2 class="{{ heading_styles }}">I also think a lot about design culture and how to develop it within teams and organizations. I even <a href="/lessons-learned/" class="{{ link_styles }}">write about it a bit.</a></h2>
-		<figure class="col-span-full">
-			{% for insight in insights %}
-			{% if insight.Featured %}
-			{% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
-			<a href="{{ href }}" class="card no-underline col-span-3">
-				{# IMAGE #}
-				<div class="h-64">
-					{% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | safe }}{% endfor %}
-				</div>
-				<div class="card-body p-0">
-					<h3 class="card-title leading-none text-white font-thin text-2xl">{{ insight.Name }}</h3>
-				</div>
-			</a>
-			{% endif %}
-			{% endfor %}
-			<a href="/lessons-learned/" class="{{ button_styles }} col-span-full w-full mt-12">Lessons Learned</a>	
-		</figure>
-	</div>
-</section>
+<figure id="lessons_learned" class="{{ section_styles }} {{ grid }}">
+	<figcaption class="{{ heading_styles }}">I think a lot about design culture and how to develop it within teams and organizations.</figcaption>
+	{% for insight in insights %}
+	{% if insight.Featured %}
+	{% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
+	<a href="{{ href }}" class="card no-underline col-span-full md:col-span-6 hover:bg-neutral-800 p-0 my-4 sm:my-8">
+		{# IMAGE #}
+		<div class="h-64">
+			{% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
+		</div>
+		<div class="card-body my-4 px-4 flex-none">
+			<p class="{{ copy_styles }} my-0">{{ insight.Created }}</p>
+			<h3 class="card-title leading-none text-white font-medium text-2xl my-0">{{ insight.Name }}</h3>
+			<p class="{{ copy_styles }}">{{ insight.Teaser }}</p>
+		</div>
+	</a>
+	{% endif %}
+	{% endfor %}
+	<a href="/lessons-learned/" class="{{ button_styles }}">Lessons Learned</a>	
+</figure>
 {% endblock %}
