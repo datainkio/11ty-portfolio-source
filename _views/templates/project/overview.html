@@ -1,34 +1,40 @@
-{% extends "species/landing.html" %}
-{% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+{% extends "species/article.html" %}
+
+{# STYLES #}
+{% set body_styles = "bg-black" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
+{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
+{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
+{% set button_styles = "btn btn-circle btn-primary w-18 h-18 text-lg italic " %}
+
 {% block accessibility %}
 <a href="#introduction">introduction</a>
-<a href="#focus">types and industries</a>
-<a href="#related">related projects</a>
+{% for category in ia %}
+<a href="#{{ category.Slug }}">{{ category.Title }}</a>
+{% endfor %}
 {% endblock %}
 {% block hero %}
-<h1 class="md:col-span-12">Work</h1>
+<section id="introduction" class="p-12 bg-black sm:grid sm:grid-cols-6 text-white gap-4">
+  <h1 class="sm:col-span-4">Work</h1>
+  <p class="{{ copy_styles }} sm:col-span-4">
+    I am a lucky guy. In my 20+ years designing and building digital products and services I have worked with museums,
+    artists, scientists, hospitals, banks, schools, global brands, and even the federal government.</p>
+  <p class="{{ copy_styles }} sm:col-span-4">Each project brings a unique set of challenges and puzzles to solve, and I thrive on finding solutions shaped by a focus on human-centered design.</p>
+</section>
 {% endblock %}
 {% block content %}
-<article id="introduction" class="prose md:col-span-4">
-  <p>
-    I am a lucky guy. In my 20+ years designing and building digital products and services I have worked with museums,
-    artists, scientists, hospitals, banks, schools, global brands, and even the federal government.
-  </p>
-  <p>Each project brings a unique set of challenges and puzzles to solve, and I thrive on finding solutions shaped by a
-    focus on human-centered design.</p>
-    <figure class="not-prose">
-      <h3>Focus</h3>
-      <ul id="focus">
-        {% for category in ia %}
-        <li><a class="link link-hover {{ link_styles }}" href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Slug }}</a></li>
-        {% endfor %}
-      </ul>
-    </figure>
-</article>
-
-<figure class="md:col-span-8">
-  {% set data = projects %}
-  {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
-  {% include "templates/project/grid.html" %}
+{% for category in ia %}
+<figure id="{{ category.Slug }}" class="p-12 grid grid-cols-12 gap-4">
+  <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">{{ category.Title }}</figcaption>
+  {% set set = projects | find("id", category.Projects) %}
+  {% for project in set %}
+  {% if project.Published and (project.Weight == 0) %}
+  {% include "templates/project/card.html" %}
+  {% endif %}
+  {% endfor %}
 </figure>
+{% endfor %}
 {% endblock %}
