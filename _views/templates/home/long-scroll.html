@@ -58,18 +58,14 @@
 <figure id="metrics" class="{{ section_styles }} my-12">
 	<figcaption class="divider divider-primary w-full mx-auto {{ heading_styles }}">Impact</figcaption>
 	<div class="columns-2 sm:px-2 md:columns-3 xl:columns-4 gap-4 md:gap-8">
-		{% for outcome in outcomes %}
+		{% for stat in outcomes %}
 		{# Display selected Success Metrics #}
-		{% if (outcome.Type == "Success Metric") and (outcome.Weight == 1) %}
+		{% if (stat.Type == "Success Metric") and (stat.Weight == 1) %}
 		{% set href = "" %}
-		{% for project in projects | find("id", outcome.Projects) %}
+		{% for project in projects | find("id", stat.Projects) %}
 			{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
+			{% include "molecules/stat.html" %}
 		{% endfor %}
-		<a class="stat no-underline link link-hover h-min p-0 mb-4 hover:bg-neutral-800 p-2" href="{{ href }}">
-			<div class="stat-title text-white text-wrap leading-tight">{{ outcome.Title }}</div>
-			<div class="stat-value text-white text-2xl sm:text-4xl">{{ outcome.Value }}</div>
-			<div class="stat-desc {{ copy_styles }}">{{ outcome.Description }}</div>
-		</a>
 		{% endif %}
 		{% endfor %}
 	</div>

@@ -26,6 +26,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   /** PROJECT CATEGORIES */
+  const categories = gsap.utils.toArray("a.category");
+  categories.forEach(cat => {
+    cat.addEventListener("click", () => {
+      console.log(cat.id);
+      gsap.to(window, {duration: 1, scrollTo:{y:cat.id, offsetY: 72}});
+    });
+  })
+
+
 
   // CATEGORY TITLES
   const captions = gsap.utils.toArray("figcaption");

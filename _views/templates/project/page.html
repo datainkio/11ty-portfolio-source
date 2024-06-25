@@ -16,57 +16,7 @@
   </div>
   <!-- HERE BE PROJECT METADATA -->
   <section id="details" class="text-center md:text-left md:flex md:flex-wrap gap-4">
-    {% set figcaption_styles = "text-slate-400" %}
-    {% set link_styles = "text-white text-med font-light" %}
-
-    <!-- COMPANY -->
-    {% if project.Organization %}
-    <figure>
-      <figcaption class="{{ figcaption_styles }}">Company/Client</figcaption>
-      <ul>
-        {% for organization in organizations | find('id', project.Organization) %}
-        <li>{% include "templates/organization/link.html" %}</li>
-        {% endfor %}
-      </ul>
-    </figure>
-    {% endif %}
-
-    <!-- ROLE -->
-    {% if project.Role %}
-    <figure>
-      <figcaption class="{{ figcaption_styles }}">Roles</figcaption>
-      <ul>
-        {% for role in roles | find('id', project.Role) %}
-        <li>{% include "templates/role/link.html" %}</li>
-        {% endfor %}
-      </ul>
-    </figure>
-    {% endif %}
-
-    <!-- ACTIITIES -->
-    {% if project.Activities %}
-    <figure>
-      <figcaption class="{{ figcaption_styles }}">Activities</figcaption>
-      <ul class="list-none pl-0">
-        {% for activity in activities | find('id', project.Activities) %}
-        <li class="{{ link_styles }}">{{ activity.Name }}</li>
-        {% endfor %}
-      </ul>
-    </figure>
-    {% endif %}
-
-    <!-- RECOGNITION -->
-    {% if project.Recognition %}
-    <figure>
-      <figcaption class="{{ figcaption_styles }}">Recognition</figcaption>
-      {% set link_styles = "text-white" %}
-      <ul>
-        {% for award in awards | find('id', project.Recognition) %}
-        {% include "templates/award/link_detailed.html" %}
-        {% endfor %}
-      </ul>
-    </figure>
-    {% endif %}
+    {% include "templates/project/supplemental-info.html" %}
     <!-- EXPLORE -->
     {% if project.URL %}
     <a class="btn btn-outline text-white border-white w-32" href="{{ project.URL }}">View</a>

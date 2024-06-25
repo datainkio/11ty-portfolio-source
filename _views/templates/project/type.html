@@ -1,22 +1,45 @@
 {% extends "species/article.html" %}
+
+{# STYLES #}
+{% set body_styles = "bg-black" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
+{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
+{% set copy_styles = "prose font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
+{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
+
+
 {% block accessibility %}
-<a href="#description">description</a>
-<a href="#related">related work</a>
+<a href="#introduction">introduction</a>
+<a href="#projects">projects</a>
 {% endblock %}
 {% block hero %}
-<section class="p-12 bg-black md:col-span-12 text-white">
-  <h1 class="font-black text-center md:text-left md:col-span-8">{{ type.Title }}</h1>
-  <section id="description" class="prose text-white text-center md:text-left md:text-xl font-extralight">
-    {% if type.Body %}
-    {{ type.Body | markdownify | safe }}
-    {% endif %}
-  </section>
-</section>
+<h1 class="text-4xl sm:text-6xl text-neutral-50"><a href="/projects/">Work</a> / {{ type.Title }}</h1>
+<p id="introduction" class="{{ copy_styles }}">
+  {{ type.Body }}</p>
 {% endblock %}
 {% block content %}
-<figure id="related" class="md:col-span-8 pt-4">
-  {% set data = projects | find("id", type.Projects) %}
-  {% set grid = "md:grid md:grid-cols-3 md:gap-4" %}
-  {% include "templates/project/grid.html" %}
+<figure id="projects" class="{{ section_styles }}">
+  <figcaption class="divider divider-primary {{ heading_styles}}"?>Projects</figcaption>
+  {% for project in projects | find("id", type.Projects) %}
+  {% if project.Published %}
+  {% set large = true %}
+  {% include "templates/project/card.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>
+<figure id="impact" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+  <figcaption class="divider divider-primary {{ heading_styles }} col-span-full">Impact</figcaption>
+  {% for stat in outcomes %}
+  {% if (stat.IA == type.Slug) and (stat.Type == "Success Metric") %}
+  {% set href = "" %}
+  {% for project in projects | find("id", stat.Projects) %}
+    {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
+    {% include "molecules/stat.html" %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
 </figure>
 {% endblock %}
