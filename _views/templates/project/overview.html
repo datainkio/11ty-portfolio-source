@@ -8,7 +8,7 @@
 {% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
 {% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
 {% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
-{% set button_styles = "btn btn-circle btn-primary w-18 h-18 text-lg italic " %}
+{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
 
 {% block accessibility %}
 <a href="#introduction">introduction</a>
@@ -35,6 +35,7 @@
   {% include "templates/project/card.html" %}
   {% endif %}
   {% endfor %}
+  <a href="/projects/types/{{ category.Slug | slugify }}/" class="{{ button_styles }} col-span-full mx-auto">More</a>
 </figure>
 {% endfor %}
 {% endblock %}
