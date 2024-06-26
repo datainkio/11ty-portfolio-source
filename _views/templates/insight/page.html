@@ -1,21 +1,42 @@
-{% extends "species/landing.html" %}
+{% extends "species/article.html" %}
+
+{# STYLES #}
+{% set body_styles = "bg-white" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin text-neutral-50 m-0" %}
+{% set link_styles = "text-lg sm:text-xl font-medium link-hover link-primary" %}
+{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
+
 {% set title = ["Lessons Learned", insight.Name] | join(": ") %}
-{% set container_styles = "p-12 md:grid md:grid-cols-12 md:gap-8" %}
+
 {% block accessibility %}
+<a href="#intro">introduction</a>
 <a href="#body">body</a>
 <a href="#related">related work</a>
 {% endblock %} 
 {% block hero %}
-<h1 class="md:col-span-12">{{ insight.Name }}</h1>
+<section id="intro" class="bg-black p-8 flex flex-col">
+<a href="/lessons-learned/" class="{{ link_styles }}">Lessons Learned /</a>
+<h1 class="md:col-span-12 {{ heading_styles }}">{{ insight.Name }}</h1>
+<p class="text-neutral-50 my-2">{{ insight.Created }} | Russell S. Lebo</p>
+</section>
 {% endblock %}
 {% block content %}
-<article id="body" class="prose md:col-span-8">
+<section class="{{ section_styles }} prose">
   {{ insight.Body | markdownify | expand(images) | safe }}
-</article>
-<figure id="related" class="md:col-span-4">
-  <figcaption>Related Work</figcaption>
-  {% set data = projects | find("id", insight.Projects) %}
-  {% set grid = "" %}
-  {% include "templates/project/grid.html" %}
+</section>
+{% endblock %}
+{% block footer %}
+<figure id="related" class="{{ section_styles }} bg-black grid grid-cols-12 gap-4">
+  <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Related Work</figcaption>
+  {% set set = projects | find("id", insight.Projects) %}
+  {% for project in set %}
+  {% if project.Published and (project.Weight == 0) %}
+  {% include "templates/project/card.html" %}
+  {% endif %}
+  {% endfor %}
 </figure>
 {% endblock %}

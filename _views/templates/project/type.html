@@ -6,7 +6,7 @@
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
 {% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
+{% set link_styles = "link-primary link-hover font-medium" %}
 {% set copy_styles = "prose font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
 {% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
 
@@ -16,9 +16,12 @@
 <a href="#projects">projects</a>
 {% endblock %}
 {% block hero %}
-<h1 class="text-4xl sm:text-6xl text-neutral-50"><a href="/projects/">Work</a> / {{ type.Title }}</h1>
+<section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2">
+<a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
+<h1 class="col-span-full mt-0">{{ type.Title }}</h1>
 <p id="introduction" class="{{ copy_styles }}">
   {{ type.Body }}</p>
+</section>
 {% endblock %}
 {% block content %}
 <figure id="projects" class="{{ section_styles }}">
@@ -30,7 +33,7 @@
   {% endif %}
   {% endfor %}
 </figure>
-<figure id="impact" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+<figure id="impact" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 px-8">
   <figcaption class="divider divider-primary {{ heading_styles }} col-span-full">Impact</figcaption>
   {% for stat in outcomes %}
   {% if (stat.IA == type.Slug) and (stat.Type == "Success Metric") %}

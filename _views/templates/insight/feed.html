@@ -1,5 +1,5 @@
 {% if data.length %}
-<ul>
+<ul class="{{ grid }}">
   {% for insight in data %}
   <li>{% include "templates/insight/card.html" %}</li>
   {% endfor %}

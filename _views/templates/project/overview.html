@@ -6,7 +6,7 @@
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
 {% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
+{% set link_styles = "text-lg sm:text-xl font-medium link-hover link-primary" %}
 {% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
 {% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
 
@@ -16,6 +16,7 @@
 <a href="#{{ category.Slug }}">{{ category.Title | slugify }}</a>
 {% endfor %}
 {% endblock %}
+
 {% block hero %}
 <section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2 gap-8">
   <h1 class="col-span-full">Work</h1>
@@ -23,13 +24,11 @@
     I am a lucky guy. In my 20+ years designing and building digital products and services I have worked with museums,
     artists, scientists, hospitals, banks, schools, global brands, and even the federal government.</p>
   <p class="{{ copy_styles }} sm:col-start-1">Each project brings a unique set of challenges and puzzles to solve, and I thrive on finding solutions shaped by a focus on human-centered design.</p>
-  <ul class="sm:row-start-2 sm:row-span-3 sm:col-start-2 sm:border-l sm:border-primary p-4">
+  <ul class="sm:row-start-2 sm:row-span-3 sm:col-start-2">
     {% for category in ia %}
     <li><a class="category {{ link_styles }}" id="#{{ category.Slug | slugify }}">{{ category.Title }}</a></li>
     {% endfor %}
   </ul>
-
-
 </section>
 {% endblock %}
 {% block content %}

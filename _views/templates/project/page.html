@@ -1,4 +1,15 @@
 {% extends "species/article.html" %}
+
+{# STYLES #}
+{% set body_styles = "bg-black" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
+{% set link_styles = "link-primary link-hover font-medium" %}
+{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set button_styles = "btn btn-outline btn-circle btn-primary w-24 h-24 text-lg italic " %}
+
 {% set title = [project.Name, project.Title] | join(": ") %}
 {% block accessibility %}
 <a href="#introduction">introduction</a>
@@ -10,22 +21,24 @@
 <!-- WE DON'T NEED ANOTHER HERO -->
 {% block hero %}
 <section class="bg-black p-12 pb-20">
-  <div class="pb-8">
-    <h1 class="text-white font-black text-center md:text-left">{{ project.Title }}</h1>
-    <p id="introduction" class="text-white text-center md:text-left md:text-2xl font-extralight">{{ project.Teaser }}</p>
-  </div>
+  <a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
+  {% for category in ia | find("id", project.Category ) %} 
+  <a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/types/{{ category.Slug | slugify }}">{{ category.Title }} /</a>
+  {% endfor %}
+  <h1 class="text-white font-black text-center md:text-left">{{ project.Title }}</h1>
+  <p id="introduction" class="text-white text-center md:text-left md:text-2xl font-extralight">{{ project.Teaser }}</p>
   <!-- HERE BE PROJECT METADATA -->
-  <section id="details" class="text-center md:text-left md:flex md:flex-wrap gap-4">
+  <section id="details" class="sm:grid sm:grid-cols-6 py-8 gap-4">
     {% include "templates/project/supplemental-info.html" %}
     <!-- EXPLORE -->
     {% if project.URL %}
-    <a class="btn btn-outline text-white border-white w-32" href="{{ project.URL }}">View</a>
+    <a class="{{ button_styles }}" href="{{ project.URL }}">View</a>
     {% endif %}
   </section>
 </section>
 {% endblock %}
 {% block content %}
-<div class="md:grid md:grid-cols-2">
+<div class="md:grid md:grid-cols-2 bg-white">
   {% if project.Videos is string %}
   <!-- LEAD VIDEO -->
   <section id="video" class="md:col-start-1">
@@ -63,4 +76,17 @@
     {% endfor %}
   </section>
 </div>
+{% endblock %}
+{% block footer %}
+{% for category in ia | find("id", project.Category ) %} 
+<figure id="related" class="{{ section_styles }} bg-black grid grid-cols-12 gap-4">
+  <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Other {{ category.Title }}</figcaption>
+  {% set set = projects | find("id", category.Projects) %}
+  {% for project in set %}
+  {% if project.Published %}
+  {% include "templates/project/card.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>
+{% endfor %}
 {% endblock %}

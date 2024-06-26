@@ -1,13 +1,15 @@
 {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
 {% if large %}
-<div class="grid grid-cols-12 mb-8">
+<div class="sm:grid sm:grid-cols-12 my-8 gap-8">
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-4", "") | safe }}{% endfor %}
-  <div class="col-span-7 py-4 px-8 mb-8">
-    <h3 class="leading-none text-white font-medium text-2xl my-0 ">{{ project.Title }}</h3>
-      <p class="prose {{ copy_styles }} my-2">{{ project.Teaser }}</p>
-        {% include "templates/project/supplemental-info.html" %}
+  <div class="sm:col-span-6 mb-8 p-4">
+    <h3 class="leading-none text-white font-medium text-2xl my-0 col-span-full">{{ project.Title }}</h3>
+    <p class="prose {{ copy_styles }} my-2 col-span-6">{{ project.Teaser }}</p>
+    <div class="sm:grid sm:grid-cols-2">
+      {% include "templates/project/supplemental-info.html" %}
+    </div>
+    <a href="{{ href }}" class="{{ button_styles }} sm:col-start-11 sm:row-start-1 sm:my-auto">Details</a>
   </div>
-  <a href="{{ href }}" class="my-auto {{ button_styles }}">More</a>
 </div>
 {% else %}
 <a href="{{ href }}" class="card no-underline col-span-full md:col-span-6 lg:col-span-4 hover:bg-neutral-800 p-0 my-4">
