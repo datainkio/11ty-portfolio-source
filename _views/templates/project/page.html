@@ -78,15 +78,15 @@
 </div>
 {% endblock %}
 {% block footer %}
-{% for category in ia | find("id", project.Category ) %} 
+{% set category = ia | find("id", project.Category ) %}
+{% set id = project.id %}
 <figure id="related" class="{{ section_styles }} bg-black grid grid-cols-12 gap-4">
-  <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Other {{ category.Title }}</figcaption>
-  {% set set = projects | find("id", category.Projects) %}
+  <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Other {{ category[0].Title }}</figcaption>
+  {% set set = projects | find("id", category[0].Projects) %}
   {% for project in set %}
-  {% if project.Published %}
+  {% if (project.Published) and (project.id != id) and (project.Weight <= 5) %}
   {% include "templates/project/card.html" %}
   {% endif %}
   {% endfor %}
 </figure>
-{% endfor %}
 {% endblock %}

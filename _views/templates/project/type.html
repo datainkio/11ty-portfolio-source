@@ -13,8 +13,11 @@
 
 {% block accessibility %}
 <a href="#introduction">introduction</a>
-<a href="#projects">projects</a>
+<a href="#featured">featured projects</a>
+<a href="#other">everything else</a>
+<a href="#impact">impact</a>
 {% endblock %}
+
 {% block hero %}
 <section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2">
 <a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
@@ -23,16 +26,26 @@
   {{ type.Body }}</p>
 </section>
 {% endblock %}
+
 {% block content %}
 <figure id="projects" class="{{ section_styles }}">
   <figcaption class="divider divider-primary {{ heading_styles}}"?>Projects</figcaption>
   {% for project in projects | find("id", type.Projects) %}
-  {% if project.Published %}
+  {% if project.Published and (project.Weight < 5) %}
   {% set large = true %}
   {% include "templates/project/card.html" %}
   {% endif %}
   {% endfor %}
 </figure>
+
+<figure id="other" class="sm:grid sm:grid-cols-12 gap- px-8">
+  {% for project in projects | find("id", type.Projects) %}
+  {% if project.Weight > 5 %}
+  {% include "templates/project/card.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>
+
 <figure id="impact" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 px-8">
   <figcaption class="divider divider-primary {{ heading_styles }} col-span-full">Impact</figcaption>
   {% for stat in outcomes %}
