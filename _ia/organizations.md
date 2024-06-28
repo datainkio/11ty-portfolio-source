@@ -1,6 +1,6 @@
 ---
 layout: "organization/section.html"
-title: "Organizations"
+title: "Russell S. Lebo: Organizations"
 pagination:
   data: organizations
   size: 100

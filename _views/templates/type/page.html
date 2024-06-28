@@ -1,0 +1,77 @@
+{% extends "species/article.html" %}
+
+{# STYLES #}
+{% set body_styles = "bg-black" %}
+{% set container_styles = "px-0" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none col-span-full font-thin mb-8 text-neutral-50" %}
+{% set link_styles = "link-primary link-hover font-medium" %}
+{% set copy_styles = "prose font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
+{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
+
+
+{% block accessibility %}
+<a href="#introduction">introduction</a>
+<a href="#featured">featured projects</a>
+<a href="#other">everything else</a>
+<a href="#impact">impact</a>
+{% endblock %}
+
+{% block hero %}
+<section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2">
+<a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
+<h1 class="col-span-full mt-0">{{ type.Title }}</h1>
+<p id="introduction" class="{{ copy_styles }}">
+  {{ type.Body }}</p>
+</section>
+{% endblock %}
+
+{% block content %}
+<figure id="featured" class="{{ section_styles }}">
+  {% for project in projects | find("id", type.Projects) %}
+  {% if project.Weight == 0 %}
+  {% include "templates/project/card-lg.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>
+
+<figure id="other" class="sm:grid sm:grid-cols-4 gap-8 px-8">
+  {% for project in projects | find("id", type.Projects) %}
+  {% if (project.Weight > 0) and (project.Weight < 10) %}
+  {% include "templates/project/card-md.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>
+
+{% if (type.Title != "Museums, Monuments & Memorials") and (type.Title != "Health & Science") and (type.Title != "Business-to-Business") and (type.Title != "Experiential") %}
+<section class="sm:grid sm:grid-cols-3 px-8 my-12">
+  {% if type.Title != "Civic Tech" %}
+  <figure class="col-span-2 sm:grid sm:grid-cols-3 gap-8 sm:px-24">
+    <figcaption class="divider divider-primary {{ heading_styles}}">Other {{ type.Other }}</figcaption>
+    {% for project in projects | find("id", type.Projects) %}
+    {% if project.Weight == 10 %}
+    {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("w-full ", "aspect-video object-contain") | safe }}{% endfor %}
+    {% endif %}
+    {% endfor %}
+  </figure>
+
+  {% else %}
+  {% set impact_styles = "col-span-full sm:grid sm:grid-cols-6" %}
+  {% endif %}
+
+  <figure id="impact" class="{{ impact_styles }} sm:px-12">
+    <figcaption class="divider divider-primary {{ heading_styles }} col-span-full">Impact</figcaption>
+    {% for stat in outcomes %}
+    {% if (stat.IA == type.Slug) and (stat.Type == "Success Metric") %}
+    {% set href = "" %}
+    {% for project in projects | find("id", stat.Projects) %}
+      {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
+      {% include "molecules/stat.html" %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </figure>
+</section>
+{% endif %}
+{% endblock %}

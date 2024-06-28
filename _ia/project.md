@@ -1,6 +1,6 @@
 ---
 layout: "project/page.html"
-title: "{{ project.Title }}"
+title: "Russell S. Lebo: {{ project.Title }}"
 pagination:
   data: projects
   size: 1

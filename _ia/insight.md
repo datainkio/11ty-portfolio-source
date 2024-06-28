@@ -1,6 +1,6 @@
 ---
 layout: "insight/page.html"
-title: "{{ insight.Name }}"
+title: "Russell S. Lebo: {{ insight.Name }}"
 pagination:
   data: insights
   size: 1

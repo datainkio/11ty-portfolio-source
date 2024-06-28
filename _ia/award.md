@@ -1,6 +1,6 @@
 ---
 layout: "award/page.html"
-title: "{{ award.Organization }}: {{ award.Title }}"
+title: "Russell S. Lebo: {{ award.Organization }}: {{ award.Title }}"
 pagination:
   data: awards
   size: 1

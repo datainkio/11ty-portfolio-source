@@ -35,7 +35,7 @@
   {% set set = projects | find("id", insight.Projects) %}
   {% for project in set %}
   {% if project.Published and (project.Weight == 0) %}
-  {% include "templates/project/card.html" %}
+  {% include "templates/project/card-md.html" %}
   {% endif %}
   {% endfor %}
 </figure>

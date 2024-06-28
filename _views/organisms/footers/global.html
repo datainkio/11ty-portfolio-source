@@ -1,16 +1,15 @@
 {# TODO: Match style definitions to homepage sections #}
-
 <footer class="p-4 sm:p-12 bg-black">
   <!-- AVATAR -->
   <!-- CTA -->
-  <section class="footer prose max-w-none col-span-12 py-8">
+  <section class="footer prose max-w-none py-8">
     <h2 class="prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50">If you are looking
       for a human-experience designer, please do say hello – I look forward to hearing about your company and project.</h2>
   </section>
   <!-- SOCIAL -->
-  <nav id="social" class="grid grid-flow-col gap-2 max-w-96">
+  <nav id="social" class="flex flex-row gap-2 max-w-96">
     {% for item in social %}
-    <a href="{{ item.URL }}">{{ item.pictureElement | safe }}</a>
+    <a href="{{ item.URL }}" class="w-28 h-18">{{ item.pictureElement | safe }}</a>
     {% endfor %}
   </nav>
 </footer>

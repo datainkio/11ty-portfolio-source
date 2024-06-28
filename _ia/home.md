@@ -1,5 +1,5 @@
 ---
-title: "Russ Lebo: Full-Stack Experience Designer"
+title: "Russell S. Lebo: Full-Stack Experience Designer"
 layout: "home/long-scroll.html"
 permalink: "/"
 data: pages

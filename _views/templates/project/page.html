@@ -32,15 +32,15 @@
     {% include "templates/project/supplemental-info.html" %}
     <!-- EXPLORE -->
     {% if project.URL %}
-    <a class="{{ button_styles }}" href="{{ project.URL }}">View</a>
+    <a class="{{ button_styles }}" href="{{ project.URL }}">View⤴</a>
     {% endif %}
   </section>
 </section>
 {% endblock %}
 {% block content %}
 <div class="md:grid md:grid-cols-2 bg-white">
-  {% if project.Videos is string %}
   <!-- LEAD VIDEO -->
+   {% if project.Videos %}
   <section id="video" class="md:col-start-1">
     {% for video in videos | find("id", project.Videos) %}
     {% include "templates/video/embed.html" %}
@@ -80,12 +80,12 @@
 {% block footer %}
 {% set category = ia | find("id", project.Category ) %}
 {% set id = project.id %}
-<figure id="related" class="{{ section_styles }} bg-black grid grid-cols-12 gap-4">
+<figure id="related" class="{{ section_styles }} bg-black grid grid-cols-4 gap-4">
   <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Other {{ category[0].Title }}</figcaption>
   {% set set = projects | find("id", category[0].Projects) %}
   {% for project in set %}
   {% if (project.Published) and (project.id != id) and (project.Weight <= 5) %}
-  {% include "templates/project/card.html" %}
+  {% include "templates/project/card-md.html" %}
   {% endif %}
   {% endfor %}
 </figure>

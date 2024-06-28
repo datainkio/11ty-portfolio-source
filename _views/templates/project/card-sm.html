@@ -1,0 +1,15 @@
+<div class="card card-side no-underline p-0 my-4">
+  {# IMAGE #}
+  <div class="card-body px-4 py-1">
+    <h3 class="card-title leading-none text-white font-medium text-xl my-0 col-span-full">{{ project.Title }}</h3>
+    {% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+    
+    <!-- ROLE -->
+    {% if project.Role %}
+      {% for role in roles | find('id', project.Role) %}
+      <p class="{{ copy_styles }}">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</p>
+      {% endfor %}
+    {% endif %}
+    <p class="prose {{ copy_styles }}">{{ project.Teaser }}</p>
+  </div>
+</div>

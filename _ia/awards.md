@@ -1,6 +1,6 @@
 ---
 layout: "award/overview.html"
-title: "Recognition"
+title: "Russell S. Lebo: Recognition"
 pagination:
   data: awards
   size: 100

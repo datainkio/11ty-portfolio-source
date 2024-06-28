@@ -1,5 +1,5 @@
 ---
-title: "Lessons Learned"
+title: "Russell S. Lebo: Lessons Learned"
 layout: "insight/landing.html"
 pagination:
   data: insights

@@ -1,5 +1,5 @@
 ---
-title: "Design"
+title: "Russell S. Lebo: Design"
 permalink: "now/design/"
 layout: "Design.html"
 eleventyNavigation:

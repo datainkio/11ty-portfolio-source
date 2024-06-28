@@ -1,6 +1,6 @@
 ---
 layout: "image/section.html"
-title: "Images"
+title: "Russell S. Lebo: Images"
 pagination:
   data: images
   size: 1000

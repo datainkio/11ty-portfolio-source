@@ -4,7 +4,6 @@
 {% set body_styles = "bg-black" %}
 {% set container_styles = "px-0" %}
 {% set section_styles = "p-4 sm:p-12" %}
-{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
 {% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50 col-span-full" %}
 {% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
 {% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
@@ -20,6 +19,7 @@
 
 {# CONTENT #}
 {% block content %}
+
 <!-- INTRO -->
 <section id="title" class="{{ section_styles }} h-dvh content-end">
 	<h1 class="text-5xl sm:text-6xl leading-none font-black text-neutral-50">Russell S. Lebo</h1>
@@ -33,10 +33,10 @@
 </section>
 
 <!-- WORK -->
-<section id="work" class="{{ section_styles }} {{ grid }} my-12">
+<section id="work" class="{{ section_styles }} grid grid-cols-3 gap-8 my-12">
 	{% for project in projects %}
-	{% if (loop.index <= 6) and (project.Weight == 0) %}
-	{% include "templates/project/card.html" %}
+	{% if project.Published and project.Featured %}
+	{% include "templates/project/card-md.html" %}
 	{% endif %}
 	{% endfor %}
 	<a href="/projects/" class="{{ button_styles }} col-span-full p-2 mx-auto">All</a>	
@@ -72,12 +72,12 @@
 </figure>
 
 <!-- LESSONS LEARNED -->
-<figure id="lessons_learned" class="{{ section_styles }} {{ grid }} my-12">
+<figure id="lessons_learned" class="{{ section_styles }} sm:grid sm:grid-cols-4 gap-8 my-12">
 	<figcaption class="{{ heading_styles }} divider divider-primary">Lessons Learned</figcaption>
 	{% for insight in insights %}
 	{% if insight.Featured %}
 	{% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
-	<a href="{{ href }}" class="card no-underline col-span-full md:col-span-6 hover:bg-neutral-800 p-0 my-4 sm:my-8">
+	<a href="{{ href }}" class="card no-underline hover:bg-neutral-800 p-0 my-4 sm:my-8">
 		{# IMAGE #}
 		<div class="h-64">
 			{% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}

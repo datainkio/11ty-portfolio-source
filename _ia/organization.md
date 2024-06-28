@@ -1,6 +1,6 @@
 ---
 layout: "organization/page.html"
-title: "{{ organization.Name }}"
+title: "Russell S. Lebo: {{ organization.Name }}"
 pagination:
   data: organizations
   size: 1

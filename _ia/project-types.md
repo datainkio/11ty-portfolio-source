@@ -1,6 +1,6 @@
 ---
-layout: "project/type.html"
-title: "{{ type.Slug }}"
+layout: "type/page.html"
+title: "Russell S. Lebo: {{ type.Title }}"
 pagination:
   data: ia
   size: 1
@@ -10,3 +10,5 @@ eleventyNavigation:
   parent: Work
   key: "{{ type.Slug }}"
 ---
+
+<!-- @format -->
