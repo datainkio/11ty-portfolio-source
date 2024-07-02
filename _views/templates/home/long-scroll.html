@@ -23,23 +23,28 @@
 <!-- INTRO -->
 <section id="title" class="{{ section_styles }} h-dvh content-end">
 	<h1 class="text-5xl sm:text-6xl leading-none font-black text-neutral-50">Russell S. Lebo</h1>
-	<div class="lg:grid lg:grid-cols-12">
-		<p class="{{ heading_styles }} text-pretty lg:col-span-10">
-		I am an experience designer. I work with user researchers, UI designers, engineers, and accessibility experts to create award-winning digital products and services that answer real human needs.</p>
-		<div class="hacky lg:col-span-2 lg:my-auto">
-			<a id="more_work" class="{{ button_styles }}">Work</a>
-		</div>
+		<p class="{{ heading_styles }} text-pretty prose">
+		I am a human-experience designer. I give user researchers, UI designers, engineers, and accessibility experts the insight and direction they need to create award-winning digital products and services that answer real human needs.</p>
 	</div>
 </section>
 
+
 <!-- WORK -->
-<section id="work" class="{{ section_styles }} grid grid-cols-3 gap-8 my-12">
-	{% for project in projects %}
-	{% if project.Published and project.Featured %}
-	{% include "templates/project/card-md.html" %}
-	{% endif %}
+<section id="work" class="{{ section_styles }}">
+	<p class="{{ heading_styles }} text-pretty prose">
+		My work is expressed in more than pixels. It shows up in the questions researchers ask, the strategies that lead designers to solutions, and the guidance that helps engineers realize what is possible for<a href="#experiential" class="link-primary">artists</a>, <a href="#museums" class="link-primary">museums, monuments, and memorials</a>, <a href="#civic-tech" class="link-primary">civic tech</a>,  <a href="#advertising-and-identity" class="link-primary">advertising</a>, <a href="#health-and-science" class="link-primary">health tech</a>, and <a href="#b2b" class="link-primary">B2B</a>.</p>
+	{% for category in ia %}
+	<figure id="{{ category.Slug | slugify }}" class="category {{ section_styles }} sm:grid sm:grid-cols-3 gap-4">
+		<figcaption class="{{ heading_styles }} col-span-full divider divider-primary">{{ category.Title }}</figcaption>
+		{% set set = projects | find("id", category.Projects) %}
+		{% for project in set %}
+		{% if project.Featured %}
+		{% include "templates/project/card-md.html" %}
+		{% endif %}
+		{% endfor %}
+		<a href="/projects/types/{{ category.Slug | slugify }}/" class="{{ button_styles }} col-span-full mx-auto">More</a>
+	</figure>
 	{% endfor %}
-	<a href="/projects/" class="{{ button_styles }} col-span-full p-2 mx-auto">All</a>	
 </section>
 
 <!-- RECOGNITION -->
