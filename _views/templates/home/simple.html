@@ -1,0 +1,26 @@
+{% set copy_styles = "prose text-2xl leading-none font-thin mb-8 text-neutral-900 md:col-start-1" %}
+{% set bg_styles = "bg-fixed bg-[#f4f4f6] bg-blend-darken bg-bottom-center bg-no-repeat bg-[url('https://dataink.io/assets/content/images/static/hair.png')]" %}
+<!DOCTYPE html>
+<html lang="en" class="bg-white">
+  <!-- HEAD -->
+  {% include "partials/head.html" %}
+  <body class="bg-white">
+    <!-- GTM -->
+    {% include "partials/gtm_body.html" %}
+		<!-- NAV -->
+    <!-- CONTENT -->
+    <main tabindex=" -1" class="p-8 h-full relative z-10">
+				<h1 class="text-5xl sm:text-6xl leading-none tracking-tighter text-center font-black text-neutral-900">Russell S. Lebo</h1>
+				<p class="text-3xl sm:text-4xl leading-none text-center font-thin m-8 mx-auto text-neutral-900">
+				I am a human-experience designer.</p>
+				<ul tabindex="0" class="join join-vertical my-12 space-y-2 sm:space-y-0 sm:space-x-6 sm:join-horizontal flex justify-center h-full">
+					{% for item in collections.all | eleventyNavigation %}
+					<li class="join-item text-center">
+						<a class="link link-hover font-medium " href="{{ item.url }}">{{ item.key }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+    </main>
+		<img class="w-full absolute inset-x-0 bottom-0 mx-auto z-0 lg:max-w-screen-lg" src="https://dataink.io/assets/content/images/static/hair.png"/>
+  </body>
+</html>

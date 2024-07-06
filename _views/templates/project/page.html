@@ -1,14 +1,13 @@
 {% extends "species/article.html" %}
 
 {# STYLES #}
-{% set body_styles = "bg-black" %}
-{% set container_styles = "px-0" %}
+{% set body_styles = "project" %}
+{% set container_styles = "" %}
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
-{% set link_styles = "link-primary link-hover font-medium" %}
-{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
-{% set button_styles = "btn btn-outline btn-circle btn-primary w-24 h-24 text-lg italic " %}
+{% set heading_styles = "text-3xl sm:text-4xl leading-none font-thin mb-8" %}
+{% set copy_styles = "font-thin text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set button_styles = "btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block mx-auto col-end-auto " %}
 
 {% set title = [project.Name, project.Title] | join(": ") %}
 {% block accessibility %}
@@ -20,15 +19,21 @@
 {% endblock %} 
 <!-- WE DON'T NEED ANOTHER HERO -->
 {% block hero %}
-<section class="bg-black p-12 pb-20">
-  <a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
-  {% for category in ia | find("id", project.Category ) %} 
-  <a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/types/{{ category.Slug | slugify }}">{{ category.Title }} /</a>
-  {% endfor %}
-  <h1 class="text-white font-black text-center md:text-left">{{ project.Title }}</h1>
-  <p id="introduction" class="text-white text-center md:text-left md:text-2xl font-extralight">{{ project.Teaser }}</p>
+<section class="p-12 pb-0">
+  <div class="breadcrumbs">
+    <ul class="place-content-center md:place-content-start">
+      <li><a href="/projects/">Work</a></li>
+      {% for category in ia | find("id", project.Category ) %} 
+      <li><a href="/projects/types/{{ category.Slug | slugify }}">{{ category.Title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+
+  <h1>{{ project.Title }}</h1>
+  <p id="introduction" class="subtitle">{{ project.Teaser }}</p>
   <!-- HERE BE PROJECT METADATA -->
-  <section id="details" class="sm:grid sm:grid-cols-6 py-8 gap-4">
+  <section id="details" class="w-full md:grid md:grid-cols-6 py-12 gap-4">
     {% include "templates/project/supplemental-info.html" %}
     <!-- EXPLORE -->
     {% if project.URL %}
@@ -38,35 +43,28 @@
 </section>
 {% endblock %}
 {% block content %}
-<div class="md:grid md:grid-cols-2 bg-white">
   <!-- LEAD VIDEO -->
    {% if project.Videos %}
-  <section id="video" class="md:col-start-1">
+  <section id="video" class="mx-auto">
     {% for video in videos | find("id", project.Videos) %}
     {% include "templates/video/embed.html" %}
     {% endfor %}
   </section>
   {% endif %}
   <!-- BODY COPY -->
-  <section id="body" class="p-12 prose md:col-start-1">
+  <section id="body" class="description mx-auto p-8 md:p-0 md:pt-8 border-t-2 border-neutral-900">
     {% if project.Description is string %}
     {{ project.Description | markdownify | safe }}
     {% endif %}
   </section>
   <!-- NUGGETS -->
-  <section id="nuggets" class="prose p-12 md:col-start-1">
+  <section id="nuggets" class="prose mx-auto p-8 md:p-0">
     {% for nugget in nuggets | find('id', project.Nuggets) %}
-      <h2>{{ nugget.Name }}</h2>
-      {% if nugget.Description is string %}
-        {{ nugget.Description | markdownify | safe }}
-      {% endif %}
-      {% for image in images | find('id', nugget.Images) %}
-        {% include "templates/image/modal.html" %}
-      {% endfor %}
+      {% include "templates/nugget/block.html" %}
     {% endfor %}
   </section>
   <!-- IMAGE GALLERIES -->
-  <section id="examples" class="object-top md:col-start-2 md:row-start-1 md:row-span-2">
+  <section id="examples" class="mx-auto">
     {% for gallery in galleries | find("id", project.Galleries) %}
       {% set data = gallery %}
       {% include "templates/gallery/carousel.html" %}
@@ -75,12 +73,11 @@
       {% endif %}
     {% endfor %}
   </section>
-</div>
 {% endblock %}
 {% block footer %}
 {% set category = ia | find("id", project.Category ) %}
 {% set id = project.id %}
-<figure id="related" class="{{ section_styles }} bg-black grid grid-cols-4 gap-4">
+<figure id="related" class="{{ section_styles }} md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
   <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Other {{ category[0].Title }}</figcaption>
   {% set set = projects | find("id", category[0].Projects) %}
   {% for project in set %}

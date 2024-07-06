@@ -1,6 +1,6 @@
 {% set figure_styles = "py-2" %}
-{% set figcaption_styles = "text-slate-400 text-wrap leading-tight text-lg" %}
-{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set figcaption_styles = "" %}
+{% set copy_styles = "" %}
 
 <!-- ROLE -->
 {% if project.Role %}
@@ -28,7 +28,7 @@
 
 <!-- ACTIITIES -->
 {% if project.Activities %}
-<figure class="{{ figure_styles }} col-span-full">
+<figure class="{{ figure_styles }} col-span-2">
 <figcaption class="{{ figcaption_styles }}">Activities</figcaption>
 <ul class="list-none pl-0">
 	{% for activity in activities | find('id', project.Activities) %}

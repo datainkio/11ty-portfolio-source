@@ -1,13 +1,13 @@
 {% extends "species/article.html" %}
 
 {# STYLES #}
-{% set body_styles = "bg-black" %}
+{% set body_styles = "" %}
 {% set container_styles = "px-0" %}
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
-{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8" %}
+{% set link_styles = "text-balance lowercase text-xl leading-none font-thin hover:text-primary" %}
+{% set copy_styles = "prose text-pretty py-2" %}
 {% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
 
 {% block accessibility %}
@@ -15,7 +15,7 @@
 <a href="#feed">posts</a>
 {% endblock %}
 {% block hero %}
-<section class="{{ section_styles }} text-white sm:grid sm:grid-cols-2 gap-8">
+<section class="{{ section_styles }} sm:grid sm:grid-cols-2 gap-8">
 <h1 class="col-span-full">Lessons Learned</h1>
 </section>
 {% endblock %}
@@ -29,14 +29,14 @@
   <figure id="lessons_learned" class="px-8 mt-0 sm:col-span-9 sm:grid sm:grid-cols-2 gap-8">
     {% for insight in insights %}
     {% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
-    <a href="{{ href }}" class="card no-underline hover:bg-neutral-800 p-0 my-4 sm:my-8">
+    <a href="{{ href }}" class="card p-0 mb-8 sm:mb-12">
       {# IMAGE #}
       <div class="h-64">
         {% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
       </div>
-      <div class="card-body my-4 px-4 flex-none">
-        <p class="{{ copy_styles }} my-0">{{ insight.Created }}</p>
-        <h3 class="card-title leading-none text-white font-medium text-2xl my-0">{{ insight.Name }}</h3>
+      <div class="card-body px-4 flex-none">
+        <p class="{{ copy_styles }} my-0 py-0">{{ insight.Created }}</p>
+        <h3 class="card-title leading-none font-medium text-2xl my-0">{{ insight.Name }}</h3>
         <p class="{{ copy_styles }}">{{ insight.Teaser }}</p>
       </div>
     </a>

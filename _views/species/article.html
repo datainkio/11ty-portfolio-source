@@ -1,7 +1,6 @@
 {# Add to class declaration for any element(s) to test responsiveness #}
 {% set responsive = "bg-slate-100 xs:bg-slate-200 sm:bg-slate-300 md:bg-slate-400 lg:bg-slate-500 xl:bg-slate-600
   xxl:bg-slate-700" %}
-{% set container_styles = "py-12" %}
 <!DOCTYPE html>
 <html lang="en">
   <!-- HEAD -->
@@ -18,7 +17,7 @@
     {% include "organisms/headers/global.html" %}
     <!-- CONTENT -->
     <main tabindex=" -1" class="{{ container_styles }}">
-      <article>
+      <article class="sm:col-span-full sm:grid sm:grid-cols-subgrid">
         {% block hero %}{% endblock %}
         {% block content %}{% endblock %}
       </article>

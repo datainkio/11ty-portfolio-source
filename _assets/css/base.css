@@ -9,29 +9,51 @@
 
 @layer base {
   body {
-    @apply bg-slate-100 /** sm:bg-slate-100 md:bg-slate-200 lg:bg-slate-300 xl:bg-slate-400; **/
+    @apply bg-none;
   }
   h1 {
-    @apply font-black leading-none mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+    @apply font-black text-neutral-900 hover:no-underline 
+    leading-none tracking-tight text-balance text-center md:text-left md:-ml-1
+    text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
   }
   h2 {
-    @apply font-bold text-lg sm:text-xl md:text-2xl;
+    @apply font-bold text-neutral-900 hover:no-underline
+    text-balance text-center md:text-left
+    text-lg sm:text-xl md:text-2xl;
   }
   h3 {
-    @apply font-bold;
+    @apply font-medium text-neutral-900 hover:no-underline
+    text-balance leading-none 
+    text-2xl my-0 col-span-full;
+  }
+  figcaption {
+    @apply text-neutral-400 hover:no-underline
+    text-balance leading-none
+    my-0 col-span-full;
   }
   p {
-
+    @apply prose hover:no-underline my-4;
   }
 
-  section.hero_teaser p {
-    @apply text-white;
+  p.subtitle {
+    @apply text-center md:text-left font-light 
+    text-pretty leading-tight pt-4
+    text-xl sm:text-2xl md:text-3xl;
   }
 
-  figcaption {
-    @apply text-sm;
+  p.abstract {
+    @apply font-light 
+    text-pretty leading-tight
+    sm:text-xl md:text-2xl;
   }
 
+  a {
+    @apply link-hover font-medium;
+  }
+
+  a.card {
+    @apply hover:no-underline hover:bg-neutral-200;
+  }
 
   .card figure {
     @apply aspect-video;
@@ -51,7 +73,16 @@
 }
 
 @layer components {
-
+  .modal {
+    @apply bg-black bg-opacity-75 p-0;
+  }
+  .modal-box {
+    @apply bg-transparent m-0 max-w-none shadow-none;
+  }
+  .modal h2,
+  .modal p {
+    @apply text-white mb-4;
+  }
 }
 
 @layer utilities {

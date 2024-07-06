@@ -1,5 +1,5 @@
 <div class="card lg:card-side px-4">
-  <div class="card-body prose">
+  <div class="card-body">
     <h2 class="card-title">{{ nugget.Name }}</h2>
     {% if nugget.Description is string %}
     {{ nugget.Description | markdownify | safe }}

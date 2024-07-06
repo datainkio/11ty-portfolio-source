@@ -1,13 +1,13 @@
 {% extends "species/article.html" %}
 
 {# STYLES #}
-{% set body_styles = "bg-black" %}
+{% set body_styles = "" %}
 {% set container_styles = "px-0" %}
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-xl sm:text-2xl leading-none font-thin mb-8 text-neutral-50 content-center" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
-{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set heading_styles = "prose text-xl sm:text-2xl leading-none font-thin mb-8 content-center" %}
+{% set link_styles = "text-balance lowercase text-xl leading-none font-thin hover:text-primary" %}
+{% set copy_styles = "font-thin text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
 {% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
 
 {% block accessibility %}
@@ -15,20 +15,20 @@
 <a href="#awards">awards</a>
 {% endblock %}
 {% block hero %}
-<section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2 gap-8">
+<section id="introduction" class="{{ section_styles }} grid sm:grid-cols-2 gap-8">
   <h1 class="md:col-span-full">Recognition</h1>
+  <p class="subtitle ">I've worked with amazing, multitalented teams producing award-winning work with a real impact. People like <a
+    href="https://www.joshgoldblum.com/" class="link-primary link-hover">Josh Goldblum</a> at <a href="https://www.bluecadet/" class="link-primary link-hover">Bluecadet</a>, who gave
+  me my first paying gig back when the company was still operating out of his living room. <a
+    href="https://www.linkedin.com/in/adamcutler/" class="link-primary link-hover">Adam Cutler</a> and <a
+    href="https://www.arup.com/our-firm/jeff-berg" class="link-primary link-hover">Jeff Berg</a>, two people who introduced me to IBM and what it
+  means to work on a global scale. And <a href="https://www.linkedin.com/in/willweems/" class="link-primary link-hover">Will Weems</a> and <a
+    href="https://world.hey.com/philip.levy" class="link-primary link-hover">Phil Levy</a>, two colleagues and friends from Bixal who showed me what
+  it means to grow and develop design culture in organizations.</p>
 </section>
 {% endblock %}
 {% block content %}
 <section class="sm:grid sm:grid-cols-12 sm:gap-8 {{ section_styles }}">
-    <p class="{{ copy_styles }} sm:col-span-6 mb-12 ">I've worked with amazing, multitalented teams producing award-winning work with a real impact. People like <a
-      href="https://www.joshgoldblum.com/" class="link-primary link-hover">Josh Goldblum</a> at <a href="https://www.bluecadet/" class="link-primary link-hover">Bluecadet</a>, who gave
-    me my first paying gig back when the company was still operating out of his living room. <a
-      href="https://www.linkedin.com/in/adamcutler/" class="link-primary link-hover">Adam Cutler</a> and <a
-      href="https://www.arup.com/our-firm/jeff-berg" class="link-primary link-hover">Jeff Berg</a>, two people who introduced me to IBM and what it
-    means to work on a global scale. And <a href="https://www.linkedin.com/in/willweems/" class="link-primary link-hover">Will Weems</a> and <a
-      href="https://world.hey.com/philip.levy" class="link-primary link-hover">Phil Levy</a>, two colleagues and friends from Bixal who showed me what
-    it means to grow and develop design culture in organizations.</p>
   <figure id="awards" class="sm:col-span-6">
     {% for award in awards %}
     {% set data = projects | find("id", award.Projects) %}

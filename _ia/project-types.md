@@ -6,9 +6,6 @@ pagination:
   size: 1
   alias: type
 permalink: "projects/types/{{ type.Slug | slugify }}/"
-eleventyNavigation:
-  parent: Work
-  key: "{{ type.Slug }}"
 ---
 
 <!-- @format -->

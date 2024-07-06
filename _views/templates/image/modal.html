@@ -1,20 +1,23 @@
-<div class="w-full">
+{% if img_styles %}{% else %}
+{% set img_styles = "w-full" %}
+{% endif %}
+<div class="{{ img_styles }}">
 	{% set action = ["modal_", image.id, ".showModal()"] | join %}
-	<button class="picture object-contain" onclick="{{ action }}">{{ image.pictureElement | safe }}</button>
+	<button class="picture" onclick="{{ action }}">{{ image.pictureElement | stylePicture("m-0", "m-0") | safe }}</button>
 	<dialog id="modal_{{ image.id }}" class="modal">
-		<figure class="modal-box w-9/12 max-w-none shadow-none md:grid md:grid-cols-3 md:gap-4">
-			<figcaption>
+		<form method="dialog">
+			<button class="btn btn-sm md:btn-lg btn-circle absolute right-2 top-2">✕</button>
+		</form>
+		<figure class="modal-box md:grid md:grid-cols-3 md:gap-4">
+			<figcaption class="col-span-1">
 				<h2 class="text-xl m-0">{{ image.Title }}</h2>
 				<p class="prose">{{ image.Caption }}</p>
 			</figcaption>
-			{% set style = "md:col-span-2 p-4" %}
+			{% set style = "md:col-start-2 md:col-span-2 p-4" %}
 			{% if image.Invert %}
-			{% set style = "md:col-span-2 p-4 bg-black" %}
+			{% set style = "md:col-start-2 md:col-span-2 p-4 bg-black" %}
 			{% endif %}
 			{{ image.pictureElement | stylePicture(style, "object-center object-cover object-scale-down max-h-[724px]")  | safe }}
 		</figure>
-		<form method="dialog" class="modal-backdrop">
-			<button>close</button>
-		</form>
 	</dialog>
 </div>

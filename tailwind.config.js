@@ -9,6 +9,7 @@ module.exports = {
 
   theme: {
     extend: {
+      backgroundSize: layout.backgroundSize,
       spacing: layout.spacing,
       colors: palettes.bauhaus,
       container: layout.container,

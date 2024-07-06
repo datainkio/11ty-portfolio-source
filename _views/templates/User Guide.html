@@ -1,0 +1,45 @@
+{% extends "species/article.html" %}
+
+{# STYLES #}
+{% set body_styles = "" %}
+{% set container_styles = "px-0 sm:grid sm:grid-cols-12 w-full" %}
+{% set section_styles = "p-4 sm:p-12" %}
+{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
+{% set heading_styles = "" %}
+{% set link_styles = "link-primary link-hover font-medium" %}
+{% set copy_styles = "" %}
+{% set button_styles = "btn btn-outline btn-circle btn-primary w-24 h-24 text-lg italic " %}
+
+{% set title = [project.Name, project.Title] | join(": ") %}
+{% block accessibility %}
+<a href="#introduction">introduction</a>
+<a href="#details">details</a>
+<a href="#body">body</a>
+<a href="#nuggets">nuggets</a>
+<a href="#examples">examples</a>
+{% endblock %} 
+<!-- WE DON'T NEED ANOTHER HERO -->
+{% block hero %}
+<section class="p-12 pb-20 col-span-full">
+  <h1 class="font-black text-center md:text-left">User Guide</h1>
+  <p id="introduction" class="subtitle">Insight into how I work and how to get the most out of me.</p>
+</section>
+{% endblock %}
+{% block content %}
+<section id="intro" class="{{ section_styles }} col-span-6">
+	<h2 class="{{ heading_styles }}">What I Do</h2>
+	<p class="{{ copy_styles }}">
+	I am a human-experience designer.</p>
+	<p class="{{ copy_styles }}">I team up with user researchers, UI designers, engineers, and accessibility experts to deliver <a href="/projects/" class="link-primary">award-winning digital products and services</a> that answer real human needs.</p>
+	<p class="{{ copy_styles }}">My work appears in the questions researchers ask, the strategies that lead designers to solutions, and the human perspective that helps engineers realize what is possible.</p>
+	<p class="{{ copy_styles }}">
+		As a design manager for $65.5M in federal contracts, I <a href="/projects/sba-gov/" class="link-primary">connected American entrepeneurs with billions of dollars</a> in funding during COVID, <a href="/projects/digital-transformation-for-public-health/"  class="link-primary">increased food safety</a>, and <a href="/projects/forms-gov/"  class="link-primary">increased equitable acccess to federal benefits and services</a> for millions of Americans.</p>
+	<p class="{{ copy_styles }}">
+		As a product design lead, I designed and prototyped IBM's first application of AI to healthcare and gave biologists tools to understands the genetic causes of disease.</p>
+	<p class="{{ copy_styles }}">
+		As a developer and interaction designer, I created award-winning cinematic experiences for artists, museums, world-famous DJs, and world-wide brands.</p>
+</section>
+<section id="history" class="{{ section_styles }} col-start-7 col-span-5">
+	{% include "organisms/timeline.html" %}
+</section>
+{% endblock %}

@@ -1,6 +1,6 @@
 ---
 title: "Russell S. Lebo: Full-Stack Experience Designer"
-layout: "home/long-scroll.html"
+layout: "home/simple.html"
 permalink: "/"
 data: pages
 scripts: >

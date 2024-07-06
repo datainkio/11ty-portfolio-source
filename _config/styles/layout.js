@@ -2,6 +2,18 @@ module.exports = {
   spacing: {
     360: "90rem",
   },
+  backgroundSize: {
+    'auto': 'auto',
+    'cover': 'cover',
+    'contain': 'contain',
+    '25%': '25%',
+    '50%': '50%',
+    '75%': '75%',
+    '150%': '150%',
+    '200%': '200%',
+    '300%': '300%',
+    '16': '4rem',
+  },
   container: {
     // you can configure the container to be centered
     // center: true,

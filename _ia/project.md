@@ -6,6 +6,8 @@ pagination:
   size: 1
   alias: project
 permalink: "projects/{{ project.Name | slugify }}/"
+scripts: >
+  <script src="/assets/js/main.js"></script>
 ---
 
 <!-- @format -->

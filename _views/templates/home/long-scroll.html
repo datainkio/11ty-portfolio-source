@@ -1,100 +1,33 @@
-{% extends "species/base.html" %}
-
-{# STYLES #}
-{% set body_styles = "bg-black" %}
-{% set container_styles = "px-0" %}
-{% set section_styles = "p-4 sm:p-12" %}
-{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8 text-neutral-50 col-span-full" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin text-neutral-50 hover:text-primary" %}
-{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
-{% set button_styles = "btn btn-circle btn-primary w-20 h-20 sm:w-24 sm:h-24 text-lg italic " %}
-
-{# ACCESSIBILITY #}
-{% block accessibility %}
-<a href="#intro">introduction</a>
-<a href="#work">projects</a>
-<a href="#impact">impact</a>
-<a href="#lessons_learned">lessons learned</a>
-{% endblock %}
-
-{# CONTENT #}
-{% block content %}
-
-<!-- INTRO -->
-<section id="title" class="{{ section_styles }} h-dvh content-end">
-	<h1 class="text-5xl sm:text-6xl leading-none font-black text-neutral-50">Russell S. Lebo</h1>
-		<p class="{{ heading_styles }} text-pretty prose">
-		I am a human-experience designer. I give user researchers, UI designers, engineers, and accessibility experts the insight and direction they need to create award-winning digital products and services that answer real human needs.</p>
-	</div>
-</section>
-
-
-<!-- WORK -->
-<section id="work" class="{{ section_styles }}">
-	<p class="{{ heading_styles }} text-pretty prose">
-		My work is expressed in more than pixels. It shows up in the questions researchers ask, the strategies that lead designers to solutions, and the guidance that helps engineers realize what is possible for<a href="#experiential" class="link-primary">artists</a>, <a href="#museums" class="link-primary">museums, monuments, and memorials</a>, <a href="#civic-tech" class="link-primary">civic tech</a>,  <a href="#advertising-and-identity" class="link-primary">advertising</a>, <a href="#health-and-science" class="link-primary">health tech</a>, and <a href="#b2b" class="link-primary">B2B</a>.</p>
-	{% for category in ia %}
-	<figure id="{{ category.Slug | slugify }}" class="category {{ section_styles }} sm:grid sm:grid-cols-3 gap-4">
-		<figcaption class="{{ heading_styles }} col-span-full divider divider-primary">{{ category.Title }}</figcaption>
-		{% set set = projects | find("id", category.Projects) %}
-		{% for project in set %}
-		{% if project.Featured %}
-		{% include "templates/project/card-md.html" %}
-		{% endif %}
-		{% endfor %}
-		<a href="/projects/types/{{ category.Slug | slugify }}/" class="{{ button_styles }} col-span-full mx-auto">More</a>
-	</figure>
-	{% endfor %}
-</section>
-
-<!-- RECOGNITION -->
-<figure id="recognition" class="{{ section_styles }} my-12">
-	<figcaption class="divider divider-primary w-full mx-auto {{ heading_styles }}">Recognition</figcaption>
-	<a href="/recognition/" class="flex flex-wrap hover:bg-neutral-800 ">
-	{% for image in images | sort(attribute="Weight") %}
-	{% if image.Recognition %}
-	{{ image.pictureElement | stylePicture("logo p-4 w-24 h-24 md:w-28 md:h-28 mx-auto my-0") | safe }}
-	{% endif %}
-	{% endfor %}
-	</a>
-</figure>
-
-<!-- IMPACT -->
-<figure id="metrics" class="{{ section_styles }} my-12">
-	<figcaption class="divider divider-primary w-full mx-auto {{ heading_styles }}">Impact</figcaption>
-	<div class="columns-2 sm:px-2 md:columns-3 xl:columns-4 gap-4 md:gap-8">
-		{% for stat in outcomes %}
-		{# Display selected Success Metrics #}
-		{% if (stat.Type == "Success Metric") and (stat.Weight == 1) %}
-		{% set href = "" %}
-		{% for project in projects | find("id", stat.Projects) %}
-			{% set href = ["/projects/",project.Name | slugify, "/"] | join %}
-			{% include "molecules/stat.html" %}
-		{% endfor %}
-		{% endif %}
-		{% endfor %}
-	</div>
-</figure>
-
-<!-- LESSONS LEARNED -->
-<figure id="lessons_learned" class="{{ section_styles }} sm:grid sm:grid-cols-4 gap-8 my-12">
-	<figcaption class="{{ heading_styles }} divider divider-primary">Lessons Learned</figcaption>
-	{% for insight in insights %}
-	{% if insight.Featured %}
-	{% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
-	<a href="{{ href }}" class="card no-underline hover:bg-neutral-800 p-0 my-4 sm:my-8">
-		{# IMAGE #}
-		<div class="h-64">
-			{% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
-		</div>
-		<div class="card-body my-4 px-4 flex-none">
-			<p class="{{ copy_styles }} my-0">{{ insight.Created }}</p>
-			<h3 class="card-title leading-none text-white font-medium text-2xl my-0">{{ insight.Name }}</h3>
-			<p class="{{ copy_styles }}">{{ insight.Teaser }}</p>
-		</div>
-	</a>
-	{% endif %}
-	{% endfor %}
-	<a href="/lessons-learned/" class="{{ button_styles }} col-span-full mx-auto">All</a>
-</figure>
-{% endblock %}
+{% set copy_styles = "prose text-2xl leading-none font-thin mb-8 text-neutral-900 md:col-start-1" %}
+{% set bg_styles = "bg-contain bg-fixed bg-[#f4f4f6] bg-blend-darken bg-bottom bg-no-repeat bg-[url('https://dataink.io/assets/content/images/static/hair.png')]" %}
+<!DOCTYPE html>
+<html lang="en" class="{{ bg_styles }} h-[calc(100dvh)] overflow-hidden">
+  <!-- HEAD -->
+  {% include "partials/head.html" %}
+  <body>
+    <!-- GTM -->
+    {% include "partials/gtm_body.html" %}
+    <!-- A11Y -->
+    <section id="skip" tabindex=" -2" class="sr-only">
+			<a href="#bio">introduction</a>
+			<a href="#work">projects</a>
+			<a href="#impact">impact</a>
+			<a href="#lessons_learned">lessons learned</a>
+    </section>
+		<!-- NAV -->
+    <!-- CONTENT -->
+    <main tabindex=" -1" class="p-8 md:grid md:grid-cols-2 z-10">
+				<h1 class="text-5xl sm:text-6xl leading-none tracking-tighter text-center font-black text-neutral-900 col-span-full">Russell S. Lebo</h1>
+				<p class="text-3xl sm:text-4xl leading-none text-center font-thin mb-8 text-neutral-900 col-span-full my-auto">
+				I am a human-experience designer.</p>
+				<p class="anim {{ copy_styles }}">I team up with user researchers, UI designers, engineers, and accessibility experts to deliver <a href="/projects/" class="link-primary">award-winning digital products and services</a> that answer real human needs.</p>
+				<p class="anim {{ copy_styles }}">My work appears in the questions researchers ask, the strategies that lead designers to solutions, and the human perspective that helps engineers realize what is possible.</p>
+				<p class="anim {{ copy_styles }}">
+					As a design manager for $65.5M in federal contracts, I <a href="/projects/sba-gov/" class="link-primary">connected American entrepeneurs with billions of dollars</a> in funding during COVID, <a href="/projects/digital-transformation-for-public-health/"  class="link-primary">increased food safety</a>, and <a href="/projects/forms-gov/"  class="link-primary">increased equitable acccess to federal benefits and services</a> for millions of Americans.</p>
+				<p class="anim {{ copy_styles }}">
+					As a product design lead, I designed and prototyped IBM's first application of AI to healthcare and gave biologists tools to understands the genetic causes of disease.</p>
+				<p class="anim {{ copy_styles }}">
+					As a developer and interaction designer, I created award-winning cinematic experiences for artists, museums, world-famous DJs, and world-wide brands.</p>
+    </main>
+  </body>
+</html>

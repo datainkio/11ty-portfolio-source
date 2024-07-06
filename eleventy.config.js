@@ -124,30 +124,34 @@ module.exports = function (eleventyConfig) {
    * @returns
    */
   function figure(image) {
-    // set the size and background for the image
-    var style = "p-4";
-    // If Invert is undefined, make sure the image is published
-    if (image.Invert) {
-      style = "p-4 bg-black";
+      // set the size and background
+      if ( image ) {
+
+      var style = "p-4";
+      // If Invert is undefined, make sure the image is published
+      if (image.Invert) {
+        style = "p-4 bg-black";
+      }
+      // apply styles to the picture element supplied by 11ty
+      if (image.pictureElement) {
+        return `<div class="w-full">
+        <button class="picture object-contain" onclick="modal_${
+          image.id
+        }.showModal()">${image.pictureElement}</button>
+        <dialog id="modal_${image.id}" class="modal">
+        <figure class="modal-box w-11/12 max-w-none shadow-none" id="${image.id}">
+        ${stylePE(image.pictureElement, style, "w-full")}
+        <figcaption class="md:col-span-2">${image.Caption}</figcaption>
+        </figure>
+        <form method="dialog" class="modal-backdrop"><button>close</button></form>
+        </dialog>
+      </div>`;
+      } else {
+        return;
+      }
     }
-    // apply styles to the picture element supplied by 11ty
-    if (image.pictureElement) {
-      return `<div class="w-full">
-      <button class="picture object-contain" onclick="modal_${
-        image.id
-      }.showModal()">${image.pictureElement}</button>
-      <dialog id="modal_${image.id}" class="modal">
-      <figure class="modal-box w-11/12 max-w-none shadow-none" id="${image.id}">
-      ${stylePE(image.pictureElement, style, "w-full")}
-      <figcaption class="md:col-span-2">${image.Caption}</figcaption>
-      </figure>
-      <form method="dialog" class="modal-backdrop"><button>close</button></form>
-      </dialog>
-    </div>`;
-    } else {
-      return;
     }
-  }
+  
 
   /**
    * Return a specific item from a given array

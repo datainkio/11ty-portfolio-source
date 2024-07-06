@@ -5,9 +5,9 @@
 {% set container_styles = "px-0" %}
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin text-neutral-50 m-0" %}
+{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin m-0" %}
 {% set link_styles = "text-lg sm:text-xl font-medium link-hover link-primary" %}
-{% set copy_styles = "font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set copy_styles = "font-thin text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
 {% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
 
 {% set title = ["Lessons Learned", insight.Name] | join(": ") %}
@@ -18,19 +18,19 @@
 <a href="#related">related work</a>
 {% endblock %} 
 {% block hero %}
-<section id="intro" class="bg-black p-8 flex flex-col">
+<section id="intro" class="p-8 flex flex-col">
 <a href="/lessons-learned/" class="{{ link_styles }}">Lessons Learned /</a>
 <h1 class="md:col-span-12 {{ heading_styles }}">{{ insight.Name }}</h1>
-<p class="text-neutral-50 my-2">{{ insight.Created }} | Russell S. Lebo</p>
+<p class="my-2">{{ insight.Created }} | Russell S. Lebo</p>
 </section>
 {% endblock %}
 {% block content %}
-<section class="{{ section_styles }} prose">
+<section class="{{ section_styles }} prose mx-auto">
   {{ insight.Body | markdownify | expand(images) | safe }}
 </section>
 {% endblock %}
 {% block footer %}
-<figure id="related" class="{{ section_styles }} bg-black grid grid-cols-12 gap-4">
+<figure id="related" class="{{ section_styles }} col-span-full sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">Related Work</figcaption>
   {% set set = projects | find("id", insight.Projects) %}
   {% for project in set %}

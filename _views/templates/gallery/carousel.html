@@ -3,7 +3,10 @@
   {% include "templates/gallery/grid.html" %}
 </a>
 <dialog id="gallery_{{ data.id }}" class="modal">
-  <div class="modal-box w-9/12 max-w-none shadow-none">
+  <form method="dialog">
+    <button class="btn btn-sm md:btn-lg btn-circle absolute right-2 top-2">✕</button>
+  </form>
+  <div class="modal-box max-w-none shadow-none">
     <div class="md:carousel md:carousel-center md:max-w-none space-x-4 md:rounded-box ">
       <!-- TITLE CARD -->
       <div id="{{ data.id }}_title" class="mb-4 p-4 md:carousel-item w-full">
@@ -12,14 +15,14 @@
           <p class="prose">{{ data.Description | markdownify | safe }}</p>
           {% endif %}
         </div>
-
       </div>
       <!-- IMAGES -->
       {% set index = 1 %}
       {% for image in images | find('id', data.Images) | sort(false,false,"Weight") %}
       {% if image.Published %}
       <figure id="{{ data.id }}_item{{ index }}" class="mb-4 md:mb-0 md:carousel-item md:grid md:grid-cols-3 md:gap-4 w-full">
-        <figcaption class="p-4">
+        <figcaption class="col-span-1">
+          <h2>{{ data.Title }}</h2>
           <h3 class="text-xl">{{ image.Title }}</h3>
           <p class="prose">{{ image.Caption }}</p>
         </figcaption>
@@ -45,7 +48,4 @@
       {% endfor %}
     </div>
   </div>
-  <form method="dialog" class="modal-backdrop">
-    <button>close</button>
-  </form>
 </dialog>

@@ -2,7 +2,7 @@
 <div class="sm:grid sm:grid-cols-12 my-8 gap-8">
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-4", "") | safe }}{% endfor %}
   <div class="sm:col-span-6 mb-8 p-4">
-    <h3 class="leading-none text-white font-medium text-2xl my-0 col-span-full">{{ project.Title }}</h3>
+    <h3>{{ project.Title }}</h3>
     <p class="prose {{ copy_styles }} my-2 col-span-6">{{ project.Teaser }}</p>
     <div class="sm:grid sm:grid-cols-2">
       {% include "templates/project/supplemental-info.html" %}
