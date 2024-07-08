@@ -19,7 +19,7 @@
   h2 {
     @apply font-bold text-neutral-900 hover:no-underline
     text-balance text-center md:text-left
-    text-lg sm:text-xl md:text-2xl;
+    text-lg sm:text-xl md:text-2xl text-pretty;
   }
   h3 {
     @apply font-medium text-neutral-900 hover:no-underline
@@ -31,6 +31,10 @@
     text-balance leading-none
     my-0 col-span-full;
   }
+  section .heading, figcaption.heading {
+    @apply text-neutral-900 sm:text-4xl leading-none font-light my-8 col-span-full divider divider-primary
+  }
+
   p {
     @apply prose hover:no-underline my-4;
   }
@@ -50,13 +54,17 @@
   section.description p {
     @apply 
     text-center md:text-left font-light 
-    text-pretty leading-tight pt-4
+    text-pretty leading-tight
     text-xl sm:text-2xl md:text-3xl
-    mx-auto p-12;
+    mx-auto p-0;
   }
 
   a {
     @apply link-hover font-medium;
+  }
+
+  a.circle {
+    @apply btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block;
   }
 
   a.card, a.stat {
@@ -91,11 +99,18 @@
   .modal p {
     @apply text-white mb-4;
   }
+
+  .stat {
+    @apply py-2 m-0 content-start;
+  }
+
+  .stat-desc {
+    @apply prose;
+  }
 }
 
 @layer utilities {
 }
 
 @layer variants {
-
 }

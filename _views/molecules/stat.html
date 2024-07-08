@@ -1,5 +1,13 @@
-<a class="stat p-4 my-4" href="{{ href }}">
+{% if href %}
+<a class="stat" href="{{ href }}">
 	<div class="stat-title text-wrap leading-tight">{{ stat.Title }}</div>
 	<div class="stat-value text-2xl sm:text-4xl">{{ stat.Value }}</div>
 	<div class="stat-desc {{ copy_styles }}">{{ stat.Description }}</div>
 </a>
+{% else %}
+<div class="stat">
+	<div class="stat-title text-wrap leading-tight">{{ stat.Title }}</div>
+	<div class="stat-value text-2xl sm:text-4xl">{{ stat.Value }}</div>
+	<div class="stat-desc text-wrap leading-tight">{{ stat.Description }}</div>
+</div>
+{% endif %}

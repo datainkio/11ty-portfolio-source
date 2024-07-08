@@ -17,8 +17,16 @@
 {% endblock %}
 
 {% block hero %}
-<section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2">
-<a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
+<section id="introduction" class="{{ section_styles }} grid sm:grid-cols-2">
+  <div class="breadcrumbs">
+    <ul class="place-content-center md:place-content-start">
+      <li><a href="/projects/" class="link link-primary link-hover">Work</a></li>
+      {% for category in ia | find("id", project.Category ) %} 
+      <li><a href="/projects/types/{{ category.Slug | slugify }}">{{ category.Title }}</a></li>
+      {% endfor %}
+      <li>Types</li>
+    </ul>
+  </div>
 <h1 class="col-span-full mt-0">{{ type.Title }}</h1>
 <p id="introduction" class="abstract">
   {{ type.Body }}</p>
@@ -58,7 +66,7 @@
   {% set impact_styles = "col-span-full sm:grid sm:grid-cols-6" %}
   {% endif %}
 
-  <figure id="impact" class="{{ impact_styles }} sm:px-12">
+  <figure id="impact" class="stat sm:px-12">
     <figcaption class="divider divider-primary {{ heading_styles }} col-span-full">Impact</figcaption>
     {% for stat in outcomes %}
     {% if (stat.IA == type.Slug) and (stat.Type == "Success Metric") %}

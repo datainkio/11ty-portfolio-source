@@ -3,7 +3,6 @@
 {# STYLES #}
 {% set body_styles = "" %}
 {% set container_styles = "px-0" %}
-{% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
 {% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8" %}
 {% set link_styles = "text-balance lowercase text-xl leading-none font-thin hover:text-primary" %}
@@ -15,32 +14,25 @@
 <a href="#feed">posts</a>
 {% endblock %}
 {% block hero %}
-<section class="{{ section_styles }} sm:grid sm:grid-cols-2 gap-8">
+<section>
 <h1 class="col-span-full">Lessons Learned</h1>
 </section>
 {% endblock %}
 {% block content %}
-<section id="introduction" class="sm:grid sm:grid-cols-12 sm:gap-8 {{ section_styles }}">
-  <div class="sm:col-span-3">
-    <p class="{{ copy_styles }} mb-6">In the context of experience design, a "lesson learned" refers to a key insight or understanding gained from the evaluation of a design process or project. These insights typically arise from reflecting on what worked well and what didn't during the creation and implementation of an experience, whether it be a product, service, or interaction.</p>
-    <p class="{{ copy_styles }} mb-6">I am long overdue for gathering the insights I've gained from my own work and putting them down on paper in a (somewhat) coherent form.</p> 
-    <p class="{{ copy_styles }} mb-6">Let's remedy that.</p>
-  </div>
-  <figure id="lessons_learned" class="px-8 mt-0 sm:col-span-9 sm:grid sm:grid-cols-2 gap-8">
-    {% for insight in insights %}
-    {% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
-    <a href="{{ href }}" class="card p-0 mb-8 sm:mb-12">
-      {# IMAGE #}
-      <div class="h-64">
-        {% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
-      </div>
-      <div class="card-body px-4 flex-none">
-        <p class="{{ copy_styles }} my-0 py-0">{{ insight.Created }}</p>
-        <h3 class="card-title leading-none font-medium text-2xl my-0">{{ insight.Name }}</h3>
-        <p class="{{ copy_styles }}">{{ insight.Teaser }}</p>
-      </div>
-    </a>
-    {% endfor %}
-  </figure>
-</section>
+<figure id="lessons_learned" class="sm:grid sm:grid-cols-2 gap-8">
+  {% for insight in insights %}
+  {% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
+  <a href="{{ href }}" class="card p-0 mb-8 sm:mb-12">
+    {# IMAGE #}
+    <div class="h-64">
+      {% for img in images | find("id", insight.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
+    </div>
+    <div class="card-body px-4 flex-none">
+      <p class="{{ copy_styles }} my-0 py-0">{{ insight.Created }}</p>
+      <h3 class="card-title leading-none font-medium text-2xl my-0">{{ insight.Name }}</h3>
+      <p class="{{ copy_styles }}">{{ insight.Teaser }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</figure>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% if nugget.Images %}
 {% set cols = "" %}
 {% if nugget.Images.length > 1 %}
-  {% set cols = "md:grid md:grid-cols-2 md:gap-4" %}
+  {% set cols = "my-12 sm:grid sm:grid-cols-2 sm:gap-4" %}
 {% endif %}
 <div class="{{ cols }}">
 {% for image in images | find('id', nugget.Images) %}
@@ -11,7 +11,7 @@
 {% endfor %}
 </div>
 {% endif %}
-  <h2 class="prose">{{ nugget.Name }}</h2>
+  <h2>{{ nugget.Name }}</h2>
   {% if nugget.Description is string %}
     {{ nugget.Description | markdownify | safe }}
   {% endif %}

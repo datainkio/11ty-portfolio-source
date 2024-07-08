@@ -1,25 +1,22 @@
-{% set figure_styles = "py-2" %}
-{% set figcaption_styles = "" %}
-{% set copy_styles = "" %}
-
 <!-- ROLE -->
 {% if project.Role %}
-<figure class="{{ figure_styles }}">
-	<figcaption class="{{ figcaption_styles }}">Roles</figcaption>
+<figure>
+	<figcaption>Roles</figcaption>
 	<ul>
 		{% for role in roles | find('id', project.Role) %}
-		<li class="inline-block {{ copy_styles }}">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+		<li class="inline-block">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
 		{% endfor %}
 	</ul>
 </figure>
 {% endif %}
+
 <!-- COMPANY -->
 {% if project.Organization %}
-<figure class="{{ figure_styles }}">
-	<figcaption class="{{ figcaption_styles }}">Company/Client</figcaption>
+<figure>
+	<figcaption>Company/Client</figcaption>
 	<ul>
 		{% for organization in organizations | find('id', project.Organization) %}
-		<li class="inline-block {{ copy_styles }}">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+		<li>{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
 		{% endfor %}
 	</ul>
 </figure>
@@ -28,24 +25,11 @@
 
 <!-- ACTIITIES -->
 {% if project.Activities %}
-<figure class="{{ figure_styles }} col-span-2">
-<figcaption class="{{ figcaption_styles }}">Activities</figcaption>
+<figure class="col-span-2">
+<figcaption>Activities</figcaption>
 <ul class="list-none pl-0">
 	{% for activity in activities | find('id', project.Activities) %}
-	<li class="inline-block {{ copy_styles }}">{{ activity.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
-	{% endfor %}
-</ul>
-</figure>
-{% endif %}
-
-<!-- RECOGNITION -->
-{% if project.Recognition %}
-<figure class="{{ figure_styles }} col-span-full">
-<figcaption class="{{ figcaption_styles }}">Recognition</figcaption>
-<ul class="list-none">
-	{% for award in awards | find('id', project.Recognition) %}
-	<li class="{{ copy_styles }}">{{ award.Organization }}:
-		{{ award.Title }}{% if loop.last %}{% else %}, {% endif %}</li>
+	<li class="inline-block">{{ activity.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
 	{% endfor %}
 </ul>
 </figure>

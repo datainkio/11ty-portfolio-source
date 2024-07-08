@@ -30,7 +30,7 @@
 {% endblock %}
 {% block content %}
 {% for category in ia %}
-<figure id="{{ category.Slug | slugify }}" class="category {{ section_styles }} sm:grid sm:grid-cols-3 gap-4">
+<figure id="{{ category.Slug | slugify }}" class="category {{ section_styles }} md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
   <figcaption class="{{ heading_styles }} col-span-full divider divider-primary">{{ category.Title }}</figcaption>
   {% set set = projects | find("id", category.Projects) %}
   {% for project in set %}
