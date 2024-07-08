@@ -1,3 +1,4 @@
+{% set button_styles = "btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block mx-auto" %}
 {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
 <div class="sm:grid sm:grid-cols-12 my-8 gap-8">
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-4", "") | safe }}{% endfor %}
@@ -7,6 +8,6 @@
     <div class="sm:grid sm:grid-cols-2">
       {% include "templates/project/supplemental-info.html" %}
     </div>
-    <a href="{{ href }}" class="{{ button_styles }} sm:col-start-11 sm:row-start-1 sm:my-auto">Details</a>
+    <a href="{{ href }}" class="{{ button_styles }}">Details</a>
   </div>
 </div>

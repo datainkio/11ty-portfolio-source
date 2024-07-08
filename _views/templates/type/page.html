@@ -1,14 +1,12 @@
 {% extends "species/article.html" %}
 
 {# STYLES #}
-{% set body_styles = "bg-black" %}
-{% set container_styles = "px-0" %}
+{% set body_styles = "type" %}
+{% set container_styles = "" %}
 {% set section_styles = "p-4 sm:p-12" %}
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-3xl sm:text-4xl leading-none col-span-full font-thin mb-8 text-neutral-50" %}
-{% set link_styles = "link-primary link-hover font-medium" %}
-{% set copy_styles = "prose font-thin text-neutral-50 text-lg sm:text-xl leading-tight text-wrap text-pretty" %}
-{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
+{% set heading_styles = "text-3xl sm:text-4xl leading-none font-thin mb-8" %}
+{% set copy_styles = "text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
 
 
 {% block accessibility %}
@@ -22,7 +20,7 @@
 <section id="introduction" class="{{ section_styles }} text-white grid sm:grid-cols-2">
 <a class="{{ link_styles }} text-xl sm:text-2xl" href="/projects/">Work /</a>
 <h1 class="col-span-full mt-0">{{ type.Title }}</h1>
-<p id="introduction" class="{{ copy_styles }}">
+<p id="introduction" class="abstract">
   {{ type.Body }}</p>
 </section>
 {% endblock %}

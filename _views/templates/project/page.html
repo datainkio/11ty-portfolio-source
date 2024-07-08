@@ -7,15 +7,13 @@
 {% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
 {% set heading_styles = "text-3xl sm:text-4xl leading-none font-thin mb-8" %}
 {% set copy_styles = "font-thin text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
-{% set button_styles = "btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block mx-auto col-end-auto " %}
+{% set button_styles = "btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block mx-auto md:row-span-full md:col-start-6 " %}
 
 {% set title = [project.Name, project.Title] | join(": ") %}
 {% block accessibility %}
 <a href="#introduction">introduction</a>
 <a href="#details">details</a>
 <a href="#body">body</a>
-<a href="#nuggets">nuggets</a>
-<a href="#examples">examples</a>
 {% endblock %} 
 <!-- WE DON'T NEED ANOTHER HERO -->
 {% block hero %}
@@ -28,10 +26,7 @@
       {% endfor %}
     </ul>
   </div>
-  
-
   <h1>{{ project.Title }}</h1>
-  <p id="introduction" class="subtitle">{{ project.Teaser }}</p>
   <!-- HERE BE PROJECT METADATA -->
   <section id="details" class="w-full md:grid md:grid-cols-6 py-12 gap-4">
     {% include "templates/project/supplemental-info.html" %}
@@ -45,14 +40,14 @@
 {% block content %}
   <!-- LEAD VIDEO -->
    {% if project.Videos %}
-  <section id="video" class="mx-auto">
+  <section id="video" class="w-full mx-auto">
     {% for video in videos | find("id", project.Videos) %}
     {% include "templates/video/embed.html" %}
     {% endfor %}
   </section>
   {% endif %}
   <!-- BODY COPY -->
-  <section id="body" class="description mx-auto p-8 md:p-0 md:pt-8 border-t-2 border-neutral-900">
+  <section id="body" class="description">
     {% if project.Description is string %}
     {{ project.Description | markdownify | safe }}
     {% endif %}
@@ -61,16 +56,6 @@
   <section id="nuggets" class="prose mx-auto p-8 md:p-0">
     {% for nugget in nuggets | find('id', project.Nuggets) %}
       {% include "templates/nugget/block.html" %}
-    {% endfor %}
-  </section>
-  <!-- IMAGE GALLERIES -->
-  <section id="examples" class="mx-auto">
-    {% for gallery in galleries | find("id", project.Galleries) %}
-      {% set data = gallery %}
-      {% include "templates/gallery/carousel.html" %}
-      {% if loop.last %}{% else %}
-        <div class="divider h-8"></div> 
-      {% endif %}
     {% endfor %}
   </section>
 {% endblock %}

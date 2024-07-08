@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply bg-none;
+    @apply bg-white;
   }
   h1 {
     @apply font-black text-neutral-900 hover:no-underline 
@@ -42,16 +42,24 @@
   }
 
   p.abstract {
-    @apply font-light 
+    @apply font-light
     text-pretty leading-tight
     sm:text-xl md:text-2xl;
+  }
+
+  section.description p {
+    @apply 
+    text-center md:text-left font-light 
+    text-pretty leading-tight pt-4
+    text-xl sm:text-2xl md:text-3xl
+    mx-auto p-12;
   }
 
   a {
     @apply link-hover font-medium;
   }
 
-  a.card {
+  a.card, a.stat {
     @apply hover:no-underline hover:bg-neutral-200;
   }
 
@@ -60,7 +68,7 @@
   }
 
   .card picture {
-    @apply w-full h-full ;
+    @apply w-full h-full;
   }
 
   .card img {
