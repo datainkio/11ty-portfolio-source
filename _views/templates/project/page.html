@@ -1,10 +1,5 @@
 {% extends "species/article.html" %}
-
-{# STYLES #}
-{% set body_styles = "project" %}
-{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "" %}
-{% set copy_styles = "font-thin text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
+{% set view = "project_page" %}
 
 {% set title = [project.Name, project.Title] | join(": ") %}
 {% block accessibility %}
@@ -14,12 +9,12 @@
 {% endblock %} 
 <!-- WE DON'T NEED ANOTHER HERO -->
 {% block hero %}
-<section class="px-4 sm:px-12">
+<section class="introduction">
   <div class="breadcrumbs">
     <ul class="place-content-center md:place-content-start">
       <li><a href="/projects/">Work</a></li>
       {% for category in ia | find("id", project.Category ) %} 
-      <li><a href="/projects/types/{{ category.Slug | slugify }}">{{ category.Title }}</a></li>
+      <li>{{ category.Title }}</li>
       {% endfor %}
       <li>Projects</li>
     </ul>
@@ -30,14 +25,14 @@
     {% include "templates/project/supplemental-info.html" %}
     <!-- EXPLORE -->
     {% if project.URL %}
-    <a class="circle mx-auto my-4 sm:my-12 md:my-0 md:row-span-full md:col-start-6" href="{{ project.URL }}">View ⤴</a>
+    <a class="btn-primary mx-auto sm:my-12 md:my-0 md:row-span-full md:col-start-6" href="{{ project.URL }}">View ⤴</a>
     {% endif %}
   </section>
 </section>
 {% endblock %}
 {% block content %}
   <!-- BODY COPY -->
-  <section id="description" class="description max-w-360 mx-auto mb-4 px-4 sm:px-12 lg:flex lg:justify-center lg:space-x-12 space-y-12 lg:space-y-0">
+  <section id="description" class="description max-w-360 mx-auto lg:flex lg:justify-center lg:space-x-12 space-y-12 lg:space-y-0">
     <figure id="introduction" class="introduction">
       {% if project.Description is string %}
       {{ project.Description | markdownify | safe }}
@@ -61,7 +56,7 @@
   </section>
   {% endif %}
   <!-- NUGGETS -->
-  <section id="nuggets" class="prose px-6 mx-auto py-12">
+  <section id="nuggets" class="prose mx-auto py-12">
     {% for nugget in nuggets | find('id', project.Nuggets) %}
       {% include "templates/nugget/block.html" %}
     {% endfor %}
@@ -71,7 +66,7 @@
 <!-- RELATED -->
 {% set category = ia | find("id", project.Category ) %}
 {% set id = project.id %}
-<figure id="related" class="{{ section_styles }} md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<figure id="related" class="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
   <figcaption class="heading">Other {{ category[0].Title }}</figcaption>
   {% set set = projects | find("id", category[0].Projects) %}
   {% for project in set %}

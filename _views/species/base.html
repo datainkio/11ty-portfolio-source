@@ -1,13 +1,9 @@
-{# Add to class declaration for any element(s) to test responsiveness #}
-{% set responsive = "bg-slate-100 xs:bg-slate-200 sm:bg-slate-300 md:bg-slate-400 lg:bg-slate-500 xl:bg-slate-600
-  xxl:bg-slate-700" %}
-
 <!DOCTYPE html>
 <html lang="en">
   <!-- HEAD -->
   {% include "partials/head.html" %}
 
-  <body class="{{ body_styles }}">
+  <body class="{{ view }}">
     <!-- GTM -->
     {% include "partials/gtm_body.html" %}
     <!-- A11Y -->
@@ -17,7 +13,7 @@
     <!-- NAVIGATION -->
     {% include "organisms/headers/global.html" %}
     <!-- CONTENT -->
-    <main tabindex=" -1" class="{{ container_styles }}">
+    <main tabindex=" -1">
       {% block hero %}{% endblock %}
       {% block content %}{% endblock %}
     </main>

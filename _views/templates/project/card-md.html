@@ -1,11 +1,11 @@
 {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
 <a href="{{ href }}" class="card">
   {# IMAGE #}
-  <figure class="h-64 md:h-48">
+  <figure class="aspect-video">
     {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("m-0", "m-0") | safe }}{% endfor %}
   </figure>
-  <div class="card-body px-4">
-    <h3 class="card-title">{{ project.Title }}</h3>
+  <div class="card-body px-4 gap-0">
+    <h3 class="card-title ">{{ project.Title }}</h3>
     <p>{{ project.Teaser }}</p>
   </div>
 </a>

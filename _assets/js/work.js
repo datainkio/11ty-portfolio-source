@@ -5,62 +5,70 @@
  */
 document.addEventListener("DOMContentLoaded", (event) => {
   let dur = 1; // base value for animation duration (in seconds)
-  let y_delta = 50; // vertical origin of elements
-  let pos = "-=.25"; // offset (in seconds) of animation relative to the previous
+  let y_delta = 35; // vertical origin of elements
+  let pos = "-=.75"; // offset (in seconds) of animation relative to the previous
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
   /** TITLE */
   let intro = gsap.timeline({});
-  intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0}));
-  const pars = gsap.utils.toArray('#introduction p');
-  pars.forEach(stat => {
-    gsap.from(stat, {
-      scrollTrigger: {
-        trigger: stat,
-        start: 'bottom bottom'
-      },
+
+  intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut"}));
+  intro.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}));
+  intro.add(gsap.from('#category_current', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
+  intro.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
+  const btns = gsap.utils.toArray('.navbar-start li');
+  btns.forEach(btn => {
+    intro.add(gsap.from(btn, {
       autoAlpha: 0,
       y: y_delta,
       duration: dur
-    })
+    }), pos);
+  });
+  const featured = gsap.utils.toArray('#view_featured .card');
+  featured.forEach(card => {
+    intro.add(gsap.from(card, {
+      autoAlpha: 0,
+      y: y_delta, 
+      duration: dur
+    }), pos);
   });
 
-  /** PROJECT CATEGORIES */
+  /** 
+   * CATEGORY SELECTION
+   * Bring a category into view when its menu item is selected
+   * */
   const categories = gsap.utils.toArray("a.category");
   categories.forEach(cat => {
+    var label = document.getElementById("category_current");
     cat.addEventListener("click", () => {
-      console.log(cat.id);
-      gsap.to(window, {duration: 1, scrollTo:{y:cat.id, offsetY: 72}});
+      // Update button states
+      categories.forEach(item => {
+        item.classList.remove("active");
+        item.classList.remove("btn-active");
+        if (item.innerHTML == cat.innerHTML) {
+          if(item.classList.contains("btn")) {
+            item.classList.add("btn-active");
+          } else {
+            item.classList.add("active");
+          }
+        }
+        // Update the content view
+        const views = gsap.utils.toArray("section.category");
+        views.forEach(view => {
+          if (view.id == "view_" + cat.id) {
+            // view.classList.remove("hidden");
+            gsap.to(view, {opacity: 1, display: "block", duration: dur, delay: dur, ease: "sine.inOut",});
+          } else {
+            // view.classList.add("hidden");
+            gsap.to(view, {opacity: 0, display: "none", duration: dur, delay: .25, ease: "sine.inOut"});
+          }
+        })
+      })
+     // Update the label with title of the selected category
+     label.innerHTML = cat.innerHTML;
+     // Update the button to reflect its active state
+     
+      // gsap.to(window, {duration: 1, scrollTo:{y:cat.id, offsetY: 72}});
     });
-  })
-
-
-
-  // CATEGORY TITLES
-  const captions = gsap.utils.toArray("figcaption");
-  captions.forEach(caption => {
-    gsap.from(caption, {
-      scrollTrigger: {
-        trigger: caption,
-        start: 'bottom bottom'
-      },
-      autoAlpha: 0,
-      y:y_delta,
-      duration: dur
-    })
-  })
-
-  // CATEGORY PROJECTS
-  const cards = gsap.utils.toArray(".card");
-  cards.forEach(card => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'center bottom'
-      },
-      autoAlpha: 0,
-      y:y_delta,
-      duration: dur
-    })
   })
 });

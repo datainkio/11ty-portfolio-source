@@ -1,0 +1,7 @@
+<figure id="other">
+  {% for project in projects | find("id", category.Projects) %}
+  {% if project.Weight < 10 %}
+  {% include "templates/project/card-lg.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>

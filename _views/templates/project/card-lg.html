@@ -1,13 +1,18 @@
-{% set button_styles = "btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block mx-auto" %}
 {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
-<div class="sm:grid sm:grid-cols-12 my-8 gap-8">
-  {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-4", "") | safe }}{% endfor %}
-  <div class="sm:col-span-6 mb-8 p-4">
-    <h3>{{ project.Title }}</h3>
-    <p class="prose {{ copy_styles }} my-2 col-span-6">{{ project.Teaser }}</p>
-    <div class="sm:grid sm:grid-cols-2">
-      {% include "templates/project/supplemental-info.html" %}
-    </div>
-    <a href="{{ href }}" class="{{ button_styles }}">Details</a>
-  </div>
+<a href="{{ href }}" class="card">
+  <figure>
+  {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("", "") | safe }}{% endfor %}
+  </figure>
+  <div class="card-body pt-0">
+  <h2>{{ project.Title }}</h2>
+  <ul class="mx-auto md:mx-0">
+    {% for role in roles | find('id', project.Role) %}
+    <li class="inline-block font-light">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+    {% endfor %}
+  </ul>
+  <ul class="mx-auto md:mx-0">{% for organization in organizations | find('id', project.Organization) %}
+    <li class="text-sm font-light text-neutral-500 align-bottom inline-block italic">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+    {% endfor %}
+  </ul>
 </div>
+</a>

@@ -1,0 +1,7 @@
+<figure id="other" class="sm:grid sm:grid-cols-4 gap-8 px-8">
+  {% for project in projects | find("id", category.Projects) %}
+  {% if (project.Weight > 0) and (project.Weight < 10) %}
+  {% include "templates/project/card-md.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>

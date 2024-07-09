@@ -1,0 +1,7 @@
+<figure id="featured">
+  {% for project in projects %}
+  {% if project.Featured %}
+  {% include "templates/project/card-lg.html" %}
+  {% endif %}
+  {% endfor %}
+</figure>

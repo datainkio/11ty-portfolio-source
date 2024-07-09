@@ -1,21 +1,12 @@
 {% extends "species/article.html" %}
-
-{# STYLES #}
-{% set body_styles = "" %}
-{% set container_styles = "px-0" %}
-{% set section_styles = "p-4 sm:p-12" %}
-{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-xl sm:text-2xl leading-none font-thin mb-8 content-center" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin hover:text-primary" %}
-{% set copy_styles = "font-thin text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
-{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
+{% set view = "recognition_overview" %}
 
 {% block accessibility %}
 <a href="#introduction">introduction</a>
 <a href="#awards">awards</a>
 {% endblock %}
 {% block hero %}
-<section id="introduction" class="{{ section_styles }} grid sm:grid-cols-2 gap-8">
+<section id="introduction" class="sm:grid sm:grid-cols-2 gap-8">
   <h1 class="md:col-span-full">Recognition</h1>
   <p class="subtitle ">I've worked with amazing, multitalented teams producing award-winning work with a real impact. People like <a
     href="https://www.joshgoldblum.com/" class="link-primary link-hover">Josh Goldblum</a> at <a href="https://www.bluecadet/" class="link-primary link-hover">Bluecadet</a>, who gave
@@ -28,7 +19,7 @@
 </section>
 {% endblock %}
 {% block content %}
-<section class="sm:grid sm:grid-cols-12 sm:gap-8 {{ section_styles }}">
+<section class="sm:grid sm:grid-cols-12 sm:gap-8">
   <figure id="awards" class="sm:col-span-6">
     {% for award in awards %}
     {% set data = projects | find("id", award.Projects) %}

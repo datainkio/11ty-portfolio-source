@@ -1,20 +1,12 @@
 {% extends "species/article.html" %}
-
-{# STYLES #}
-{% set body_styles = "" %}
-{% set container_styles = "px-0" %}
-{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "prose text-3xl sm:text-4xl leading-none font-thin mb-8" %}
-{% set link_styles = "text-balance lowercase text-xl leading-none font-thin hover:text-primary" %}
-{% set copy_styles = "prose text-pretty py-2" %}
-{% set button_styles = "btn btn-circle btn-primary w-24 h-24 text-lg italic " %}
+{% set view = "insight_landing" %}
 
 {% block accessibility %}
 <a href="#introduction">introduction</a>
 <a href="#feed">posts</a>
 {% endblock %}
 {% block hero %}
-<section>
+<section class="introduction">
 <h1 class="col-span-full">Lessons Learned</h1>
 </section>
 {% endblock %}

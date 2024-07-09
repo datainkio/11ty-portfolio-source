@@ -9,20 +9,23 @@
 
 @layer base {
   body {
-    @apply bg-white;
+    @apply bg-white text-neutral-900;
+  }
+  main {
+    @apply px-0 sm:px-12;
   }
   h1 {
-    @apply font-black text-neutral-900 hover:no-underline 
+    @apply font-black hover:no-underline 
     leading-none tracking-tight text-balance text-center md:text-left md:-ml-1
     text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
   }
   h2 {
-    @apply font-bold text-neutral-900 hover:no-underline
+    @apply font-bold hover:no-underline
     text-balance text-center md:text-left
     text-lg sm:text-xl md:text-2xl text-pretty;
   }
   h3 {
-    @apply font-medium text-neutral-900 hover:no-underline
+    @apply font-medium hover:no-underline
     text-balance leading-none 
     text-2xl my-0 col-span-full;
   }
@@ -31,9 +34,7 @@
     text-balance leading-none
     my-0 col-span-full;
   }
-  section .heading, figcaption.heading {
-    @apply text-neutral-900 sm:text-4xl leading-none font-light my-8 col-span-full divider divider-primary
-  }
+
 
   p {
     @apply prose hover:no-underline my-4;
@@ -63,25 +64,10 @@
     @apply link-hover font-medium;
   }
 
-  a.circle {
-    @apply btn content-center btn-circle btn-primary w-24 h-24 text-lg italic block;
-  }
-
   a.card, a.stat {
     @apply hover:no-underline hover:bg-neutral-200;
   }
 
-  .card figure {
-    @apply aspect-video;
-  }
-
-  .card picture {
-    @apply w-full h-full;
-  }
-
-  .card img {
-    @apply w-full h-full object-cover object-center;
-  }
 
   picture.logo img {
     @apply w-full h-full object-contain;
@@ -89,6 +75,28 @@
 }
 
 @layer components {
+  .divider {
+    @apply col-span-full text-3xl font-bold;
+  }
+  .btn-primary {
+    @apply btn content-center btn-circle w-24 h-24 m-2 text-lg italic block;
+  }
+  .card {
+    @apply space-y-2;
+  }
+  .card figure {
+    @apply aspect-video;
+  }
+  .card picture {
+    @apply w-full h-full;
+  }
+  .card img {
+    @apply w-full h-full object-cover object-center;
+  }
+  .card-body {
+    @apply gap-0;
+  }
+
   .modal {
     @apply bg-black bg-opacity-75 p-0;
   }
@@ -103,13 +111,18 @@
   .stat {
     @apply py-2 m-0 content-start;
   }
-
   .stat-desc {
     @apply prose;
   }
 }
 
 @layer utilities {
+  .introduction {
+    @apply px-4 sm:px-0;
+  }
+  .heading {
+    @apply text-neutral-900 sm:text-4xl leading-none font-light my-8 col-span-full divider divider-primary
+  }
 }
 
 @layer variants {

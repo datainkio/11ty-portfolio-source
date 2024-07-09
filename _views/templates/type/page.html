@@ -1,13 +1,5 @@
 {% extends "species/article.html" %}
-
-{# STYLES #}
-{% set body_styles = "type" %}
-{% set container_styles = "" %}
-{% set section_styles = "p-4 sm:p-12" %}
-{% set grid = "grid grid-cols-12 gap-2 md:gap-4" %}
-{% set heading_styles = "text-3xl sm:text-4xl leading-none font-thin mb-8" %}
-{% set copy_styles = "text-lg sm:text-xl leading-tight text-wrap prose text-pretty" %}
-
+{% set view = "type_page" %}
 
 {% block accessibility %}
 <a href="#introduction">introduction</a>
@@ -17,7 +9,7 @@
 {% endblock %}
 
 {% block hero %}
-<section id="introduction" class="{{ section_styles }} grid sm:grid-cols-2">
+<section id="introduction" class="introduction grid sm:grid-cols-2">
   <div class="breadcrumbs">
     <ul class="place-content-center md:place-content-start">
       <li><a href="/projects/" class="link link-primary link-hover">Work</a></li>
@@ -27,34 +19,19 @@
       <li>Types</li>
     </ul>
   </div>
-<h1 class="col-span-full mt-0">{{ type.Title }}</h1>
-<p id="introduction" class="abstract">
-  {{ type.Body }}</p>
+  <h1 class="col-span-full mt-0">{{ type.Title }}</h1>
+  <p id="introduction" class="abstract">
+    {{ type.Body }}</p>
 </section>
 {% endblock %}
 
 {% block content %}
-<figure id="featured" class="{{ section_styles }}">
-  {% for project in projects | find("id", type.Projects) %}
-  {% if project.Weight == 0 %}
-  {% include "templates/project/card-lg.html" %}
-  {% endif %}
-  {% endfor %}
-</figure>
-
-<figure id="other" class="sm:grid sm:grid-cols-4 gap-8 px-8">
-  {% for project in projects | find("id", type.Projects) %}
-  {% if (project.Weight > 0) and (project.Weight < 10) %}
-  {% include "templates/project/card-md.html" %}
-  {% endif %}
-  {% endfor %}
-</figure>
 
 {% if (type.Title != "Museums, Monuments & Memorials") and (type.Title != "Health & Science") and (type.Title != "Business-to-Business") and (type.Title != "Experiential") %}
 <section class="sm:grid sm:grid-cols-3 px-8 my-12">
   {% if type.Title != "Civic Tech" %}
   <figure class="col-span-2 sm:grid sm:grid-cols-3 gap-8 sm:px-24">
-    <figcaption class="divider divider-primary {{ heading_styles}}">Other {{ type.Other }}</figcaption>
+    <figcaption class="col-span-full">Other {{ type.Other }}</figcaption>
     {% for project in projects | find("id", type.Projects) %}
     {% if project.Weight == 10 %}
     {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("w-full ", "aspect-video object-contain") | safe }}{% endfor %}
@@ -67,7 +44,7 @@
   {% endif %}
 
   <figure id="impact" class="stat sm:px-12">
-    <figcaption class="divider divider-primary {{ heading_styles }} col-span-full">Impact</figcaption>
+    <figcaption class="col-span-full">Impact</figcaption>
     {% for stat in outcomes %}
     {% if (stat.IA == type.Slug) and (stat.Type == "Success Metric") %}
     {% set href = "" %}
