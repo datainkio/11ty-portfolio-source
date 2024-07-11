@@ -7,7 +7,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let dur = 1; // base value for animation duration (in seconds)
   let y_delta = 35; // vertical origin of elements
   let pos = "-=.75"; // offset (in seconds) of animation relative to the previous
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  /** INIT */
+  const views = gsap.utils.toArray("section.category");
+  views.forEach(view => {
+    if (view.id != "view_featured") {
+      view.style.opacity = 0;
+      view.style.display = "none";
+    }
+  });
 
   /** TITLE */
   let intro = gsap.timeline({});
@@ -16,7 +25,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   intro.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}));
   intro.add(gsap.from('#category_current', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
   intro.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
-  
+
   const btns = gsap.utils.toArray('.navbar-start li');
   btns.forEach(btn => {
     intro.add(gsap.from(btn, {
