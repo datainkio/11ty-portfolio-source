@@ -14,7 +14,7 @@
     <ul class="place-content-center md:place-content-start">
       <li><a href="/projects/">Work</a></li>
       {% for category in ia | find("id", project.Category ) %} 
-      <li>{{ category.Title }}</li>
+      <li><a href="/projects/types/{{ category.Slug | slugify }}/">{{ category.Title }}</a></li>
       {% endfor %}
       <li>Projects</li>
     </ul>
