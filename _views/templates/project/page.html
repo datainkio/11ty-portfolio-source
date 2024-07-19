@@ -21,11 +21,11 @@
   </div>
   <h1>{{ project.Title }}</h1>
   <!-- HERE BE PROJECT METADATA -->
-  <section id="details" class="w-full md:grid md:grid-cols-6 py-12 gap-4 space-y-4">
+  <section id="details" class="mt-8 w-full mx-auto gap-4 flex justify-center">
     {% include "templates/project/supplemental-info.html" %}
     <!-- EXPLORE -->
     {% if project.URL %}
-    <a class="btn-primary mx-auto sm:my-12 md:my-0 md:row-span-full md:col-start-6" href="{{ project.URL }}">View ⤴</a>
+    <a class="btn-primary mx-auto sm:my-12 md:my-0" href="{{ project.URL }}">View ⤴</a>
     {% endif %}
   </section>
 </section>
@@ -40,7 +40,7 @@
     </figure>
     <!-- RECOGNITION -->
     {% if project.Recognition %}
-    <figure id="recognition" class="shrink-0 my-8 md:my-0 lg:basis-1/3 mb:4 md:grid md:grid-cols-2 lg:grid-cols-1">
+    <figure id="recognition" class="shrink-0 px-6 my-8 md:my-0 lg:basis-1/3 mb:4 md:grid md:grid-cols-2">
       {% for award in awards | find("id", project.Recognition) %}
         {% include "templates/award/link_detailed.html" %}
       {% endfor %} 
@@ -57,7 +57,7 @@
   {% endif %}
   <!-- NUGGETS -->
   <section id="nuggets" class="prose mx-auto py-12">
-    {% for nugget in nuggets | find('id', project.Nuggets) %}
+    {% for nugget in nuggets | find('id', project.Nuggets) | sortByAttribute('Weight') %}
       {% include "templates/nugget/block.html" %}
     {% endfor %}
   </section>
@@ -67,7 +67,7 @@
 {% set category = ia | find("id", project.Category ) %}
 {% set id = project.id %}
 <figure id="related" class="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-  <figcaption class="heading">Other {{ category[0].Title }}</figcaption>
+  <figcaption class="heading">Other {{ category[0].Title }} Projects</figcaption>
   {% set set = projects | find("id", category[0].Projects) %}
   {% for project in set %}
   {% if (project.Published) and (project.id != id) and (project.Weight <= 5) %}

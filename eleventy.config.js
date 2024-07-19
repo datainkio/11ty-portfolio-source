@@ -220,6 +220,17 @@ module.exports = function (eleventyConfig) {
     return pageArr.slice(0, limit);
   });
 
+  /**
+   * Sort items numerically by casting the string from Airtable to int
+   */
+  eleventyConfig.addFilter('sortByAttribute', (array, attribute) => {
+    return array.slice().sort((a, b) => {
+      const valueA = a[attribute] !== undefined ? a[attribute] : 0;
+      const valueB = b[attribute] !== undefined ? b[attribute] : 0;
+      return valueA - valueB;
+    });
+  });
+
   return {
     dir: {
       // Let's move the location of the output folder someplace that will make it easier

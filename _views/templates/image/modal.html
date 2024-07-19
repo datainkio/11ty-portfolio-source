@@ -3,7 +3,7 @@
 {% endif %}
 <div class="{{ img_styles }}">
 	{% set action = ["modal_", image.id, ".showModal()"] | join %}
-	<button class="picture hover:filter hover:opacity-60" onclick="{{ action }}">{{ image.pictureElement | stylePicture("m-0", "m-0") | safe }}</button>
+	<button class="picture hover:filter hover:opacity-60" onclick="{{ action }}">{{ image.pictureElement | stylePicture("m-0 bg-black", "m-0") | safe }}</button>
 	<dialog id="modal_{{ image.id }}" class="modal">
 		<form method="dialog"> 
 			<button class="btn btn-sm md:btn-lg btn-circle btn-primary absolute right-2 top-2">✕</button>
@@ -13,11 +13,7 @@
 				<h2 class="text-xl m-0">{{ image.Title }}</h2>
 				<p class="prose">{{ image.Caption }}</p>
 			</figcaption>
-			{% set style = "md:col-start-2 md:col-span-2 p-4" %}
-			{% if image.Invert %}
-			{% set style = "md:col-start-2 md:col-span-2 p-4 bg-black" %}
-			{% endif %}
-			{{ image.pictureElement | stylePicture(style,"object-center object-cover object-scale-down max-h-[724px]")  | safe }}
+			{{ image.pictureElement | stylePicture("md:col-start-2 md:col-span-2 p-4 bg-black","object-center object-cover object-scale-down max-h-[724px]")  | safe }}
 		</figure>
 	</dialog>
 </div>

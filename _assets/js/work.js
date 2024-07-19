@@ -4,9 +4,9 @@
  * - Assign scrollTo behaviors to buttons
  */
 document.addEventListener("DOMContentLoaded", (event) => {
-  let dur = 1; // base value for animation duration (in seconds)
+  let dur = .25; // base value for animation duration (in seconds)
   let y_delta = 35; // vertical origin of elements
-  let pos = "-=.75"; // offset (in seconds) of animation relative to the previous
+  let pos = "-=.1"; // offset (in seconds) of animation relative to the previous
   // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
   /** INIT */
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   /** TITLE */
   let intro = gsap.timeline({});
 
-  intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: 1}));
+  intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: .5}));
   intro.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}));
   intro.add(gsap.from('#category_current', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
   intro.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
