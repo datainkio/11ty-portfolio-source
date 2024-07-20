@@ -1,12 +1,12 @@
 {% if img_styles %}{% else %}
 {% set img_styles = "w-full" %}
 {% endif %}
-<div class="{{ img_styles }}">
+<div class="{{ img_styles }} grid">
 	{% set action = ["modal_", image.id, ".showModal()"] | join %}
-	<button class="picture hover:filter hover:opacity-60" onclick="{{ action }}">{{ image.pictureElement | stylePicture("m-0 bg-black", "m-0") | safe }}</button>
+	<button class="picture hover:filter hover:opacity-60 place-self-center" onclick="{{ action }}">{{ image.pictureElement | stylePicture("m-0 bg-black object-cover", "m-0") | safe }}</button>
 	<dialog id="modal_{{ image.id }}" class="modal">
 		<form method="dialog"> 
-			<button class="btn btn-sm md:btn-lg btn-circle btn-primary absolute right-2 top-2">✕</button>
+			<button class="btn btn-sm md:btn-lg btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
 		</form>
 		<figure class="modal-box md:grid md:grid-cols-3 md:gap-4">
 			<figcaption class="col-span-1">

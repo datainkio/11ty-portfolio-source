@@ -1,0 +1,20 @@
+<footer class="footer bg-neutral text-neutral-content p-10">
+	<nav>
+    <h6 class="footer-title">Work</h6>
+		{% for category in ia %}	
+			<a href="work/types/{{ category.Slug | slugify }}" class="link link-hover">{{ category.Title }}</a>
+		{% endfor %}	
+  </nav>
+  <nav>
+    <h6 class="footer-title">Roles</h6>
+		{% for role in roles %}
+			<a href="roles/{{ role.Title | slugify }}" class="link link-hover">{{ role.Name }}</a>
+		{% endfor %}
+  </nav>
+  <nav>
+    <h6 class="footer-title">Legal</h6>
+    <a class="link link-hover">Terms of use</a>
+    <a class="link link-hover">Privacy policy</a>
+    <a class="link link-hover">Cookie policy</a>
+  </nav>
+</footer>

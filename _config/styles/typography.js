@@ -1,9 +1,4 @@
 module.exports = {
-  fontFamily: {
-    title: ["Gemmo", "sans-serif"],
-    heading: ["Staatliches", "sans-serif"],
-    DEFAULT: ["Josefin Sans", "sans-serif"],
-  },
   fontWeight: {
     thin: "100",
     light: "200",
@@ -30,7 +25,8 @@ module.exports = {
     jumbo: "12rem",
   },
   lineHeight: {
-    none: ".95",
+    tight: "1.2",
+    snug: "1.25",
   },
   prose: ({ theme }) => ({}),
 };

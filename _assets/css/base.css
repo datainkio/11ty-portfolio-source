@@ -20,9 +20,9 @@
     text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
   }
   h2 {
-    @apply font-bold hover:no-underline
-    text-balance text-center md:text-left
-    text-lg sm:text-xl md:text-2xl text-pretty;
+    @apply font-medium hover:no-underline
+    leading-tight text-center md:text-left
+    text-lg sm:text-xl text-pretty;
   }
   h3 {
     @apply font-medium hover:no-underline
@@ -31,7 +31,7 @@
   }
   figcaption {
     @apply text-neutral-400 hover:no-underline
-    text-balance leading-none
+    text-balance leading-tight
     my-0 col-span-full;
   }
 
@@ -81,9 +81,7 @@
   .btn-primary {
     @apply btn content-center btn-circle w-24 h-24 m-2 text-lg italic block;
   }
-  .card {
-    @apply space-y-2;
-  }
+
   .card figure {
     @apply aspect-video;
   }
@@ -96,6 +94,12 @@
   .card-body {
     @apply gap-0;
   }
+
+
+  .flex-col-reverse .card-body {
+    @apply justify-end;
+  }
+
 
   .modal {
     @apply bg-black bg-opacity-75 p-0;

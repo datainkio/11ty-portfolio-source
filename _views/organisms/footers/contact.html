@@ -1,0 +1,14 @@
+<footer class="px-4 md:px-12">
+  <!-- AVATAR -->
+  <!-- CTA -->
+  <section class="footer prose max-w-none py-8">
+    <h2>If you are looking
+      for a human-experience designer, please do say hello – I look forward to hearing about your company and project.</h2>
+  </section>
+  <!-- SOCIAL -->
+  <nav id="social" class="flex flex-row gap-2 max-w-96">
+    {% for item in social %}
+    <a href="{{ item.URL }}" class="w-28 h-18">{{ item.pictureElement | safe }}</a>
+    {% endfor %}
+  </nav>
+</footer>

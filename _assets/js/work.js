@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: .5}));
   intro.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}));
-  intro.add(gsap.from('#category_current', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
+  // intro.add(gsap.from('#category_current', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
   intro.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
 
   const btns = gsap.utils.toArray('.navbar-start li');
@@ -34,14 +34,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
       duration: dur
     }), pos);
   });
-  const featured = gsap.utils.toArray('#view_featured .card');
-  featured.forEach(card => {
-    intro.add(gsap.from(card, {
+  /**
+  const cards = document.querySelectorAll('#view_featured .card')
+  gsap.from(cards, {
       autoAlpha: 0,
       y: y_delta, 
       duration: dur
-    }), pos);
-  });
+    });
+    */
 
   /** 
    * CATEGORY SELECTION

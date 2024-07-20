@@ -1,18 +1,19 @@
-<div class="nugget my-12">
+<div class="nugget mb-12 w-full">
 {% if nugget.Images %}
-{% set cols = "" %}
-{% if nugget.Images.length > 1 %}
-  {% set cols = "my-12 sm:grid sm:grid-cols-2 sm:gap-4" %}
-{% endif %}
-<div class="{{ cols }}">
-{% for image in images | find('id', nugget.Images) %}
-	{% set img_styles = "aspect-video object-cover overflow-hidden" %}
-  {% include "templates/image/modal.html" %}
-{% endfor %}
-</div>
-{% endif %}
-  <h2>{{ nugget.Name }}</h2>
-  {% if nugget.Description is string %}
-    {{ nugget.Description | markdownify | safe }}
+  <div class="py-8 my-0 sm:grid sm:grid-cols-2 sm:gap-4 w-3/5 mx-auto">
+  {% for image in images | find('id', nugget.Images) %}
+  {% set img_styles= "" %}  
+  {% if (loop.length % 2) and (loop.index == 1) %}
+      {% set img_styles = "sm:col-span-full" %}
   {% endif %}
+    {% include "templates/image/modal.html" %}
+  {% endfor %}
+  </div>
+{% endif %}
+  <div class="prose mx-auto">
+    <h2>{{ nugget.Name }}</h2>
+    {% if nugget.Description is string %}
+      {{ nugget.Description | markdownify | safe }}
+    {% endif %}
+  </div>
 </div>

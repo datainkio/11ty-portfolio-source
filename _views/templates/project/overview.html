@@ -5,7 +5,7 @@
 <a href="#introduction">introduction</a>
 <a href="#featured">featured work</a>
 {% for category in ia %}
-<a href="#{{ category.Slug }}">{{ category.Title | slugify }}</a>
+<a href="{{ category.Slug }}">{{ category.Title | slugify }}</a>
 {% endfor %}
 {% endblock %}
 
@@ -20,7 +20,7 @@
 {% endblock %}
 {% block content %}
 <section id="view_featured" class="category">
-  <div class=" lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-4">
+  <div class="sm:grid sm:grid-cols-2 md:grid-cols-4">
   {% for project in projects | sortByAttribute('Weight') %}
   {% if project.Featured %}
   {% include "templates/project/card-lg.html" %}
@@ -31,8 +31,8 @@
 {% for category in ia %}
 <section id="view_{{ category.Slug | slugify }}" class="category">
   <h2 class="sr-only">{{ category.Title }}</h2>
-  <div class="lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-4">
-  {% for project in projects | find("id", category.Projects) %}
+  <div class="sm:grid sm:grid-cols-2 md:grid-cols-4">
+  {% for project in projects | find("id", category.Projects) | sortByAttribute('Weight') %}
   {% if project.Weight < 10 %}
   {% include "templates/project/card-lg.html" %}
   {% endif %}

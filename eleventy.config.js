@@ -69,9 +69,8 @@ module.exports = function (eleventyConfig) {
     "stylePicture",
     (pe, peStyles = "", imgStyles = "") => {
       /**
-       * It's possible for a gallery to contain IDs for unpublished images, in
-       * which case the template will throw up a little bit. So let's deal with
-       * that.
+       * It's possible to get requests for unpublished images, in which case the
+       * template will throw up a little bit. So let's deal with that.
        **/
       if (pe) {
         return stylePE(pe, peStyles, imgStyles);

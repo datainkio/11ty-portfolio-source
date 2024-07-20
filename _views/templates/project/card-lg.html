@@ -1,18 +1,19 @@
 {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
-<a href="{{ href }}" class="card">
+<a id="{{ project.id }}" href="{{ href }}" class="project {% if project.Featured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card sm:even:flex-col-reverse">
   <figure>
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("", "") | safe }}{% endfor %}
   </figure>
-  <div class="card-body pt-0">
-  <h2>{{ project.Title }}</h2>
-  <ul class="mx-auto md:mx-0">
-    {% for role in roles | find('id', project.Role) %}
-    <li class="inline-block font-light">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
-    {% endfor %}
-  </ul>
-  <ul class="mx-auto md:mx-0">{% for organization in organizations | find('id', project.Organization) %}
-    <li class="text-sm font-light text-neutral-500 align-bottom inline-block italic">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
-    {% endfor %}
-  </ul>
-</div>
+  <div class="card-body px-4 py-2 sm:px-0 sm:py-0 sm:aspect-video flex content-end text-center">
+    <h2 class="text-center">{{ project.Title }}</h2>
+    <ul>
+      {% for role in roles | find('id', project.Role) %}
+      <li class="font-light leading-tight">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+      {% endfor %}
+    </ul>
+    <ul>
+      {% for organization in organizations | find('id', project.Organization) %}
+      <li class="text-sm font-light leading-3 text-neutral-500 inline-block italic">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
 </a>
