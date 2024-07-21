@@ -19,25 +19,9 @@
 </section>
 {% endblock %}
 {% block content %}
-<section id="view_featured" class="category">
-  <div class="sm:grid sm:grid-cols-2 md:grid-cols-4">
+<section id="projects" class="gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
   {% for project in projects | sortByAttribute('Weight') %}
-  {% if project.Featured %}
-  {% include "templates/project/card-lg.html" %}
-  {% endif %}
+    {% include "templates/project/card-lg.html" %}
   {% endfor %}
-  </div>
-</section>
-{% for category in ia %}
-<section id="view_{{ category.Slug | slugify }}" class="category">
-  <h2 class="sr-only">{{ category.Title }}</h2>
-  <div class="sm:grid sm:grid-cols-2 md:grid-cols-4">
-  {% for project in projects | find("id", category.Projects) | sortByAttribute('Weight') %}
-  {% if project.Weight < 10 %}
-  {% include "templates/project/card-lg.html" %}
-  {% endif %}
-  {% endfor %}
-</div>
-</section>
-{% endfor %}
+  </section>
 {% endblock %}

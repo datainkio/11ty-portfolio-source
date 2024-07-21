@@ -9,26 +9,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let pos = "-=.1"; // offset (in seconds) of animation relative to the previous
   // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-  /** INIT */
-  const views = gsap.utils.toArray("section.category");
-  views.forEach(view => {
-    if (view.id != "view_featured") {
-      view.style.opacity = 0;
-      view.style.display = "none";
+  /** INITIALIZE VIEW */
+  const cards = gsap.utils.toArray("a.card.project");
+  cards.forEach(card => {
+    if (!card.classList.contains("featured")) {
+      card.style.opacity = 0;
+      card.style.display = "none";
     }
   });
 
-  /** TITLE */
-  let intro = gsap.timeline({});
 
-  intro.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: .5}));
-  intro.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}));
-  // intro.add(gsap.from('#category_current', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
-  intro.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
+  /** TITLE */
+  let welcome = gsap.timeline({});
+
+  welcome.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: .5}));
+  welcome.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}));
+  // welcome.add(gsap.from('.card.project.featured', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
+  welcome.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
 
   const btns = gsap.utils.toArray('.navbar-start li');
   btns.forEach(btn => {
-    intro.add(gsap.from(btn, {
+    welcome.add(gsap.from(btn, {
       autoAlpha: 0,
       y: y_delta,
       duration: dur
@@ -62,18 +63,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
             item.classList.add("active");
           }
         }
-        // Update the content view
-        const views = gsap.utils.toArray("section.category");
-        views.forEach(view => {
-          if (view.id == "view_" + cat.id) {
-            // view.classList.remove("hidden");
-            gsap.to(view, {opacity: 1, display: "block", duration: dur, delay: dur, ease: "sine.inOut",});
+        // Update the project previews
+        const cards = gsap.utils.toArray("a.card.project");
+        cards.forEach(card => {
+          if (card.classList.contains(cat.id)) {
+            // display the project
+            gsap.to(card, {opacity: 1, display: "block", delay: .5, duration: dur, ease: "sine.inOut"});
           } else {
-            // view.classList.add("hidden");
-            gsap.to(view, {opacity: 0, display: "none", duration: dur, delay: .25, ease: "sine.inOut"});
+            // hide the project
+            gsap.to(card, {opacity: 0, display: "none", duration: dur, ease: "sine.inOut"});
           }
         })
       })
+
      // Update the label with title of the selected category
      label.innerHTML = cat.innerHTML;
      // Update the button to reflect its active state
@@ -81,4 +83,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
       // gsap.to(window, {duration: 1, scrollTo:{y:cat.id, offsetY: 72}});
     });
   })
+
 });

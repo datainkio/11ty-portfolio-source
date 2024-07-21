@@ -8,8 +8,12 @@
 }
 
 @layer base {
+  html {
+    @apply bg-white;
+  }
+
   body {
-    @apply bg-white text-neutral-900;
+    @apply text-neutral-900;
   }
   main {
     @apply px-0 sm:px-12;
@@ -17,11 +21,11 @@
   h1 {
     @apply font-black hover:no-underline 
     leading-none tracking-tight text-balance text-center md:text-left md:-ml-1
-    text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
+    text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
   }
   h2 {
     @apply font-medium hover:no-underline
-    leading-tight text-center md:text-left
+    leading-3 text-center md:text-left
     text-lg sm:text-xl text-pretty;
   }
   h3 {
@@ -94,12 +98,6 @@
   .card-body {
     @apply gap-0;
   }
-
-
-  .flex-col-reverse .card-body {
-    @apply justify-end;
-  }
-
 
   .modal {
     @apply bg-black bg-opacity-75 p-0;

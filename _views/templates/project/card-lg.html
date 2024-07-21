@@ -1,10 +1,10 @@
 {% set href = ["/projects/",project.Name | slugify, "/"] | join %}
-<a id="{{ project.id }}" href="{{ href }}" class="project {% if project.Featured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card sm:even:flex-col-reverse">
+<a id="{{ project.id }}" href="{{ href }}" class="project {% if project.Featured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card {{ orientation }}">
   <figure>
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("", "") | safe }}{% endfor %}
   </figure>
-  <div class="card-body px-4 py-2 sm:px-0 sm:py-0 sm:aspect-video flex content-end text-center">
-    <h2 class="text-center">{{ project.Title }}</h2>
+  <div class="card-body px-4 py-2 sm:px-0 sm:py-0 flex content-end text-center">
+    <h2 class="leading-3 text-center text-xl sm:text-lg">{{ project.Title }}</h2>
     <ul>
       {% for role in roles | find('id', project.Role) %}
       <li class="font-light leading-tight">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
