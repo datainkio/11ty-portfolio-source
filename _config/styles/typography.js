@@ -25,8 +25,13 @@ module.exports = {
     jumbo: "12rem",
   },
   lineHeight: {
-    tight: "1.2",
-    snug: "1.25",
+    none: "1rem",
+    tight: "1.2rem",
+    snug: "1.3rem",
+    normal: "1.5rem",
+    relaxed: "1.65rem",
+    loose: "1.75rem"
+
   },
   prose: ({ theme }) => ({}),
 };

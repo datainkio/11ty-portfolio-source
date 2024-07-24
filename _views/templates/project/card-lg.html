@@ -3,16 +3,11 @@
   <figure>
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("", "") | safe }}{% endfor %}
   </figure>
-  <div class="card-body px-4 py-2 sm:px-0 sm:py-0 flex content-end text-center">
-    <h2 class="leading-3 text-center text-xl sm:text-lg">{{ project.Title }}</h2>
-    <ul>
-      {% for role in roles | find('id', project.Role) %}
-      <li class="font-light leading-tight">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
-      {% endfor %}
-    </ul>
-    <ul>
+  <div class="card-body p-2 gap-1 flex content-end text-center aspect-video">
+    <h2 class="text-center text-xl">{{ project.Title }}</h2>
+    <ul class="leading-none">
       {% for organization in organizations | find('id', project.Organization) %}
-      <li class="text-sm font-light leading-3 text-neutral-500 inline-block italic">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+      <li class="text-sm font-light text-neutral-500 inline-block italic">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
       {% endfor %}
     </ul>
   </div>

@@ -20,12 +20,12 @@
   }
   h1 {
     @apply font-black hover:no-underline 
-    leading-none tracking-tight text-balance text-center md:text-left md:-ml-1
+    tracking-tight text-balance text-center md:text-left md:-ml-1
     text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
   }
   h2 {
     @apply font-medium hover:no-underline
-    leading-3 text-center md:text-left
+    leading-snug text-center md:text-left
     text-lg sm:text-xl text-pretty;
   }
   h3 {
@@ -52,7 +52,7 @@
 
   p.abstract {
     @apply font-light
-    text-pretty leading-tight
+    text-pretty leading-relaxed
     sm:text-xl md:text-2xl;
   }
 
@@ -95,8 +95,16 @@
   .card img {
     @apply w-full h-full object-cover object-center;
   }
-  .card-body {
-    @apply gap-0;
+
+  /** Set display of card based on its column in the display */
+  .card.even-column {
+    @apply flex-col-reverse;
+  }
+  .card.even-column .card-body {
+    @apply grid grid-cols-1 content-end;
+  }
+  .card.current {
+    @apply flex;
   }
 
   .modal {
@@ -125,7 +133,9 @@
   .heading {
     @apply text-neutral-900 sm:text-4xl leading-none font-light my-8 col-span-full divider divider-primary
   }
+  
 }
 
 @layer variants {
+
 }

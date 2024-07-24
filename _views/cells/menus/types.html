@@ -1,7 +1,7 @@
 <div id="categories" class="navbar col-span-full">
   <div class="navbar-start w-full">
     <span id="category_current" class="lg:hidden">Featured</span>
-		<ul class="menu menu-horizontal px-1 hidden lg:flex w-full gap-4">
+		<ul class="menu menu-horizontal hidden lg:flex w-full gap-4">
       <li><a id="featured" class="btn btn-outline category btn-active">Featured</a></li>
 			{% for category in ia %}
 			<li><a id="{{ category.Slug | slugify }}" class="btn btn-outline category">{{ category.Title }}</a></li>

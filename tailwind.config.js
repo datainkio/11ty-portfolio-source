@@ -18,7 +18,7 @@ module.exports = {
       lineHeight: typography.lineHeight,
       typography: typography.prose,
       animation: animation.animation,
-      keyframes: animation.keyframes,
+      keyframes: animation.keyframes
     },
   },
   daisyui: {
