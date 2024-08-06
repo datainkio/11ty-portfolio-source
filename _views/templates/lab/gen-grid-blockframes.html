@@ -1,0 +1,156 @@
+{% extends "species/article.html" %}
+{% set view = "scratch" %}
+{% block primary %}
+<style>
+  .container {
+    padding: 24px;
+    background-image: radial-gradient(var(--bg-inner) 0%, var(--bg-outer) 100%);
+  }
+</style>
+{% include "atoms/anims/blockframes.html" %}
+<a class="btn button">Regenerate</a>
+<div class="container"></div>
+<script type="module">
+  import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
+  import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
+
+  console.clear();
+
+  const blockframes = document.getElementById('blockframes');
+  blockframes.classList.add("hidden");
+
+
+  let draw,
+    squareSize,
+    numRows,
+    numCols,
+    colors,
+    colorPalette
+
+  function drawBlock(x, y, background) {
+    // Create group element
+    const group = draw
+      .group()
+      .addClass("draw-block");
+
+    // Draw Square
+    group
+      .rect(squareSize, squareSize)
+      .fill(background).stroke("black")
+      .move(x, y);
+  }
+
+  function drawBlockFrame(x, y, colors) {
+    // CONTAINER
+    const group = draw
+      .group()
+      .addClass("draw-block");
+    // Draw Border
+    group.rect(squareSize, squareSize).fill("none").stroke("white").move(x, y);
+
+
+    // CHROME
+    var chrome = blockframes.querySelector('#Chrome').cloneNode(true);
+    group.node.appendChild(chrome);
+    drawChrome(chrome, x, y, colors[0]);
+    // drawCalendar(chrome);
+  }
+
+  function paint(group, color) {
+    var paths = group.querySelectorAll('path');
+    paths.forEach(path => {
+      path.setAttribute('fill', color);
+    });
+  }
+
+  function getColors(colors, len) {
+    let colorList = [...colors];
+    let set = [];
+    for (var i = 0; i < len; i++) {
+      // Get random index for this array of colors
+      let colorIndex = random(0, colorList.length - 1, true);
+      // Add the color to the result
+      set.push(colorList[colorIndex]);
+      // remove that color from the options
+      colorList.splice(colorIndex, 1);
+    }
+    return set;
+  }
+
+
+  function drawChrome(chrome, x, y, color) {
+    const bbox = chrome.getBBox();
+    const scaleX = squareSize / bbox.width;
+    const scaleY = squareSize / bbox.height;
+    const scale = Math.min(scaleX, scaleY); // Uniform scaling
+    chrome.setAttribute('transform', `translate(${x}, ${y}) scale(${scale})`);
+    paint(chrome, color);
+  }
+
+  function drawCalendar(chrome, color1, color2) {
+    // Get the calendar
+    const namespaces = { vectornator: 'http://vectornator.io' };
+    var calendar = blockframes.querySelector('#Calendar').cloneNode(true);
+    var days = calendar.querySelector('[vectornator\\:layerName="Days"]')
+    var controls = calendar.querySelector('[vectornator\\:layerName="Controls"]')
+    calendar.removeAttribute("visibility");
+    chrome.appendChild(calendar);
+    paint(days, color1);
+    paint(controls, color2);
+  }
+
+
+
+  /* Create New Piece */
+
+  function generateNewGrid() {
+    // Clear the view
+    document
+      .querySelector(".container")
+      .innerHTML = "";
+    drawGrid();
+  }
+
+  async function drawGrid() {
+    // Set random palette
+    colorPalette = random(colors);
+
+    // Set square size and grid variables
+    squareSize = 100;
+    numRows = random(4, 8, true);
+    numCols = random(4, 8, true);
+
+    // Create parent SVG
+    draw = SVG()
+      .addTo(".container")
+      .size("100%", "100%")
+      .viewbox(`0 0 ${numRows * squareSize} ${numCols * squareSize}`);
+
+    // Create Grid
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        generateLittleBlock(i, j);
+      }
+    }
+  }
+
+  function generateLittleBlock(i, j) {
+    const xPos = i * squareSize;
+    const yPos = j * squareSize;
+
+    drawBlockFrame(xPos, yPos, random(colorPalette));
+  }
+
+  async function init() {
+    // Get color palettes
+    colors = await fetch(
+      "https://unpkg.com/nice-color-palettes@3.0.0/100.json"
+    ).then((response) => response.json());
+    generateNewGrid();
+    document.querySelector(".button").addEventListener("click", generateNewGrid);
+  }
+
+  init();
+
+</script>
+{% endblock %}
