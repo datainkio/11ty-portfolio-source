@@ -1,0 +1,60 @@
+<ul class="menu xl:menu-horizontal bg-base-200 rounded-box lg:min-w-max flex-nowrap right-0">
+		<li>
+				<a href="/case-studies/">Overview</a>
+		</li>
+		<li>
+				<a href="/about/">Type</a>
+				<ul>
+						{% for category in ia %}
+								<li>
+										<a href="/case-studies/types/{{ category.Slug | slugify }}">{{ category.Title }}</a>
+								</li>
+						{% endfor %}
+				</ul>
+		</li>
+		<li>
+				<a href="/about/content-strategy/">Content Strategy</a>
+				<ul>
+						<li>
+								<a>Audience</a>
+						</li>
+						<li>
+								<a>Voice</a>
+						</li>
+						<li>
+								<a>Information Architecture</a>
+						</li>
+				</ul>
+		</li>
+		<li>
+				<a href="/about/design/">Design</a>
+				<ul>
+						<li>
+								<a>Typoography</a>
+						</li>
+						<li>
+								<a>Palette</a>
+						</li>
+						<li>
+								<a>Components</a>
+						</li>
+						<li>
+								<a href="/about/design/layouts/">Layouts</a>
+						</li>
+				</ul>
+		</li>
+		<li>
+				<a href="/about/development/">Development</a>
+				<ul>
+						<li>
+								<a>Design System</a>
+						</li>
+						<li>
+								<a>Engineering</a>
+						</li>
+						<li>
+								<a>Deployment</a>
+						</li>
+				</ul>
+		</li>
+</ul>

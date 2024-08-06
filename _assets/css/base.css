@@ -13,19 +13,19 @@
   }
 
   body {
-    @apply text-neutral-900;
+    @apply text-neutral-900 bg-white;
   }
   main {
-    @apply px-0 sm:px-12;
+    @apply pt-10 px-4 sm:px-12;
   }
+
   h1 {
     @apply font-black hover:no-underline 
-    tracking-tight text-balance text-center md:text-left md:-ml-1
-    text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+    tracking-tight leading-none text-center;
   }
   h2 {
     @apply font-medium hover:no-underline
-    leading-snug text-center md:text-left
+    leading-tight text-center md:text-left
     text-lg sm:text-xl text-pretty;
   }
   h3 {
@@ -41,17 +41,23 @@
 
 
   p {
-    @apply prose hover:no-underline my-4;
+    @apply prose hover:no-underline mb-4;
   }
 
-  p.subtitle {
+  .lead {
+    @apply first-line:uppercase first-line:tracking-widest
+    first-letter:text-7xl first-letter:font-black first-letter:text-black
+    first-letter:mr-3 first-letter:float-left first-letter:leading-[5.5rem];
+  }
+
+  .subtitle {
     @apply text-center md:text-left font-light 
     text-pretty leading-tight pt-4
     text-xl sm:text-2xl md:text-3xl;
   }
 
-  p.abstract {
-    @apply font-light
+  header p {
+    @apply font-light text-black
     text-pretty leading-relaxed
     sm:text-xl md:text-2xl;
   }
@@ -60,7 +66,7 @@
     @apply 
     text-center md:text-left font-light 
     text-pretty leading-tight
-    text-xl sm:text-2xl md:text-3xl
+    text-xl sm:text-2xl
     mx-auto p-0;
   }
 
@@ -71,7 +77,6 @@
   a.card, a.stat {
     @apply hover:no-underline hover:bg-neutral-200;
   }
-
 
   picture.logo img {
     @apply w-full h-full object-contain;
@@ -124,18 +129,67 @@
   .stat-desc {
     @apply prose;
   }
+
+  /** LANDING **/
+  .landing #title {
+    @apply h-dvh flex flex-col gap-0 justify-center items-center;
+  }
+  .landing h1 {
+    @apply pt-1 after:content-["."] lowercase 
+    text-4xl md:text-5xl lg:text-8xl;
+  }
+
+  .user-guide h1 {
+    @apply sticky top-0;
+  }
+
+  .landing #primary-content > section {
+    @apply scene;
+  }
+  .scene {
+    @apply relative min-h-screen border-b-2 border-black border-neutral-200 flex flex-col items-center justify-center;
+  }
+  .scene header {
+    @apply sr-only;
+  }
+  .scene p {
+    @apply mx-auto;
+  }
+  .scene p:first-of-type {
+    @apply lead;
+  }
+  /** ARTICLE **/
+  .article h1 {
+    @apply text-4xl text-left;
+  }
+
+  #header {
+    @apply transition-transform;
+  }
+ 
 }
 
 @layer utilities {
-  .introduction {
-    @apply px-4 sm:px-0;
+  .faded {
+    @apply opacity-0;
   }
-  .heading {
-    @apply text-neutral-900 sm:text-4xl leading-none font-light my-8 col-span-full divider divider-primary
+
+  /** ANIMATIONS **/
+  .transition-transform {
+    @apply duration-500 ease-in-out;
   }
-  
+  .fade-in {
+    @apply transition-transform transition-opacity opacity-100;
+  }
+  .fade-out {
+    @apply transition-transform transition-opacity opacity-0;
+  }
+
+  /** BACKGROUNDS **/
+  .bg-main {
+    @apply bg-hair bg-no-repeat bg-bottom bg-default;
+  }
 }
 
 @layer variants {
-
 }

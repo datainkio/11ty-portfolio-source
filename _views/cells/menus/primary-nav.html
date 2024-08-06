@@ -1,1 +1,44 @@
-{% include "cells/menus/responsive.html" %}
+{% set sizes = "sm:after:content-['SM'] md:after:content-['MD'] lg:after:content-['LG'] xl:after:content-['XL']" %}
+<div id="primary-nav" class="navbar p-0 m-0 leading-none items-start align-middle min-h-2 ">
+		<div class="navbar-start">
+				<div class="dropdown">
+						<div tabindex="0" role="button" id="hamburger" aria-label="mobile menu" class="btn btn-ghost lg:hidden">
+								<svg role="presentation" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-current" fill="none" viewbox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"/>
+								</svg>
+						</div>
+						<ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 bg-base-100 rounded-box w-52">
+								{% for item in collections.all | eleventyNavigation %}
+										<li>
+												<a class="link-hover nav" href=" {{ item.url }} ">{{ item.key }}</a>
+										</li>
+								{% endfor %}
+						</ul>
+				</div>
+				{% if (page.url != "/") and (page.url != "/dev/") %}
+						<a href="/" class="nav font-bold text-xl shrink-0 {{ sizes }} p-2">Russell S. Lebo
+						</a>
+				{% endif %}
+
+		</div>
+		<div class="navbar-center hidden lg:flex"></div>
+		<div class="navbar-end">
+				<ul class="menu menu-horizontal px-1 hidden lg:flex py-0">
+						<li>
+								<details>
+										<summary>Case Studies</summary>
+										{% include "cells/menus/case-studies.html" %}
+								</details>
+						</li>
+						<li>
+								<a class="link-hover nav px-2" href="/lessons-learned/">Lessons Learned</a>
+						</li>
+						<li>
+								<details>
+										<summary>About</summary>
+										{% include "cells/menus/about.html" %}
+								</details>
+						</li>
+				</ul>
+		</div>
+</div>

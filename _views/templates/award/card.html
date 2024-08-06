@@ -1,0 +1,15 @@
+<!-- @format -->
+<div class="grid grid-cols-6 gap-2 bg-black text-white px-4 py-2 items-center">
+		{% for logo in images | find("id", award.logo_id) %}
+				{{ logo.pictureElement | stylePicture("bg-black p-1 w-full aspect-square") | safe }}
+		{% endfor %}
+		<div class="col-span-5">
+				<h3 class="text-lg leading-tight">{{ award.Organization }}:
+						{{ award.Title }}</h3>
+				<ul>
+						{% for project in projects | find("id", award.Projects)%}
+								<li class="italic text-sm">{{ project.Name }}</li>
+						{% endfor %}
+				</ul>
+		</div>
+</div>

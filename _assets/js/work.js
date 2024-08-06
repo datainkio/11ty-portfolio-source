@@ -1,14 +1,24 @@
-/**
- * Define the presentation of the homepage.
- * - Assign intro sequences to key blocks
- * - Assign scrollTo behaviors to buttons
- */
+
 document.addEventListener("DOMContentLoaded", (event) => {
 
   let dur = .25; // base value for animation duration (in seconds)
   let y_delta = 35; // vertical origin of elements
   let pos = "-=50%"; // offset (in seconds) of animation relative to the previous
   // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	const title = gsap.timeline({
+		scrollTrigger: {
+			trigger: "#title",
+			start: "top top",
+			scrub: 1
+		},
+	});
+  title.add(gsap.to("#title", { height: "auto" }));
+  title.add(gsap.to("#title p", { autoAlpha: 0, height: 0}));
+	title.add(gsap.to("#title h1", { fontSize: "3rem" }), "<");
+  title.add(gsap.to("#header", {boxShadow: "0 10px 10px -5px rgba(0, 0, 0, 0.25)"}))
 
   /** INITIALIZE VIEW */
   const cards = gsap.utils.toArray("a.card.project");
@@ -19,28 +29,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
   /** WELCOME SEQUENCE */
-  let welcome = gsap.timeline();
-  welcome.add(gsap.from("h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: .5}));
-  welcome.add(gsap.from(".abstract", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}), pos);
+  // let welcome = gsap.timeline();
+  // welcome.add(gsap.from("#title h1", {duration: dur, y:y_delta, autoAlpha: 0, ease: "sine.inOut", delay: .5}));
+  // welcome.add(gsap.from("#title p", {duration: dur, autoAlpha: 0, ease: "sine.inOut",}), pos);
   // welcome.add(gsap.from('.card.project.featured', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
-  welcome.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
-
-  // CONTROLS
-  const btns = gsap.utils.toArray('.navbar-start li');
-  btns.forEach(btn => {
-    welcome.add(gsap.from(btn, {
-      autoAlpha: 0,
-      y: y_delta,
-      duration: dur
-    }), pos);
-  });
+  // welcome.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
 
   // SHOW FEATURED PROJECTS
   const featured = gsap.utils.toArray("a.card.project.featured");
+  const controls = gsap.timeline();
   featured.forEach(card => {
     card.classList.remove("hidden");
     card.classList.add("current");
-    welcome.add(gsap.to(card, {opacity: 1, y:-y_delta, duration: dur*.76, ease: "sine.inOut"}), pos);
+    controls.add(gsap.to(card, {opacity: 1, y:-y_delta, duration: dur*.76, ease: "sine.inOut"}), pos);
   });
   applyAlternatingStyles();
 
@@ -63,29 +64,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
             item.classList.add("active");
           }
         }
-        // Update the project previews
-        const outro = gsap.timeline({onComplete: clearCards});
-        const intro = gsap.timeline({onStart: showSelected, onStartParams: [cat]});
-        cards.forEach(card => {
-          // clear all visible projects
-          if (!card.classList.contains("hidden")) {
-            outro.add(gsap.to(card, {opacity: 0, y:y_delta, duration: dur*.75, ease: "sine.inOut"}), pos);
-          }
-          
-          if (card.classList.contains(cat.id)) {
-            // display projects belonging to the selected category
-            intro.add(gsap.to(card, {opacity: 1, y:-y_delta, duration: dur*.75, ease: "sine.inOut"}), pos);
-          }
-        })
-        const transition = gsap.timeline({});
-        // intro.pause();
-        transition.add(outro);
-        transition.add(intro);
-        transition.play();
       })
-
-     // Update the button label with title of the selected category
-     label.innerHTML = cat.innerHTML;
+      // Update the project previews
+      const outro = gsap.timeline({onComplete: clearCards});
+      const intro = gsap.timeline({onStart: showSelected, onStartParams: [cat]});
+      cards.forEach(card => {
+        // clear all visible projects
+        if (!card.classList.contains("hidden")) {
+          outro.add(gsap.to(card, {opacity: 0, y:y_delta, duration: dur*.75, ease: "sine.inOut"}), pos);
+        }
+        console.log(cat.id == "all");
+        if (card.classList.contains(cat.id)) {
+          // display projects belonging to the selected category
+          intro.add(gsap.to(card, {opacity: 1, y:-y_delta, duration: dur*.75, ease: "sine.inOut"}), pos);
+        }
+      })
+      const transition = gsap.timeline({});
+      // intro.pause();
+      transition.add(outro);
+      transition.add(intro);
+      transition.play();
     });
   })
 

@@ -1,0 +1,22 @@
+{% extends "species/landing.html" %}
+{% set view = "landing case-studies" %}
+{% block primary %}
+  <section id="projects" class="gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <ul id="types" class="menu menu-horizontal col-span-full gap-2 mb-8 bg-white">
+      <li>
+        <a id="featured" class="btn btn-sm lg:btn-md btn-outline category btn-active">Featured</a>
+      </li>
+      {% for category in ia %}
+        <li>
+          <a id="{{ category.Slug | slugify }}" class="btn btn-sm lg:btn-md btn-outline category">{{ category.Title }}</a>
+        </li>
+      {% endfor %}
+      <li>
+        <a id="all" class="btn btn-sm lg:btn-md btn-outline category">All</a>
+      </li>
+    </ul>
+    {% for project in projects | sortByAttribute('Weight') %}
+      {% include "templates/project/card-lg.html" %}
+    {% endfor %}
+  </section>
+{% endblock %}

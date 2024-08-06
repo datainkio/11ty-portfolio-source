@@ -1,0 +1,120 @@
+{% extends "species/landing.html" %}
+{% set view = "landing user-guide" %}
+{% block accessibility %}{% endblock %}
+<!-- WE DON'T NEED ANOTHER HERO -->
+{% block primary %}
+		<ul id="progress" class="steps my-0 py-0 w-full sticky top-[65px] z-50">
+				<li class="step">
+						<a href="#background">Intro</a>
+				</li>
+				<li class="step">
+						<a href="#background">Background</a>
+				</li>
+				<li class="step">
+						<a href="#my-work">Work</a>
+				</li>
+				<li class="step">
+						<a href="#values">Values</a>
+				</li>
+				<li class="step">
+						<a href="#communication">Communication</a>
+				</li>
+				<li class="step">
+						<a href="#quirks">Quirks</a>
+				</li>
+				<li class="step">
+						<a href="#weaknesses">Weaknesses</a>
+				</li>
+				<li class="step">
+						<a href="#conflic">Conflict</a>
+				</li>
+				<li class="step">
+						<a href="#mistakes">Mistakes</a>
+				</li>
+		</ul>
+		<section id="intro" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Introduction</h2>
+				</header>
+				<p class="lead">This is based on an idea I first read about in Forbes etc. etc.</p>
+		</section>
+		<section id="background" class="scene sm:grid sm:grid-cols-2 content-start">
+				<header class="heading sm:sr-only">
+						<h2>Background</h2>
+				</header>
+				<div>
+						<p class="lead">My education is in social anthropology. As a student I explored how the relationship between language and tool use shapes human behavior and social structure. By analyzing how we describe and change the world around us, I uncovered how these elements influence societal norms and relationships.</p>
+						<p>Those years spent studying the interrelationships between scientific models of the human being continue to shape my values and methodology as a designer by emphasizing a holistic understanding of human behavior.</p>
+				</div>
+				<figure>
+						{% include "atoms/anims/network.html" %}
+				</figure>
+		</section>
+		<section id="my-work" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Work</h2>
+				</header>
+				<p class="lead">Today, I work with user researchers, UI designers, engineers, and accessibility experts to deliver
+						<a href="/projects/" class="link-primary">digital products and services</a>
+						that answer real human needs.</p>
+				<p>My contributions are not always measured in pixels. They show up in the questions researchers ask, the strategies that lead designers to solutions, and the human perspective that helps engineers realize what is possible.</p>
+		</section>
+		<section id="values" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Values</h2>
+				</header>
+				<section>
+						<p class="lead"></p>
+						<h3>Humans first</h3>
+						<p>My job is to ensure that products meet real human needs. Other leaders will maximize the business, the technology, or any different number of essential facets. Ideological diversity is critical to an effective team. All perspectives are relevant, and we need all these leaders, but my bias is toward building things that make people’s lives better.</p>
+				</section>
+				<section>
+						<h3>I see things as systems</h3>
+						<p>Maybe it’s my background in anthro, but I tend to reduce all complex things (including humans) into systems. I think in flowcharts. I take great joy in attempting to understand how these systems and flowcharts all fit and work together. When I see large or small inefficiencies in these complex systems, I’d like to fix them with your help.</p>
+				</section>
+				<section>
+						<h3>I prioritize tangibility</h3>
+						<p>Getting something into the hands of real users as soon as possible provides valuable, quantifiable insights that guide design decisions. My style is to prioritize tasks that quickly lead to testing. By delivering something testable, the team can gather meaningful, actionable feedback, allowing them to make informed decisions about the next steps.</p>
+				</section>
+		</section>
+		<section id="communication" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Communication</h2>
+				</header>
+				<h3>Communication</h3>
+				<p>You can email and message me 24 hours a day. Chat is my preferred communication medium. I like responding quickly. If I need time to process before responding in detail, I will say so.</p>
+				<h3>Meetings</h3>
+				<p>My default when scheduling meetings is fifteen minutes. People underestimate how much ground they can cover in fifteen minutes, especially when a clear agenda has been set beforehand. I will always share what I want to discuss ahead of time so that you have an opportunity to consider things in the way that works best for you.</p>
+				<h3>Weekends</h3>
+				<p>I work a bit on the weekends. This is my choice. I do not expect my team to work on the weekend. I might reach out to you with things, but unless the thing says URGENT, it can always wait until you are back in the office.</p>
+		</section>
+		<section id="quirks" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Quirks</h2>
+				</header>
+				<h3>Neither extrovert nor introvert</h3>
+				<p>I am somewhere in between. I get a kick out of leading workshops and giving presentations, but put me in a cocktail party and I will likely hide out in the corner.</p>
+		</section>
+		<section id="weaknesses" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Weaknesses</h2>
+				</header>
+		</section>
+		<section id="conflict" class="scene">
+				<h2>
+						<header class="heading sm:sr-only">
+								<h2>Conflict</h2>
+						</header>
+				</h2>
+		</section>
+		<section id="mistakes" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>Mistakes</h2>
+				</header>
+		</section>
+		<section id="conclusion" class="scene">
+				<header class="heading sm:sr-only">
+						<h2>That covers it</h2>
+				</header>
+		</section>
+{% endblock %}

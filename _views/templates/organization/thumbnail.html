@@ -1,0 +1,5 @@
+<figure>
+		<figcaption class="sr-only">{{ organization.Name }}</figcaption>
+		{% for img in images | find("id", organization.Logo) %}{{ img.pictureElement | stylePicture("", "") | safe }}
+		{% endfor %}
+</figure>

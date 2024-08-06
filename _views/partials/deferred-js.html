@@ -1,0 +1,35 @@
+<!-- Generative Grid Assets -->
+<script>
+		document.addEventListener("DOMContentLoaded", (event) => {
+
+				// Bring the page content into view
+				document
+						.querySelector("main")
+						.classList
+						.add("fade-in");
+
+				// Function to handle fade-out effect and navigation
+				function handleLinkClick(event) {
+						event.preventDefault(); // Prevent the default link behavior
+						const targetUrl = event.currentTarget.href; // Get the target URL
+
+						// Add fade-out class to body
+						document
+								.querySelector("main")
+								.classList
+								.add("fade-out");
+
+						// Wait for the transition to complete before navigating
+						setTimeout(() => {
+								window.location.href = targetUrl;
+						}, 1000); // Match the duration of the CSS transition
+				}
+
+				// Attach the fade-out effect to all links
+				document
+						.querySelectorAll("a.nav")
+						.forEach(link => {
+								link.addEventListener("click", handleLinkClick);
+						});
+		});
+</script>

@@ -2,23 +2,30 @@
 <html lang="en">
   <!-- HEAD -->
   {% include "partials/head.html" %}
-
   <body class="{{ view }}">
     <!-- GTM -->
     {% include "partials/gtm_body.html" %}
     <!-- A11Y -->
     <section id="skip" tabindex=" -2" class="sr-only">
-      {% block accessibility %}{% endblock %}
-      </section>
-    <!-- NAVIGATION -->
+      {% block accessibility %}NO SKIP LINKS DEFINED{% endblock %}
+    </section>
+    <!-- GLOBAL HEADER -->
     {% include "organisms/headers/global.html" %}
     <!-- CONTENT -->
-    <main tabindex=" -1">
-      {% block hero %}{% endblock %}
-      {% block content %}{% endblock %}
+    <main tabindex=" -1" class="faded">
+      <header id="title" class="title pt-[65px]">
+        {% block header %}
+          <h1>{{ title }}</h1>
+          <p class="text-pretty text-center">{{ introduction | safe }}</p>
+        {% endblock %}
+      </header>
+      <section id="primary-content">
+        {% block primary %}PRIMARY CONTENT
+        {% endblock %}
+      </section>
     </main>
     <!-- FOOTER -->
-    {% block footer %}{% endblock %}
+    {% block footer %}FOOTER{% endblock %}
     {% include "organisms/footers/global.html" %}
   </body>
 

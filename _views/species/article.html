@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <!-- HEAD -->
-  {% include "partials/head.html" %}
-  <body class="{{ view }}">
-    <!-- GTM -->
-    {% include "partials/gtm_body.html" %}
-    <!-- A11Y -->
-    <section id="skip" tabindex=" -2" class="sr-only">
-    {% block accessibility %}{% endblock %}
-    </section>
-    <!-- NAVIGATION -->
-    {% include "organisms/headers/global.html" %}
-    <!-- CONTENT -->
-    <main tabindex=" -1">
-      <article>
-        {% block hero %}{% endblock %}
-        {% block content %}{% endblock %}
-      </article>
-    </main>
-    <!-- FOOTER -->
-    {% block footer %}{% endblock %}
-    {% include "organisms/footers/global.html" %}
-  </body>
-
-</html>
+{% extends "species/base.html" %}
+{% set view = "article" %}
+{% block accessibility %}ACCESSIBILITY{% endblock %}
+{% block header %}
+		{# 
+		{% set navPages = collections.all | eleventyNavigationBreadcrumb(title, {allowMissing: true}) %}
+		{{ navPages | dump | safe }}
+		#}
+		<h1>{{ title }}</h1>
+		<p>{{ introduction | safe }}</p>
+{% endblock %}
+{% block content %}
+		{{ content | safe }}
+{% endblock %}
+{% block footer %}FOOTER{% endblock %}
