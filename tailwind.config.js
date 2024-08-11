@@ -14,7 +14,7 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				"hair": "url('./assets/static/hair.png')"
+				hair: "url('./assets/static/hair.png')",
 			},
 			backgroundSize: layout.backgroundSize,
 			spacing: layout.spacing,
@@ -27,6 +27,7 @@ module.exports = {
 			typography: typography.prose,
 			animation: animation.animation,
 			keyframes: animation.keyframes,
+			dropShadow: palettes.dropShadow,
 		},
 	},
 	daisyui: {
@@ -36,5 +37,10 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [require("@tailwindcss/typography"), require("daisyui")],
+	plugins: [
+		require("@tailwindcss/typography"),
+		require("daisyui"),
+		require("@lostisworld/tailwind-mask"),
+		require("tailwind-clip-path"),
+	],
 };

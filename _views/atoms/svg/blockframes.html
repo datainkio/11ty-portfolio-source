@@ -1,0 +1,461 @@
+<!-- @format -->
+
+{% include "atoms/svg/Blockframes.svg" %}
+<div class="blockframe-container"></div>
+<script type="module">
+	import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
+	import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
+
+	console.clear();
+	const COLCOUNT = 18; // The number of columns
+	const ROWCOUNT = 36; // The maximum number of rows in a given column
+	const THRESHOLD = 6; // The row index where blocks are conditional
+	const SIZE = 100; // The size of each block (square)
+	const ANGLE = 28; // The skew angle for each block (pos and neg)
+	const BRIGHTNESS = 0.25; // Brightness factor for even columns
+	// The IDs for the blockframes available in the source SVG
+	const TYPES = [
+		"Calendar",
+		"Blog",
+		"Article",
+		"Landing",
+		"Cart",
+		"Contact",
+		"Map",
+		"Timeline",
+	];
+	// The SVG supplying the blockframes copied into the grid
+	const SRC = document.getElementById("blockframes");
+	SRC.classList.add("hidden");
+
+	let draw, colors, colorPalette;
+
+	function addBlockFrame(chrome, colors) {
+		switch (random(TYPES)) {
+			case "Blog":
+				drawBlog(chrome, colors);
+				break;
+			case "Calendar":
+				drawCalendar(chrome, colors);
+				break;
+			case "Article":
+				drawArticle(chrome, colors);
+				break;
+			case "Landing":
+				drawLanding(chrome, colors);
+				break;
+			case "Cart":
+				drawCart(chrome, colors);
+				break;
+			case "Contact":
+				drawContact(chrome, colors);
+				break;
+			case "Map":
+				drawMap(chrome, colors);
+				break;
+			case "Timeline":
+				drawTimeline(chrome, colors);
+				break;
+		}
+	}
+
+	function paint(element, color, opacity) {
+		switch (element.nodeName) {
+			// Container elements
+			case "svg":
+			case "g":
+			case "defs":
+			case "symbol":
+			case "use":
+				element.childNodes.forEach((child) => {
+					paint(child, color, opacity);
+				});
+				break;
+			// Basic shapes
+			case "rect":
+			case "circle":
+			case "ellipse":
+			case "line":
+			case "polyline":
+			case "polygon":
+			case "path":
+				element.setAttribute("fill", color);
+				if (opacity) {
+					element.setAttribute("opacity", opacity);
+				}
+				// element.setAttribute('stroke', "#000000");
+				break;
+
+			default:
+				// DO NOTHING
+				// console.log("unknown element: " + element.nodeName);
+				break;
+		}
+	}
+
+	function getColors(len) {
+		let colorList = [...colors];
+		let set = [];
+		for (var i = 0; i < len; i++) {
+			// Get random index for this array of colors
+			let colorIndex = random(0, colorList.length - 1, true);
+			// Add the color to the result
+			set.push(colorList[colorIndex]);
+			// remove that color from the options
+			colorList.splice(colorIndex, 1);
+		}
+		// console.log(set);
+		return set;
+	}
+
+	// Calculate the Euclidean distance between two colors
+	function colorDistance(color1, color2) {
+		const r1 = parseInt(color1.substring(1, 3), 16);
+		const g1 = parseInt(color1.substring(3, 5), 16);
+		const b1 = parseInt(color1.substring(5, 7), 16);
+
+		const r2 = parseInt(color2.substring(1, 3), 16);
+		const g2 = parseInt(color2.substring(3, 5), 16);
+		const b2 = parseInt(color2.substring(5, 7), 16);
+
+		return Math.sqrt(
+			Math.pow(r2 - r1, 2) + Math.pow(g2 - g1, 2) + Math.pow(b2 - b1, 2)
+		);
+	}
+	// Find the color with the greatest distance
+	function findFarthestColor(source, colors) {
+		let maxDistance = 0;
+		let result = 0;
+
+		for (let i = 0; i < colors.length; i++) {
+			const distance = colorDistance(source, colors[i]);
+			if (distance > maxDistance) {
+				maxDistance = distance;
+				result = colors[i];
+			}
+		}
+		return result;
+	}
+
+	// Function to create and apply a filter to lower brightness
+	function createFilters(e) {
+		// Append the filter to the SVG's defs section
+		let defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+		e.node.appendChild(defs);
+		defs.appendChild(getBrightnessFilter());
+	}
+
+	function getBrightnessFilter() {
+		// Create a filter element
+		const filter = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"filter"
+		);
+		filter.setAttribute("id", "brightness");
+
+		// Create feComponentTransfer element
+		const feComponentTransfer = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"feComponentTransfer"
+		);
+
+		// Create feFuncR, feFuncG, feFuncB elements and set their attributes
+		["R", "G", "B"].forEach((channel) => {
+			const feFunc = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				`feFunc${channel}`
+			);
+			feFunc.setAttribute("type", "linear");
+			feFunc.setAttribute("slope", BRIGHTNESS);
+			feComponentTransfer.appendChild(feFunc);
+		});
+
+		// Append feComponentTransfer to filter
+		filter.appendChild(feComponentTransfer);
+		return filter;
+	}
+
+	function paintChrome(chrome, colors) {
+		const background = colors[0];
+		const foreground = findFarthestColor(colors[0], colors);
+
+		// Set size and scale
+		// chrome.setAttribute("transform", `scale(${scale})`);
+
+		// BACKGROUND
+		var bg = chrome.querySelector('[vectornator\\:layerName="Field"]');
+		paint(bg, background);
+
+		// TOOLBAR
+		var toolbar = chrome.querySelector('[vectornator\\:layerName="Toolbar"]');
+
+		// background
+		var bg = toolbar.querySelector('[vectornator\\:layerName="background"]');
+		paint(bg, foreground);
+		bg.setAttribute("opacity", 0.25);
+		bg.setAttribute("style", "mix-blend-mode: hard-light;");
+
+		// dots
+		var dots = toolbar.querySelector('[vectornator\\:layerName="dots"]');
+		paint(dots, background);
+	}
+
+	function drawCalendar(chrome, colors) {
+		var calendar = SRC.querySelector("#Calendar").cloneNode(true);
+		calendar.removeAttribute("visibility");
+		chrome.appendChild(calendar);
+
+		// BACKGROUND
+		var bg = calendar.querySelector('[vectornator\\:layerName="Background"]');
+		bg.setAttribute("opacity", 0.5);
+		// CONTROLS
+		var controls = calendar.querySelector(
+			'[vectornator\\:layerName="Controls"]'
+		);
+		paint(controls, colors[0]);
+
+		// DAYS
+		var days = calendar.querySelector('[vectornator\\:layerName="Days"]');
+		paint(days, colors[1]);
+	}
+
+	function drawCart(chrome, colors) {
+		// Get the cart
+		var cart = SRC.querySelector("#Cart").cloneNode(true);
+		var cap = cart.querySelector('[vectornator\\:layerName="End Cap"]');
+		var rows = cart.querySelectorAll('[vectornator\\:layerName="Row"]');
+		rows.forEach((row) => {
+			paint(row, findFarthestColor(colors[0], colors), 0.75);
+		});
+
+		cart.removeAttribute("visibility");
+		chrome.appendChild(cart);
+	}
+
+	function drawBlog(chrome, colors) {
+		var blog = SRC.querySelector("#Blog").cloneNode(true);
+		var post0 = blog.querySelector('[vectornator\\:layerName="Post01"]');
+		var post1 = blog.querySelector('[vectornator\\:layerName="Post02"]');
+		var post2 = blog.querySelector('[vectornator\\:layerName="Post03"]');
+		var posts = [post0, post1, post2];
+		posts.forEach((post) => {
+			var bg = post.querySelector('[vectornator\\:layerName="Background"]');
+			var hero = post.querySelector('[vectornator\\:layerName="Hero"]');
+			var greek = post.querySelector('[vectornator\\:layerName="Greek"]');
+			paint(bg, findFarthestColor(colors[0], colors), 0.25);
+			paint(greek, colors[0], 1);
+			paintImage(hero, colors, 0.5);
+		});
+		// paintImage(post0.querySelector('[vectornator\\:layerName="Hero"]'));
+		blog.removeAttribute("visibility");
+		chrome.appendChild(blog);
+		// paint(post0, colors[0]);
+		// paint(post1, colors[0]);
+		// paint(post2, colors[0]);
+	}
+
+	function drawArticle(chrome, colors) {
+		// Get the article element and copy it into the grid
+		const namespaces = {
+			vectornator: "http://vectornator.io",
+		};
+		var article = SRC.querySelector("#Article").cloneNode(true);
+		article.removeAttribute("visibility");
+		chrome.appendChild(article);
+
+		// GREEK
+		var greek = article.querySelector('[vectornator\\:layerName="Greek"]');
+		paint(greek, findFarthestColor(colors[0], colors), 1);
+
+		// HERO
+		paintImage(
+			article.querySelector('[vectornator\\:layerName="Hero"]'),
+			colors
+		);
+
+		// ASIDE
+		var aside = article.querySelector('[vectornator\\:layerName="Aside"]');
+		paint(aside, findFarthestColor(colors[0], colors), 1);
+	}
+
+	function drawLanding(chrome, colors) {
+		// Get the article element and copy it into the grid
+		var landing = SRC.querySelector("#Landing").cloneNode(true);
+		landing.removeAttribute("visibility");
+		chrome.appendChild(landing);
+
+		// GREEK
+		var greek = landing.querySelector('[vectornator\\:layerName="Greek"]');
+		paint(greek, findFarthestColor(colors[0], colors), 1);
+
+		// HERO
+		paintImage(
+			landing.querySelector('[vectornator\\:layerName="Hero"]'),
+			colors
+		);
+	}
+
+	function drawContact(chrome, colors) {
+		// Get the article element and copy it into the grid
+		var block = SRC.querySelector("#Contact").cloneNode(true);
+		block.removeAttribute("visibility");
+		chrome.appendChild(block);
+
+		// FORM
+		var form = block.querySelector('[vectornator\\:layerName="Form"]');
+		var bg = form.querySelector('[vectornator\\:layerName="Background"]');
+		var fields = form.querySelector('[vectornator\\:layerName="Fields"]');
+		var title = form.querySelector('[vectornator\\:layerName="Title"]');
+		var button = form.querySelector('[vectornator\\:layerName="Button"]');
+		paint(bg, findFarthestColor(colors[0], colors));
+		paint(fields, colors[1], 0.75);
+		paint(title, colors[1]);
+		paint(button, colors[1]);
+	}
+
+	function drawMap(chrome, colors) {
+		// Get the article element and copy it into the grid
+		var block = SRC.querySelector("#Map").cloneNode(true);
+		block.removeAttribute("visibility");
+		chrome.appendChild(block);
+
+		var bg = block.querySelector('[vectornator\\:layerName="Background"]');
+		var streets = block.querySelector('[vectornator\\:layerName="Streets"]');
+		var pin = block.querySelector('[vectornator\\:layerName="Pin"]');
+		var greek = block.querySelector('[vectornator\\:layerName="Greek"]');
+		paint(bg, colors[0]);
+		paint(streets, colors[1]);
+		paint(pin, colors[3], 1);
+		paint(greek, colors[1]);
+
+		// Tweaks
+		streets.setAttribute("opacity", 1);
+	}
+
+	function drawTimeline(chrome, colors) {
+		// Get the article element and copy it into the grid
+		var block = SRC.querySelector("#Timeline").cloneNode(true);
+		block.removeAttribute("visibility");
+		chrome.appendChild(block);
+
+		var chop = block.querySelector('[vectornator\\:layerName="Chop"]');
+		var bullets = block.querySelector('[vectornator\\:layerName="Bullets"]');
+		var greek = block.querySelector('[vectornator\\:layerName="Greek"]');
+		chop.setAttribute("opacity", 1);
+		chop
+			.querySelector('[vectornator\\:layerName="circle"]')
+			.setAttribute("fill", findFarthestColor(colors[1], colors));
+		chop
+			.querySelector('[vectornator\\:layerName="polygon"]')
+			.setAttribute("fill", colors[0]);
+		paint(bullets, colors[3], 1);
+		paint(greek, colors[2], 1);
+	}
+	//#
+	function paintImage(image, colors) {
+		var base = findFarthestColor(colors[0], colors);
+		var background = image.querySelector(
+			'[vectornator\\:layerName="Background"]'
+		);
+		paint(background, "#FFFFFF");
+		var mountains = image.querySelector(
+			'[vectornator\\:layerName="Mountains"]'
+		);
+		paint(mountains, base, 0.5);
+		var sun = image.querySelector('[vectornator\\:layerName="Sun"]');
+		paint(sun, base, 1);
+	}
+
+	// BUILD A NEW GRID
+
+	function generateNewGrid() {
+		// Clear the view
+		document.querySelector(".blockframe-container").innerHTML = "";
+		drawGrid();
+	}
+
+	async function drawGrid() {
+		const grid = SVG() // Create the SVG
+			.addTo(".blockframe-container")
+			.size("100%", "100%")
+			.viewbox(`0 0 ${COLCOUNT * SIZE} ${ROWCOUNT * SIZE} `);
+		createFilters(grid);
+		for (let r = 0; r < ROWCOUNT; r++) {
+			for (let c = 0; c < COLCOUNT; c++) {
+				if (r <= c + THRESHOLD) {
+					// Knowing odd/even keeps the last items lined up rather than dangling
+					if (c % 2 === 0) {
+						drawBlock(grid, r, c);
+					} else if (r < c + THRESHOLD) {
+						drawBlock(grid, r, c);
+					}
+				}
+			}
+		}
+	}
+
+	function drawBlock(grid, r, c) {
+		const chrome = SRC.querySelector("#Chrome").cloneNode(true);
+		chrome.classList.add("blockframe");
+		grid.node.appendChild(chrome);
+
+		const bbox = chrome.getBBox();
+		const scaleX = SIZE / bbox.width;
+		const scaleY = SIZE / bbox.height;
+		const scale = Math.min(scaleX, scaleY) * 1.025; // Uniform scaling
+		const x = c * SIZE;
+		const y = r * SIZE;
+		const skewYAngle = c % 2 === 0 ? ANGLE : ANGLE * -1;
+		chrome.setAttribute("width", SIZE);
+		chrome.setAttribute("height", SIZE);
+		chrome.setAttribute("fill", "#CCC");
+		chrome.setAttribute("stroke", "#000");
+
+		// Apply skew transform to the square around its center
+		chrome.setAttribute(
+			"transform",
+			`translate(${x + SIZE / 2}, ${
+				y + SIZE / 2
+			}) skewY(${skewYAngle}) translate(${-SIZE / 2}, ${
+				-SIZE / 2
+			}) scale(${scale})`
+		);
+
+		// Apply filter based on column
+		if (c % 2 === 0) {
+			chrome.setAttribute("filter", "url(#brightness)");
+		}
+
+		var palette = random(colors);
+		paintChrome(chrome, palette);
+		addBlockFrame(chrome, palette);
+	}
+
+	function animate(from, axis, ease) {
+		var grid = [ROWCOUNT, COLCOUNT];
+		var tl = gsap.timeline({});
+		tl.from(".blockframe", {
+			duration: 1,
+			opacity: 0,
+			ease: "power1.inOut",
+			stagger: {
+				amount: 5,
+				grid: grid,
+				axis: axis,
+				ease: ease,
+				from: 0,
+			},
+		});
+	}
+
+	async function init() {
+		// Get color palettes (i.e. the top palettes from ColourLovers: https://github.com/Experience-Monks/nice-color-palettes/blob/master/README.md)
+		colors = await fetch(
+			"https://unpkg.com/nice-color-palettes@3.0.0/100.json"
+		).then((response) => response.json());
+		generateNewGrid();
+		animate();
+	}
+
+	init();
+</script>

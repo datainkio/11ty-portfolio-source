@@ -1,0 +1,22 @@
+<!-- @format -->
+
+<svg
+	data-name="Layer 2"
+	xmlns="http://www.w3.org/2000/svg"
+	role="presentation"
+	class="w-full h-full absolute top-0 left-0 overflow-visible"
+>
+	<mask id="triangle">
+		<rect
+			x="0"
+			y="0"
+			width="100%"
+			height="100%"
+			fill="white"
+		/>
+		<path
+			d="M1200 0L0 0 892.25 114.72 1200 0z"
+			fill="black"
+		></path>
+	</mask>
+</svg>

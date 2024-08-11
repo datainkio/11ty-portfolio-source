@@ -1,97 +1,191 @@
 <!-- @format -->
 
-{% extends "species/landing.html" %}
-{% set view = "landing about" %}
-{% block primary %}
-		<section id="background">
-				<header>
-						<h2>Background</h2>
-				</header>
-				<p>
-						My education is in social anthropology. As a student I explored how the relationship between language and tool use shapes human behavior and social structure. By analyzing how we describe and change the world around us, I uncovered how these elements influence societal norms and relationships.
-				</p>
-				<p>
-						Those years spent studying the interrelationships between scientific models of the human being continue to shape my values and methodology as a designer by emphasizing a holistic understanding of human behavior.
-				</p>
-		</section>
-		<section>
-				<p>
-						Today, as a visual creative, I'm often hands on encouraging teams to play, remix, and look at things sideways—using customer and business insights, brand, storytelling, and human centered design to create differentiated products. I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing client's user needs, technical constraints, product strategy, and business objectives.
-				</p>
-		</section>
-		<section id="organizations">
-				<header>
-						<h2>Collaboration</h2>
-				</header>
-				<p>
-						I apply this expertise across a wide range of domains, delivering solutions for global brands, museums, artists, musicians, hospitals, schools, and even the federal government. The audiences and business goals change, but the priority of maintaining focus on human-centered design remains constant.
-				</p>
-				<ul class="grid grid-cols-5 md:grid-cols-9 order-first items-start py-12">
-						{% for org in organizations | sort("Weight") %}
-								{% if org.Logo %}
-										<li class="aspect-video org">
-												<figure>
-														{% for img in images | find("id", org.Logo) %}{{ img.pictureElement | stylePicture("", "") | safe }}
-														{% endfor %}
-												</figure>
-										</li>
-								{% endif %}
-						{% endfor %}
-				</ul>
-				<footer></footer>
-		</section>
-		<section id="impact">
-				<p>
-						It is work with a real impact. As the design manager for federal projects with Bixal, my teams and I increased equitable access to federal benefits and services for 330 million Americans, connected small businesses with $4.2 billion in funding, helped reduce the number of annual cases of foodborne illness by 7 million, and helped establish the United States Web Design System. As a developer and product designer with IBM Interactive, I led the design for the company's first application of Watson AI to healthcare, helped design and build both the world's first global platform for democratizing access to pediatric expertise, and helped design and build the first platform uniting urban data from cities across the globe.
-				</p>
-		</section>
-		<section id="recognition" class="scene flex flex-wrap items-start justify-start">
-				<header>
-						<h2>Recognition</h2>
-				</header>
-				<p>
-						It's also work that has received some great recognition. This is because I have been lucky to be a part of amazing, multitalented teams looking to change lives for the better. People like
-						<a href="https://www.joshgoldblum.com/" class="link-primary link-hover">Josh Goldblum</a >, who gave me my first paying gig back when
-						<a href="https://www.bluecadet/" class="link-primary link-hover">Bluecadet</a >
-						was still operating out of his living room.
-						<a href="https://www.linkedin.com/in/adamcutler/" class="link-primary link-hover">Adam Cutler</a >
-						and
-						<a href="https://www.arup.com/our-firm/jeff-berg" class="link-primary link-hover">Jeff Berg</a >, two people who introduced me to IBM and what it means to work on a global scale. And
-						<a href="https://www.linkedin.com/in/willweems/" class="link-primary link-hover">Will Weems</a >
-						and
-						<a href="https://world.hey.com/philip.levy" class="link-primary link-hover">Phil Levy</a >, two colleagues and friends from Bixal who showed me what it means to grow and develop design culture in organizations.
-				</p>
-				<ul class="basis-full flex gap-4">
-						{% for logo in images %}
-								{% if logo.Recognition %}
-										<li>{{ logo.pictureElement | stylePicture("p-1 invert") | safe }}</li>
-								{% endif %}
-						{% endfor %}
-				</ul>
-		</section>
-		<section id="contributions">
-				<header>
-						<h2>Contributions</h2>
-				</header>
-				<p>
-						You can see my contributions in the questions researchers ask, the strategies that lead designers to solutions, and the human perspective that helps engineers realize what is possible. As a human-experience designer, I serve as the common thread on multifunctional teams, integrating diverse insights into a cohesive vision. My focus on user-centric design ensures that every team member is aligned with the end goal of creating meaningful, intuitive experiences. By facilitating communication and understanding across different functions, I help translate complex technical requirements into user-friendly solutions, driving innovation and ensuring that the final product resonates deeply with its intended audience.
-						<section id="research">
-								<header>
-										<h2>Research</h2>
-								</header>
-								<footer></footer>
-						</section>
-						<section id="design">
-								<header>
-										<h2>Design</h2>
-								</header>
-								<footer></footer>
-						</section>
-						<section id="development">
-								<header>
-										<h2>Development</h2>
-								</header>
-								<footer></footer>
-						</section>
-				</section>
-		{% endblock %}
+{% extends "species/landing.html" %} {% set view = "landing about" %} {% block
+cap %}{% include "atoms/svg/blockframes.html" %}{% endblock %} {% block header
+%}
+<div class="bg-white p-12">
+	<h1>{{ title }}</h1>
+	<p class="bg-white text-pretty text-center">{{ introduction | safe }}</p>
+</div>
+{% endblock %} {% block primary %}
+<section
+	id="education"
+	class="flex flex-col gap-8"
+>
+	<header>
+		<h2>Education</h2>
+	</header>
+	<div>
+		<figure class="size-96 relative -left-72 top-20 opacity-20">
+			<figcaption class="sr-only">
+				Anthropology focuses on identifying and understanding the connecting
+				thread among a range of different domains describing human behavior.
+			</figcaption>
+			{% include "atoms/svg/network.html" %}
+		</figure>
+		<div class="size-44 mask mask-circle bg-[#434343]">
+			{% include "atoms/svg/anthro-pattern.svg" %}
+		</div>
+	</div>
+	<div>
+		<p>
+			My education is in social anthropology. As a student I explored how the
+			relationship between language and tool use shapes human behavior and
+			social structure. By analyzing how we describe and change the world around
+			us, I uncovered how these elements influence societal norms and
+			relationships.
+		</p>
+		<p>
+			Those years spent studying the interrelationships between scientific
+			models of the human being continue to shape my values and methodology as a
+			designer by emphasizing a holistic understanding of human behavior.
+		</p>
+	</div>
+</section>
+<section
+	id="today"
+	class="flex items-center"
+>
+	<p class="p-12">
+		Today, as a visual creative, I'm often hands on encouraging teams to play,
+		remix, and look at things sideways—using customer and business insights,
+		brand, storytelling, and human centered design to create differentiated
+		products. I spend as much time sweating UI pixels and UX flows as I do
+		sitting in workshops and boardrooms, discussing client's user needs,
+		technical constraints, product strategy, and business objectives.
+	</p>
+</section>
+<section
+	id="organizations"
+	class="bg-white max-w-360 flex flex-row flex-wrap mx-auto items-start"
+>
+	<header>
+		<h2>Collaboration</h2>
+	</header>
+	<p>
+		I apply this expertise across a wide range of domains, delivering solutions
+		for global brands, museums, artists, musicians, hospitals, schools, and even
+		the federal government. The audiences and business goals change, but the
+		priority of maintaining focus on human-centered design remains constant.
+	</p>
+	<p>
+		It is work with a real impact. As the design manager for federal projects
+		with Bixal, my teams and I increased equitable access to federal benefits
+		and services for 330 million Americans, connected small businesses with $4.2
+		billion in funding, helped reduce the number of annual cases of foodborne
+		illness by 7 million, and helped establish the United States Web Design
+		System. As a developer and product designer with IBM Interactive, I led the
+		design for the company's first application of Watson AI to healthcare,
+		helped design and build both the world's first global platform for
+		democratizing access to pediatric expertise, and helped design and build the
+		first platform uniting urban data from cities across the globe.
+	</p>
+	<ul class="basis-full grid grid-cols-12 items-start py-12">
+		{% for org in organizations | sort("Weight") %} {% if org.Logo %}
+		<li class="aspect-video org">
+			<figure>
+				{% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
+				stylePicture("", "") | safe }} {% endfor %}
+			</figure>
+		</li>
+		{% endif %} {% endfor %}
+	</ul>
+	<footer></footer>
+</section>
+<section
+	id="recognition"
+	class="bg-white max-w-360 mx-auto"
+>
+	<header>
+		<h2>Recognition</h2>
+	</header>
+	<p>
+		It's also work that has received some great recognition. This is because I
+		have been lucky to be a part of amazing, multitalented teams looking to
+		change lives for the better. People like
+		<a
+			href="https://www.joshgoldblum.com/"
+			class="link-primary link-hover"
+			>Josh Goldblum</a
+		>, who gave me my first paying gig back when
+		<a
+			href="https://www.bluecadet/"
+			class="link-primary link-hover"
+			>Bluecadet</a
+		>
+		was still operating out of his living room.
+		<a
+			href="https://www.linkedin.com/in/adamcutler/"
+			class="link-primary link-hover"
+			>Adam Cutler</a
+		>
+		and
+		<a
+			href="https://www.arup.com/our-firm/jeff-berg"
+			class="link-primary link-hover"
+			>Jeff Berg</a
+		>, two people who introduced me to IBM and what it means to work on a global
+		scale. And
+		<a
+			href="https://www.linkedin.com/in/willweems/"
+			class="link-primary link-hover"
+			>Will Weems</a
+		>
+		and
+		<a
+			href="https://world.hey.com/philip.levy"
+			class="link-primary link-hover"
+			>Phil Levy</a
+		>, two colleagues and friends from Bixal who showed me what it means to grow
+		and develop design culture in organizations.
+	</p>
+	<ul class="flex gap-4">
+		{% for logo in images %} {% if logo.Recognition %}
+		<li>{{ logo.pictureElement | stylePicture("p-1 invert") | safe }}</li>
+		{% endif %} {% endfor %}
+	</ul>
+</section>
+<section
+	id="contributions"
+	class="bg-white max-w-360 mx-auto"
+>
+	<header>
+		<h2>Contributions</h2>
+	</header>
+	<p>
+		You can see my contributions in the questions researchers ask, the
+		strategies that lead designers to solutions, and the human perspective that
+		helps engineers realize what is possible. As a human-experience designer, I
+		serve as the common thread on multifunctional teams, integrating diverse
+		insights into a cohesive vision. My focus on user-centric design ensures
+		that every team member is aligned with the end goal of creating meaningful,
+		intuitive experiences. By facilitating communication and understanding
+		across different functions, I help translate complex technical requirements
+		into user-friendly solutions, driving innovation and ensuring that the final
+		product resonates deeply with its intended audience.
+	</p>
+	<p class="italic">
+		Background images progressively reveal the design process: notes, post-its,
+		affinity mapping, diagrams, blockframing, wireframing, design.
+	</p>
+
+	<section id="research">
+		<header>
+			<h2>Research</h2>
+		</header>
+		<footer></footer>
+	</section>
+	<section id="design">
+		<header>
+			<h2>Design</h2>
+		</header>
+		<footer></footer>
+	</section>
+	<section id="development">
+		<header>
+			<h2>Development</h2>
+		</header>
+		<footer></footer>
+	</section>
+</section>
+{% endblock %}

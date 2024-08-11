@@ -1,0 +1,31 @@
+<!-- @format -->
+{% extends "species/article.html" %} {% block primary %} {% set sections = "
+relative h-96 w-full bg-neutral " %}
+<section class="{{ sections }} clip-path-capped flex items-center">
+	<h3>
+		This uses a clip path: https://github.com/mellambias/tailwind-clip-path
+	</h3>
+</section>
+<section class="{{ sections }}">
+	{% include "atoms/dividers/test.svg" %}
+	<h3>Wha?</h3>
+</section>
+<section
+	class="{{ sections }} mask-repeat-no-repeat mask-type-luminance mask-image-[url(#triangle)]"
+>
+	<h3>Mask in SVG</h3>
+	<p>
+		This is cool, but doesn't scale horizontally.{% include
+		"atoms/dividers/masks.svg" %}
+	</p>
+</section>
+
+<section class="{{ sections }}">
+	<style>
+		.shape-fill {
+			fill: #000;
+		}
+	</style>
+	{% include "atoms/dividers/caps.svg" %}
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!-- @format -->
+{% extends "species/article.html" %} {% block primary %}
+<svg
+	id="svgGrid"
+	width="240"
+	height="240"
+	xmlns="http://www.w3.org/2000/svg"
+></svg>
+<script>
+	const svg = document.getElementById("svgGrid");
+	const squareSize = 50;
+	const gap = 10;
+	const colors = ["red", "green", "blue", "yellow"];
+
+	for (let row = 0; row < 4; row++) {
+		for (let col = 0; col < 4; col++) {
+			const rect = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"rect"
+			);
+			const x = col * (squareSize + gap) + gap;
+			const y = row * (squareSize + gap) + gap;
+			const skewYAngle = col % 2 === 0 ? 15 : -15;
+
+			rect.setAttribute("width", squareSize);
+			rect.setAttribute("height", squareSize);
+			rect.setAttribute("fill", colors[(row + col) % colors.length]);
+
+			// Apply skew transform to the square around its center
+			rect.setAttribute(
+				"transform",
+				`translate(${x + squareSize / 2}, ${
+					y + squareSize / 2
+				}) skewY(${skewYAngle}) translate(${-squareSize / 2}, ${
+					-squareSize / 2
+				})`
+			);
+			svg.appendChild(rect);
+		}
+	}
+</script>
+{% endblock %}

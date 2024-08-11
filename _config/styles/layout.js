@@ -11,7 +11,10 @@ module.exports = {
 		auto: "auto",
 		cover: "cover",
 		contain: "contain",
-		default: '75%'
+		default: "75%",
+	},
+	clipPath: {
+		capped: "ellipse(50px 60px at 0 10% 20%)",
 	},
 	container: {
 		// you can configure the container to be centered

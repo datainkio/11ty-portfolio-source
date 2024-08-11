@@ -1,32 +1,46 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-  <!-- HEAD -->
-  {% include "partials/head.html" %}
-  <body class="{{ view }}">
-    <!-- GTM -->
-    {% include "partials/gtm_body.html" %}
-    <!-- A11Y -->
-    <section id="skip" tabindex=" -2" class="sr-only">
-      {% block accessibility %}NO SKIP LINKS DEFINED{% endblock %}
-    </section>
-    <!-- GLOBAL HEADER -->
-    {% include "organisms/headers/global.html" %}
-    <!-- CONTENT -->
-    <main tabindex=" -1" class="faded">
-      <header id="title" class="title pt-[65px]">
-        {% block header %}
-          <h1>{{ title }}</h1>
-          <p class="text-pretty text-center">{{ introduction | safe }}</p>
-        {% endblock %}
-      </header>
-      <section id="primary-content">
-        {% block primary %}PRIMARY CONTENT
-        {% endblock %}
-      </section>
-    </main>
-    <!-- FOOTER -->
-    {% block footer %}FOOTER{% endblock %}
-    {% include "organisms/footers/global.html" %}
-  </body>
-
+	<!-- HEAD -->
+	{% include "partials/head.html" %}
+	<body class="{{ view }}">
+		<!-- GTM -->
+		{% include "partials/gtm_body.html" %}
+		<!-- SCRIPT -->
+		{% block script %} {% endblock %}
+		<!-- A11Y -->
+		<section
+			id="skip"
+			tabindex=" -2"
+			class="sr-only"
+		>
+			{% block accessibility %}NO SKIP LINKS DEFINED{% endblock %}
+		</section>
+		<!-- GLOBAL HEADER -->
+		{% include "organisms/headers/global.html" %}
+		<!-- CONTENT -->
+		<main
+			id="smooth-content"
+			tabindex=" -1"
+			class="faded"
+		>
+			{% block cap %} {%endblock%}
+			<header
+				id="title"
+				class="title pt-[65px] z-50 relative {{ title_styles }}"
+			>
+				{% block header %}
+				<h1>{{ title }}</h1>
+				<p class="text-pretty text-center">{{ introduction | safe }}</p>
+				{% endblock %}
+			</header>
+			<section id="primary-content">
+				{% block primary %}PRIMARY CONTENT {% endblock %}
+			</section>
+		</main>
+		<!-- FOOTER -->
+		{% block footer %}FOOTER{% endblock %} {% include
+		"organisms/footers/global.html" %}
+	</body>
 </html>

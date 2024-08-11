@@ -1,9 +1,6 @@
-{% extends "species/base.html" %}
-{% set view = "landing" %}
-{% block accessibility %}ACCESSIBILITY{% endblock %}
-{% block primary %}
-		{{ content | safe }}
-{% endblock %}
-{% block footer %}
-		{% include "organisms/footers/sitemap.html" %}
-{% endblock %}
+<!-- @format -->
+
+{% extends "species/base.html" %} {% set view = "landing" %} {% block cap %}
+{%endblock%} {% block accessibility %}ACCESSIBILITY{% endblock %} {% block
+primary %} {{ content | safe }} {% endblock %} {% block footer %} {% include
+"organisms/footers/sitemap.html" %} {% endblock %}

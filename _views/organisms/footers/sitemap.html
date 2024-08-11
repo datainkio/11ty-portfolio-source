@@ -1,38 +1,67 @@
+<!-- @format -->
+
 <footer class="footer text-base-content p-12">
-  <aside class="bg-main h-full">
-    <p>
-      ACME Industries Ltd.
-      <br/>
-      Providing reliable tech since 1992
-    </p>
-  </aside>
-  <nav>
-    <h6 class="footer-title">Case Studies</h6>
-    <a href="/case-studies/" class="link link-hover nav">Overview</a>
-    {% for category in ia %}
-      <a href="/case-studies/types/{{ category.Title | slugify }}" class="link link-hover nav">{{ category.Title }}</a>
-    {% endfor %}
-  </nav>
-  <nav>
-    <h6 class="footer-title">Lessons Learned</h6>
-    <a class="link link-hover nav" href="/lessons-learned/">Overview</a>
-    {% for insight in insights %}
-      {% set href = ["/lessons-learned/",insight.Name | slugify, "/"] | join %}
-      {% if loop.index <= 1 %}
-        <a class="link link-hover nav" href="{{ href }}">{{ insight.Name }}</a>
-      {% endif %}
-    {% endfor %}
-  </nav>
-  <nav>
-    <h6 class="footer-title">About</h6>
-    <a class="link link-hover nav" href="/about/">Introduction</a>
-    <a class="link link-hover nav" href="/about/user-guide/">User Guide to Me</a>
-    <a class="link link-hover nav" href="/about/design">Design Guide</a>
-  </nav>
-  <nav id="social" class="flex flex-row flex-wrap">
-    <h6 class="footer-title basis-full">Social</h6>
-    {% for item in social %}
-      <a href="{{ item.URL }}" class="basis-1/6 p-0 m-0">{{ item.pictureElement | safe }}</a>
-    {% endfor %}
-  </nav>
+	<nav>
+		<h6 class="footer-title">Case Studies</h6>
+		<a
+			href="/case-studies/"
+			class="link link-hover nav"
+			>Overview</a
+		>
+		{% for category in ia %}
+		<a
+			href="/case-studies/types/{{ category.Title | slugify }}"
+			class="link link-hover nav"
+			>{{ category.Title }}</a
+		>
+		{% endfor %}
+	</nav>
+	<nav>
+		<h6 class="footer-title">Lessons Learned</h6>
+		<a
+			class="link link-hover nav"
+			href="/lessons-learned/"
+			>Overview</a
+		>
+		{% for insight in insights %} {% set href =
+		["/lessons-learned/",insight.Name | slugify, "/"] | join %} {% if loop.index
+		<= 1 %}
+		<a
+			class="link link-hover nav"
+			href="{{ href }}"
+			>{{ insight.Name }}</a
+		>
+		{% endif %} {% endfor %}
+	</nav>
+	<nav>
+		<h6 class="footer-title">About</h6>
+		<a
+			class="link link-hover nav"
+			href="/about/"
+			>Introduction</a
+		>
+		<a
+			class="link link-hover nav"
+			href="/about/user-guide/"
+			>User Guide to Me</a
+		>
+		<a
+			class="link link-hover nav"
+			href="/about/design"
+			>Design Guide</a
+		>
+	</nav>
+	<nav
+		id="social"
+		class="flex flex-row flex-wrap"
+	>
+		<h6 class="footer-title basis-full">Social</h6>
+		{% for item in social %}
+		<a
+			href="{{ item.URL }}"
+			class="basis-1/6 p-0 m-0"
+			>{{ item.pictureElement | safe }}</a
+		>
+		{% endfor %}
+	</nav>
 </footer>

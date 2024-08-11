@@ -1,0 +1,66 @@
+<!-- @format -->
+<style>
+	#network {
+		overflow: visible;
+	}
+	.ray {
+		stroke: #434343;
+		stroke-width: 2;
+	}
+	.ray circle {
+		fill: #fff;
+	}
+	.ray text {
+		fill: green;
+		stroke: none;
+		font-family: sans-serif;
+		visibility: hidden;
+	}
+</style>
+{% include "atoms/svg/Network.svg" %}
+<script>
+	console.clear();
+
+	gsap.set("#network", { autoAlpha: 1 });
+	const RANGE = 24;
+	const ANGLES = [60, 90, 120, 135, 184, 225, 264, 290];
+	const RAYS = gsap.utils.toArray(".ray");
+
+	const LINES = gsap.utils.toArray(".ray line");
+	const ALLTEXT = gsap.utils.toArray(".ray text");
+
+	// the prep =====
+	gsap
+		.timeline({
+			onComplete: () => {
+				gsap.delayedCall(1, action);
+			},
+		})
+		.set(RAYS, {
+			rotation: function (i, target, list) {
+				return -ANGLES[i];
+			},
+			duration: function (i, target, list) {
+				return 0.5 + i * 0.1;
+			},
+			ease: "none",
+			transformOrigin: "left center",
+		});
+
+	function action() {
+		gsap.utils.toArray(".ray circle").forEach(function (dot, i) {
+			var action = gsap
+				.timeline({ repeat: -1, yoyo: true, delay: i * 0.3 })
+				.to(LINES[i], { attr: { x1: "+=10" }, duration: 2, ease: "none" })
+				//.to(allText[i], {attr:{x:'+=10'}, duration:2, ease:'none'},0)
+				.to(dot, { attr: { cx: "+=10" }, duration: 2, ease: "none" }, 0)
+				.to(
+					LINES[i],
+					{ attr: { y1: "+=10" }, duration: 2, ease: "power2.out" },
+					0
+				)
+				//.to(allText[i], {attr:{y:'+=10'}, duration:2, ease:'none'},0)
+				.to(dot, { attr: { cy: "+=10" }, duration: 2, ease: "power2.out" }, 0);
+		});
+	}
+</script>
