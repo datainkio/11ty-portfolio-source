@@ -1,0 +1,33 @@
+<!-- @format -->
+{% extends "species/article.html" %}
+{% set title_styles = "col-span-full" %}
+{% set main_styles = "relative h-[200vh]" %}
+{% block primary %}
+<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-white ">
+	Section 1
+</section>
+<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-black">
+	Section 2
+</section>
+<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-white ">
+	Section 3
+</section>
+<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-black">
+	Section 4
+</section>
+<script>
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Parallax background effect
+	gsap.to("main", {
+		backgroundPosition: "0 35%",
+		ease: "none",
+		scrollTrigger: {
+			trigger: "main",
+			start: "top top",
+			end: "bottom top",
+			scrub: true
+		}
+	});
+</script>
+{% endblock %}

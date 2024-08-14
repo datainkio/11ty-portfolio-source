@@ -1,17 +1,17 @@
 <!-- @format -->
 
 {% include "atoms/svg/Blockframes.svg" %}
-<div class="blockframe-container"></div>
+<div class="blockframes-container"></div>
 <script type="module">
 	import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
 	import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
 
 	console.clear();
 	const COLCOUNT = 18; // The number of columns
-	const ROWCOUNT = 36; // The maximum number of rows in a given column
-	const THRESHOLD = 6; // The row index where blocks are conditional
+	const ROWCOUNT = 16; // The maximum number of rows in a given column
+	const THRESHOLD = 16; // The row index where blocks are conditional
 	const SIZE = 100; // The size of each block (square)
-	const ANGLE = 28; // The skew angle for each block (pos and neg)
+	const ANGLE = 0; // The skew angle for each block (pos and neg)
 	const BRIGHTNESS = 0.25; // Brightness factor for even columns
 	// The IDs for the blockframes available in the source SVG
 	const TYPES = [
@@ -27,6 +27,7 @@
 	// The SVG supplying the blockframes copied into the grid
 	const SRC = document.getElementById("blockframes");
 	SRC.classList.add("hidden");
+	const VIEWS = document.querySelectorAll('.blockframes');
 
 	let draw, colors, colorPalette;
 
@@ -370,13 +371,13 @@
 
 	function generateNewGrid() {
 		// Clear the view
-		document.querySelector(".blockframe-container").innerHTML = "";
+		// document.querySelector(".blockframe").innerHTML = "";
 		drawGrid();
 	}
 
 	async function drawGrid() {
 		const grid = SVG() // Create the SVG
-			.addTo(".blockframe-container")
+			.addTo(".blockframes-container")
 			.size("100%", "100%")
 			.viewbox(`0 0 ${COLCOUNT * SIZE} ${ROWCOUNT * SIZE} `);
 		createFilters(grid);
@@ -392,6 +393,9 @@
 				}
 			}
 		}
+		const svgDataURL = `data:image/svg+xml;base64,${btoa(grid.svg())}`;
+		// Apply the SVG as the background image
+		VIEWS.forEach(view => view.style.backgroundImage = `url('${svgDataURL}')`);
 	}
 
 	function drawBlock(grid, r, c) {
@@ -414,10 +418,8 @@
 		// Apply skew transform to the square around its center
 		chrome.setAttribute(
 			"transform",
-			`translate(${x + SIZE / 2}, ${
-				y + SIZE / 2
-			}) skewY(${skewYAngle}) translate(${-SIZE / 2}, ${
-				-SIZE / 2
+			`translate(${x + SIZE / 2}, ${y + SIZE / 2
+			}) skewY(${skewYAngle}) translate(${-SIZE / 2}, ${-SIZE / 2
 			}) scale(${scale})`
 		);
 
@@ -454,7 +456,7 @@
 			"https://unpkg.com/nice-color-palettes@3.0.0/100.json"
 		).then((response) => response.json());
 		generateNewGrid();
-		animate();
+		// animate();
 	}
 
 	init();

@@ -1,25 +1,25 @@
-<header id="header" class="fixed w-full z-50 bg-white p-2 drop-shadow-md">
-		{% include "cells/menus/primary-nav.html" %}
+<header id="header" class="fixed w-full z-[100] bg-white p-2 drop-shadow-md">
+	{% include "cells/menus/primary-nav.html" %}
 </header>
 <script>
-		let lastScrollTop = 0;
-		const nav = document.getElementById('header');
+	let lastScrollTop = 0;
+	const nav = document.getElementById('header');
 
-		window.addEventListener('scroll', function () {
-				let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	window.addEventListener('scroll', function () {
+		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-				if (scrollTop > lastScrollTop) {
-						// Scroll Down
-						nav
-								.classList
-								.add('-translate-y-full');
-				} else {
-						// Scroll Up
-						nav
-								.classList
-								.remove('-translate-y-full');
-				}
+		if (scrollTop > lastScrollTop) {
+			// Scroll Down
+			nav
+				.classList
+				.add('-translate-y-full');
+		} else {
+			// Scroll Up
+			nav
+				.classList
+				.remove('-translate-y-full');
+		}
 
-				lastScrollTop = scrollTop;
-		});
+		lastScrollTop = scrollTop;
+	});
 </script>

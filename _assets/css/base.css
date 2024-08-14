@@ -13,200 +13,202 @@
 }
 
 @layer base {
-	html {
-		@apply bg-white;
-	}
+  html {
+    @apply bg-white;
+  }
 
-	body {
-		@apply text-neutral-900 bg-white;
-	}
-	main {
-		@apply pt-10 relative bg-graphpaper;
-	}
+  body {
+    @apply text-neutral-900 bg-white;
+  }
+  main {
+    @apply relative bg-graphpaper;
+  }
 
-	h1 {
-		@apply font-black hover:no-underline 
-    tracking-tight leading-none text-center;
-	}
-	h2 {
-		@apply font-medium hover:no-underline
+  h1 {
+    @apply text-2xl font-black hover:no-underline 
+    tracking-tight leading-none text-center md:text-left;
+  }
+  h2 {
+    @apply font-medium hover:no-underline
     leading-tight text-center md:text-left
     text-lg sm:text-xl text-pretty;
-	}
-	h3 {
-		@apply font-medium hover:no-underline
+  }
+  h3 {
+    @apply font-medium hover:no-underline
     text-balance leading-none 
     text-2xl my-0 col-span-full;
-	}
-	figcaption {
-		@apply text-neutral-400 hover:no-underline
+  }
+  figcaption {
+    @apply text-neutral-400 hover:no-underline
     text-balance leading-tight
     my-0 col-span-full;
-	}
+  }
 
-	p {
-		@apply prose hover:no-underline mb-4;
-	}
+  p {
+    @apply prose hover:no-underline mb-4;
+  }
 
-	.lead {
-		@apply first-line:uppercase first-line:tracking-widest
+  .lead {
+    @apply first-line:uppercase first-line:tracking-widest
     first-letter:text-7xl first-letter:font-black
     first-letter:mr-3 first-letter:float-left first-letter:leading-[5.5rem];
-	}
+  }
 
-	.subtitle {
-		@apply text-center md:text-left font-light 
+  .subtitle {
+    @apply text-center md:text-left font-light 
     text-pretty leading-tight pt-4
     text-xl sm:text-2xl md:text-3xl;
-	}
+  }
 
-	header.title {
-		@apply: relative z-50;
-	}
+  header.title {
+    @apply: relative z-50;
+  }
 
-	header p {
-		@apply font-light text-black
+  header p {
+    @apply font-light 
     text-pretty leading-relaxed
-    sm:text-xl md:text-2xl;
-	}
+    text-xl;
+  }
 
-	section.description p {
-		@apply text-center md:text-left font-light 
+  p {
+    @apply text-neutral-900;
+  }
+
+  section.description p {
+    @apply text-center md:text-left font-light 
     text-pretty leading-tight
     text-xl sm:text-2xl
     mx-auto p-0;
-	}
+  }
 
-	a {
-		@apply link-hover font-medium;
-	}
+  a {
+    @apply link-hover font-medium;
+  }
 
-	a.card,
-	a.stat {
-		@apply hover:no-underline hover:bg-neutral-200;
-	}
+  a.card,
+  a.stat {
+    @apply hover:no-underline hover:bg-neutral-200;
+  }
 
-	picture.logo img {
-		@apply w-full h-full object-contain;
-	}
+  picture.logo img {
+    @apply w-full h-full object-contain;
+  }
 }
 
 @layer components {
-	.divider {
-		@apply col-span-full text-3xl font-bold;
-	}
-	.btn-primary {
-		@apply btn content-center btn-circle w-24 h-24 m-2 text-lg italic block;
-	}
+  .divider {
+    @apply col-span-full text-3xl font-bold;
+  }
+  .btn-primary {
+    @apply btn content-center btn-circle w-24 h-24 m-2 text-lg italic block;
+  }
 
-	.card figure {
-		@apply aspect-video;
-	}
-	.card picture {
-		@apply w-full h-full;
-	}
-	.card img {
-		@apply w-full h-full object-cover object-center;
-	}
+  .card figure {
+    @apply aspect-video;
+  }
+  .card picture {
+    @apply w-full h-full;
+  }
+  .card img {
+    @apply w-full h-full object-cover object-center;
+  }
 
-	/** Set display of card based on its column in the display */
-	.card.even-column {
-		@apply flex-col-reverse;
-	}
-	.card.even-column .card-body {
-		@apply grid grid-cols-1 content-end;
-	}
-	.card.current {
-		@apply flex;
-	}
+  /** Set display of card based on its column in the display */
+  .card.even-column {
+    @apply flex-col-reverse;
+  }
+  .card.even-column .card-body {
+    @apply grid grid-cols-1 content-end;
+  }
+  .card.current {
+    @apply flex;
+  }
 
-	.modal {
-		@apply bg-black bg-opacity-75 p-0;
-	}
-	.modal-box {
-		@apply bg-transparent m-0 max-w-none shadow-none;
-	}
-	.modal h2,
-	.modal p {
-		@apply text-white mb-4;
-	}
+  .modal {
+    @apply bg-black bg-opacity-75 p-0;
+  }
+  .modal-box {
+    @apply bg-transparent m-0 max-w-none shadow-none;
+  }
+  .modal h2,
+  .modal p {
+    @apply text-white mb-4;
+  }
 
-	.stat {
-		@apply py-2 m-0 content-start;
-	}
-	.stat-desc {
-		@apply prose;
-	}
+  .stat {
+    @apply py-2 m-0 content-start;
+  }
+  .stat-desc {
+    @apply prose;
+  }
 
-	/** LANDING **/
-	.landing #title {
-		@apply h-dvh flex flex-col gap-0 justify-center items-center;
-	}
-	.landing h1 {
-		@apply pt-1 after:content-["."] lowercase 
-    text-4xl md:text-5xl lg:text-8xl;
-	}
+  /** LANDING **/
+  .landing #title {
+    @apply h-dvh flex flex-col gap-0 justify-center items-center;
+  }
+  .landing h1 {
+    @apply pt-1 after:content-["."] lowercase 
+    text-4xl md:text-5xl;
+  }
 
-	.user-guide h1 {
-		@apply sticky top-0;
-	}
+  .user-guide h1 {
+    @apply sticky top-0;
+  }
 
-	.landing #primary-content > section {
-		@apply scene;
-	}
-	.scene {
-		@apply relative my-24 p-12 items-center justify-center;
-	}
-	.scene header {
-		@apply sr-only;
-	}
-	.scene p {
-		@apply mx-auto;
-	}
-	.scene p:first-of-type {
-		@apply lead;
-	}
-	/** ARTICLE **/
-	.article h1 {
-		@apply text-4xl text-left;
-	}
+  .landing .about > section {
+    @apply scene;
+  }
+  .scene {
+    @apply col-span-full grid grid-cols-subgrid;
+  }
+  .scene header {
+    @apply sr-only;
+  }
 
-	#header {
-		@apply transition-transform;
-	}
+  .scene p:first-of-type {
+    @apply lead;
+  }
+  /** ARTICLE **/
+  .article h1 {
+    @apply text-4xl text-left;
+  }
 
-	.blockframe-container {
-		@apply w-full mx-auto absolute -top-16 left-0;
-	}
+  #header {
+    @apply transition-transform;
+  }
+
+  .blockframe-container {
+    @apply w-full mx-auto absolute -top-16 left-0;
+  }
 }
 
 @layer utilities {
-	.faded {
-		@apply opacity-0;
-	}
+  .faded {
+    @apply opacity-0;
+  }
 
-	/** ANIMATIONS **/
-	.transition-transform {
-		@apply duration-500 ease-in-out;
-	}
-	.fade-in {
-		@apply transition-transform transition-opacity opacity-100;
-	}
-	.fade-out {
-		@apply transition-transform transition-opacity opacity-0;
-	}
+  /** ANIMATIONS **/
+  .transition-transform {
+    @apply duration-500 ease-in-out;
+  }
+  .fade-in {
+    @apply transition-transform transition-opacity opacity-100;
+  }
+  .fade-out {
+    @apply transition-transform transition-opacity opacity-0;
+  }
 
-	/** BACKGROUNDS **/
+  /** BACKGROUNDS **/
 
-	.bg-main {
-		@apply bg-hair bg-no-repeat bg-bottom bg-default;
-	}
+  .bg-main {
+    @apply bg-hair bg-no-repeat bg-bottom bg-default;
+  }
 
-	.bg-graphpaper {
-		@apply inset-0 h-full w-full bg-white 
+  .bg-graphpaper {
+    @apply inset-0 h-full w-full bg-white 
 		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
 		bg-[size:24px_24px];
-	}
+  }
 }
 
 @layer variants {
