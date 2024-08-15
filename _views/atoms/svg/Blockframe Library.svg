@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="590" height="606" fill="none" viewBox="0 0 590 606">
-  <g class="BlockframeLibrary" clip-path="url(#a)">
+<svg id="BlockframeLibrary" xmlns="http://www.w3.org/2000/svg" width="590" height="606" fill="none" viewBox="0 0 590 606">
+  <g  clip-path="url(#a)">
     <rect width="590" height="606" fill="#fff"/>
     <g class="Chrome">
       <path fill="#EFF6FE" fill-rule="evenodd" d="M0 9.826C0 4.4 4.41 0 9.81 0h570.38c5.418 0 9.81 4.402 9.81 9.826V606H0V9.826Z" class="background" clip-rule="evenodd"/>

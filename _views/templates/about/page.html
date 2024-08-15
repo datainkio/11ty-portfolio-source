@@ -1,17 +1,19 @@
 <!-- @format -->
-{% extends "species/landing.html" %} {% block
-cap %}{% include "atoms/svg/blockframes.html" %}{% endblock %}
+{% extends "species/landing.html" %}
+{% block
+cap %}
+{% endblock %}
 {% set main_styles = "about grid grid-cols-9" %}
 {% set title_styles = "h-dvh col-span-full flex justify center items-center" %}
 {% block header
 %}
-<div class="mx-auto blockframes drop-shadow">
+<div class="mx-auto">
 	<h1 class="text-sm">{{ title }}</h1>
 	<p class="text-pretty">{{ introduction | safe }}</p>
 </div>
 {% endblock %}
 {% block primary %}
-<section id="education" class="blockframes">
+<section id="education" class="bg-blockframes bg-no-repeat bg-cover ">
 	<header>
 		<h2>Education</h2>
 	</header>
@@ -29,6 +31,7 @@ cap %}{% include "atoms/svg/blockframes.html" %}{% endblock %}
 			designer by emphasizing a holistic understanding of human behavior.
 		</p>
 	</section>
+	{% include "atoms/svg/blockframes.html" %}
 </section>
 <section id="today">
 	<section class="col-span-full">

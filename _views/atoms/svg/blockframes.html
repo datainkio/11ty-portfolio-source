@@ -24,7 +24,7 @@
 		"Timeline",
 	];
 	// The SVG supplying the blockframes copied into the grid
-	const SRC = document.getElementsByClassName("BlockframeLibrary")[0];
+	const SRC = document.getElementById("BlockframeLibrary");
 	// console.log(SRC);
 	SRC.classList.add("hidden");
 
@@ -342,14 +342,15 @@
 		// VIEWS.forEach(view => view.classList.add('bg-[' + svgDataURL) + ']');
 		// Remove the temporary container
 		document.getElementById("container").remove();
+		document.getElementById("BlockframeLibrary").remove();
 	}
 
 	function drawBlock(grid, r, c) {
 		const chrome = SRC.querySelector(".Chrome").cloneNode(true);
 		chrome.classList.add("blockframe");
 		document.getElementById("container").appendChild(chrome);
-		console.log(document.getElementById("container"));
-		console.log(chrome.getBoundingClientRect())
+		// console.log(document.getElementById("container"));
+		// console.log(chrome.getBoundingClientRect())
 		const rect = chrome.getBoundingClientRect();
 		const scaleX = SIZE / rect.width;
 		const scaleY = SIZE / rect.width;
