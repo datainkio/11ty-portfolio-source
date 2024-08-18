@@ -2,13 +2,17 @@
 
 {% extends "species/article.html" %}
 {% block primary %}
-<section class="bg-blockframes bg-cover relative w-full h-dvh flex items-justify items-center">
-  <div class="bg-white p-12 mx-72 drop-shadow-2xl">
-    <h2 class="pb-8">The background for this section is a dynamically generated SVG</h2>
-    <p>The SVG is applied to an element with the class name "bg-blockframes" via background-image. The goal is to
-      maintain a clean DOM with minimal presentation elements.
-    </p>
-  </div>
+<section
+  class="bg-blockframes-bw h-dvh w-full bg-cover bg-center flex flex-col items-center justify-center overflow-hidden">
+  <h1 class="pb-8">The background for this section is a dynamically generated SVG</h1>
+  <p>The SVG is applied to an element with the class name "bg-blockframes" via background-image.
+    The goal is to
+    maintain a clean DOM with minimal presentation elements.
+  </p>
+  <p>
+    Include atoms/svg/blockframes.html in a page, give an element the class name "bg-blockframes", and you are good
+    to go.
+  </p>
 </section>
-{% include "atoms/svg/blockframes.html" %}
+{% include "atoms/backgrounds/BlockframeLibrary.html" %}
 {% endblock %}

@@ -1,15 +1,24 @@
 {% extends "species/landing.html" %}
+{% set main_styles = "design grid grid-cols-12" %}
 {% block primary %}
-		<section id="background" class="scene">
-				<h2>Background</h2>
-		</section>
-		<section id="palette" class="scene">
-				<h2>Palette</h2>
-		</section>
-		<section id="components" class="scene">
-				<h2>Components</h2>
-		</section>
-		<section id="layouts" class="scene">
-				<h2>Layouts</h2>
-		</section>
+<section id="background" class="scene col-span-full">
+	<h2>Background</h2>
+</section>
+<section id="palette" class="scene col-span-full">
+	<h2>Palette</h2>
+</section>
+<section id="components" class="scene col-span-full">
+	<h2>Components</h2>
+	<section class="grid grid-cols-subgrid col-span-full bg-neutral-200">
+		<h3 class="col-span-full ">Body Block 01</h3>
+		<p class="col-span-3 order-last">This is the lead paragraph for the body block. Use it to present the main statement
+			of the
+			block.</p>
+		<p class="col-span-3">This is a secondary statement.</p>
+		<p class="col-span-3">This is another secondary statement.</p>
+	</section>
+</section>
+<section id="layouts" class="scene">
+	<h2>Layouts</h2>
+</section>
 {% endblock %}

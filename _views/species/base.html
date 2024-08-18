@@ -19,10 +19,10 @@
 		<!-- CONTENT -->
 		<main tabindex=" -1" class="faded {{ main_styles }}">
 			{% block cap %} {%endblock%}
-			<header id="title" class="title pt-[65px] z-50 relative {{ title_styles }}">
+			<header id="title" class="title z-50 relative {{ title_styles }}">
 				{% block header %}
 				<h1>{{ title }}</h1>
-				<p class="text-pretty text-center">{{ introduction | safe }}</p>
+				<p class="text-pretty">{{ introduction | safe }}</p>
 				{% endblock %}
 			</header>
 			{% block primary %}PRIMARY CONTENT {% endblock %}

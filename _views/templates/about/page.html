@@ -3,17 +3,18 @@
 {% block
 cap %}
 {% endblock %}
-{% set main_styles = "about grid grid-cols-9" %}
-{% set title_styles = "h-dvh col-span-full flex justify center items-center" %}
+{% set main_styles = "about grid grid-cols-12" %}
+{% set title_styles = "col-span-full flex justify-items-start" %}
 {% block header
 %}
-<div class="mx-auto">
-	<h1 class="text-sm">{{ title }}</h1>
-	<p class="text-pretty">{{ introduction | safe }}</p>
-</div>
+<h1>{{ title }}</h1>
+<p>I am a human experience designer.</p>
 {% endblock %}
 {% block primary %}
-<section id="education" class="bg-blockframes bg-no-repeat bg-cover ">
+<section>
+	<p class="col-span-full">{{ introduction | safe }}</p>
+</section>
+<section id="education">
 	<header>
 		<h2>Education</h2>
 	</header>
@@ -31,9 +32,8 @@ cap %}
 			designer by emphasizing a holistic understanding of human behavior.
 		</p>
 	</section>
-	{% include "atoms/svg/blockframes.html" %}
 </section>
-<section id="today">
+<section id="today" class="bg-no-repeat bg-cover">
 	<section class="col-span-full">
 		<p>
 			Today, as a visual creative, I'm often hands on encouraging teams to play,

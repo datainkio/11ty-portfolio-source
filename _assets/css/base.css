@@ -21,12 +21,12 @@
     @apply text-neutral-900 bg-white;
   }
   main {
-    @apply relative bg-graphpaper;
+    @apply relative pt-[65px];
   }
 
   h1 {
     @apply text-2xl font-black hover:no-underline 
-    tracking-tight leading-none text-center md:text-left;
+    tracking-tight leading-none;
   }
   h2 {
     @apply font-medium hover:no-underline
@@ -144,7 +144,7 @@
 
   /** LANDING **/
   .landing #title {
-    @apply h-dvh flex flex-col gap-0 justify-center items-center;
+    @apply flex flex-col gap-0 pt-[65px];
   }
   .landing h1 {
     @apply pt-1 after:content-["."] lowercase 
@@ -180,6 +180,10 @@
   .blockframe-container {
     @apply w-full mx-auto absolute -top-16 left-0;
   }
+
+  .blockframe-bw {
+    @apply saturate-0;
+  }
 }
 
 @layer utilities {
@@ -207,7 +211,7 @@
   .bg-graphpaper {
     @apply inset-0 h-full w-full bg-white 
 		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
-		bg-[size:24px_24px];
+		bg-[size:1rem_1rem];
   }
 }
 
