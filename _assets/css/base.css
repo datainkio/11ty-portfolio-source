@@ -21,7 +21,7 @@
     @apply text-neutral-900 bg-white;
   }
   main {
-    @apply relative pt-[65px];
+    @apply relative;
   }
 
   h1 {
@@ -144,7 +144,7 @@
 
   /** LANDING **/
   .landing #title {
-    @apply flex flex-col gap-0 pt-[65px];
+    @apply flex flex-col gap-0;
   }
   .landing h1 {
     @apply pt-1 after:content-["."] lowercase 
@@ -189,6 +189,10 @@
 @layer utilities {
   .faded {
     @apply opacity-0;
+  }
+
+  .bg-blockframes-bw {
+    @apply bg-cover bg-center overflow-hidden bg-no-repeat;
   }
 
   /** ANIMATIONS **/

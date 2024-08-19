@@ -4,7 +4,7 @@
 cap %}
 {% endblock %}
 {% set main_styles = "about grid grid-cols-12" %}
-{% set title_styles = "col-span-full flex justify-items-start" %}
+{% set title_styles = "bg-blockframes-bw col-span-full flex justify-center items-center h-dvh" %}
 {% block header
 %}
 <h1>{{ title }}</h1>
@@ -154,4 +154,5 @@ cap %}
 		<footer></footer>
 	</section>
 </section>
+{% include "atoms/backgrounds/BlockframeLibrary.html" %}
 {% endblock %}

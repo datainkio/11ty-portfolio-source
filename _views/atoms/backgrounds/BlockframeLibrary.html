@@ -1,8 +1,6 @@
 <!---
   Create a background showing a grid of blockframe outlines. When a mask is applied, the blockframes are revealed in color.
-  Possible Errors:
-    "Cannot read properties of undefined (reading 'style')"
-      Make sure that you have two elements with class names defined by BW_CONTAINER and COLOR_CONTAINER 
+  Implement using the CSS classes bg-background-bw and/or bg-background-color
 --->
 <svg id="BlockframeLibrary" xmlns="http://www.w3.org/2000/svg" width="590" height="606" fill="none"
   viewBox="0 0 590 606">
@@ -684,7 +682,8 @@
     </clipPath>
   </defs>
 </svg>
-<svg id="container">I'm just here to provide bounding boxes for elements. I'll get removed at the end.</svg>
+<svg id="container">I'm just here to provide bounding boxes for elements. I'll get removed during garbage
+  collection.</svg>
 <script type="module">
   import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
   import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
@@ -693,7 +692,7 @@
 
   const BW_CONTAINER = document.getElementsByClassName("bg-blockframes-bw")[0];
   const COLOR_CONTAINER = document.getElementsByClassName("bg-blockframes-color")[0];
-  const COLCOUNT = 24; // The number of columns
+  const COLCOUNT = 12; // The number of columns
   const ROWCOUNT = 16; // The maximum number of rows in a given column
   const THRESHOLD = 16; // The row index where blocks are conditional
   const SIZE = 100; // The size of each block (square)
@@ -999,8 +998,16 @@
     }
 
     // Set the two versions of the grid as the background images for their respective containers
-    if (BW_CONTAINER) { BW_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(BW.svg())}")` };
-    if (COLOR_CONTAINER) { COLOR_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(COLOR.svg())}")` };
+    if (BW_CONTAINER) {
+      BW_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(BW.svg())}")`
+    } else {
+      BW.remove();
+    };
+    if (COLOR_CONTAINER) {
+      COLOR_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(COLOR.svg())}")`
+    } else {
+      COLOR.remove();
+    };
 
     // Remove the temporary container
     document.getElementById("container").remove();
@@ -1016,7 +1023,7 @@
     const rect = block.getBoundingClientRect();
     const scaleX = SIZE / rect.width;
     const scaleY = SIZE / rect.width;
-    const scale = Math.min(scaleX, scaleY) * 1.025; // Uniform scaling
+    const scale = Math.min(scaleX, scaleY) * .95// Uniform scaling
     const x = c * SIZE;
     const y = r * SIZE;
     const skewYAngle = c % 2 === 0 ? ANGLE : ANGLE * -1;
