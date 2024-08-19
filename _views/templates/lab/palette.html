@@ -1,0 +1,88 @@
+{% extends "species/article.html" %}
+{% block primary %}
+<p id="log">Log messages</p>
+{% set shades = [50, 100, 200, 300, 400, "DEFAULT", 600, 700, 800, 900, 950] %}
+<figure>
+    <figcaption>
+        <h2>Primary</h2>
+        <p>Branding color that determines the overall look and amplifies brand awareness.</p>
+    </figcaption>
+    <ul class="flex flex-row">
+        <li class="bg-primary-100">100</li>
+        <li class="bg-primary-200">200</li>
+        <li class="bg-primary-300">300</li>
+        <li class="bg-primary-400">400</li>
+        <li class="bg-primary">DEFAULT</li>
+        <li class="bg-primary-600">600</li>
+        <li class="bg-primary-700">700</li>
+        <li class="bg-primary-800">800</li>
+        <li class="bg-primary-900">900</li>
+    </ul>
+</figure>
+<figure>
+    <figcaption>
+        <h2>Secondary</h2>
+        <p>Accentuate and complement the primary color. Use in concert with the accent color.</p>
+    </figcaption>
+    <ul class="flex flex-row">
+        <li class="bg-secondary-100">100</li>
+        <li class="bg-secondary-200">200</li>
+        <li class="bg-secondary-300">300</li>
+        <li class="bg-secondary-400">400</li>
+        <li class="bg-secondary">DEFAULT</li>
+        <li class="bg-secondary-600">600</li>
+        <li class="bg-secondary-700">700</li>
+        <li class="bg-secondary-800">800</li>
+        <li class="bg-secondary-900">900</li>
+    </ul>
+</figure>
+<figure>
+    <figcaption>
+        <h2>Accent</h2>
+        <p>Highlight specific UI elements, such as promoted buttons. Best used sparingly!</p>
+    </figcaption>
+    <ul class="flex flex-row">
+        <li class="bg-accent-100">100</li>
+        <li class="bg-accent-200">200</li>
+        <li class="bg-accent-300">300</li>
+        <li class="bg-accent-400">400</li>
+        <li class="bg-accent">DEFAULT</li>
+        <li class="bg-accent-600">600</li>
+        <li class="bg-accent-700">700</li>
+        <li class="bg-accent-800">800</li>
+        <li class="bg-accent-900">900</li>
+    </ul>
+</figure>
+<figure>
+    <figcaption>
+        <h2>Neutral</h2>
+        <p>White, black, or different shades of grey for backgrounds or written text. Useful for accessibility to manage contrast.</p>
+    </figcaption>
+    <ul class="flex flex-row">
+        <li class="bg-neutral-100">100</li>
+        <li class="bg-neutral-200">200</li>
+        <li class="bg-neutral-300">300</li>
+        <li class="bg-neutral-400">400</li>
+        <li class="bg-neutral">DEFAULT</li>
+        <li class="bg-neutral-600">600</li>
+        <li class="bg-neutral-700">700</li>
+        <li class="bg-neutral-800">800</li>
+        <li class="bg-neutral-900">900</li>
+    </ul>
+</figure>
+<figure>
+    <figcaption><h2>Semantic</h2></figcaption>
+    <section>
+        <h3>Success</h3>
+    </section>
+    <section>
+        <h3>Failure</h3>
+    </section>
+    <section>
+        <h3>Pending</h3>
+    </section>
+    <section>
+        <h3>Disabled</h3>
+    </section>
+</figure>
+{% endblock %}

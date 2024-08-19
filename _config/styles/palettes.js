@@ -15,17 +15,16 @@ module.exports = {
      * Useful for accessibility to manage contrast.
      * */
     neutral: {
-      50: "#E5F7FF",
-      100: "#D6F3FF",
-      200: "#B8EAFF",
-      300: "#96DEFD",
-      400: "#7CD0F4",
-      DEFAULT: "#65C0E7",
-      600: "#51AFD7",
-      700: "#3A98C0",
-      800: "#377995",
-      900: "#2D5567",
-      950: "#1F3037",
+      100: "#F3F4F8",
+      200: "#D2D$DA",
+      300: "#B3B5BD",
+      400: "#9496A1",
+      DEFAULT: "#777986",
+      600: "#5B5D6B",
+      700: "#404252",
+      800: "#282A3A",
+      900: "#101223",
+
     },
     /**
      * Branding color that determines the overall look and feel. Showcase identity

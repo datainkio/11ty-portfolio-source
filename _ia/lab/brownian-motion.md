@@ -1,4 +1,4 @@
----
+--
 title: Brownian Motion
 introduction: "Hiding elements behind another and rotating them into view on scroll"
 layout: "lab/brownian-motion.html"
@@ -10,3 +10,4 @@ scripts: >
 <!-- @format -->
 
 This is content.
+-

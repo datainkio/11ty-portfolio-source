@@ -7,13 +7,14 @@ cap %}
 {% set title_styles = "bg-blockframes-bw col-span-full flex justify-center items-center h-dvh" %}
 {% block header
 %}
-<div id="title-view" class="p-0 m-0 bg-blockframes-color bg-cover bg-no-repeat w-full h-dvh absolute inset-0 flex flex-col justify-center items-center ">
+
+<div id="title-view" class="bg-blockframes-color bg-cover bg-no-repeat w-full h-dvh absolute flex flex-col justify-center items-center ">
 	<div id="title-card" class="p-12">
 		<h1>{{ title }}</h1>
 		<p>I am a human experience designer.</p>
-		<p id="log">I'm a shitty hack for displaying console messages while working in GH CodeSpaces</p>
 	</div>
 </div>
+<!---->
 <script>
 	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
 	const log = document.getElementById("log");
@@ -40,6 +41,7 @@ cap %}
     // Optionally, update the clip-path on window resize or if the child div moves
     window.addEventListener('resize', updateClipPath);
 </script>
+-->
 {% endblock %}
 {% block primary %}
 <section>
