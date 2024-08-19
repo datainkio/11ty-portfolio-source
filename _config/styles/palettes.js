@@ -10,75 +10,58 @@ module.exports = {
     outlined: "0 0 2px rgba(0, 0, 0, 1)",
   },
   bauhaus: {
-    /**
-     * White, black, or different shades of grey for backgrounds or written text.
-     * Useful for accessibility to manage contrast.
-     * */
-    neutral: {
-      100: "#F3F4F8",
-      200: "#D2D$DA",
-      300: "#B3B5BD",
-      400: "#9496A1",
-      DEFAULT: "#777986",
-      600: "#5B5D6B",
-      700: "#404252",
-      800: "#282A3A",
-      900: "#101223",
-
-    },
-    /**
-     * Branding color that determines the overall look and feel. Showcase identity
-     * and amplify brand awareness.
-     * */
     primary: {
-      50: "#FFFAEB",
-      100: "#FFF5D6",
-      200: "#FFECAD",
-      300: "#FFE07A",
-      400: "#FFD342",
-      DEFAULT: "#FBC30B",
-      600: "#E6B000",
-      700: "#CC9C00",
-      800: "#AD8500",
-      900: "#856600",
-      950: "#705600",
+      50: "#F1F7FD",
+      100: "#E4F0FC",
+      200: "#C4DEF7",
+      300: "#A0C9F3",
+      400: "#77B3EE",
+      500: "#3C91E6",
+      600: "#2182E3",
+      700: "#1970C7",
+      800: "#155EA7",
+      900: "#0E4071",
+      950: "#0B3056",
     },
-    /**
-     * Accentuate and complement the primary color. Use in concert with accent.
-     * */
     secondary: {
-      50: "#F2F6F7",
-      100: "#EAF1F5",
-      200: "#D7E7EF",
-      300: "#C1DDEB",
-      400: "#A6D2E7",
-      DEFAULT: "#85C5E5",
-      600: "#5EB7E3",
-      700: "#2CA5E2",
-      800: "#168ECB",
-      900: "#0E72A5",
-      950: "#06608D",
+      50: "#F6FBEF",
+      100: "#EFF8E3",
+      200: "#DFF0C6",
+      300: "#CCE8A6",
+      400: "#B8DE82",
+      500: "#9FD356",
+      600: "#86C233",
+      700: "#76AA2C",
+      800: "#628E25",
+      900: "#46651A",
+      950: "#304512",
     },
-    /**
-     * Highlight specific UI elements, such as promoted buttons. Best used sparingly.
-     * */
     accent: {
-      50: "#F0FDFF",
-      100: "#E5FCFF",
-      200: "#BDF7FF",
-      300: "#9AF2FE",
-      400: "#8AE8F4",
-      DEFAULT: "#92DCE5",
-      600: "#15CDE5",
-      700: "#03B7CE",
-      800: "#0095A8",
-      900: "#007180",
-      950: "#004D57",
+      50: "#FFF6F0",
+      100: "#FFEDE1",
+      200: "#FFDAC2",
+      300: "#FFC299",
+      400: "#FEA66C",
+      500: "#FE7F2D",
+      600: "#F96401",
+      700: "#DA5801",
+      800: "#B74A01",
+      900: "#7F3301",
+      950: "#602700",
     },
-    /**
-     * Functional colors that serve a particular purpose or communicate a particular
-     * message.
-     * */
+    neutral: {
+      50: "#F5F4F6",
+      100: "#EBE9EC",
+      200: "#D0CAD3",
+      300: "#B2A9B7",
+      400: "#8B7C92",
+      500: "#342E37",
+      600: "#2A252C",
+      700: "#2A252C",
+      800: "#1A171C",
+      900: "#1A171C",
+      950: "#000000",
+    },
     semantic: {
       success: {
         50: "#EAFBEA",
