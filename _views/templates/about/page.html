@@ -7,8 +7,39 @@ cap %}
 {% set title_styles = "bg-blockframes-bw col-span-full flex justify-center items-center h-dvh" %}
 {% block header
 %}
-<h1>{{ title }}</h1>
-<p>I am a human experience designer.</p>
+<div id="title-view" class="p-0 m-0 bg-blockframes-color bg-cover bg-no-repeat w-full h-dvh absolute inset-0 flex flex-col justify-center items-center ">
+	<div id="title-card" class="p-12">
+		<h1>{{ title }}</h1>
+		<p>I am a human experience designer.</p>
+		<p id="log">I'm a shitty hack for displaying console messages while working in GH CodeSpaces</p>
+	</div>
+</div>
+<script>
+	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
+	const log = document.getElementById("log");
+    const section = document.getElementById('title-view');
+    const clipper = document.getElementById('title-card');
+
+    function updateClipPath() {
+      const rect = clipper.getBoundingClientRect();
+      const parentRect = section.getBoundingClientRect();
+
+      // Calculate the clip-path coordinates based on the child div's position relative to the section
+      const x1 = ((rect.left - parentRect.left) / parentRect.width) * 100;
+      const y1 = ((rect.top - parentRect.top) / parentRect.height) * 100;
+      const x2 = ((rect.right - parentRect.left) / parentRect.width) * 100;
+      const y2 = ((rect.bottom - parentRect.top) / parentRect.height) * 100;
+
+      // Set the clip-path using polygon coordinates
+      section.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y1}%, ${x2}% ${y2}%, ${x1}% ${y2}%)`;
+    }
+
+    // Initialize the clip-path on page load
+    updateClipPath();
+
+    // Optionally, update the clip-path on window resize or if the child div moves
+    window.addEventListener('resize', updateClipPath);
+</script>
 {% endblock %}
 {% block primary %}
 <section>
