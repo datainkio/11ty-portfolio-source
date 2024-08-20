@@ -7,45 +7,45 @@ cap %}
 {% set title_styles = "bg-blockframes-bw col-span-full flex justify-center items-center h-dvh" %}
 {% block header
 %}
-
-<div id="title-view" class="bg-blockframes-color bg-cover bg-no-repeat w-full h-dvh absolute flex flex-col justify-center items-center ">
-	<div id="title-card" class="p-12">
-		<h1>{{ title }}</h1>
-		<p>I am a human experience designer.</p>
-	</div>
-</div>
-<!---->
+<h1 class='after:content-[""]'>{{ title }}</h1>
+<!---
 <script>
 	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
 	const log = document.getElementById("log");
-    const section = document.getElementById('title-view');
-    const clipper = document.getElementById('title-card');
+	const section = document.getElementById('title-view');
+	const clipper = document.getElementById('title-card');
 
-    function updateClipPath() {
-      const rect = clipper.getBoundingClientRect();
-      const parentRect = section.getBoundingClientRect();
+	function updateClipPath() {
+		const rect = clipper.getBoundingClientRect();
+		const parentRect = section.getBoundingClientRect();
 
-      // Calculate the clip-path coordinates based on the child div's position relative to the section
-      const x1 = ((rect.left - parentRect.left) / parentRect.width) * 100;
-      const y1 = ((rect.top - parentRect.top) / parentRect.height) * 100;
-      const x2 = ((rect.right - parentRect.left) / parentRect.width) * 100;
-      const y2 = ((rect.bottom - parentRect.top) / parentRect.height) * 100;
+		// Calculate the clip-path coordinates based on the child div's position relative to the section
+		const x1 = ((rect.left - parentRect.left) / parentRect.width) * 100;
+		const y1 = ((rect.top - parentRect.top) / parentRect.height) * 100;
+		const x2 = ((rect.right - parentRect.left) / parentRect.width) * 100;
+		const y2 = ((rect.bottom - parentRect.top) / parentRect.height) * 100;
 
-      // Set the clip-path using polygon coordinates
-      section.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y1}%, ${x2}% ${y2}%, ${x1}% ${y2}%)`;
-    }
+		// Set the clip-path using polygon coordinates
+		section.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y1}%, ${x2}% ${y2}%, ${x1}% ${y2}%)`;
+	}
 
-    // Initialize the clip-path on page load
-    updateClipPath();
+	// Initialize the clip-path on page load
+	updateClipPath();
 
-    // Optionally, update the clip-path on window resize or if the child div moves
-    window.addEventListener('resize', updateClipPath);
+	// Optionally, update the clip-path on window resize or if the child div moves
+	window.addEventListener('resize', updateClipPath);
 </script>
 -->
 {% endblock %}
 {% block primary %}
-<section>
-	<p class="col-span-full">{{ introduction | safe }}</p>
+<section class="h-dvh">
+	<p class="col-span-full">
+		I help to design and build digital products and services. It is my job to be the common
+		thread that tying together research, design, and engineering. I work with user researchers to develop questions and
+		hypotheses about human behavior.
+		I apply the insights from that research to build strategies that lead designers to solutions.
+		the strategies that lead designers to solutions, and the human perspective that helps engineers realize what is
+		possible </p>
 </section>
 <section id="education">
 	<header>
@@ -152,9 +152,7 @@ cap %}
 	</header>
 	<section class="col-span-full">
 		<p>
-			You can see my contributions in the questions researchers ask, the
-			strategies that lead designers to solutions, and the human perspective that
-			helps engineers realize what is possible. As a human-experience designer, I
+			As a human-experience designer, I
 			serve as the common thread on multifunctional teams, integrating diverse
 			insights into a cohesive vision. My focus on user-centric design ensures
 			that every team member is aligned with the end goal of creating meaningful,
