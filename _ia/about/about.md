@@ -1,6 +1,6 @@
 ---
-title: "I am a human experience designer"
-introduction: "I am an award-winning human-experience design leader with over 20 years of experience working for global businesses. I have a proven track record mentoring multidisciplinary designers (Product, UX, UI, Brand, Research) and inspiring them to deliver best-in-class B2C and B2B solutions. My expertise spans many sectors including media and entertainment, fintech, biotech, and civic tech."
+title: "About"
+introduction: "I am a digital creative. I work with user researchers, designers, and developers to deliver digital products and services that answer real human needs."
 layout: "about/page.html"
 permalink: "about/"
 eleventyNavigation:

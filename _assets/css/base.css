@@ -14,7 +14,7 @@
 
 @layer base {
   body {
-    @apply text-neutral-900 bg-neutral-50;
+    @apply text-neutral-800 bg-neutral-100;
   }
   main {
     @apply relative;
@@ -143,7 +143,7 @@
     @apply flex flex-col gap-0;
   }
   .landing h1 {
-    @apply pt-1 after:content-["."] lowercase 
+    @apply pt-1 lowercase 
     text-5xl md:text-6xl;
   }
 
@@ -155,15 +155,9 @@
     @apply scene;
   }
   .scene {
-    @apply col-span-full grid grid-cols-subgrid;
-  }
-  .scene header {
-    @apply sr-only;
+    @apply col-span-full flex flex-col sm:grid sm:grid-cols-subgrid;
   }
 
-  .scene p:first-of-type {
-    @apply lead;
-  }
   /** ARTICLE **/
   .article h1 {
     @apply text-4xl text-left;
@@ -187,8 +181,8 @@
     @apply opacity-0;
   }
 
-  .bg-blockframes-bw {
-    @apply bg-cover bg-center overflow-hidden bg-no-repeat;
+  .bg-blockframes-bw, .bg-blockframes-color {
+    @apply bg-contain bg-top overflow-hidden bg-no-repeat;
   }
 
   /** ANIMATIONS **/

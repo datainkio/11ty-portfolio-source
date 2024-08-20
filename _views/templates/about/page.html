@@ -3,11 +3,12 @@
 {% block
 cap %}
 {% endblock %}
-{% set main_styles = "about grid grid-cols-12" %}
-{% set title_styles = "bg-blockframes-bw col-span-full flex justify-center items-center h-dvh" %}
+{% set main_styles = "about bg-neutral-200 grid grid-cols-12" %}
+{% set title_styles = "col-span-full h-dvh grid grid-cols-subgrid justify-content-end place-content-end" %}
 {% block header
 %}
-<h1 class='after:content-[""]'>{{ title }}</h1>
+<h1 class="order-last col-span-full text-10xl text-white">{{ title }}</h1>
+<p class="col-start-5 col-span-2">{{ introduction }}</p>
 <!---
 <script>
 	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
@@ -38,45 +39,34 @@ cap %}
 -->
 {% endblock %}
 {% block primary %}
-<section class="h-dvh">
-	<p class="col-span-full">
-		I help to design and build digital products and services. It is my job to be the common
-		thread that tying together research, design, and engineering. I work with user researchers to develop questions and
-		hypotheses about human behavior.
-		I apply the insights from that research to build strategies that lead designers to solutions.
-		the strategies that lead designers to solutions, and the human perspective that helps engineers realize what is
-		possible </p>
-</section>
-<section id="education">
-	<header>
-		<h2>Education</h2>
-	</header>
-	<section class="col-span-full">
+<section class="h-dvh py-24 items-center">
+	<header class="col-span-6 row-span-3 px-24"><h2 class="text-4xl font-black">20+ years of award-winning work</h2></header>
+	<section class="col-span-6 self-end">
+		<h3>Collaboration</h3>
+		<p>I collaborate closely with user researchers to identify key questions and hypotheses that reveal critical insights into
+	human behavior. These insights directly shape the design strategies I develop, guiding designers toward more impactful
+	solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes that put people first.</p></section>
+	<section class="col-span-6">
+		<h3>Strategy</h3>
+		<p>I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
+		user needs, technical constraints, product strategy, and business objectives.</p>
+	</section>
+	<section class="col-span-6 self-start">
+		<h3>Direction</h3>
 		<p>
-			My education is in social anthropology. As a student I explored how the
-			relationship between language and tool use shapes human behavior and
-			social structure. By analyzing how we describe and change the world around
-			us, I uncovered how these elements influence societal norms and
-			relationships.
-		</p>
-		<p>
-			Those years spent studying the interrelationships between scientific
-			models of the human being continue to shape my values and methodology as a
-			designer by emphasizing a holistic understanding of human behavior.
+			As a design lead, I am often hands-on encouraging my teams to play, remix, and look at things sideways - using
+			customer and business insights, brand, storytelling, and human-centered design to create products and services that meet real
+			human needs.
 		</p>
 	</section>
 </section>
-<section id="today" class="bg-no-repeat bg-cover">
-	<section class="col-span-full">
-		<p>
-			Today, as a visual creative, I'm often hands on encouraging teams to play,
-			remix, and look at things sideways—using customer and business insights,
-			brand, storytelling, and human centered design to create differentiated
-			products. I spend as much time sweating UI pixels and UX flows as I do
-			sitting in workshops and boardrooms, discussing client's user needs,
-			technical constraints, product strategy, and business objectives.
+<section id="background" class="h-dvh py-24 items-center">
+	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
+		<p class="col-span-6">
+			My education is in social anthropology. As a student I explored the ongoing dialog between language, tool use, and
+			human behavior. Those years spent studying the interrelationships between different models of the human being continue
+			to shape my values and methods as a designer.
 		</p>
-	</section>
 </section>
 <section id="organizations">
 	<header>
@@ -84,7 +74,8 @@ cap %}
 	</header>
 	<section class="col-span-full">
 		<p>
-			I apply this expertise across a wide range of domains, delivering solutions
+			I apply this expertise across a wide range of domains, d
+			elivering solutions
 			for global brands, museums, artists, musicians, hospitals, schools, and even
 			the federal government. The audiences and business goals change, but the
 			priority of maintaining focus on human-centered design remains constant.
