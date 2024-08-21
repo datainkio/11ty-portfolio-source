@@ -4,7 +4,7 @@
 cap %}
 {% endblock %}
 {% set main_styles = "about bg-neutral-200 grid grid-cols-12" %}
-{% set title_styles = "col-span-full h-dvh grid grid-cols-subgrid content-end" %}
+{% set title_styles = "col-span-full min-h-dvh grid grid-cols-subgrid content-end" %}
 {% block header
 %}
 <h1 class="col-span-full order-last text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
@@ -45,69 +45,42 @@ cap %}
 		<p class="tagline text-4xl font-black my-auto leading-snug">20+ years of award-winning work</p>
 	</header>
 	<section class="col-span-6">
-		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
-		<p class="text-xl leading-snug text-neutral-500">I work closely with user researchers to identify key questions and hypotheses that reveal critical insights into
-	human behavior. These insights directly shape the design strategies I develop, guiding designers toward more impactful
-	solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes that put people first.</p></section>
+		<h3 class="font-bold tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
+		<p>I work to ensure that teams are aligned with the end goal of creating meaningful,
+		intuitive experiences.</p>
+		<p>I work closely with user researchers to identify key questions and hypotheses that reveal critical insights into
+		human behavior. These insights directly shape the design strategies I develop, guiding designers toward more impactful
+		solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes that put people first.</p></section>
 	<section class="col-span-6">
-		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Strategy</h3>
-		<p class="text-xl leading-snug text-neutral-500">I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
+		<h3 class="font-bold tracking-tight leading-none text-2xl mb-4">Strategy</h3>
+		<p>I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
 		user needs, technical constraints, product strategy, and business objectives.</p>
 	</section>
 	<section class="col-span-6">
-		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Direction</h3>
-		<p class="text-xl leading-snug text-neutral-500">
+		<h3 class="font-bold tracking-tight leading-none text-2xl mb-4">Direction</h3>
+		<p>
 			As a design lead, I am often hands-on encouraging my teams to play, remix, and look at things sideways - using
 			customer and business insights, brand, storytelling, and human-centered design to create products and services that meet real
 			human needs.
 		</p>
 	</section>
 </section>
-<section id="recognition" class="py-24">
-	<header class="col-span-6 row-span-3 px-24 flex flex-col h-full">
-		<h2 class="uppercase place-self-start">⦿ Recognition</h2>
+<section id="recognition" class="p-24">
+	<header class="col-span-6 sr-only">
+		<h2 class="uppercase">⦿ Recognition</h2>
 	</header>
-		<ul class="gap-4 col-span-full flex gap-0">
-			{% for logo in images %} {% if logo.Recognition %}
-			<li class="border p-0 m-0 aspect-square border-neutral-800">{{ logo.pictureElement | stylePicture("p-1") | safe }}</li>
-			{% endif %} {% endfor %}
-		</ul>
-	</section>
+	<ul class="gap-4 col-span-full flex gap-0">
+		{% for logo in images %} {% if logo.Recognition %}
+		<li>{{ logo.pictureElement | stylePicture("p-1", "invert") | safe }}</li>
+		{% endif %} {% endfor %}
+	</ul>
+	<footer></footer>
 </section>
-<section id="background" class="h-dvh py-24 items-center">
-	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
-		<p class="col-span-6">
-			My education is in social anthropology. As a student I explored the ongoing dialog between language, tool use, and
-			human behavior. Those years spent studying the interrelationships between different models of the human being continue
-			to shape my values and methods as a designer.
-		</p>
-</section>
-<section id="organizations">
-	<header>
-		<h2>Collaboration</h2>
+<section id="collaboration">
+	<header class="col-span-6 sr-only">
+		<h2 class="uppercase">⦿ Collaboration</h2>
 	</header>
-	<section class="col-span-full">
-		<p>
-			I apply this expertise across a wide range of domains, d
-			elivering solutions
-			for global brands, museums, artists, musicians, hospitals, schools, and even
-			the federal government. The audiences and business goals change, but the
-			priority of maintaining focus on human-centered design remains constant.
-		</p>
-		<p>
-			It is work with a real impact. As the design manager for federal projects
-			with Bixal, my teams and I increased equitable access to federal benefits
-			and services for 330 million Americans, connected small businesses with $4.2
-			billion in funding, helped reduce the number of annual cases of foodborne
-			illness by 7 million, and helped establish the United States Web Design
-			System. As a developer and product designer with IBM Interactive, I led the
-			design for the company's first application of Watson AI to healthcare,
-			helped design and build both the world's first global platform for
-			democratizing access to pediatric expertise, and helped design and build the
-			first platform uniting urban data from cities across the globe.
-		</p>
-	</section>
-	<ul class="col-span-full grid grid-cols-subgrid items-start py-12">
+	<ul class="col-span-full grid grid-cols-9 items-start">
 		{% for org in organizations | sort("Weight") %} {% if org.Logo %}
 		<li class="aspect-video org">
 			<figure>
@@ -119,26 +92,22 @@ cap %}
 	</ul>
 	<footer></footer>
 </section>
+<section id="background" class="h-dvh py-24 items-center">
+	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
+		<p class="col-span-6">
+			My education is in social anthropology. As a student I explored the ongoing dialog between language, tool use, and
+			human behavior. Those years spent studying the interrelationships between different models of the human being continue
+			to shape my values and methods as a designer.
+		</p>
+		<p class="col-span-6">
+			Today I think in terms of systems, information flows, and decision-making. 
+		</p>
+</section>
+
 <section id="contributions">
 	<header>
 		<h2>Contributions</h2>
 	</header>
-	<section class="col-span-full">
-		<p>
-			As a human-experience designer, I
-			serve as the common thread on multifunctional teams, integrating diverse
-			insights into a cohesive vision. My focus on user-centric design ensures
-			that every team member is aligned with the end goal of creating meaningful,
-			intuitive experiences. By facilitating communication and understanding
-			across different functions, I help translate complex technical requirements
-			into user-friendly solutions, driving innovation and ensuring that the final
-			product resonates deeply with its intended audience.
-		</p>
-		<p class="italic">
-			Background images progressively reveal the design process: notes, post-its,
-			affinity mapping, diagrams, blockframing, wireframing, design.
-		</p>
-	</section>
 	<section id="research">
 		<header>
 			<h2>Research</h2>
