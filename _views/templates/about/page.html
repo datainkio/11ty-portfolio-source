@@ -4,11 +4,11 @@
 cap %}
 {% endblock %}
 {% set main_styles = "about bg-neutral-200 grid grid-cols-12" %}
-{% set title_styles = "bg-blockframes-bw col-span-full h-dvh grid grid-cols-subgrid items-end" %}
+{% set title_styles = "col-span-full h-dvh grid grid-cols-subgrid content-end" %}
 {% block header
 %}
-<h1 class="col-span-full order-last text-right text-8xl lowercase">{{ title }}</h1>
-<p class="col-span-full">{{ introduction }}</p>
+<h1 class="col-span-full order-last text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
+<p class="col-span-6 col-start-6 place-self-end font-normal tracking-tight leading-tight text-4xl">{{ introduction }}</p>
 <!---
 <script>
 	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
@@ -39,25 +39,39 @@ cap %}
 -->
 {% endblock %}
 {% block primary %}
-<section class="h-dvh bg-graphpaper items-center">
-	<header class="col-span-6 row-span-3 px-24"><h2 class="text-4xl font-black">20+ years of award-winning work</h2></header>
-	<section class="col-span-6 self-end">
-		<h3>Collaboration</h3>
-		<p>I collaborate closely with user researchers to identify key questions and hypotheses that reveal critical insights into
+<section class="py-24 gap-12">
+	<header class="col-span-6 row-span-3 px-24 flex flex-col h-full">
+		<h2 class="uppercase place-self-start">⦿ What I Do</h2>
+		<p class="tagline text-4xl font-black my-auto leading-snug">20+ years of award-winning work</p>
+	</header>
+	<section class="col-span-6">
+		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
+		<p class="text-xl leading-snug text-neutral-500">I work closely with user researchers to identify key questions and hypotheses that reveal critical insights into
 	human behavior. These insights directly shape the design strategies I develop, guiding designers toward more impactful
 	solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes that put people first.</p></section>
 	<section class="col-span-6">
-		<h3>Strategy</h3>
-		<p>I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
+		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Strategy</h3>
+		<p class="text-xl leading-snug text-neutral-500">I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
 		user needs, technical constraints, product strategy, and business objectives.</p>
 	</section>
-	<section class="col-span-6 self-start">
-		<h3>Direction</h3>
-		<p>
+	<section class="col-span-6">
+		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Direction</h3>
+		<p class="text-xl leading-snug text-neutral-500">
 			As a design lead, I am often hands-on encouraging my teams to play, remix, and look at things sideways - using
 			customer and business insights, brand, storytelling, and human-centered design to create products and services that meet real
 			human needs.
 		</p>
+	</section>
+</section>
+<section id="recognition" class="py-24">
+	<header class="col-span-6 row-span-3 px-24 flex flex-col h-full">
+		<h2 class="uppercase place-self-start">⦿ Recognition</h2>
+	</header>
+		<ul class="gap-4 col-span-full flex gap-0">
+			{% for logo in images %} {% if logo.Recognition %}
+			<li class="border p-0 m-0 aspect-square border-neutral-800">{{ logo.pictureElement | stylePicture("p-1") | safe }}</li>
+			{% endif %} {% endfor %}
+		</ul>
 	</section>
 </section>
 <section id="background" class="h-dvh py-24 items-center">
@@ -104,38 +118,6 @@ cap %}
 		{% endif %} {% endfor %}
 	</ul>
 	<footer></footer>
-</section>
-<section id="recognition" class="bg-white max-w-360 mx-auto">
-	<header>
-		<h2>Recognition</h2>
-	</header>
-	<section class="col-span-full">
-		<p>
-			It's also work that has received some great recognition. This is because I
-			have been lucky to be a part of amazing, multitalented teams looking to
-			change lives for the better. People like
-			<a href="https://www.joshgoldblum.com/" class="link-primary link-hover">Josh Goldblum</a>, who gave me my first
-			paying gig back when
-			<a href="https://www.bluecadet/" class="link-primary link-hover">Bluecadet</a>
-			was still operating out of his living room.
-			<a href="https://www.linkedin.com/in/adamcutler/" class="link-primary link-hover">Adam Cutler</a>
-			and
-			<a href="https://www.arup.com/our-firm/jeff-berg" class="link-primary link-hover">Jeff Berg</a>, two people who
-			introduced me to IBM and what it means to work on a global
-			scale. And
-			<a href="https://www.linkedin.com/in/willweems/" class="link-primary link-hover">Will Weems</a>
-			and
-			<a href="https://world.hey.com/philip.levy" class="link-primary link-hover">Phil Levy</a>, two colleagues and
-			friends from Bixal who showed me what it means to grow
-			and develop design culture in organizations.
-		</p>
-
-		<ul class="flex gap-4 ">
-			{% for logo in images %} {% if logo.Recognition %}
-			<li>{{ logo.pictureElement | stylePicture("p-1 invert") | safe }}</li>
-			{% endif %} {% endfor %}
-		</ul>
-	</section>
 </section>
 <section id="contributions">
 	<header>

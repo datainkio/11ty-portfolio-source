@@ -2,11 +2,11 @@
 
 module.exports = {
   fontFamily: {
-    sans: ["ui-sans-serif", "system-ui"],
+    sans: ["Poppins", "ui-sans-serif", "system-ui"],
     serif: ["ui-serif", "Georgia"],
     mono: ["ui-monospace", "SFMono-Regular"],
     display: ["Anton SC"],
-    body: ['"Open Sans"'],
+    body: ["Poppins"],
   },
   fontWeight: {
     thin: "100",
@@ -16,6 +16,8 @@ module.exports = {
     bold: "500",
     extrabold: "600",
     black: "700",
+    extrablack: "800",
+    nonemoreblack: "900"
   },
   fontSize: {
     sm: "0.85rem",
@@ -30,15 +32,16 @@ module.exports = {
     "8xl": "8rem",
     "9xl": "9rem",
     "10xl": "10rem",
-    mega: "12rem",
+    "12xl": "12rem",
+    "fluid": 'calc(100vw/6)',
     jumbo: "15rem",
   },
   lineHeight: {
     none: "1",
-    tight: "1.2",
-    snug: "1.3",
-    normal: "1.5",
-    relaxed: "1.65",
+    tight: "1.1",
+    snug: "1.2",
+    normal: "1.4",
+    relaxed: "1.5",
     loose: "1.75",
   },
   prose: ({ theme }) => ({}),
