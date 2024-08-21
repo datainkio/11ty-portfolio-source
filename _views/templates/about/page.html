@@ -4,11 +4,11 @@
 cap %}
 {% endblock %}
 {% set main_styles = "about bg-neutral-200 grid grid-cols-12" %}
-{% set title_styles = "col-span-full h-dvh grid grid-cols-subgrid justify-content-end place-content-end" %}
+{% set title_styles = "bg-blockframes-bw col-span-full h-dvh grid grid-cols-subgrid items-end" %}
 {% block header
 %}
-<h1 class="order-last col-span-full text-10xl text-white">{{ title }}</h1>
-<p class="col-start-5 col-span-2">{{ introduction }}</p>
+<h1 class="bg-neutral-800 text-neutral-200 col-span-full order-last text-right text-6xl">{{ title }}</h1>
+<p class="bg-neutral-800 text-neutral-200 col-span-full">{{ introduction }}</p>
 <!---
 <script>
 	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
@@ -39,7 +39,7 @@ cap %}
 -->
 {% endblock %}
 {% block primary %}
-<section class="h-dvh py-24 items-center">
+<section class="h-dvh bg-graphpaper items-center">
 	<header class="col-span-6 row-span-3 px-24"><h2 class="text-4xl font-black">20+ years of award-winning work</h2></header>
 	<section class="col-span-6 self-end">
 		<h3>Collaboration</h3>

@@ -13,6 +13,7 @@
 }
 
 @layer base {
+
   body {
     @apply text-neutral-800 bg-neutral-100;
   }
@@ -21,7 +22,7 @@
   }
 
   h1 {
-    @apply text-2xl font-black hover:no-underline 
+    @apply text-2xl font-display hover:no-underline 
     tracking-tight leading-none;
   }
   h2 {
@@ -138,10 +139,7 @@
     @apply prose;
   }
 
-  /** LANDING **/
-  .landing #title {
-    @apply flex flex-col gap-0;
-  }
+  /** LANDING **/s
   .landing h1 {
     @apply pt-1 lowercase 
     text-5xl md:text-6xl;
@@ -182,7 +180,7 @@
   }
 
   .bg-blockframes-bw, .bg-blockframes-color {
-    @apply bg-contain bg-top overflow-hidden bg-no-repeat;
+    @apply bg-cover bg-top overflow-hidden bg-no-repeat;
   }
 
   /** ANIMATIONS **/
@@ -203,7 +201,7 @@
   }
 
   .bg-graphpaper {
-    @apply inset-0 h-full w-full bg-neutral-50 
+    @apply inset-0 w-full bg-neutral-50 
 		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
 		bg-[size:1rem_1rem];
   }

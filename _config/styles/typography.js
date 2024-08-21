@@ -5,7 +5,7 @@ module.exports = {
     sans: ["ui-sans-serif", "system-ui"],
     serif: ["ui-serif", "Georgia"],
     mono: ["ui-monospace", "SFMono-Regular"],
-    display: ["Oswald"],
+    display: ["Antonio"],
     body: ['"Open Sans"'],
   },
   fontWeight: {
@@ -31,7 +31,7 @@ module.exports = {
     "9xl": "9rem",
     "10xl": "10rem",
     mega: "12rem",
-    jumbo: "12rem",
+    jumbo: "15rem",
   },
   lineHeight: {
     none: "1",

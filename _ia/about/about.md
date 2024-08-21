@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Russell S. Lebo"
 introduction: "I am a digital creative. I work with user researchers, designers, and developers to deliver digital products and services that answer real human needs."
 layout: "about/page.html"
 permalink: "about/"
