@@ -179,9 +179,7 @@
     @apply opacity-0;
   }
 
-  .bg-blockframes-bw, .bg-blockframes-color {
-    @apply bg-cover bg-top overflow-hidden bg-no-repeat;
-  }
+ 
 
   /** ANIMATIONS **/
   .transition-transform {
@@ -204,6 +202,11 @@
     @apply inset-0 w-full bg-neutral-50 
 		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
 		bg-[size:1rem_1rem];
+  }
+
+  .bg-blockframes-bw,
+  .bg-blockframes-color {
+    @apply bg-cover overflow-hidden bg-no-repeat;
   }
 }
 

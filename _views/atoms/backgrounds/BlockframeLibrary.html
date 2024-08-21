@@ -693,11 +693,14 @@
   const BW_CONTAINER = document.getElementsByClassName("bg-blockframes-bw")[0];
   const COLOR_CONTAINER = document.getElementsByClassName("bg-blockframes-color")[0];
   const COLCOUNT = 12; // The number of columns
-  const ROWCOUNT = 16; // The maximum number of rows in a given column
-  const THRESHOLD = 16; // The row index where blocks are conditional
+  const ROWCOUNT = 16; // The number of rows
+  const COL_HEIGHTS = heights();
+  const THRESHOLD_BOTTOM = 16; // The row index where display of blocks becomes conditional
   const SIZE = 100; // The size of each block (square)
   const ANGLE = 12; // The skew angle for each block (pos and neg)
+  const GAP = 2; // The horizontal and vertical space between elements
   const BRIGHTNESS = 0.25; // Brightness factor for even columns
+  const OPACITY = .5; // General opacity of the SVG
   // The IDs for the blockframes available in the source SVG
   const TYPES = [
     "Article",
@@ -725,6 +728,14 @@
 
 
   let draw, COLORS, colorPalette;
+
+  function heights() {
+    var arr = [];
+    for (var c = 0; c < COLCOUNT; c++) {
+      arr.push(random(0,ROWCOUNT))
+    }
+    return arr;
+  }
 
   function paint(element, color, opacity) {
     switch (element.nodeName) {
@@ -986,10 +997,10 @@
       // and each column in that row...
       for (let c = 0; c < COLCOUNT; c++) {
         // If the row count in this column is below the defined threshold...
-        if (r <= c + THRESHOLD) {
+        if (r <= c + THRESHOLD_BOTTOM) {
           // then create the block; otherwise, skip.
           // Knowing odd/even keeps the last items lined up rather than dangling
-          if (c % 2 === 0 || r < c + THRESHOLD) {
+          if (c % 2 === 0 || r < c + THRESHOLD_BOTTOM) {
             // Create the SVG element for a given set of coordinates
             drawBlock(r, c);
           }
@@ -1025,13 +1036,14 @@
     const scaleY = SIZE / rect.width;
     const scale = Math.min(scaleX, scaleY) * .95// Uniform scaling
     const x = c * SIZE;
-    const y = r * SIZE;
+    const y = r * SIZE - 25;
     const skewYAngle = c % 2 === 0 ? ANGLE : ANGLE * -1;
 
     block.setAttribute("width", SIZE);
     block.setAttribute("height", SIZE);
     block.setAttribute("fill", "#CCC");
     block.setAttribute("stroke", "#000");
+    block.setAttribute("opacity", OPACITY);
 
     // Apply skew transform to the square around its center
     block.setAttribute(
@@ -1103,6 +1115,44 @@
       painted.setAttribute("filter", "url(#brightness)");
     }
     paintMe(painted, palette);
+
+    // If this is the top of a column, add a roof
+    if (r === 0 && c % 2 === 1) {
+      // BW.node.appendChild(roof(x, y));
+    }
+   
+  }
+
+  function roof(x,y) {
+    // Create the rectangle (square) element
+    const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        // Desired width of the diamond
+    const width = SIZE * 2 * .95;
+
+
+    // Convert degrees to radians for JavaScript trigonometric functions
+    const radians = 12 * (Math.PI / 180);
+
+    // Calculate the height using the formula h = width * tan(angle)
+    const height = width * Math.tan(radians);
+
+    // Calculate the coordinates of the diamond vertices
+    const centerX = x - 2; // Center X position in the SVG canvas
+    const centerY = y - 12; // Center Y position in the SVG canvas
+
+    const points = [
+      [centerX - width / 2, centerY], // Left vertex (24 degrees)
+      [centerX, centerY - height / 2], // Top vertex
+      [centerX + width / 2, centerY], // Right vertex (24 degrees)
+      [centerX, centerY + height / 2] // Bottom vertex
+    ];
+
+    // Create the polygon points string
+    const pointsString = points.map(point => point.join(',')).join(' ');
+
+    poly.setAttribute('points', pointsString);
+    poly.setAttribute('fill', 'orange');
+    return poly;
   }
 
 
