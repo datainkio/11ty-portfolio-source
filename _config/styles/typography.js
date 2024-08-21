@@ -5,7 +5,7 @@ module.exports = {
     sans: ["ui-sans-serif", "system-ui"],
     serif: ["ui-serif", "Georgia"],
     mono: ["ui-monospace", "SFMono-Regular"],
-    display: ["Antonio"],
+    display: ["Anton SC"],
     body: ['"Open Sans"'],
   },
   fontWeight: {
