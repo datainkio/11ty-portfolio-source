@@ -1,0 +1,71 @@
+    <svg id="ruler" role="presentation" class="{{ ruler_styles }}" width="100%" height="3rem" xmlns="http://www.w3.org/2000/svg">
+        <!-- The ruler line at the top -->
+        <line x1="0" y1="0" x2="100%" y2="0" class="stroke-current" stroke-width="2"></line>
+    </svg>
+
+    <script>
+        const svg = document.getElementById('ruler');
+        const rulerWidth = svg.clientWidth;
+
+        const numMajorTicks = 12;
+        const numMinorTicks = 48;
+
+        // Length of the major and minor tick marks
+        const majorTickLength = 20;
+        const minorTickLength = 10;
+
+        // Calculate the spacing for major and minor ticks
+        const majorTickSpacing = rulerWidth / numMajorTicks;
+        const minorTickSpacing = rulerWidth / (numMinorTicks + numMajorTicks);
+
+        // Create major tick marks
+        for (let i = 0; i <= numMajorTicks; i++) {
+            var x = i * majorTickSpacing;
+            x = i === 0 ? x + 1 : x;
+            x = i === numMajorTicks ? x - 1 : x;
+            // Create a line element for each major tick
+            const majorTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            majorTick.setAttribute("x1", x);
+            majorTick.setAttribute("y1", 0); // Start at the top (same as the ruler line)
+            majorTick.setAttribute("x2", x);
+            majorTick.setAttribute("y2", majorTickLength); // Extend downward
+            majorTick.setAttribute("class", "stroke-current");
+            majorTick.setAttribute("stroke-width", "1");
+
+            // Append the major tick to the SVG
+            svg.appendChild(majorTick);
+
+            // Create text for each major tick
+            const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+             x = i === 0 ? x + 3 : x;
+             x = i === numMajorTicks ? x - 4 : x;
+            label.setAttribute("x", x);
+            label.setAttribute("y", majorTickLength + 20); // Position below the major tick
+            label.setAttribute("text-anchor", "middle"); // Center the text relative to the tick
+            label.setAttribute("class", "fill-current"); // Tailwind classes for styling
+            label.textContent = i; // Label content (0 to 12)
+
+            // Append the label to the SVG
+            svg.appendChild(label);
+        }
+
+        // Create minor tick marks
+        for (let i = 0; i <= numMinorTicks + numMajorTicks; i++) {
+            // Skip drawing a minor tick if it overlaps a major tick position
+            if (i % (numMinorTicks / numMajorTicks + 1) === 0) continue;
+
+            const x = i * minorTickSpacing;
+
+            // Create a line element for each minor tick
+            const minorTick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            minorTick.setAttribute("x1", x);
+            minorTick.setAttribute("y1", 10); // Start at the top (same as the ruler line)
+            minorTick.setAttribute("x2", x);
+            minorTick.setAttribute("y2", 10 + minorTickLength); // Extend downward
+            minorTick.setAttribute("class", "stroke-current");
+            minorTick.setAttribute("stroke-width", "1");
+
+            // Append the minor tick to the SVG
+            svg.appendChild(minorTick);
+        }
+    </script>

@@ -3,12 +3,12 @@
 {% block
 cap %}
 {% endblock %}
-{% set main_styles = "about bg-neutral-200 grid grid-cols-12" %}
-{% set title_styles = "col-span-full min-h-dvh grid grid-cols-subgrid content-end" %}
+{% set main_styles = "about bg-neutral-200 bg-graphpaper bg-blend-multiply grid grid-cols-12" %}
+{% set title_styles = "col-span-full min-h-dvh bg-primary-500 grid grid-cols-subgrid content-end" %}
 {% block header
 %}
-<h1 class="col-span-full order-last text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
-<p class="col-span-6 col-start-6 place-self-end font-normal tracking-tight leading-tight text-4xl">{{ introduction }}</p>
+<h1 class="order-2 col-span-full text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
+<p class="order-1 col-span-6 col-start-6 place-self-end font-normal tracking-tight leading-tight text-4xl">{{ introduction }}</p>
 <!---
 <script>
 	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
@@ -39,25 +39,26 @@ cap %}
 -->
 {% endblock %}
 {% block primary %}
-<section class="py-24 gap-12">
-	<header class="col-span-6 row-span-3 px-24 flex flex-col h-full">
-		<h2 class="uppercase place-self-start">⦿ What I Do</h2>
-		<p class="tagline text-4xl font-black my-auto leading-snug">20+ years of award-winning work</p>
+<section class="min-h-dvh p-24">
+	<header class="col-span-full">
+		{% set ruler_styles = "col-span-full font-medium text-neutral-500 text-xs place-self-end" %}
+		{% include "atoms/display/ruler.html" %}
+		<h2 class="uppercase text-neutral-500 text-sm">0/4 What I Do</h2>
 	</header>
 	<section class="col-span-6">
-		<h3 class="font-bold tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
+		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
 		<p>I work to ensure that teams are aligned with the end goal of creating meaningful,
 		intuitive experiences.</p>
 		<p>I work closely with user researchers to identify key questions and hypotheses that reveal critical insights into
 		human behavior. These insights directly shape the design strategies I develop, guiding designers toward more impactful
 		solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes that put people first.</p></section>
 	<section class="col-span-6">
-		<h3 class="font-bold tracking-tight leading-none text-2xl mb-4">Strategy</h3>
+		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Strategy</h3>
 		<p>I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
 		user needs, technical constraints, product strategy, and business objectives.</p>
 	</section>
 	<section class="col-span-6">
-		<h3 class="font-bold tracking-tight leading-none text-2xl mb-4">Direction</h3>
+		<h3 class="font-medium tracking-tight leading-none text-2xl mb-4">Direction</h3>
 		<p>
 			As a design lead, I am often hands-on encouraging my teams to play, remix, and look at things sideways - using
 			customer and business insights, brand, storytelling, and human-centered design to create products and services that meet real
@@ -65,31 +66,36 @@ cap %}
 		</p>
 	</section>
 </section>
-<section id="recognition" class="p-24">
-	<header class="col-span-6 sr-only">
-		<h2 class="uppercase">⦿ Recognition</h2>
-	</header>
-	<ul class="gap-4 col-span-full flex gap-0">
-		{% for logo in images %} {% if logo.Recognition %}
-		<li>{{ logo.pictureElement | stylePicture("p-1", "invert") | safe }}</li>
-		{% endif %} {% endfor %}
-	</ul>
+<section id="awards-and-collaboration" class="p-24">
+	<figure class="col-span-full flex flex-col">
+		<figcaption class="text-4xl text-neutral-800 font-extrabold text-pretty text-center leading-tight">
+			20+ years of award-winning human-centered design
+		</figcaption>
+		<h3 class="sr-only">Awards</h3>
+		<ul class="gap-4 flex gap-0 w-10/12 mx-auto">
+			{% for logo in images %} {% if logo.Recognition %}
+			<li>{{ logo.pictureElement | stylePicture("p-1", "invert") | safe }}</li>
+			{% endif %} {% endfor %}
+		</ul>
+		<h3 class="sr-only">Collaboration</h3>
+		<ul class="grid grid-cols-9 items-start w-8/12">
+			{% for org in organizations | sort("Weight") %} {% if org.Logo %}
+			<li class="aspect-video org">
+				<figure>
+					{% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
+					stylePicture("", "") | safe }} {% endfor %}
+				</figure>
+			</li>
+			{% endif %} {% endfor %}
+		</ul>
+	</figure>
 	<footer></footer>
 </section>
 <section id="collaboration">
 	<header class="col-span-6 sr-only">
 		<h2 class="uppercase">⦿ Collaboration</h2>
 	</header>
-	<ul class="col-span-full grid grid-cols-9 items-start">
-		{% for org in organizations | sort("Weight") %} {% if org.Logo %}
-		<li class="aspect-video org">
-			<figure>
-				{% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
-				stylePicture("", "") | safe }} {% endfor %}
-			</figure>
-		</li>
-		{% endif %} {% endfor %}
-	</ul>
+
 	<footer></footer>
 </section>
 <section id="background" class="h-dvh py-24 items-center">
