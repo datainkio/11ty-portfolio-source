@@ -4,7 +4,7 @@
 cap %}
 {% endblock %}
 {% set main_styles = "about bg-neutral-200 bg-graphpaper bg-blend-multiply grid grid-cols-12" %}
-{% set title_styles = "col-span-full min-h-dvh bg-primary-500 grid grid-cols-subgrid content-end" %}
+{% set title_styles = "col-span-full bg-blockframes-bw min-h-dvh bg-primary-500 grid grid-cols-subgrid content-end" %}
 {% block header
 %}
 <h1 class="order-2 col-span-full text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
@@ -133,5 +133,5 @@ cap %}
 		<footer></footer>
 	</section>
 </section>
-{% include "atoms/backgrounds/BlockframeLibrary.html" %}
+{% include "atoms/backgrounds/BlockframeSkyline.html" %}
 {% endblock %}

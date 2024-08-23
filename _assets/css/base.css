@@ -207,7 +207,7 @@
 
   .bg-blockframes-bw,
   .bg-blockframes-color {
-    @apply bg-cover overflow-hidden bg-no-repeat;
+    @apply bg-contain bg-bottom bg-no-repeat;
   }
 }
 

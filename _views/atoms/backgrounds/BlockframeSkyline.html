@@ -2,10 +2,8 @@
   Create a background showing a grid of blockframe outlines. When a mask is applied, the blockframes are revealed in color.
   Implement using the CSS classes bg-background-bw and/or bg-background-color
 --->
-<svg id="BlockframeLibrary" xmlns="http://www.w3.org/2000/svg" width="590" height="606" fill="none"
-  viewBox="0 0 590 606">
+<svg id="BlockframeLibrary" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
   <g>
-    <rect width="590" height="606" fill="#fff" />
     <g class="Chrome">
       <path fill="#EFF6FE" fill-rule="evenodd"
         d="M0 9.826C0 4.4 4.41 0 9.81 0h570.38c5.418 0 9.81 4.402 9.81 9.826V606H0V9.826Z" class="background"
@@ -692,12 +690,12 @@
 
   const BW_CONTAINER = document.getElementsByClassName("bg-blockframes-bw")[0];
   const COLOR_CONTAINER = document.getElementsByClassName("bg-blockframes-color")[0];
-  const COLCOUNT = 6; // The number of columns
-  const ROWCOUNT = 16; // The number of rows
+  const COLCOUNT = 12; // The number of columns
+  const ROWCOUNT = 8; // The number of rows
   const COL_HEIGHTS = heights();
   const THRESHOLD_BOTTOM = 16; // The row index where display of blocks becomes conditional
   const SIZE = 100; // The size of each block (square)
-  const ANGLE = 0; // The skew angle for each block (pos and neg)
+  const ANGLE = 12; // The skew angle for each block (pos and neg)
   const GAP = 2; // The horizontal and vertical space between elements
   const BRIGHTNESS = 0.25; // Brightness factor for even columns
   const OPACITY = .5; // General opacity of the SVG
@@ -727,12 +725,16 @@
     .viewbox(`0 0 ${COLCOUNT * SIZE} ${ROWCOUNT * SIZE} `);
 
 
+  var buildings = [];
+  
   let draw, COLORS, colorPalette;
 
   function heights() {
     var arr = [];
-    for (var c = 0; c < COLCOUNT; c++) {
-      arr.push(random(0,ROWCOUNT))
+    for (var c = 0; c < COLCOUNT/2; c++) {
+      var h = Math.ceil(random(0, ROWCOUNT));
+      arr.push(h);
+      arr.push(h);
     }
     return arr;
   }
@@ -991,20 +993,27 @@
   // Create the grid of blockframes and apply it as a background property via data URL
   async function drawGrid() {
 
+    // document.getElementById("log").innerHTML = COL_HEIGHTS;
+
     // Populate the SVGs with blockframes arranged in a grid pattern
     // For each row...
     for (let r = 0; r < ROWCOUNT; r++) {
       // and each column in that row...
-      for (let c = 0; c < COLCOUNT; c++) {
+      for (let c = 0; c < COLCOUNT; c + 2) {
+        
         // If the row count in this column is below the defined threshold...
         if (r <= c + THRESHOLD_BOTTOM) {
           // then create the block; otherwise, skip.
           // Knowing odd/even keeps the last items lined up rather than dangling
           if (c % 2 === 0 || r < c + THRESHOLD_BOTTOM) {
             // Create the SVG element for a given set of coordinates
-            drawBlock(r, c);
+            // drawBlock(r, c);
           }
         }
+      
+       if (r >= COL_HEIGHTS[c] - 1) {
+        drawStory(r, c);
+       }
       }
     }
 
@@ -1025,6 +1034,10 @@
     document.getElementById("BlockframeLibrary").remove();
   }
 
+  function drawStory(r,c) {
+    drawBlock(r, c);
+  }
+
   function drawBlock(r, c) {
     const block = SRC.querySelector(".Chrome").cloneNode(true);
     block.classList.add("blockframe");
@@ -1036,7 +1049,7 @@
     const scaleY = SIZE / rect.width;
     const scale = Math.min(scaleX, scaleY) * .95// Uniform scaling
     const x = c * SIZE;
-    const y = r * SIZE - 25;
+    const y = r * SIZE + SIZE*1.5;
     const skewYAngle = c % 2 === 0 ? ANGLE : ANGLE * -1;
 
     block.setAttribute("width", SIZE);
@@ -1117,8 +1130,9 @@
     paintMe(painted, palette);
 
     // If this is the top of a column, add a roof
-    if (r === 0 && c % 2 === 1) {
-      // BW.node.appendChild(roof(x, y));
+    if (r + 1 === COL_HEIGHTS[c] && c % 2 === 1) {
+      BW.node.appendChild(roof(x, y));
+      COLOR.node.appendChild(roof(x, y));
     }
    
   }
