@@ -9,8 +9,8 @@
     const svgContainer = document.getElementById('ruler');
     const totalMarks = 13; // 0 to 12, inclusive
     const subDivisions = 24; // Number of sub-divisions per main segment (e.g., quarter-ticks)
-    const tickHeight = 20; // Height of the primary tick marks
-    const subTickHeight = 10; // Height of the sub-tick marks
+    const tickHeight = 12; // Height of the primary tick marks
+    const subTickHeight = 4; // Height of the sub-tick marks
 
     function drawRuler() {
         const rulerWidth = svgContainer.clientWidth;
@@ -29,7 +29,7 @@
             line.setAttribute('x2', x);
             line.setAttribute('y2', tickHeight);
             line.setAttribute('stroke', 'black');
-            line.setAttribute('stroke-width', 1);
+            line.setAttribute('stroke-width', .5);
             line.setAttribute('class', 'tick-whole')
             svgContainer.appendChild(line);
 
@@ -43,32 +43,42 @@
                 labelX += 2;
             } else if (i === 12) {
                 // Offset "12" to the left
-                labelX -= 16;
+                labelX -= 8;
             } else {
                 labelX -= 4;
             }
 
             label.setAttribute('x', labelX);
             label.setAttribute('y', tickHeight + 15); // Position the label below the tick
-            label.setAttribute('class', "text-xs font-light");
+            label.setAttribute('class', "text-[.5rem] font-light");
             label.textContent = i;
             svgContainer.appendChild(label);
 
             // Add sub-ticks between the primary ticks
             if (i < totalMarks - 1) {
                 for (let j = 1; j < subDivisions; j++) {
-                    var h = subTickHeight;
-                    h += (j%12 === 0 ? 4 : 0);
-                    h += (j%6 === 0 ? 4 : 0);
-                    h += (j % 6 === 0 ? 4 : 0);
-                    const subX = x + j * subTickSpacing;
                     const subLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    var h = subTickHeight;
+                    if (j % 12 === 0) {
+                        h += 4;
+                        //  subLine.setAttribute("class", "tick-12");
+                    }
+                    if (j % 6 === 0) {
+                        h += 4;
+                        // subLine.setAttribute("class", "tick-6");
+                    }
+                    if (j % 3 === 0) {
+                        h += 4;
+                        // subLine.setAttribute("class", "tick-3");
+                    }
+                    
+                    const subX = x + j * subTickSpacing;
                     subLine.setAttribute('x1', subX);
                     subLine.setAttribute('y1', 0);
                     subLine.setAttribute('x2', subX);
                     subLine.setAttribute('y2', h);
                     subLine.setAttribute('stroke', 'black');
-                    subLine.setAttribute('stroke-width', 1);
+                    subLine.setAttribute('stroke-width', .5);
                     svgContainer.appendChild(subLine);
                 }
             }
