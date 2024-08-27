@@ -8,52 +8,29 @@ cap %}
 {% block header
 %}
 <h1 class="order-2 col-span-full text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
-<p class="order-1 col-span-6 col-start-6 place-self-end font-normal tracking-tight leading-tight text-4xl">{{ introduction }}</p>
-<!---
-<script>
-	/** Seeing if I can use a div to provide a mask for the colored blockframe layer **/
-	const log = document.getElementById("log");
-	const section = document.getElementById('title-view');
-	const clipper = document.getElementById('title-card');
+<p class="order-1 col-span-6 col-start-6 place-self-end font-light tracking-tight leading-tight text-3xl">{{
+	introduction }}</p>
 
-	function updateClipPath() {
-		const rect = clipper.getBoundingClientRect();
-		const parentRect = section.getBoundingClientRect();
-
-		// Calculate the clip-path coordinates based on the child div's position relative to the section
-		const x1 = ((rect.left - parentRect.left) / parentRect.width) * 100;
-		const y1 = ((rect.top - parentRect.top) / parentRect.height) * 100;
-		const x2 = ((rect.right - parentRect.left) / parentRect.width) * 100;
-		const y2 = ((rect.bottom - parentRect.top) / parentRect.height) * 100;
-
-		// Set the clip-path using polygon coordinates
-		section.style.clipPath = `polygon(${x1}% ${y1}%, ${x2}% ${y1}%, ${x2}% ${y2}%, ${x1}% ${y2}%)`;
-	}
-
-	// Initialize the clip-path on page load
-	updateClipPath();
-
-	// Optionally, update the clip-path on window resize or if the child div moves
-	window.addEventListener('resize', updateClipPath);
-</script>
--->
 {% endblock %}
 {% block primary %}
-	{% include "atoms/display/ruler.html" %}
-<section class="min-h-dvh w-full">
-
+<section class="min-h-dvh w-full gap-12">
 	<header class="col-span-full">
-		<h2 class="uppercase text-neutral-500 text-sm">0/4 What I Do</h2>
+		{% include "atoms/display/ruler.html" %}
+		<h2 class="uppercase text-neutral-800 text-sm">0/4 What I Do</h2>
 	</header>
-	<figure id="recognition" class="col-span-5 row-span-3 max-w-xs mr-12">
-		<ul>
+	<figure id="recognition" class="col-span-6 lg:col-span-full bg-white p-24">
+		<figcaption><h3 class="text-neutral-800 text-xxl font-light text-center">Awards & Recognition</h3></figcaption>
+		<ul class="lg:columns-3">
 		{% for img in images %}
 			{% if img.Recognition %}
-			<li class="flex border-t border-neutral-800 pt-2 pb-4 gap-2">
-				{{ img.pictureElement | stylePicture("invert basis-9", "place-self-start") | safe }}
-				<ul>
+			<li class="grid grid-cols-9 content-start pt-2 pb-4 break-inside-avoid-column">
+				{{ img.pictureElement | stylePicture("invert row-span-3 p-2 pt-0", "") | safe }}
 				{% for award in awards | find("id", img.Recognition) %}
-					<li  class="font-light text-xs">{{ award.Title }}</li>
+					{% if loop.index === 1 %}
+						<h4 class="font-bold text-xs col-span-8">{{ award.Organization }}</h4>
+						<ul class="col-span-8">
+					{% endif %}
+							<li class="font-light text-xs">{{ award.Title }}</li>
 				{% endfor %}
 				</ul>
 			</li>
@@ -61,7 +38,24 @@ cap %}
 		{% endfor %}
 		</ul>
 	</figure>
-	<section class="col-start-6 col-span-6">
+</section>
+<section id="collaboration" class="w-full">
+	<header class="sr-only">
+		<h2 class="uppercase">⦿ Collaboration</h2>
+	</header>
+	<ul class="col-span-full grid grid-cols-9 items-start w-8/12 mx-auto">
+		{% for org in organizations | sort("Weight") %} {% if org.Logo %}
+		<li class="aspect-video org">
+			<figure>
+				{% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
+				stylePicture("", "") | safe }} {% endfor %}
+			</figure>
+		</li>
+		{% endif %} {% endfor %}
+	</ul>
+	<footer></footer>
+</section>
+	<section class="col-start-7 col-span-6">
 		<h3 class="tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
 		<p>I work to ensure that teams are aligned with the end goal of creating meaningful,
 		intuitive experiences.</p>
@@ -81,22 +75,6 @@ cap %}
 			human needs.
 		</p>
 	</section>
-</section>
-<section id="collaboration">
-	<header class="col-span-6 sr-only">
-		<h2 class="uppercase">⦿ Collaboration</h2>
-	</header>
-		<ul class="grid grid-cols-9 items-start w-8/12">
-			{% for org in organizations | sort("Weight") %} {% if org.Logo %}
-			<li class="aspect-video org">
-				<figure>
-					{% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
-					stylePicture("", "") | safe }} {% endfor %}
-				</figure>
-			</li>
-			{% endif %} {% endfor %}
-		</ul>
-	<footer></footer>
 </section>
 <section id="background" class="h-dvh py-24 items-center">
 	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
