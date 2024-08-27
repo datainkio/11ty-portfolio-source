@@ -1,6 +1,13 @@
 <!-- @format -->
 
-{% extends "species/base.html" %}{% set body_styles = "landing" %} {% block cap %}
-{%endblock%} {% block accessibility %}ACCESSIBILITY{% endblock %} {% block
-primary %} {{ content | safe }} {% endblock %} {% block footer %} {% include
-"organisms/footers/sitemap.html" %} {% endblock %}
+{% extends "species/base.html" %}
+{% set body_styles = "landing" %}
+{% block preloader %}{% include "organisms/preloader.html" %}{% endblock %}
+{% block cap %}{%endblock%} 
+{% block accessibility %}ACCESSIBILITY{% endblock %}
+{% block primary %} 
+    {{ content | safe }} 
+{% endblock %} 
+{% block footer %} 
+    {% include "organisms/footers/sitemap.html" %} 
+{% endblock %}

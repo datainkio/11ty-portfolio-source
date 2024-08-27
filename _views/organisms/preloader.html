@@ -1,0 +1,17 @@
+<div id="loading-view" class="fixed inset-0 w-full flex items-center justify center bg-primary-600 z-50">
+        <span class="loading loading-infinity loading-lg mx-auto"></span>
+</div>
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function () {
+            // Hide the loading view
+            const loadingView = document.getElementById("loading-view");
+            loadingView.classList.add("hidden");
+	
+            // Run intro
+            content = document.getElementById("page-content");
+            content.classList.remove("hidden");
+            // content.classList.add("opacity-100");
+        }, 5000);
+    });
+</script>

@@ -1,25 +1,18 @@
-<header id="header" class="fixed w-full z-[100] p-2s">
+<header id="header-global" class="fixed w-full z-[100] p-2s">
 	{% include "cells/menus/primary-nav.html" %}
 </header>
 <script>
 	let lastScrollTop = 0;
-	const nav = document.getElementById('header');
-
+	const nav = document.getElementById('header-global');
 	window.addEventListener('scroll', function () {
 		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
 		if (scrollTop > lastScrollTop) {
 			// Scroll Down
-			nav
-				.classList
-				.add('-translate-y-full');
+			nav.classList.add('-translate-y-full');
 		} else {
 			// Scroll Up
-			nav
-				.classList
-				.remove('-translate-y-full');
+			nav.classList.remove('-translate-y-full');
 		}
-
 		lastScrollTop = scrollTop;
 	});
 </script>

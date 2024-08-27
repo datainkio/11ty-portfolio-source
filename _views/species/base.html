@@ -5,11 +5,13 @@
 	<!-- HEAD -->
 	{% include "partials/head.html" %}
 
-	<body class="{{ body_styles }}">
+	<body class="{{ body_styles }} relative">
 		<!-- GTM -->
 		{% include "partials/gtm_body.html" %}
+		<!-- PRELOADER -->
+		 {% block preloader %}{% endblock %}
 		<!-- SCRIPT -->
-		{% block script %} {% endblock %}
+		{% block script %}{% endblock %}
 		<!-- A11Y -->
 		<section id="skip" tabindex=" -2" class="sr-only">
 			{% block accessibility %}NO SKIP LINKS DEFINED{% endblock %}
@@ -17,19 +19,18 @@
 		<!-- GLOBAL HEADER -->
 		{% include "organisms/headers/global.html" %}
 		<!-- CONTENT -->
-		<main tabindex=" -1" class="faded {{ main_styles }}">
+		<main id="page-content" tabindex=" -1" class="{{ main_styles }}">
 			{% block cap %} {%endblock%}
-			<header id="title" class="title z-50 relative {{ title_styles }}">
+			<header id="page-title" class="page-title z-50 relative {{ title_styles }}">
 				{% block header %}
-				<h1>{{ title }}</h1>
-				<p class="text-pretty">{{ introduction | safe }}</p>
+					<h1>{{ title }}</h1>
+					<p class="text-pretty">{{ introduction | safe }}</p>
 				{% endblock %}
 			</header>
-			{% block primary %}PRIMARY CONTENT {% endblock %}
+			{% block primary %}PRIMARY CONTENT{% endblock %}
 		</main>
 		<!-- FOOTER -->
-		{% block footer %}FOOTER{% endblock %} {% include
-		"organisms/footers/global.html" %}
+		{% block footer %}FOOTER{% endblock %} 
+		{% include "organisms/footers/global.html" %}
 	</body>
-
 </html>
