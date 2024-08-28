@@ -6,74 +6,19 @@
 {% block header
 %}
 <h1 class="order-2 col-span-full text-right text-fluid lowercase text-nowrap">{{ title }}</h1>
-<p class="order-1 col-span-6 col-start-6 place-self-end font-light tracking-tight leading-tight text-3xl">{{
+<p class="order-1 col-span-full col-start-1 sm:col-span-6 sm:col-start-6 place-self-end font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">{{
 	introduction }}</p>
 
 {% endblock %}
 {% block primary %}
-<section class="min-h-dvh w-full gap-12">
-	<header class="col-span-full">
-		{% include "atoms/display/ruler.html" %}
-		<h2 class="uppercase text-neutral-800 text-sm">0/4 What I Do</h2>
-	</header>
-	<figure id="recognition" class="col-span-6 lg:col-span-full bg-white p-24">
-		<figcaption><h3 class="text-neutral-800 text-xxl font-light text-center">Awards & Recognition</h3></figcaption>
-		<ul class="lg:columns-3">
-		{% for img in images %}
-			{% if img.Recognition %}
-			<li class="grid grid-cols-9 content-start pt-2 pb-4 break-inside-avoid-column">
-				{{ img.pictureElement | stylePicture("invert row-span-3 p-2 pt-0", "") | safe }}
-				{% for award in awards | find("id", img.Recognition) %}
-					{% if loop.index === 1 %}
-						<h4 class="font-bold text-xs col-span-8">{{ award.Organization }}</h4>
-						<ul class="col-span-8">
-					{% endif %}
-							<li class="font-light text-xs">{{ award.Title }}</li>
-				{% endfor %}
-				</ul>
-			</li>
-			{% endif %}
-		{% endfor %}
-		</ul>
-	</figure>
-</section>
-<section id="collaboration" class="w-full">
-	<header class="sr-only">
-		<h2 class="uppercase">⦿ Collaboration</h2>
-	</header>
-	<ul class="col-span-full grid grid-cols-9 items-start w-8/12 mx-auto">
-		{% for org in organizations | sort("Weight") %} {% if org.Logo %}
-		<li class="aspect-video org">
-			<figure>
-				{% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
-				stylePicture("", "") | safe }} {% endfor %}
-			</figure>
-		</li>
-		{% endif %} {% endfor %}
-	</ul>
-	<footer></footer>
-</section>
-	<section class="col-start-7 col-span-6">
-		<h3 class="tracking-tight leading-none text-2xl mb-4">Collaboration</h3>
-		<p>I work to ensure that teams are aligned with the end goal of creating meaningful,
-		intuitive experiences.</p>
-		<p>I work closely with user researchers to identify key questions and hypotheses that reveal critical insights into
-		human behavior. These insights directly shape the design strategies I develop, guiding designers toward more impactful
-		solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes that put people first.</p></section>
-	<section class="col-start-6 col-span-6">
-		<h3 class="tracking-tight leading-none text-2xl mb-4">Strategy</h3>
-		<p>I spend as much time sweating UI pixels and UX flows as I do sitting in workshops and boardrooms, discussing clients’
-		user needs, technical constraints, product strategy, and business objectives.</p>
-	</section>
-	<section class="col-start-6 col-span-6">
-		<h3 class="tracking-tight leading-none text-2xl mb-4">Direction</h3>
-		<p>
-			As a design lead, I am often hands-on encouraging my teams to play, remix, and look at things sideways - using
-			customer and business insights, brand, storytelling, and human-centered design to create products and services that meet real
-			human needs.
-		</p>
-	</section>
-</section>
+{% include "atoms/display/ruler.html" %}
+{% set count = 0 %}
+{% include "templates/about/recognition.html" %}
+{% set count = 1 %}
+{% include "templates/about/collaboration.html" %}
+{% set count = 2 %}
+{%include "templates/about/copy.html" %}
+<!--
 <section id="background" class="h-dvh py-24 items-center">
 	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
 		<p class="col-span-6">
@@ -85,7 +30,7 @@
 			Today I think in terms of systems, information flows, and decision-making. 
 		</p>
 </section>
-
+-->
 <section id="contributions">
 	<header>
 		<h2>Contributions</h2>

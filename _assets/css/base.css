@@ -165,12 +165,9 @@
     @apply transition-transform;
   }
 
+  /** BLOCKFRAMES **/
   .blockframe-container {
     @apply w-full mx-auto absolute -top-16 left-0;
-  }
-
-  .blockframe-bw {
-    @apply saturate-0;
   }
 }
 

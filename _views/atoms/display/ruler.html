@@ -1,5 +1,4 @@
-
-<div class="col-span-full border-t border-black flex justify-content-center align-items-center m-0">
+<div class="ruler col-span-full border-t border-black h-8">
     <div class="ruler-container w-full">
         <svg class="w-full h-12" id="ruler"></svg>
     </div>
@@ -35,7 +34,6 @@
 
             // Add the label with adjusted positioning
             const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-
             // Default label alignment (vertically centered and horizontally at the tick mark)
             let labelX = x;
             if (i === 0) {
@@ -47,9 +45,8 @@
             } else {
                 labelX -= 4;
             }
-
             label.setAttribute('x', labelX);
-            label.setAttribute('y', tickHeight + 15); // Position the label below the tick
+            label.setAttribute('y', tickHeight + 12); // Position the label below the tick
             label.setAttribute('class', "text-[.5rem] font-light");
             label.textContent = i;
             svgContainer.appendChild(label);
@@ -61,15 +58,15 @@
                     var h = subTickHeight;
                     if (j % 12 === 0) {
                         h += 4;
-                        //  subLine.setAttribute("class", "tick-12");
+                        subLine.setAttribute("class", "tick-12");
                     }
                     if (j % 6 === 0) {
                         h += 4;
-                        // subLine.setAttribute("class", "tick-6");
+                        subLine.setAttribute("class", "tick-6");
                     }
                     if (j % 3 === 0) {
                         h += 4;
-                        // subLine.setAttribute("class", "tick-3");
+                        subLine.setAttribute("class", "tick-3");
                     }
                     
                     const subX = x + j * subTickSpacing;

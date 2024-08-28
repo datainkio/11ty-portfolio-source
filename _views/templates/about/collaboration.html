@@ -1,0 +1,19 @@
+<section id="collaboration" class="w-full shadow-inner">
+    <header class="col-span-full place-self-start">
+        <h2 class="uppercase text-neutral-800 text-[.75rem]">{{ count }}/4 Collaboration</h2>
+    </header>
+    <ul class="col-span-full grid grid-cols-5 sm:grid-cols-9 items-start">
+        {% for org in organizations | sort("Weight") %} {% if org.Logo %}
+        <li class="aspect-video org">
+            <figure>
+                <figcaption class="sr-only">
+                    <h4>{{ org.Title }}</h4>
+                </figcaption>
+                {% for img in images | find("id", org.Logo) %}{{ img.pictureElement |
+                stylePicture("", "") | safe }} {% endfor %}
+            </figure>
+        </li>
+        {% endif %} {% endfor %}
+    </ul>
+    <footer></footer>
+</section>
