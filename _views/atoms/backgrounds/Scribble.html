@@ -16,11 +16,19 @@
 
 	// Our base shape
 
-	const baseShape = svg
+	const baseShape = rectangle();
+	
+	function circle() {
+		return svg
 		.circle(width / 2)
 		.cx(width / 2)
 		.cy(height / 2)
 		.fill("#fff");
+	}
+
+	function rectangle() {
+		return svg.rect(width,height).fill("#fff");
+	}
 
 	// Get the base shape's bounding box
 	const bounds = baseShape.node.getBBox();
