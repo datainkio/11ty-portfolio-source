@@ -6,6 +6,7 @@
 	- bg-scribble - block container
 	- palette - array of color values
  --->
+ <div id="temp"></div>
 <script type="module">
 	import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.2";
 	import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
@@ -18,20 +19,21 @@
 
 	const svg = SVG()
 		.viewbox(0, 0, width, height)
-		.addTo(CONTAINER)
+		.addTo(TEMP)
 		.attr("preserveAspectRatio", "xMidYMid slice");
 
-	svg.rect(width, height).fill("#DDDBD1");
-
+	svg.rect(width, height).fill("#3C91E6");
+	console.log(svg);
 	// Our base shape
 	const baseShape = svg
 		.circle(width)
 		.cx(width / 2)
 		.cy(height / 2)
 		.opacity(0);
-
+	console.log(baseShape);
 	// Get the base shape's bounding box
 	const bounds = baseShape.node.getBBox();
+	console.log(bounds);
 	// Split the base shape's bounding box into line segments
 	const boundsSegments = [
 		[
@@ -52,7 +54,7 @@
 		]
 	];
 	// How many lines do we want?
-	const numLines = 2048;
+	const numLines = 5000;
 	const lineGroup = svg.group();
 
 	// Render the lines!
@@ -68,12 +70,14 @@
 		const endY = random(segment2[0].y, segment2[1].y);
 
 		lineGroup.line(startX, startY, endX, endY).stroke({
-			width: random(1, 8),
-			color: random(["#F8DDD6", "#E04250"])
+			width: random(1, 1),
+			color: random(["#3C91E6", "#FFFFFF"])
 		});
 	}
 	 CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(svg.svg())}")`
-	svg.remove();
-	console.log(bounds);
+	 console.log(svg);
+	 console.log(bounds);
+	TEMP.remove();
+	
 
 </script>

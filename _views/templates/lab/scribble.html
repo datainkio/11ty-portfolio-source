@@ -1,3 +1,12 @@
 <!-- @format -->
-{% extends "species/article.html" %} {% block primary %} <h1 class="bg-scribble bg-clip-text bg-cover text-transparent">This text has a dynamically generated SVG background</h1>{% include
-"atoms/backgrounds/scribble.html" %} {% endblock %}
+{% extends "species/landing.html" %} 
+{% block header %}
+<h1 class="bg-scribble bg-clip-text bg-cover text-transparent text-8xl h-dvh my-auto">{{ title }}</h1>
+<p
+    class="col-span-full col-start-1 sm:col-span-6 sm:col-start-6 place-self-end font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">
+    {{
+    introduction }}</p>
+{% include "atoms/backgrounds/scribble.html" %}
+{% endblock %}
+
+{% block primary %}{% endblock %}
