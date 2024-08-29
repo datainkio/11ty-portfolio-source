@@ -1,5 +1,11 @@
 <!-- @format -->
-<div id="scribble"></div>
+ <!---
+	Create a background image showing a generative SVG of random scribbles.
+	Implement using the CSS class bg-scribble
+	Props:
+	- bg-scribble - block container
+	- palette - array of color values
+ --->
 <script type="module">
 	import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.2";
 	import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
@@ -7,60 +13,51 @@
 	const width = 1024;
 	const height = 1024;
 
+	const CONTAINER = document.getElementsByClassName("bg-scribble")[0];
+	const TEMP = document.getElementById("temp");
+
 	const svg = SVG()
 		.viewbox(0, 0, width, height)
-		.addTo("#scribble")
+		.addTo(CONTAINER)
 		.attr("preserveAspectRatio", "xMidYMid slice");
 
-	svg.rect(width, height).fill("#E04250");
+	svg.rect(width, height).fill("#DDDBD1");
 
 	// Our base shape
-
-	const baseShape = rectangle();
-	
-	function circle() {
-		return svg
-		.circle(width / 2)
+	const baseShape = svg
+		.circle(width)
 		.cx(width / 2)
 		.cy(height / 2)
-		.fill("#fff");
-	}
-
-	function rectangle() {
-		return svg.rect(width,height).fill("#fff");
-	}
+		.opacity(0);
 
 	// Get the base shape's bounding box
 	const bounds = baseShape.node.getBBox();
-
 	// Split the base shape's bounding box into line segments
 	const boundsSegments = [
 		[
 			{ x: bounds.x, y: bounds.y },
-			{ x: bounds.x + bounds.width, y: bounds.y },
+			{ x: bounds.x + bounds.width, y: bounds.y }
 		],
 		[
 			{ x: bounds.x + bounds.width, y: bounds.y },
-			{ x: bounds.x + bounds.width, y: bounds.y + bounds.height },
+			{ x: bounds.x + bounds.width, y: bounds.y + bounds.height }
 		],
 		[
 			{ x: bounds.x + bounds.width, y: bounds.y + bounds.height },
-			{ x: bounds.x, y: bounds.y + bounds.height },
+			{ x: bounds.x, y: bounds.y + bounds.height }
 		],
 		[
 			{ x: bounds.x, y: bounds.y + bounds.height },
-			{ x: bounds.x, y: bounds.y },
-		],
+			{ x: bounds.x, y: bounds.y }
+		]
 	];
-
 	// How many lines do we want?
 	const numLines = 2048;
-
 	const lineGroup = svg.group();
 
 	// Render the lines!
 	for (let i = 0; i < numLines; i++) {
-		// Pick two points along the shape's bounding box and draw a line between them
+	// Pick two points along the shape's bounding box and draw a line between them
 		const segment1 = random(boundsSegments);
 		const segment2 = random(boundsSegments);
 
@@ -72,9 +69,11 @@
 
 		lineGroup.line(startX, startY, endX, endY).stroke({
 			width: random(1, 8),
-			color: random(["#F8DDD6", "#E04250"]),
+			color: random(["#F8DDD6", "#E04250"])
 		});
 	}
+	 CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(svg.svg())}")`
+	svg.remove();
+	console.log(bounds);
 
-	lineGroup.maskWith(baseShape);
 </script>
