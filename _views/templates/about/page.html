@@ -1,20 +1,20 @@
 <!-- @format -->
 {% extends "species/landing.html" %}
 {% block cap %}{% endblock %}
-{% set title_styles = "col-span-full flex flex-col bg-primary-500" %}
+{% set title_styles = "col-span-full flex flex-col items-end justify-end bg-primary-500 h-dvh" %}
 {% set main_styles = "about bg-neutral-200 bg-graphpaper grid grid-cols-12 opacity-0" %}
 {% block header %}
-<h1 class="bg-scribble bg-clip-text bg-cover text-transparent text-8xl">{{ title }}</h1>
-<p class="col-span-full col-start-1 sm:col-span-6 sm:col-start-6 place-self-end font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">{{
+<h1 class="text-8xl uppercase order-2">{{ title }}</h1>
+<p class="order-1 basis-3/12 col-span-full col-start-1 sm:col-span-6 sm:col-start-6 place-self-end font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">{{
 	introduction }}</p>
-{% include "atoms/backgrounds/scribble.html" %}
 {% endblock %}
 {% block primary %}
 {% include "atoms/display/ruler.html" %}
+{% include "templates/about/work.html" %}
 {% set count = 0 %}
 {% include "templates/about/recognition.html" %}
 {% set count = 1 %}
-{% include "templates/about/collaboration.html" %}
+{% include "templates/organization/list.html" %}
 {% set count = 2 %}
 {%include "templates/about/copy.html" %}
 <!--

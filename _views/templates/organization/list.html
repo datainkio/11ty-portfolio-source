@@ -1,7 +1,18 @@
-{% if organizations.length %}
-<ul>
-  {% for organization in organizations %}
-  <li>{% include "templates/organization/link.html" %}</li>
-  {% endfor %}
-</ul>
-{%- endif -%}
+<section class="gap-12">
+  <header class="col-span-full place-self-start">
+    <h2 class="uppercase text-neutral-800 text-sm">{{ count }}/4 Work</h2>
+  </header>
+  <ul class="columns-2 lg:columns-1">
+    {% set groups = ["Global Brands", "Healthcare", "Civic", "Museums", "Artists & Musicians", "Education"] %}
+    {% for group in groups %}
+    <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
+      <h4 class="font-bold text-xs">{{ group }}</h4>
+      <ul>
+        {% for organization in organizations %}
+        <li class="font-light text-xs">{{ organization.Group }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
