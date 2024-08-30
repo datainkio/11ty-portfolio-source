@@ -67,11 +67,7 @@
     text-xl;
   }
 
-  p {
-    @apply text-neutral-900;
-  }
-
-  section.description p {
+  section p.description {
     @apply text-center md:text-left font-light 
     text-pretty leading-tight
     text-xl sm:text-2xl
@@ -149,7 +145,7 @@
     @apply sticky top-0;
   }
 
-  .landing .about > section {
+  .landing > section {
     @apply scene;
   }
   .scene {
@@ -196,7 +192,7 @@
   }
 
   .bg-graphpaper {
-    @apply inset-0 w-full bg-neutral-200 bg-blend-darken
+    @apply inset-0 w-full bg-neutral-900 bg-blend-screen
 		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
 		bg-[size:1rem_1rem];
   }

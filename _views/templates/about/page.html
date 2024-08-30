@@ -1,22 +1,60 @@
 <!-- @format -->
 {% extends "species/landing.html" %}
 {% block cap %}{% endblock %}
-{% set title_styles = "col-span-full flex flex-col items-end justify-end bg-primary-500 h-dvh" %}
-{% set main_styles = "about bg-neutral-200 bg-graphpaper grid grid-cols-12 opacity-0" %}
+{% set main_styles = "landing bg-graphpaper text-neutral-200 grid grid-cols-12 opacity-0" %}
+{% set title_styles = "col-span-full grid grid-cols-subgrid place-content-end justify-end h-dvh mb-24" %}
 {% block header %}
-<h1 class="text-8xl uppercase order-2">{{ title }}</h1>
-<p class="order-1 basis-3/12 col-span-full col-start-1 sm:col-span-6 sm:col-start-6 place-self-end font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">{{
-	introduction }}</p>
+{% include "templates/about/title.html" %}
 {% endblock %}
 {% block primary %}
 {% include "atoms/display/ruler.html" %}
-{% include "templates/about/work.html" %}
 {% set count = 0 %}
-{% include "templates/about/recognition.html" %}
+<section class="grid-cols-subgrid px-12">
+	<header class="col-span-full place-self-start mb-24">
+		<h2 class="uppercase text-[.75rem]">{{ count }}/4 What I Do</h2>
+	</header>
+	<p class="col-start-5 col-span-6 description lead text-neutral-200">
+		I create meaningful, intuitive experiences shaped by data-driven insights into what
+		makes people tick.
+	</p>
+	<p class="col-start-5 col-span-6 text-neutral-200 ml-12">
+		As a design lead, I spend as much time sweating UI pixels and UX flows
+		as I do sitting in workshops and boardrooms, discussing clients' user needs, technical
+		constraints, product strategy, and business objectives.
+	</p>
+	<p class="col-start-5 col-span-6 text-neutral-200 ml-12">
+		I am often hands-on encouraging my teams to play, remix, and look at things sideways -
+		using customer and business insights, brand, storytelling, and human-centered design to
+		create products and services that meet real human needs.
+	</p>
+	<p class="col-start-5 col-span-6 text-neutral-200 ml-12">
+		I work closely with user researchers to identify key questions and hypotheses that reveal critical insights
+		into human behavior. These insights directly shape the design strategies I develop, guiding designers toward
+		more
+		impactful solutions. By bringing a nuanced human perspective, I help engineers translate possibilities into
+		tangible
+		outcomes that elevate people's lives.
+	</p>
+	<div class="col-span-3 columns-xs col-start-1 row-start-2 row-span-5">
+		{% include "molecules/lists/awards.html" %}
+	</div>
+</section>
 {% set count = 1 %}
-{% include "templates/organization/list.html" %}
+<section id="organizations" class="grid grid-cols-subgrid py-24 px-12 gap-12">
+	<header class="col-span-full place-self-start">
+		<h2 class="uppercase text-sm">{{ count }}/4 Who I Work With</h2>
+	</header>
+	<p class="col-span-full description lead text-neutral-200">
+		With 20+ years of experience, I have been lucky to work with just about everyone and everything.
+
+	<figure class="col-span-full">
+		<figcaption class="sr-only">Global Brands, Healthcare, Civic, Museums, Artists and Musicians, Education</figcaption>
+		{% include "molecules/lists/organizations.html" %}
+	</figure>
+</section>
+
 {% set count = 2 %}
-{%include "templates/about/copy.html" %}
+
 <!--
 <section id="background" class="h-dvh py-24 items-center">
 	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>

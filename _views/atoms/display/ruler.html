@@ -1,4 +1,4 @@
-<div class="ruler col-span-full border-t border-black h-8">
+<div class="ruler col-span-full border-t h-8 stroke-current">
     <div class="ruler-container w-full">
         <svg class="w-full h-12" id="ruler"></svg>
     </div>
@@ -27,7 +27,7 @@
             line.setAttribute('y1', 0);
             line.setAttribute('x2', x);
             line.setAttribute('y2', tickHeight);
-            line.setAttribute('stroke', 'black');
+            // line.setAttribute('stroke', 'black');
             line.setAttribute('stroke-width', .5);
             line.setAttribute('class', 'tick-whole')
             svgContainer.appendChild(line);
@@ -74,7 +74,7 @@
                     subLine.setAttribute('y1', 0);
                     subLine.setAttribute('x2', subX);
                     subLine.setAttribute('y2', h);
-                    subLine.setAttribute('stroke', 'black');
+                    // subLine.setAttribute('stroke', 'black');
                     subLine.setAttribute('stroke-width', .5);
                     svgContainer.appendChild(subLine);
                 }
