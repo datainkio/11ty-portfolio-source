@@ -9,25 +9,24 @@
 {% block primary %}
 {% include "atoms/display/ruler.html" %}
 {% set count = 0 %}
-<section class="grid-cols-subgrid px-12">
+<section class="min-h-dvh grid-cols-subgrid justify-content-start px-12">
 	<header class="col-span-full place-self-start mb-24">
 		<h2 class="uppercase text-[.75rem]">{{ count }}/4 What I Do</h2>
 	</header>
-	<p class="col-start-5 col-span-6 description lead text-neutral-200">
-		I create meaningful, intuitive experiences shaped by data-driven insights into what
-		makes people tick.
+	<p class="col-start-5 col-span-6 text-neutral-200 lead">
+		Meaningful, intuitive experiences lorem ipsum and so on and so forth ad nauseam
 	</p>
-	<p class="col-start-5 col-span-6 text-neutral-200 ml-12">
+	<p class="col-start-5 col-span-6 text-neutral-200">
 		As a design lead, I spend as much time sweating UI pixels and UX flows
 		as I do sitting in workshops and boardrooms, discussing clients' user needs, technical
 		constraints, product strategy, and business objectives.
 	</p>
-	<p class="col-start-5 col-span-6 text-neutral-200 ml-12">
+	<p class="col-start-5 col-span-6 text-neutral-200">
 		I am often hands-on encouraging my teams to play, remix, and look at things sideways -
 		using customer and business insights, brand, storytelling, and human-centered design to
 		create products and services that meet real human needs.
 	</p>
-	<p class="col-start-5 col-span-6 text-neutral-200 ml-12">
+	<p class="col-start-5 col-span-6 text-neutral-200">
 		I work closely with user researchers to identify key questions and hypotheses that reveal critical insights
 		into human behavior. These insights directly shape the design strategies I develop, guiding designers toward
 		more
@@ -39,15 +38,16 @@
 		{% include "molecules/lists/awards.html" %}
 	</div>
 </section>
+{% include "atoms/display/protractor.html" %}
 {% set count = 1 %}
-<section id="organizations" class="grid grid-cols-subgrid py-24 px-12 gap-12">
+<section id="organizations" class="min-h-dvh grid grid-cols-subgrid py-24 px-12">
 	<header class="col-span-full place-self-start">
 		<h2 class="uppercase text-sm">{{ count }}/4 Who I Work With</h2>
 	</header>
-	<p class="col-span-full description lead text-neutral-200">
+	<p class="col-start-5 col-span-6 lead text-neutral-200">
 		With 20+ years of experience, I have been lucky to work with just about everyone and everything.
 
-	<figure class="col-span-full">
+	<figure class="col-start-5 col-span-7 max-w-4xl">
 		<figcaption class="sr-only">Global Brands, Healthcare, Civic, Museums, Artists and Musicians, Education</figcaption>
 		{% include "molecules/lists/organizations.html" %}
 	</figure>
@@ -68,7 +68,7 @@
 		</p>
 </section>
 -->
-<section id="contributions">
+<section id="contributions"class="min-h-dvh">
 	<header>
 		<h2>Contributions</h2>
 	</header>

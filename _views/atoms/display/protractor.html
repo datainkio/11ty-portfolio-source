@@ -1,0 +1,79 @@
+<svg id="protractor" class="stroke-current" width="500" height="250" xmlns="http://www.w3.org/2000/svg"></svg>
+
+<script>
+    function createProtractor(svg) {
+
+        // SIZE
+        const width = 500;
+        const height = 250;
+        const radius = 200;
+
+        // POSITION
+        const centerX = width / 2;
+        const centerY = height;
+
+        // MARKS
+        const arc = 180;
+        const majorTickLength = 12;
+        const minorTickLength = 6;
+
+        // Draw the base semicircle of the protractor
+        const semicircle = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        semicircle.setAttribute("d", `M ${centerX - radius} ${centerY} A ${radius} ${radius} 0 0 1 ${centerX + radius} ${centerY}`);
+        semicircle.setAttribute("stroke-width", "1");
+        semicircle.setAttribute("fill", "none");
+        svg.appendChild(semicircle);
+
+        // Draw the degree markings
+        for (let angle = 0; angle <= arc; angle += 1) {
+            // const length = angle % 10 === 0 ? majorTickLength : minorTickLength;
+            var len = minorTickLength;
+            if (angle % 10 === 0) {
+                len += 4;
+            }
+            if (angle % 5 === 0) {
+                len += 4;
+            }
+            const rad = (Math.PI / 180) * angle;
+            const x1 = centerX + radius * Math.cos(rad);
+            const y1 = centerY - radius * Math.sin(rad);
+            const x2 = centerX + (radius - len) * Math.cos(rad);
+            const y2 = centerY - (radius - len) * Math.sin(rad);
+
+            const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            tick.setAttribute("x1", x1);
+            tick.setAttribute("y1", y1);
+            tick.setAttribute("x2", x2);
+            tick.setAttribute("y2", y2);
+            tick.setAttribute("stroke-width", ".5");
+            svg.appendChild(tick);
+
+            // Add labels every 12 degrees
+            if (angle % 10 === 0 && angle !== 0 && angle !== 180) {
+                const labelX = centerX + (radius - majorTickLength - 12) * Math.cos(rad);
+                const labelY = centerY - (radius - majorTickLength - 12) * Math.sin(rad);
+
+                const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                label.setAttribute("x", labelX);
+                label.setAttribute("y", labelY);
+                label.setAttribute('class', "text-[.5rem] font-light");
+                label.setAttribute("text-anchor", "middle");
+                label.setAttribute("alignment-baseline", "middle");
+                label.textContent = angle;
+                svg.appendChild(label);
+            }
+        }
+
+        // Draw the horizontal base line
+        const baseLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        baseLine.setAttribute("x1", centerX - radius);
+        baseLine.setAttribute("y1", centerY);
+        baseLine.setAttribute("x2", centerX + radius);
+        baseLine.setAttribute("y2", centerY);
+        baseLine.setAttribute("stroke-width", ".5");
+        svg.appendChild(baseLine);
+    }
+
+    const svgElement = document.getElementById("protractor");
+    createProtractor(svgElement);
+</script>
