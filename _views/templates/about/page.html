@@ -22,7 +22,7 @@
 </section>
 {% include "atoms/display/protractor.html" %}
 {% set count = 1 %}
-<section id="organizations" class="min-h-dvh grid grid-cols-subgrid py-24 px-12">
+<section id="organizations" class="bg-fibonacci min-h-dvh grid grid-cols-subgrid py-24 px-12">
 	<header class="col-span-full place-self-start">
 		<h2 class="uppercase text-sm">{{ count }}/4 Who I Work With</h2>
 	</header>
@@ -32,6 +32,7 @@
 		<figcaption class="sr-only">Global Brands, Healthcare, Civic, Museums, Artists and Musicians, Education</figcaption>
 		{% include "molecules/lists/organizations.html" %}
 	</figure>
+	{% include "atoms/backgrounds/Fibonacci.html" %}
 </section>
 
 {% set count = 2 %}
