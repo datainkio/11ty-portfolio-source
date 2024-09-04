@@ -3,20 +3,20 @@
 <p id="log" class="col-span-full text-2xl text-neutral-200 font-bold"></p>
 <script>
     const FIB_CONTAINER = document.getElementsByClassName("bg-fibonacci")[0];
-    const FIB = document.getElementById("fibonacci");
+    const FIB = document.getElementById("fibonacci").outerHTML;
     const LOG = document.getElementById("log");
     LOG.innerHTML = "LOGGING: ";
     function updateBackground() {
         if (FIB_CONTAINER) {
             LOG.innerHTML = "We have a container. "
-            FIB.classList.add("stroke-current");
+            // FIB.classList.add("stroke-current");
             LOG.innerHTML += "We set the stroke for the container. "
             var encoded = encodeURIComponent(FIB);
             LOG.innerHTML += "We encoded the SVG ";
-
+            
             FIB_CONTAINER.style.backgroundImage = "url('data:image/svg+xml;charset=UTF-8," + encoded + "')";
             LOG.innerHTML += "We set the background data. ";
-            FIB.remove();
+            document.getElementById("fibonacci").remove();
             LOG.innerHTML += "Garbage collection."
         } else {
             LOG.innerHTML += "No dice, bruh.";

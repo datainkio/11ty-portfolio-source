@@ -200,7 +200,16 @@
   .bg-blockframes-bw,
   .bg-blockframes-color,
   .bg-fibonacci {
-    @apply bg-contain bg-bottom bg-no-repeat;
+    @apply bg-contain bg-no-repeat;
+  }
+
+  .bg-blockframes-bw,
+  .bg-blockframes-color {
+    @apply bg-bottom;
+  }
+
+  .bg-fibonacci {
+    @apply bg-top;
   }
 }
 
