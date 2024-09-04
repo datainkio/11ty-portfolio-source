@@ -7,35 +7,14 @@
 {% include "templates/about/title.html" %}
 {% endblock %}
 {% block primary %}
-{% include "atoms/display/ruler.html" %}
 {% set count = 0 %}
-<section class="bg-fibonacci bg-fibonacci-dashed bg-fibonacci-vert bg-fibonacci-180 min-h-dvh grid-cols-subgrid justify-content-start px-12">
-	<header class="col-span-full place-self-start mb-24">
-		<h2 class="uppercase text-[.75rem]">{{ count }}/4 What I Do</h2>
-	</header>
-	<p class="col-start-5 col-span-6 text-neutral-200 lead">
-		Meaningful, intuitive experiences lorem ipsum and so on and so forth ad nauseam
-	</p>
-	<div class="col-span-3 columns-xs col-start-1 row-start-2 row-span-5">
-		{% include "molecules/lists/awards.html" %}
-	</div>
-</section>
-{% include "atoms/display/protractor.html" %}
+{% include "templates/about/intro.html" %}
 {% set count = 1 %}
-<section id="organizations" class="bg-fibonacci min-h-dvh grid grid-cols-subgrid py-24 px-12">
-	<header class="col-span-full place-self-start">
-		<h2 class="uppercase text-sm">{{ count }}/4 Who I Work With</h2>
-	</header>
-	<p class="col-start-5 col-span-6 lead text-neutral-200">
-		With 20+ years of experience, I have been lucky to work with just about everyone and everything.
-	<figure class="col-start-5 col-span-7 max-w-4xl">
-		<figcaption class="sr-only">Global Brands, Healthcare, Civic, Museums, Artists and Musicians, Education</figcaption>
-		{% include "molecules/lists/organizations.html" %}
-	</figure>
-</section>
-	{% include "atoms/backgrounds/Fibonacci.html" %}
+{% include "templates/about/experience.html" %}
 {% set count = 2 %}
-
+{% include "templates/about/contributions.html" %}
+{% set count = 3 %}
+{% include "templates/about/work.html" %}
 <!--
 <section id="background" class="h-dvh py-24 items-center">
 	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
@@ -49,22 +28,6 @@
 		</p>
 </section>
 -->
-<section id="contributions">
-	<header>
-		<h2>Contributions</h2>
-	</header>
-	<p class="lead text-neutral-200">
-		As a design lead, I spend as much time sweating UI pixels and UX flows
-		as I do sitting in workshops and boardrooms, discussing clients' user needs, technical
-		constraints, product strategy, and business objectives.
-	</p>
-	<p class="text-neutral-200">
-		I am often hands-on encouraging my teams to play, remix, and look at things sideways -
-		using customer and business insights, brand, storytelling, and human-centered design to
-		create products and services that meet real human needs.
-	</p>
-	<footer></footer>
-</section>
 <section id="research">
 	<header>
 		<h2>Research</h2>
@@ -92,4 +55,6 @@
 	</p>
 	<footer></footer>
 </section>
+
+{% include "atoms/backgrounds/Fibonacci.html" %}
 {% endblock %}

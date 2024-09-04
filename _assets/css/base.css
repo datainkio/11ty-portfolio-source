@@ -203,7 +203,7 @@
   }
 
   .bg-fibonacci {
-    @apply bg-contain bg-no-repeat bg-top;
+    @apply bg-cover bg-no-repeat bg-top;
   }
 }
 
