@@ -1,4 +1,13 @@
 {% extends "species/article.html" %}
+{% set main_styles = "bg-graphpaper text-neutral-200" %}
 {% block primary %}
+<div class="grid grid-cols-3 w-full h-dvh">
+    <div class="bg-fibonacci"><p class="text-neutral-200">bg-fibonacci</p></div>
+    <div class="bg-fibonacci bg-fibonacci-90"><p class="text-neutral-200">bg-fibonacci-90</p></div>
+    <div class="bg-fibonacci bg-fibonacci-180"><p class="text-neutral-200">bg-fibonacci-180</p></div>
+    <div class="bg-fibonacci bg-fibonacci-270"><p class="text-neutral-200">bg-fibonacci-270</p></div>
+    <div class="bg-fibonacci bg-fibonacci-horiz"><p class="text-neutral-200">bg-fibonacci-horiz</p></div>
+    <div class="bg-fibonacci bg-fibonacci-vert"><p class="text-neutral-200">bg-fibonacci-vert</p></div>
+</div>
 {% include "atoms/display/fibonacci.html" %}
 {% endblock %}

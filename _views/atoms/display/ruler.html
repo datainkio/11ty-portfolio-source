@@ -1,4 +1,4 @@
-<div class="ruler col-span-full border-t h-8 stroke-current">
+<div class="sticky top-0 ruler col-span-full border-t h-8 stroke-neutral-200">
     <div class="ruler-container w-full">
         <svg class="w-full h-12" id="ruler"></svg>
     </div>
@@ -47,7 +47,7 @@
             }
             label.setAttribute('x', labelX);
             label.setAttribute('y', tickHeight + 12); // Position the label below the tick
-            label.setAttribute('class', "text-[.5rem] font-light");
+            label.setAttribute('class', "text-[.5rem] font-light text-neutral-200");
             label.textContent = i;
             svgContainer.appendChild(label);
 

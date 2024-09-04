@@ -1,25 +1,78 @@
 <!-- -->
 {% include "atoms/display/fibonacci.html" %}
-<p id="log" class="col-span-full text-2xl text-neutral-200 font-bold"></p>
 <script>
-    const FIB_CONTAINER = document.getElementsByClassName("bg-fibonacci")[0];
-    const FIB = document.getElementById("fibonacci").outerHTML;
-    const LOG = document.getElementById("log");
-    LOG.innerHTML = "LOGGING: ";
+    const FIB_CONTAINERS = document.getElementsByClassName("bg-fibonacci");
+    const FIB = document.getElementById("fibonacci");
+    FIB.setAttribute("stroke", "#D0CAD3");
+    FIB.setAttribute("stroke-width", .5);
     function updateBackground() {
-        if (FIB_CONTAINER) {
-            LOG.innerHTML = "We have a container. "
-            // FIB.classList.add("stroke-current");
-            LOG.innerHTML += "We set the stroke for the container. "
-            var encoded = encodeURIComponent(FIB);
-            LOG.innerHTML += "We encoded the SVG ";
-            
-            FIB_CONTAINER.style.backgroundImage = "url('data:image/svg+xml;charset=UTF-8," + encoded + "')";
-            LOG.innerHTML += "We set the background data. ";
+        if (FIB_CONTAINERS) {
+            for (var i = 0; i < FIB_CONTAINERS.length; i++) {
+                var container = FIB_CONTAINERS[i];
+                var content = FIB.getElementsByTagName("g")[0];
+                var bbox = content.getBBox();
+
+                var w = FIB.viewBox.baseVal.width;
+                var h = FIB.viewBox.baseVal.height;
+
+                var gw = bbox.height;
+                var gh = bbox.width;
+
+                var scaleFactor = Math.min(w/gw, h/gh);
+
+                var cx = bbox.x + bbox.width / 2;
+                var cy = bbox.y + bbox.height / 2;
+                
+                if (container.classList.contains("bg-fibonacci-dashed")) {
+                    FIB.setAttribute("stroke-dasharray", "2,2")
+                } else {FIB.removeAttribute("stroke-dasharray");}
+
+                // Do we want to reorient or flip the image?
+                if (container.classList.contains("bg-fibonacci-90")) {
+                    // content.classList.add("rotate-90");
+                    content.setAttribute('transform', `
+                        translate(${cx} ${cy})
+                        rotate(90)
+                        scale(${scaleFactor})
+                        translate(${-cx}, ${-cy})
+                        `);
+                } else if (container.classList.contains("bg-fibonacci-180")) {
+                    content.setAttribute('transform', `
+                        translate(${cx} ${cy})
+                        rotate(180)
+                        translate(${-cx}, ${-cy})
+                        `);
+
+                } else if (container.classList.contains("bg-fibonacci-270")) {
+                    content.setAttribute('transform', `
+                        translate(${cx} ${cy})
+                        rotate(270)
+                        scale(${scaleFactor})
+                        translate(${-cx}, ${-cy})
+                        `);
+                } else if (container.classList.contains("bg-fibonacci-horiz")) {
+                    content.setAttribute('transform', `
+                        translate(${cx} ${cy})
+                        scale(1, -1)
+                        translate(${-cx}, ${-cy})
+                        `);
+
+                } else if (container.classList.contains("bg-fibonacci-vert")) {
+                    content.setAttribute('transform', `
+                        translate(${cx} ${cy})
+                        scale(-1, 1)
+                        translate(${-cx}, ${-cy})
+                        `);
+                }
+                // Update size to fit
+
+                
+                var encoded = encodeURIComponent(FIB.outerHTML);
+                container.style.backgroundImage = "url('data:image/svg+xml;charset=UTF-8," + encoded + "')";
+                content.setAttribute('transform', "rotate(0)");
+            }
             document.getElementById("fibonacci").remove();
-            LOG.innerHTML += "Garbage collection."
         } else {
-            LOG.innerHTML += "No dice, bruh.";
             console.log("I tried finding bg-fibonacci but could not");
         }
     }
