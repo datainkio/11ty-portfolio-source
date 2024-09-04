@@ -1,6 +1,22 @@
 <!-- -->
 {% include "atoms/display/fibonacci.html" %}
 <script>
+    /**
+     * Display the SVG in containers with class bg-fibonacci.
+     * 
+     * Options:
+     *  bg-fibonacci-90
+     *  bg-fibonacci-180
+     *  bg-fibonacci-270
+     *  bg-fibonacci-horiz
+     *  bg-fibonacci-vert
+     *  bg-fibonacci-dashed
+     * 
+     * Example:
+     *  <div class="bg-fibonacci bg-fibonacci-horiz bg-fibonacci-dashed">
+     *  This will display the SVG flipped horizontally with dashed lines
+     * </div>
+     **/
     const FIB_CONTAINERS = document.getElementsByClassName("bg-fibonacci");
     const FIB = document.getElementById("fibonacci");
     FIB.setAttribute("stroke", "#D0CAD3");
