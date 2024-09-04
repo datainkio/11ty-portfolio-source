@@ -1,15 +1,35 @@
 <h1 class="col-span-full order-2 text-fluid text-right">
     {{ title }}
 </h1>
-<p id="intro-text" class="col-start-8 col-span-5 text-neutral-200 font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">
+<p id="tagline" class="col-start-8 col-span-5 text-neutral-200 font-light tracking-tight leading-tight text-xl sm:text-2x md:text-3xl">
     {{ introduction }}
 </p>
 <script>
+    // Split the title text into a more manipulatible form
     var elem = document.getElementsByTagName("h1")[0];
     var letters = elem.innerText.split("");
     elem.innerHTML = "<span>" + letters.join("</span><span>") + "</span>";
 
-    var intro = gsap.timeline();
+    // Bring the title and tagline into view
+    var intro = gsap.timeline({ id: "intro"});
+    // H1
     intro.add(gsap.from("h1 span", { duration: 1, opacity: 0, stagger: .1 }));
-    intro.add(gsap.from("#intro-text", { duration: 1.5, opacity: 0}), .9);
+    // P
+    intro.add(gsap.from("#tagline", { duration: 1.5, opacity: 0}), .9);
+    // Wait until you're called on
+    intro.pause();
+
+    // Take the title and tagline out of view
+    var outro = gsap.timeline();
+    // P
+    outro.add(gsap.to("#tagline", { duration: 1.5, opacity: 0 }));
+    // H1
+    outro.add(gsap.to("h1 span", { duration: 1, opacity: 0, stagger: .1 }), .9);
+    // Wait until you're called on
+    outro.pause();
+
+    document.addEventListener("loadComplete", (e) =>
+        console.log(e.detail.text()));
+
+    
 </script>

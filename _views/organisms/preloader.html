@@ -1,7 +1,11 @@
-<div id="loading-view" class="fixed inset-0 w-full flex items-center justify center bg-primary-600 z-50">
-        <span class="loading loading-infinity loading-lg mx-auto"></span>
+<div id="loading-view" class="fixed inset-0 w-full flex items-center justify center bg-neutral-800 z-50">
+        <span class="loading loading-infinity loading-lg loading-neutral-200 mx-auto white"></span>
 </div>
 <script>
+    const eLoadComplete = new CustomEvent("complete", {
+        bubbles: true,
+        detail: { text: () => "complete"},
+    });
     window.addEventListener('load', function() {
         // setTimeout(function () {
             // Hide the loading view
@@ -12,6 +16,8 @@
             content = document.getElementById("page-content");
             content.classList.remove("opacity-0");
             content.classList.add("opacity-100");
+            dispatchEvent(eLoadComplete);
+            gsap.getById("intro").play();
         // }, 1000);
     });
 </script>
