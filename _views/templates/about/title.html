@@ -6,30 +6,17 @@
 </p>
 <script>
     // Split the title text into a more manipulatible form
-    var elem = document.getElementsByTagName("h1")[0];
-    var letters = elem.innerText.split("");
-    elem.innerHTML = "<span>" + letters.join("</span><span>") + "</span>";
+    // var elem = document.getElementsByTagName("h1")[0];
+    // var letters = elem.innerText.split("");
+    // elem.innerHTML = "<span>" + letters.join("</span><span>") + "</span>";
 
     // Bring the title and tagline into view
-    var intro = gsap.timeline({ id: "intro"});
+    var intro = gsap.timeline({ id: "intro", delay: 1});
     // H1
-    intro.add(gsap.from("h1 span", { duration: 1, opacity: 0, stagger: .1 }));
+    intro.add(gsap.from("h1", { duration: 1.25, y: 25, opacity: 0}));
     // P
-    intro.add(gsap.from("#tagline", { duration: 1.5, opacity: 0}), .9);
-    // Wait until you're called on
+    intro.add(gsap.from("#tagline", { duration: 1.5, opacity: 0}));
+    // Wait until you're called on, most likely by the preloader
     intro.pause();
 
-    // Take the title and tagline out of view
-    var outro = gsap.timeline();
-    // P
-    outro.add(gsap.to("#tagline", { duration: 1.5, opacity: 0 }));
-    // H1
-    outro.add(gsap.to("h1 span", { duration: 1, opacity: 0, stagger: .1 }), .9);
-    // Wait until you're called on
-    outro.pause();
-
-    document.addEventListener("loadComplete", (e) =>
-        console.log(e.detail.text()));
-
-    
 </script>

@@ -1,9 +1,17 @@
 <section class="min-h-dvh grid-cols-subgrid content-start gap-4">
     {% include "atoms/display/ruler.html" %}
+    <script>
+        // var rulerIntro = gsap.timeline();
+        // gsap.set(".tick, .tick-label", {opacity: 0});
+        // rulerIntro.add(gsap.from(".ruler", {duration: 5, scaleX: 0}));
+        // rulerIntro.add(gsap.to(".tick", { duration: .1, opacity: 1, stagger: .05 }));
+        // rulerIntro.add(gsap.to(".tick-label", { duration: 1, opacity: 1, stagger: .1 }));
+        // rulerIntro.pause();
+    </script>
     <header class="col-span-full">
         <h2 class="uppercase text-[.75rem]">{{ count }}/4 What I Do</h2>
     </header>
-    <p class="col-start-6 col-span-6 text-neutral-200 lead order-3">
+    <p class="col-start-6 bg-cover col-span-6 text-neutral-200 lead order-3">
         Twenty years of delivering award-winning, meaningful, and intuitive experiences across a veritable slurry of
         industries. The audiences may change but the goals remain the same: solve real problems for real people.
     </p>

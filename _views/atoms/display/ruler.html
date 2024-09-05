@@ -1,4 +1,4 @@
-<div class="sticky top-0 ruler col-span-full border-t h-8 stroke-neutral-200">
+<div class="sticky top-0 left-0 ruler col-span-full border-t h-8 stroke-neutral-200">
     <div class="ruler-container w-full">
         <svg class="w-full h-12" id="ruler"></svg>
     </div>
@@ -29,7 +29,7 @@
             line.setAttribute('y2', tickHeight);
             // line.setAttribute('stroke', 'black');
             line.setAttribute('stroke-width', .5);
-            line.setAttribute('class', 'tick-whole')
+            line.setAttribute('class', 'tick tick-whole')
             svgContainer.appendChild(line);
 
             // Add the label with adjusted positioning
@@ -47,7 +47,7 @@
             }
             label.setAttribute('x', labelX);
             label.setAttribute('y', tickHeight + 12); // Position the label below the tick
-            label.setAttribute('class', "text-[.5rem] font-light text-neutral-200");
+            label.setAttribute('class', "tick-label text-[.5rem] font-light text-neutral-200");
             label.textContent = i;
             svgContainer.appendChild(label);
 
@@ -58,15 +58,15 @@
                     var h = subTickHeight;
                     if (j % 12 === 0) {
                         h += 4;
-                        subLine.setAttribute("class", "tick-12");
+                        subLine.setAttribute("class", "tick tick-12");
                     }
                     if (j % 6 === 0) {
                         h += 4;
-                        subLine.setAttribute("class", "tick-6");
+                        subLine.setAttribute("class", "tick tick-6");
                     }
                     if (j % 3 === 0) {
                         h += 4;
-                        subLine.setAttribute("class", "tick-3");
+                        subLine.setAttribute("class", "tick tick-3");
                     }
                     
                     const subX = x + j * subTickSpacing;
