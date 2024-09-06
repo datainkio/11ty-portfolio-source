@@ -4,15 +4,7 @@
     {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("", "") | safe }}
     {% endfor %}
   </figure>
-  <div class="card-body p-2 flex content-end aspect-video gap-0">
-    <h2 class="font-bold text-sm text-center leading-snug">{{ project.Title }}</h2>
-    <span class="text-xs font-light text-center">
-      {% for organization in organizations | find('id', project.Organization) %}
-       {{ organization.Name }}
-          {% if loop.last %}
-          {% else %},
-          {% endif %}
-      {% endfor %}
-    </span>
+  <div class="card-body p-2 flex content-end aspect-video gap-0 text-pretty">
+    <h4 class="font-light text-xs sm:col-span-8 text-center">{{ project.Title }}</h4>
   </div>
 </a>
