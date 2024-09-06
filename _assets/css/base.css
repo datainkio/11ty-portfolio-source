@@ -78,9 +78,9 @@
     @apply link-hover font-medium;
   }
 
-  a.card,
-  a.stat {
-    @apply hover:no-underline hover:bg-neutral-200;
+  .card,
+  .stat {
+    @apply hover:no-underline hover:bg-neutral-900;
   }
 
   picture.logo img {

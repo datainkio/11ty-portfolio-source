@@ -1,4 +1,4 @@
-<div class="sticky top-0 left-0 ruler col-span-full border-t h-8 stroke-neutral-200">
+<div class="ruler col-span-full border-t h-8 stroke-neutral-200">
     <div class="ruler-container w-full">
         <svg class="w-full h-12" id="ruler"></svg>
     </div>
@@ -47,7 +47,7 @@
             }
             label.setAttribute('x', labelX);
             label.setAttribute('y', tickHeight + 12); // Position the label below the tick
-            label.setAttribute('class', "tick-label text-[.5rem] font-light text-neutral-200");
+            label.setAttribute('class', "tick-label text-[.5rem] font-thin text-neutral-200");
             label.textContent = i;
             svgContainer.appendChild(label);
 
@@ -87,4 +87,11 @@
 
         // Redraw the ruler when the window resizes
         window.addEventListener('resize', drawRuler);
+
+        // var rulerIntro = gsap.timeline();
+        // gsap.set(".tick, .tick-label", {opacity: 0});
+        // rulerIntro.add(gsap.from(".ruler", {duration: 5, scaleX: 0}));
+        // rulerIntro.add(gsap.to(".tick", { duration: .1, opacity: 1, stagger: .05 }));
+        // rulerIntro.add(gsap.to(".tick-label", { duration: 1, opacity: 1, stagger: .1 }));
+        // rulerIntro.pause();
     </script>

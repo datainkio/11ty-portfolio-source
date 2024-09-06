@@ -1,5 +1,6 @@
 {% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
-<a id="{{ project.id }}" href="{{ href }}" class="project nav all {% if project.Featured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card {{ orientation }}">
+{% set action = ["modal_", project.id, ".showModal()"] | join %}
+<a id="{{ project.id }}" onclick="{{ action }}" class="project all {% if project.Featured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card {{ orientation }}">
   <figure>
     {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("", "") | safe }}
     {% endfor %}
@@ -8,3 +9,4 @@
     <h4 class="font-light text-xs sm:col-span-8 text-center">{{ project.Title }}</h4>
   </div>
 </a>
+{% include "templates/project/modal.html" %}

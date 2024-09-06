@@ -1,24 +1,26 @@
-<section class="min-h-dvh grid-cols-subgrid content-start gap-4">
-    {% include "atoms/display/ruler.html" %}
-    <script>
-        // var rulerIntro = gsap.timeline();
-        // gsap.set(".tick, .tick-label", {opacity: 0});
-        // rulerIntro.add(gsap.from(".ruler", {duration: 5, scaleX: 0}));
-        // rulerIntro.add(gsap.to(".tick", { duration: .1, opacity: 1, stagger: .05 }));
-        // rulerIntro.add(gsap.to(".tick-label", { duration: 1, opacity: 1, stagger: .1 }));
-        // rulerIntro.pause();
-    </script>
+<section class="grid grid-cols-subgrid content-start gap-4">
     <header class="col-span-full">
-        <h2 class="uppercase text-[.75rem]">{{ count }}/4 What I Do</h2>
+        <h2 class="uppercase text-xs text-left">{{ count }}/4 What I Do</h2>
     </header>
-    <p class="text-5xl leading-snug text-neutral-200 col-start-6 col-span-6">UX is more than pixels</p>
-    <figure class="col-start-6 col-span-6 order-4">
+    <p class="px-4 text-4xl font-bold text-pretty leading-snug text-neutral-200 mt-8">
+        It's not about the pixels
+    </p>
+    <p class="prose text-neutral-200 px-4">
+        Good digital experience design doesn't just happen. It comes from a deep understanding of how and why
+        people do what they do and connecting this with business goals.
+    <p class="prose text-balance text-neutral-200 px-4">
+        I work closely with user researchers to identify key questions and hypotheses that reveal critical 
+        insights into human behavior. These insights directly shape the design strategies I develop, guiding 
+        designers toward more impactful solutions. By bringing a nuanced human perspective, I help engineers 
+        translate possibilities into tangible outcomes.
+    </p>
+    <figure class="px-4 col-span-2 order-3">
+        <figcaption class="sr-only">Awards</figcaption>
+        {% include "molecules/lists/awards.html" %}
+    </figure>
+    <figure class="px-4 order-2">
         <figcaption class="sr-only">Global Brands, Healthcare, Civic, Museums, Artists and Musicians, Education
         </figcaption>
         {% include "molecules/lists/organizations.html" %}
-    </figure>
-    <figure class="col-span-5 order-2 row-span-5 px-12">
-        <figcaption class="sr-only">Awards</figcaption>
-        {% include "molecules/lists/awards.html" %}
     </figure>
 </section>

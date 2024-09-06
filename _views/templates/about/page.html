@@ -2,19 +2,20 @@
 {% extends "species/landing.html" %}
 {% block cap %}{% endblock %}
 {% set main_styles = "landing bg-graphpaper text-neutral-200 grid grid-cols-12 opacity-0" %}
-{% set title_styles = "col-span-full grid grid-cols-subgrid place-content-end justify-end h-dvh mb-24" %}
+{% set title_styles = "h-dvh p-4 mb-16 col-span-full grid grid-cols-subgrid place-content-end justify-end" %}
 {% block header %}
 {% include "templates/about/title.html" %}
 {% endblock %}
 {% block primary %}
+{% include "atoms/display/ruler.html" %}
 {% set count = 0 %}
-
-{% set count = 1 %}
 {% include "templates/about/experience.html" %}
-{% set count = 2 %}
+{% set count = 1 %}
 {% include "templates/about/contributions.html" %}
-{% set count = 3 %}
+{% set count = 2 %}
 {% include "templates/about/work.html" %}
+{% set count = 3 %}
+
 <!--
 <section id="background" class="h-dvh py-24 items-center">
 	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>
@@ -33,7 +34,7 @@
 		<h2>Research</h2>
 	</header>
 	<p class="lead text-neutral-200">
-		I work closely with user researchers to identify key questions and hypotheses that reveal critical insights into human behavior.
+		
 	</p>
 	<footer></footer>
 </section>
@@ -42,7 +43,7 @@
 		<h2>Design</h2>
 	</header>
 	<p class="lead text-neutral-200">
-		These insights directly shape the design strategies I develop, guiding designers toward more impactful solutions.
+		
 	</p>
 	<footer></footer>
 </section>
@@ -51,7 +52,6 @@
 		<h2>Development</h2>
 	</header>
 	<p class="lead text-neutral-200">
-		By bringing a nuanced human perspective, I help engineers translate possibilities into tangible outcomes.
 	</p>
 	<footer></footer>
 </section>

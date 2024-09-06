@@ -3,11 +3,11 @@
     <header class="col-span-full">
         <h2 class="uppercase text-[.75rem]">{{ count }}/4 What I've Done</h2>
     </header>
-    <p class="lead col-span-5 text-neutral-200 justify-self-center self-end">
+    <p class="lead col-span-6 text-neutral-200">
         Twenty years of delivering award-winning, meaningful, and intuitive experiences across a veritable slurry of
         industries. The audiences may change but the goals remain the same: solve real problems for real people.
     </p>
-    <ul id="types" class="menu menu-horizontal row-start-3 col-span-5 gap-2 mb-8 justify-self-center">
+    <ul id="types" class="menu menu-horizontal mx-auto col-span-6 gap-2 mb-8">
         <li>
             <a id="featured"
                 class="btn btn-sm  btn-outline text-neutral-200 btn-neutral-200 category btn-active">Featured</a>
@@ -23,7 +23,7 @@
             <a id="all" class="btn btn-sm btn-outline text-neutral-200 btn-neutral-200 category">All</a>
         </li>
     </ul>
-    <figure id="projects" class="align-center row-span-2 col-start-6 col-span-7 max-w-6xl sm:grid sm:grid-cols-4 lg:grid-cols-6">
+    <figure id="projects" class="align-center row-span-2 col-span-full mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
         <figcaption class="sr-only">Case Studies</figcaption>
         {% for project in projects | sortByAttribute('Weight') %}
             {% include "templates/project/card-lg.html" %}
@@ -37,21 +37,6 @@
         let dur = .25; // base value for animation duration (in seconds)
         let y_delta = 0; // vertical origin of elements
         let pos = "-=50%"; // offset (in seconds) of animation relative to the previous
-        // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-        gsap.registerPlugin(ScrollTrigger);
-
-        const title = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#title",
-                start: "top top",
-                scrub: 1
-            },
-        });
-        title.add(gsap.to("#title", { height: "auto" }));
-        title.add(gsap.to("#title p", { autoAlpha: 0, height: 0 }));
-        title.add(gsap.to("#title h1", { fontSize: "3rem" }), "<");
-        title.add(gsap.to("#header", { boxShadow: "0 10px 10px -5px rgba(0, 0, 0, 0.25)" }))
 
         /** INITIALIZE VIEW */
         const cards = gsap.utils.toArray("a.card.project");
@@ -69,7 +54,7 @@
         // welcome.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
 
         // SHOW FEATURED PROJECTS
-        const featured = gsap.utils.toArray("a.card.project.featured");
+        const featured = gsap.utils.toArray(".card.project.featured");
         const controls = gsap.timeline();
         featured.forEach(card => {
             card.classList.remove("hidden");
