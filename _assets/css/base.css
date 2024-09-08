@@ -42,7 +42,7 @@
   }
 
   p {
-    @apply prose hover:no-underline mb-4;
+    @apply prose prose-sm hover:no-underline mb-4;
   }
 
   .lead {
@@ -91,9 +91,6 @@
 @layer components {
   .divider {
     @apply col-span-full text-3xl font-bold;
-  }
-  .btn-primary {
-    @apply btn content-center btn-circle w-24 h-24 m-2 text-lg italic block;
   }
 
   .card figure {
@@ -172,7 +169,6 @@
     @apply opacity-0;
   }
 
- 
 
   /** ANIMATIONS **/
   .transition-transform {

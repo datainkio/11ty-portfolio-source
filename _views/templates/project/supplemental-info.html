@@ -1,10 +1,10 @@
 <!-- ROLE -->
 {% if project.Role %}
 <figure>
-	<figcaption>Roles</figcaption>
+	<figcaption><h4 class="font-bold text-xs sm:col-span-8">Roles</h4></figcaption>
 	<ul>
 		{% for role in roles | find('id', project.Role) %}
-		<li class="inline-block">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+		<li class="font-light text-xs">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
 		{% endfor %}
 	</ul>
 </figure>
@@ -13,10 +13,10 @@
 <!-- COMPANY -->
 {% if project.Organization %}
 <figure>
-	<figcaption>Company/Client</figcaption>
+	<figcaption><h4 class="font-bold text-xs sm:col-span-8">Company/Client</h4></figcaption>
 	<ul>
 		{% for organization in organizations | find('id', project.Organization) %}
-		<li>{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+		<li class="font-light text-xs">{{ organization.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
 		{% endfor %}
 	</ul>
 </figure>
@@ -26,10 +26,10 @@
 <!-- ACTIITIES -->
 {% if project.Activities %}
 <figure>
-<figcaption>Activities</figcaption>
+<figcaption><h4 class="font-bold text-xs sm:col-span-8">Activities</h4></figcaption>
 <ul class="list-none pl-0">
 	{% for activity in activities | find('id', project.Activities) %}
-	<li class="inline-block">{{ activity.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+	<li class="font-light text-xs inline-block">{{ activity.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
 	{% endfor %}
 </ul>
 </figure>

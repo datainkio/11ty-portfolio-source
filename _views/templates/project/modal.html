@@ -1,6 +1,6 @@
 <dialog id="modal_{{ project.id }}" class="modal">
     <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
+        <button class="btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
     </form>
     <figure class="modal-box md:grid md:grid-cols-3 md:gap-4">
         <figcaption class="col-span-1">
@@ -10,7 +10,7 @@
             class="w-full mt-4 mx-auto gap-4 text-center flex-col  space-y-2 md:mx-0 md:space-x-6 md:flex  md:text-left md:space-y-0 md:flex-row md:justify-normal">
             {% include "templates/project/supplemental-info.html" %}
         </section>
-        <section id="description" class="description prose mx-auto">
+        <section id="description" class="description prose prose-sm text-neutral-200 mx-auto">
             {% if project.Description is string %}
             {{ project.Description | markdownify | safe }}
             {% endif %}
