@@ -1,7 +1,7 @@
-<a class="link link-hover flex gap-2 leading-tight py-1 place-content-start"
+<a class="link link-hover flex font-light text-xs"
 	href="/recognition/{{award.Organization | slugify }}/{{ award.Title | slugify}}/">
 	{% for logo in images | find("id", award.logo_id) %}
-	{{ logo.pictureElement | stylePicture("logo bg-black p-1 w-12 h-12 flex-none not-prose") | safe }}
+	{{ logo.pictureElement | stylePicture("logo bg-black p-1 w-10 h-10 flex-none not-prose") | safe }}
 	{% endfor %}
 	<span>
 		{{ award.Organization }}:
