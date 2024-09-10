@@ -3,7 +3,7 @@
 module.exports = {
   fontFamily: {
     sans: ["Poppins", "ui-sans-serif", "system-ui"],
-    serif: ["ui-serif", "Georgia"],
+    serif: ["Cormorant Garamond", "ui-serif", "Georgia"],
     mono: ["ui-monospace", "SFMono-Regular"],
     display: ["Anton SC"],
     body: ["Poppins"],

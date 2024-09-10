@@ -1,8 +1,8 @@
 <!-- RECOGNITION -->
 {% if project.Recognition %}
-    <figure id="recognition" class="col-span-full grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <figure id="recognition">
         <figcaption>
-            <h4 class="font-bold text-xs col-span-full">Recognition</h4>
+            <h4 class="font-bold text-xs mb-2">Recognition</h4>
         </figcaption>
         {% for award in awards | find("id", project.Recognition) %}
         {% include "templates/award/link_detailed.html" %}

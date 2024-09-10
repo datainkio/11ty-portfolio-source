@@ -2,22 +2,21 @@
     <form method="dialog">
         <button class="btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
     </form>
-    <figure class="modal-box gap-4">
-        <figcaption class="w-full">
+    <figure class="modal-box grid grid-cols-2 gap-4">
+        <figcaption class="col-span-full">
             <h3 class="text-3xl font-light m-0 text-neutral-200">{{ project.Name }}</h3>
         </figcaption>
-        {% for img in images | find("id", project.Featured) %}{{ img.pictureElement | stylePicture("md:w-1/2", "") | safe }}
+        {% for img in images | find("id", project.Featured) %}{{ img.pictureElement | stylePicture("", "") | safe }}
         {% endfor %}
+        <section class="row-span-3">
+            {% include "templates/project/supplemental-info.html" %}
+            {% include "templates/project/awards.html" %}
+        </section>
         <section id="description" class="description font-light text-neutral-200">
             {% if project.Description is string %}
             {{ project.Description | markdownify | safe }}
             {% endif %}
         </section>
-        <section id="details"
-            class="">
-            {% include "templates/project/supplemental-info.html" %}
-        </section>
-        {% include "templates/project/awards.html" %}
-        <a href="{{ href}}" class="btn btn-primary w-full my-4">View Case Study</a>
+        <a href="{{ href}}" class="btn btn-primary btn-circle btn-lg my-4 text-sm font-sans place-self-end">View</a>
     </figure>
 </dialog>

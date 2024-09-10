@@ -1,4 +1,4 @@
-<a class="link link-hover flex font-light text-xs"
+<a class="link link-hover flex font-light text-xs items-center"
 	href="/recognition/{{award.Organization | slugify }}/{{ award.Title | slugify}}/">
 	{% for logo in images | find("id", award.logo_id) %}
 	{{ logo.pictureElement | stylePicture("logo bg-black p-1 w-10 h-10 flex-none not-prose") | safe }}
