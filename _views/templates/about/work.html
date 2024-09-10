@@ -56,9 +56,10 @@
         // SHOW FEATURED PROJECTS
         const featured = gsap.utils.toArray(".card.project.featured");
         const controls = gsap.timeline();
-        featured.forEach(card => {
+        featured.forEach((card, index) => {
             card.classList.remove("hidden");
             card.classList.add("current");
+            // updateNav(card.id, index > 0, index < cards.length);
             controls.add(gsap.to(card, { opacity: 1, y: y_delta, duration: dur * .76, ease: "sine.inOut" }), pos);
         });
         applyAlternatingStyles();
@@ -105,6 +106,22 @@
             });
         })
 
+        function updateNav(id, p, n) {
+            // update prev/next controls to reflect the project's position in the current set
+            var prev = gsap.utils.toArray("#modal_" + id + " button.prev")[0];
+            var next = gsap.utils.toArray("#modal_" + id + " button.next")[0];
+            prev.classList.add("hidden");
+            next.classLust.add("hidden");
+            if (p) {
+                next.classList.remove("hidden");
+            }
+            if (n) {
+                prev.classList.remove("hidden");
+            }
+            prev.innerHTML = index - 1;
+            next.innerHTML = index + 1;
+        }
+
         function clearCards() {
             console.log("clearCards");
             cards.forEach((card, index) => {
@@ -120,6 +137,7 @@
             projects.forEach(project => {
                 project.classList.remove("hidden");
                 project.classList.add("current");
+                updateNav(project.id, index > 0 , index < projects.length);
             });
             applyAlternatingStyles();
         };
