@@ -1,10 +1,9 @@
 <!-- @format -->
 {% extends "species/landing.html" %}
 {% block cap %}{% endblock %}
-{% set main_styles = "landing bg-graphpaper text-neutral-200 grid grid-cols-12 opacity-0" %}
-{% set title_styles = "h-dvh p-4 mb-16 col-span-full grid grid-cols-subgrid place-content-end justify-end" %}
+{% set main_styles = "landing bg-graphpaper bg-cover text-neutral-200 grid grid-cols-12 opacity-0" %}
+{% set title_styles = "h-dvh p-4 mb-16 col-span-full grid grid-cols-subgrid place-content-end" %}
 {% block header %}
-{% include "molecules/trace.html" %}
 {% include "templates/about/title.html" %}
 {% endblock %}
 {% block primary %}
