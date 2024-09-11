@@ -16,7 +16,7 @@
       </li>
     </ul>
     {% for project in projects | sortByAttribute('Weight') %}
-      {% include "templates/project/card-lg.html" %}
+      {% include "templates/project/card-image.html" %}
     {% endfor %}
   </section>
   <script>

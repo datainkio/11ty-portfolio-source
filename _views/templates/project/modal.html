@@ -1,12 +1,13 @@
 <dialog id="modal_{{ project.id }}" class="modal">
     <form method="dialog">
-        <button class="btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
+        <button class="close btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
     </form>
     <figure class="modal-box grid grid-cols-2 gap-4 relative">
         <figcaption class="col-span-full">
             <h3 class="text-3xl font-light m-0 text-neutral-200">{{ project.Name }}</h3>
         </figcaption>
-        {% for img in images | find("id", project.Featured) %}{{ img.pictureElement | stylePicture("", "") | safe }}
+        {% for img in images | find("id", project.Featured) %}
+        {{ img.pictureElement | stylePicture("", "") | safe }}
         {% endfor %}
         <section class="row-span-3 pl-4">
             {% include "templates/project/supplemental-info.html" %}
@@ -17,10 +18,10 @@
             {{ project.Description | markdownify | safe }}
             {% endif %}
         </section>
-        <footer class="absolute top-0 left-0 w-full">       
-            <a href="{{ href}}" class="btn btn-primary btn-circle btn-lg my-4 text-sm font-sans place-self-end">View</a>
-            <button class="prev btn btn-primary btn-circle">Previous</button>
-            <button class="next btn btn-primary btn-circle">Next</button>
+        <footer class="join grid grid-cols-3">
+            <button id="prev_{{ project.id }}" class="prev join-item btn btn-outline btn-primary">Previous page</button>
+            <button id="view_{{ project.id }}" class="view join-item btn btn-outline btn-primary">View</button>
+            <button id="next_{{ project.id }}" class="next join-item btn btn-outline btn-primary">Next</button>
         </footer>
     </figure>
 </dialog>

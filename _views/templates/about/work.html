@@ -1,4 +1,3 @@
-
 <section class="col-span-full bg-neutral-900  grid grid-cols-subgrid">
     <header class="col-span-full">
         <h2 class="uppercase text-[.75rem]">{{ count }}/4 What I've Done</h2>
@@ -25,9 +24,15 @@
     </ul>
     <figure id="projects" class="align-center row-span-2 col-span-full mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
         <figcaption class="sr-only">Case Studies</figcaption>
+        <ul>
         {% for project in projects | sortByAttribute('Weight') %}
-            {% include "templates/project/card-lg.html" %}
+        <li>
+            {% set action = ["modal_", project.id, ".showModal()"] | join %}
+            <button id="{{ project.id }}" class="project all {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} link link-hover " onclick="{{ action }}">{{ project.Title }}</button>
+            {% include "templates/project/modal.html" %}
+        </li>
         {% endfor %}
+        </ul>
     </figure>
 </section>
 <script>
@@ -39,11 +44,15 @@
         let pos = "-=50%"; // offset (in seconds) of animation relative to the previous
 
         /** INITIALIZE VIEW */
-        const cards = gsap.utils.toArray("a.card.project");
-        cards.forEach((card, index) => {
-            card.style.opacity = 0;
-            card.classList.add("hidden");
-            // updateNav(card.id);
+        // trace("Initialize");
+        const projects = gsap.utils.toArray(".project.link");
+        projects.forEach(project => {
+            project.style.opacity = 0;
+            project.classList.add("hidden");
+            var prev = gsap.utils.toArray("#modal_" + project.id + " button.prev")[0];
+            var next = gsap.utils.toArray("#modal_" + project.id + " button.next")[0];
+            prev.addEventListener("click", navigate_projects);
+            next.addEventListener("click", navigate_projects);
         });
 
 
@@ -55,25 +64,30 @@
         // welcome.add(gsap.from('.navbar-end', {autoAlpha: 0, duration: dur, ease: "sine.inOut"}), pos);
 
         // SHOW FEATURED PROJECTS
-        const featured = gsap.utils.toArray(".card.project.featured");
+        // trace("Show featured projects");
+        const featured = gsap.utils.toArray(".project.link.featured");
         const controls = gsap.timeline();
-        featured.forEach((card, index) => {
-            card.classList.remove("hidden");
-            card.classList.add("current");
-            // updateNav(card.id);
-            controls.add(gsap.to(card, { opacity: 1, y: y_delta, duration: dur * .76, ease: "sine.inOut" }), pos);
+        featured.forEach((project, index) => {
+            project.classList.remove("hidden");
+            project.classList.add("current");
+            controls.add(gsap.to(project, { opacity: 1, y: y_delta, duration: dur * .76, ease: "sine.inOut" }), pos);
         });
-        applyAlternatingStyles();
+        updateNav();
+        /** applyAlternatingStyles(); **/
 
         /** 
          * CATEGORY SELECTION
          * Bring a category into view when its menu item is selected
          * */
+        // trace("Set up category selection");
         const categories = gsap.utils.toArray("a.category");
+        // trace("Categories: " + categories.length);
         categories.forEach(cat => {
             var label = document.getElementById("category_current");
+            // When the user selects a category...
             cat.addEventListener("click", () => {
-                // Update button states
+
+                // Update button states to highlight the selected category
                 categories.forEach(item => {
                     item.classList.remove("active");
                     item.classList.remove("btn-active");
@@ -85,102 +99,85 @@
                         }
                     }
                 })
-                // Update the project previews
+
+                // Update the project previews to reflect the selected category
                 const outro = gsap.timeline({ onComplete: clearCards });
                 const intro = gsap.timeline({ onStart: showSelected, onStartParams: [cat] });
-                cards.forEach(card => {
+                projects.forEach(project => {
                     // clear all visible projects
-                    if (!card.classList.contains("hidden")) {
-                        outro.add(gsap.to(card, { opacity: 0, y: y_delta, duration: dur * .75, ease: "sine.inOut" }), pos);
+                    if (!project.classList.contains("hidden")) {
+                        outro.add(gsap.to(project, { opacity: 0, y: y_delta, duration: dur * .75, ease: "sine.inOut" }), pos);
                     }
                     console.log(cat.id == "all");
-                    if (card.classList.contains(cat.id)) {
+                    if (project.classList.contains(cat.id)) {
                         // display projects belonging to the selected category
-                        intro.add(gsap.to(card, { opacity: 1, y: y_delta, duration: dur * .75, ease: "sine.inOut" }), pos);
+                        intro.add(gsap.to(project, { opacity: 1, y: y_delta, duration: dur * .75, ease: "sine.inOut" }), pos);
                     }
-                })
+                });
+
+                // updateNav();
+
                 const transition = gsap.timeline({});
                 // intro.pause();
                 transition.add(outro);
                 transition.add(intro);
                 transition.play();
             });
-        })
+        });
 
-        /**
-        function updateNav(id) {
-            console.log("updateNav: " + id);
-            var cards = gsap.utils.toArray(".card.current");
-            var card = gsap.utils.toArray("#" + id);
-            var index = cards.indexOf(card);
-            var prev = gsap.utils.toArray("#modal_" + id + " button.prev")[0];
-            var next = gsap.utils.toArray("#modal_" + id + " button.next")[0];
-
-            // update the display of prev/next controls to reflect the project's position in the current set
-            prev.classList.add("hidden");
-            next.classList.add("hidden");
-
-            var prevID = -1;
-            var nextID = -1;
-
-            if (index > 0) {
-                prevID = cards[index - 1]["id"];
-            }
-            if (index < cards.length - 1) {
-                nextID = cards[index + 1]["id"];
-            }
-            
-            if (prevID) {
-                prev.classList.remove("hidden");
-            }
-            if (nextID) {
-                next.classList.remove("hidden");
-            }
-
-     
-            // set the events and destinations for the controls
-            if (!prev.hasAttribute("data-listener")) {
-                prev.addEventListener("click", function() {
-                    // navigate(id, prevID);
-                });
-                prev.setAttribute('data-listener', 'true');
-            }
-            if (!next.hasAttribute("data-listener")) {
-                next.addEventListener("click", function() {
-                    // navigate(id, nextID);
-                });
-                next.setAttribute('data-listener', 'true');
-            }
+        function updateNav() {
+            // trace("update the nav buttons for the projects to reflect the new set ");
+            var siblings = gsap.utils.toArray(".project.link.current");
+            // trace(siblings.length + " items in the new set");
+            siblings.forEach((item, index) => {
+                // trace(index + " of " + siblings.length);
+                var prev = gsap.utils.toArray("#modal_" + item.id + " button.prev")[0];
+                var next = gsap.utils.toArray("#modal_" + item.id + " button.next")[0];
+                // Hide by default
+                prev.classList.add("hidden");
+                next.classList.add("hidden");
+                if (index > 0) {
+                    var younger = siblings[index - 1];
+                    prev.classList.remove("hidden");
+                }
+                if (index < siblings.length - 1) {
+                    var older = siblings[index + 1];
+                    next.classList.remove("hidden");
+                }
+            })
         }
 
-        function navigate(from, to) {
-            console.log("navigate from " + from + " to " + to);
-            var outgoing = gsap.utils.toArray("#modal_" + from)[0];
-            var incoming = gsap.utils.toArray("#modal_" + to)[0];
-            console.log(outgoing, incoming);
-            // if (outgoing) {outgoing.close()};
-            // if (incoming) {incoming.showModal()};
+        function navigate_projects(e) {
+            var distance = e.target.id.split("_")[0] === "next" ? 1 : -1;
+            var id = e.target.id.split("_")[1];
+            var siblings = gsap.utils.toArray(".project.link.current");
+            // trace("navigate_projects: " + siblings.length + " items in the current set");
+            var index = siblings.indexOf(gsap.utils.toArray("#" + id)[0]);
+            var outgoing = gsap.utils.toArray("#modal_" + id)[0];
+            var incoming = gsap.utils.toArray("#modal_" + siblings[index + distance]["id"])[0];
+            outgoing.close();
+            incoming.showModal();
         }
-            **/
 
         function clearCards() {
-            // console.log("clearCards");
-            cards.forEach((card, index) => {
-                card.classList.add("hidden");
-                card.classList.remove("current");
-                card.classList.remove("even-column");
+            // trace("clearCards");
+            const projects = gsap.utils.toArray(".project.link");
+            projects.forEach(project => {
+                project.classList.add("hidden");
+                project.classList.remove("current");
+                project.classList.remove("even-column");
             })
         }
 
         function showSelected(cat) {
-            let projects = gsap.utils.toArray("." + cat.id);
-            console.log("showSelected");
-            projects.forEach((project, index) => {
+            var set = gsap.utils.toArray("." + cat.id);
+            // trace("showSelected");
+            set.forEach(project => {
                 project.classList.remove("hidden");
                 project.classList.add("current");
-                updateNav(project.id, index > 0 , index < projects.length);
             });
-            applyAlternatingStyles();
+            updateNav();
+            /** applyAlternatingStyles(); **/
         };
 
         function applyAlternatingStyles() {
