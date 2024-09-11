@@ -40,9 +40,10 @@
 
         /** INITIALIZE VIEW */
         const cards = gsap.utils.toArray("a.card.project");
-        cards.forEach(card => {
+        cards.forEach((card, index) => {
             card.style.opacity = 0;
             card.classList.add("hidden");
+            // updateNav(card.id);
         });
 
 
@@ -59,7 +60,7 @@
         featured.forEach((card, index) => {
             card.classList.remove("hidden");
             card.classList.add("current");
-            // updateNav(card.id, index > 0, index < cards.length);
+            // updateNav(card.id);
             controls.add(gsap.to(card, { opacity: 1, y: y_delta, duration: dur * .76, ease: "sine.inOut" }), pos);
         });
         applyAlternatingStyles();
@@ -106,24 +107,64 @@
             });
         })
 
-        function updateNav(id, p, n) {
-            // update prev/next controls to reflect the project's position in the current set
+        /**
+        function updateNav(id) {
+            console.log("updateNav: " + id);
+            var cards = gsap.utils.toArray(".card.current");
+            var card = gsap.utils.toArray("#" + id);
+            var index = cards.indexOf(card);
             var prev = gsap.utils.toArray("#modal_" + id + " button.prev")[0];
             var next = gsap.utils.toArray("#modal_" + id + " button.next")[0];
+
+            // update the display of prev/next controls to reflect the project's position in the current set
             prev.classList.add("hidden");
-            next.classLust.add("hidden");
-            if (p) {
-                next.classList.remove("hidden");
+            next.classList.add("hidden");
+
+            var prevID = -1;
+            var nextID = -1;
+
+            if (index > 0) {
+                prevID = cards[index - 1]["id"];
             }
-            if (n) {
+            if (index < cards.length - 1) {
+                nextID = cards[index + 1]["id"];
+            }
+            
+            if (prevID) {
                 prev.classList.remove("hidden");
             }
-            prev.innerHTML = index - 1;
-            next.innerHTML = index + 1;
+            if (nextID) {
+                next.classList.remove("hidden");
+            }
+
+     
+            // set the events and destinations for the controls
+            if (!prev.hasAttribute("data-listener")) {
+                prev.addEventListener("click", function() {
+                    // navigate(id, prevID);
+                });
+                prev.setAttribute('data-listener', 'true');
+            }
+            if (!next.hasAttribute("data-listener")) {
+                next.addEventListener("click", function() {
+                    // navigate(id, nextID);
+                });
+                next.setAttribute('data-listener', 'true');
+            }
         }
 
+        function navigate(from, to) {
+            console.log("navigate from " + from + " to " + to);
+            var outgoing = gsap.utils.toArray("#modal_" + from)[0];
+            var incoming = gsap.utils.toArray("#modal_" + to)[0];
+            console.log(outgoing, incoming);
+            // if (outgoing) {outgoing.close()};
+            // if (incoming) {incoming.showModal()};
+        }
+            **/
+
         function clearCards() {
-            console.log("clearCards");
+            // console.log("clearCards");
             cards.forEach((card, index) => {
                 card.classList.add("hidden");
                 card.classList.remove("current");
@@ -134,7 +175,7 @@
         function showSelected(cat) {
             let projects = gsap.utils.toArray("." + cat.id);
             console.log("showSelected");
-            projects.forEach(project => {
+            projects.forEach((project, index) => {
                 project.classList.remove("hidden");
                 project.classList.add("current");
                 updateNav(project.id, index > 0 , index < projects.length);
@@ -157,6 +198,7 @@
             });
 
         }
+ 
         window.addEventListener('resize', applyAlternatingStyles);
         let portrait = window.matchMedia("(orientation: portrait)");
         portrait.addEventListener("change", function (e) {
