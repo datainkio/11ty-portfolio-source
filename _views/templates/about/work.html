@@ -1,12 +1,12 @@
-<section class="col-span-full bg-neutral-900  grid grid-cols-subgrid">
+<section id="projects" class="col-span-full grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
     <header class="col-span-full">
         <h2 class="uppercase text-[.75rem]">{{ count }}/4 What I've Done</h2>
     </header>
-    <p class="lead col-span-6 text-neutral-200">
+    <p class="lead col-span-full text-neutral-200">
         Twenty years of delivering award-winning, meaningful, and intuitive experiences across a veritable slurry of
         industries. The audiences may change but the goals remain the same: solve real problems for real people.
     </p>
-    <ul id="types" class="menu menu-horizontal mx-auto col-span-6 gap-2 mb-8">
+    <ul id="types" class="menu menu-horizontal mx-auto col-span-full gap-2 mb-8">
         <li>
             <a id="featured"
                 class="btn btn-sm  btn-outline text-neutral-200 btn-neutral-200 category btn-active">Featured</a>
@@ -18,23 +18,15 @@
                 }}</a>
         </li>
         {% endfor %}
-        <li>
+        <li class="aspect-video">
             <a id="all" class="btn btn-sm btn-outline text-neutral-200 btn-neutral-200 category">All</a>
         </li>
     </ul>
-    <figure id="projects" class="align-center row-span-2 col-span-full mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
-        <figcaption class="sr-only">Case Studies</figcaption>
-        <ul>
-        {% for project in projects | sortByAttribute('Weight') %}
-        <li>
-            {% set action = ["modal_", project.id, ".showModal()"] | join %}
-            <button id="{{ project.id }}" class="project all {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} link link-hover " onclick="{{ action }}">{{ project.Title }}</button>
-            {% include "templates/project/modal.html" %}
-        </li>
-        {% endfor %}
-        </ul>
-    </figure>
+    {% for project in projects | sortByAttribute('Weight') %}
+        {% include "templates/project/card-image.html" %}
+    {% endfor %}
 </section>
+
 <script>
 
     document.addEventListener("DOMContentLoaded", (event) => {
@@ -45,10 +37,21 @@
 
         /** INITIALIZE VIEW */
         // trace("Initialize");
-        const projects = gsap.utils.toArray(".project.link");
+        const projects = gsap.utils.toArray(".project.card");
+        const categories = gsap.utils.toArray("a.category");
+        const featured = gsap.utils.toArray(".project.card.featured");
+        const controls = gsap.timeline();
+
+
+        console.log(projects);
         projects.forEach(project => {
+            // Set the default state for the project view
             project.style.opacity = 0;
             project.classList.add("hidden");
+            // Respond to mouse events
+            project.addEventListener("mouseover", onMouseOver);
+             project.addEventListener("mouseout", onMouseOut);
+            // Let the user navigate forward and backward through a given set of projects while in modal view
             var prev = gsap.utils.toArray("#modal_" + project.id + " button.prev")[0];
             var next = gsap.utils.toArray("#modal_" + project.id + " button.next")[0];
             prev.addEventListener("click", navigate_projects);
@@ -65,22 +68,19 @@
 
         // SHOW FEATURED PROJECTS
         // trace("Show featured projects");
-        const featured = gsap.utils.toArray(".project.link.featured");
-        const controls = gsap.timeline();
         featured.forEach((project, index) => {
             project.classList.remove("hidden");
             project.classList.add("current");
             controls.add(gsap.to(project, { opacity: 1, y: y_delta, duration: dur * .76, ease: "sine.inOut" }), pos);
         });
         updateNav();
-        /** applyAlternatingStyles(); **/
+        applyAlternatingStyles();
 
         /** 
          * CATEGORY SELECTION
          * Bring a category into view when its menu item is selected
          * */
         // trace("Set up category selection");
-        const categories = gsap.utils.toArray("a.category");
         // trace("Categories: " + categories.length);
         categories.forEach(cat => {
             var label = document.getElementById("category_current");
@@ -108,9 +108,8 @@
                     if (!project.classList.contains("hidden")) {
                         outro.add(gsap.to(project, { opacity: 0, y: y_delta, duration: dur * .75, ease: "sine.inOut" }), pos);
                     }
-                    console.log(cat.id == "all");
+                   // display projects belonging to the selected category
                     if (project.classList.contains(cat.id)) {
-                        // display projects belonging to the selected category
                         intro.add(gsap.to(project, { opacity: 1, y: y_delta, duration: dur * .75, ease: "sine.inOut" }), pos);
                     }
                 });
@@ -125,8 +124,34 @@
             });
         });
 
+        /**
+         * Respond to mouseover events for project cards
+         **/
+        function onMouseOver(e) {
+            console.log(e.currentTarget);
+            // Dim all the other projects
+            projects.forEach(project => {
+                var opacity = project != e.currentTarget ? .5 : 1;
+                gsap.to(project, {duration: .5, opacity: opacity});
+            })
+        };
+
+        /**
+         * Respond to mouseout events for project  cards
+         */
+        function onMouseOut(e) {
+            // Return to their original state
+            projects.forEach(project => {
+                gsap.to(project, { duration: .5, opacity: 1 });
+            })
+        }
+
+        /**
+         * Keep the prev/next buttons for each project updated according to their
+         * position in the set of projects currently in view.
+         **/
         function updateNav() {
-            // trace("update the nav buttons for the projects to reflect the new set ");
+            console.log("updateNav");
             var siblings = gsap.utils.toArray(".project.link.current");
             // trace(siblings.length + " items in the new set");
             siblings.forEach((item, index) => {
@@ -147,6 +172,10 @@
             })
         }
 
+        /**
+         * Respond to user input for navigating forward and backward through the set
+         * of projects currently in view.
+         **/
         function navigate_projects(e) {
             var distance = e.target.id.split("_")[0] === "next" ? 1 : -1;
             var id = e.target.id.split("_")[1];
@@ -161,7 +190,6 @@
 
         function clearCards() {
             // trace("clearCards");
-            const projects = gsap.utils.toArray(".project.link");
             projects.forEach(project => {
                 project.classList.add("hidden");
                 project.classList.remove("current");
@@ -177,7 +205,7 @@
                 project.classList.add("current");
             });
             updateNav();
-            /** applyAlternatingStyles(); **/
+            applyAlternatingStyles();
         };
 
         function applyAlternatingStyles() {

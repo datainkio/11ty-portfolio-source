@@ -2,7 +2,7 @@
     <form method="dialog">
         <button class="close btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
     </form>
-    <figure class="modal-box grid grid-cols-2 gap-4 relative">
+    <figure class="modal-box grid grid-cols-2 gap-4 relative h-full">
         <figcaption class="col-span-full">
             <h3 class="text-3xl font-light m-0 text-neutral-200">{{ project.Name }}</h3>
         </figcaption>
@@ -18,7 +18,7 @@
             {{ project.Description | markdownify | safe }}
             {% endif %}
         </section>
-        <footer class="join grid grid-cols-3">
+        <footer class="join col-span-full w-3/12 mx-auto grid grid-cols-3">
             <button id="prev_{{ project.id }}" class="prev join-item btn btn-outline btn-primary">Previous page</button>
             <button id="view_{{ project.id }}" class="view join-item btn btn-outline btn-primary">View</button>
             <button id="next_{{ project.id }}" class="next join-item btn btn-outline btn-primary">Next</button>

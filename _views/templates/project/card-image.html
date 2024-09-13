@@ -1,15 +1,21 @@
-{% set href = ["/case-studies/",project.Name | slugify, "/"] | join %} {% set
-action = ["modal_", project.id, ".showModal()"] | join %}
+{% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
+{% set action = ["modal_", project.id, ".showModal()"] | join %}
 <a
   id="{{ project.id }}"
   onclick="{{ action }}"
-  class="project all {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card {{ orientation }}"
+  class="aspect-video project hover:bg-neutral-900 all {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card {{ orientation }}"
 >
   {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement |
   stylePicture("", "") | safe }} {% endfor %}
-  <div class="card-body p-2 flex content-end aspect-video gap-0 text-pretty">
-    <h4 class="font-light text-xs sm:col-span-8 text-center">
+  <div class="card-body p-4 flex content-end aspect-video gap-0 text-pretty">
+    <h4 class="text-xs font-bold sm:col-span-8">
       {{ project.Title }}
     </h4>
+      <ul>
+        {% for role in roles | find('id', project.Role) %}
+        <li class="font-light text-xs">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
+        {% endfor %}
+      </ul>
   </div>
 </a>
+{% include "templates/project/modal.html" %}
