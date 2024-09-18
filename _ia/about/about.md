@@ -8,6 +8,7 @@ eleventyNavigation:
   order: 3
 scripts: >
   <script src="../assets/js/gsap/gsap.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
 ---
 
 <!-- @format -->
