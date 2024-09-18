@@ -29,15 +29,6 @@ module.exports = {
 			keyframes: animation.keyframes,
 			dropShadow: palettes.dropShadow,
 		},
-		goldenRatio: {
-			prefix: true,
-			spacerUnit: 'rem',
-			spacerBase: 1.5,
-			fixedSpacerUnit: 'px',
-			fixedUnitsPerSpacerUnit: 16,
-			roundFixedValues: true,
-			useCssVars: true
-		}
 	},
 	daisyui: {
 		themes: [
@@ -49,6 +40,7 @@ module.exports = {
 	plugins: [
 		require("@tailwindcss/typography"),
 		require("daisyui"),
-		require("tailwindcss-golden-ratio")
+		require("@lostisworld/tailwind-mask"),
+		require("tailwind-clip-path"),
 	],
 };
