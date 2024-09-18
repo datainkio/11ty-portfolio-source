@@ -1,13 +1,13 @@
 <!-- @format -->
 {% extends "species/landing.html" %}
 {% set main_styles = "landing bg-graphpaper bg-cover text-neutral-200 grid grid-cols-12 opacity-0" %}
-{% set title_styles = "h-dvh p-4 mb-16 col-span-full grid grid-cols-subgrid place-content-end" %}
 {% block header %}
 {% include "templates/about/title.html" %}
 {% endblock %}
 {% block primary %}
-{% include "atoms/display/ruler.html" %}
+{% include "templates/about/intro.html" %}
 {% set count = 0 %}
+{% include "atoms/display/ruler.html" %}
 {% include "templates/about/experience.html" %}
 {% set count = 1 %}
 {% include "templates/about/contributions.html" %}
