@@ -42,7 +42,7 @@
   }
 
   p {
-    @apply prose prose-sm hover:no-underline mb-4;
+    @apply hover:no-underline mb-4;
   }
 
   .lead {
@@ -188,6 +188,14 @@
     @apply opacity-0;
   }
 
+  /** GOLDEN RATIO **/
+  .container {
+    @apply w-full mx-auto px-5;
+  }
+
+  .row {
+    @apply flex flex-wrap;
+  }
 
   /** ANIMATIONS **/
   .transition-transform {
