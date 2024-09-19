@@ -1,23 +1,8 @@
-<h1 class="col-span-full order-2 text-fluid text-right">
-    {{ title }}
-</h1>
-<p id="tagline" 
-    class="col-start-9 col-span-4 text-neutral-200 text-balance w-full text-right">
-    {{ introduction }}
-</p>
-<script>
-    // Split the title text into a more manipulatible form
-    // var elem = document.getElementsByTagName("h1")[0];
-    // var letters = elem.innerText.split("");
-    // elem.innerHTML = "<span>" + letters.join("</span><span>") + "</span>";
-
-    // Bring the title and tagline into view
-    var intro = gsap.timeline({ id: "intro", delay: 1});
-    // H1
-    intro.add(gsap.from("h1", { duration: 1.25, y: 25, opacity: 0}));
-    // P
-    intro.add(gsap.from("#tagline", { duration: 1.5, opacity: 0}));
-    // Wait until you're called on, most likely by the preloader
-    intro.pause();
-
-</script>
+<header id="main-header" class="h-dvh p-4 mb-16 col-span-full grid grid-cols-subgrid place-content-end">
+    <h1 class="col-span-full order-2 text-fluid text-right">
+        {{ title }}
+    </h1>
+    <p id="tagline" class="col-start-9 col-span-4 text-neutral-200 text-balance w-full text-right">
+        {{ introduction }}
+    </p>
+</header>
