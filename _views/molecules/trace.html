@@ -1,14 +1,102 @@
-<!-- Display debugging output in a collapsible panel -->
-<div id="trace" role="alert" class="alert alert-warning fixed top-0 left-0 z-100">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-    </svg>
-    <span class="btn btn-primary">Trace</span>
+<!-- 
+    Display debugging output in a collapsible panel.
+    Handy for developing w/o access to console
+-->
+<div class="drawer">
+    <input id="trace-view" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col items-center justify-center">
+        <!-- Page content here -->
+        <label for="trace-view" class="btn btn-primary btn-sm w-80 drawer-button fixed top-0 left-0 z-[100]">
+            Debug
+        </label>
+    </div>
+    <div class="drawer-side">
+        <label for="trace-view" aria-label="close sidebar" class="drawer-overlay"></label>
+        <ul id="trace-content" class="menu bg-base-200 text-base-content text-xs min-h-full w-80 p-4 pt-16">
+            <!-- Sidebar content here -->
+        </ul>
+    </div>
 </div>
 <script>
-    function trace(str) {
-        var view = gsap.utils.toArray("#trace")[0];
-        view.innerHTML += "<br/>" + str;
+    const view = gsap.utils.toArray("#trace-content")[0];
+    trace("ready");
+    function trace(obj, comment) {          
+            let message;
+            let type;
+            switch (typeof obj) {
+                case 'string':
+                type = "str";
+                message = `${obj}`;
+                break;
+            case 'number':
+                type = "num";
+                message = `${obj} (isNaN: ${isNaN(obj)})`;
+                break;
+            case 'boolean':
+                type = "boo";
+                message = `${obj}`;
+                break;
+            case 'object':
+                if (obj === null) {
+                    message = 'The object is null';
+                } else if (Array.isArray(obj)) {
+                    type = `arr (len: ${obj.length})`;
+                    message = `[${obj}]`;
+                } else if (obj instanceof HTMLElement) {
+                    type = "html";
+                    const id = obj.id ? `#${obj.id}` : '(no id)';
+                    const classList = obj.classList.length > 0 ? `.${[...obj.classList].join('.')}` : '(no classes)';
+                    message = `<${obj.tagName.toLowerCase()}> id: ${id}, classes: ${classList}`;
+                } else {
+                    type = "obj";
+                    const keys = Object.keys(obj);
+                    message = `${JSON.stringify(obj)} (keys: ${keys.length > 0 ? keys.join(', ') : 'no keys'})`;
+                }
+                break;
+            case 'function':
+                type = "function";
+                message = `${obj.name || '(anonymous function)'}`;
+                break;
+            case 'undefined':
+                type = "";
+                message = '';
+                break;
+            default:
+                type = "";
+                message = '';
+        }
+
+        if (view) {
+            const listItem = document.createElement('li');
+            const typeMsg = document.createElement('span');
+            const msg = document.createElement('span');
+
+            typeMsg.innerHTML = type + ": ";
+            msg.innerHTML = message;
+            view.appendChild(listItem);
+            listItem.appendChild(typeMsg);
+            listItem.appendChild(msg);
+
+            typeMsg.classList.add("inline");
+            typeMsg.classList.add("p-0");
+            typeMsg.classList.add("basis-1/12");
+            typeMsg.classList.add("text-neutral-500");
+
+            msg.classList.add("inline");
+            msg.classList.add("p-0");
+            // msg.classList.add("basis-11/12");
+            msg.classList.add("text-wrap");
+
+            listItem.classList.add("flex");
+            listItem.classList.add("flex-row");
+            listItem.classList.add("pb-2");
+            listItem.classList.add("border-b");
+            listItem.classList.add("border-neutral-400");
+        }
+        console.log(message);
+    }
+
+    function clear() {
+        view.innerHTML = "";
     }
 </script>
