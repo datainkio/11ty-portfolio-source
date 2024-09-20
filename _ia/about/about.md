@@ -7,7 +7,6 @@ eleventyNavigation:
   key: About
   order: 3
 scripts: >
-  <script type="module" src="../assets/js/gsap-test.mjs"></script>
 ---
 
 <!-- @format -->

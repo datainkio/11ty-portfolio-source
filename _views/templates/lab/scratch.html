@@ -1,4 +1,5 @@
-{% extends "species/article.html" %}
-<script type="module">
-    import { name, draw } from "./assets/js/modules/square.mjs"
-</script>
+{% extends "species/landing.html" %}
+{% block primary %}
+{% include "molecules/trace.html" %}
+<script>trace("hello there")</script>
+{% endblock %}

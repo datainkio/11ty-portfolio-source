@@ -2,11 +2,11 @@
     Display debugging output in a collapsible panel.
     Handy for developing w/o access to console
 -->
-<div class="drawer">
+<div class="drawer z-[100]">
     <input id="trace-view" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
         <!-- Page content here -->
-        <label for="trace-view" class="btn btn-primary btn-sm w-80 drawer-button fixed top-0 left-0 z-[100]">
+        <label for="trace-view" class="btn btn-primary btn-sm w-80 drawer-button fixed top-0 left-0">
             Debug
         </label>
     </div>
@@ -20,7 +20,7 @@
 <script>
     const view = gsap.utils.toArray("#trace-content")[0];
     trace("ready");
-    function trace(obj, comment) {          
+    function trace(obj) {          
             let message;
             let type;
             switch (typeof obj) {
@@ -47,6 +47,8 @@
                     const id = obj.id ? `#${obj.id}` : '(no id)';
                     const classList = obj.classList.length > 0 ? `.${[...obj.classList].join('.')}` : '(no classes)';
                     message = `<${obj.tagName.toLowerCase()}> id: ${id}, classes: ${classList}`;
+                } else if (obj instanceof Error) {
+                    message = `The object is an Error: ${obj.name} (message: "${obj.message}", stack: "${obj.stack.split('\n')[0]}")`;
                 } else {
                     type = "obj";
                     const keys = Object.keys(obj);
@@ -90,7 +92,7 @@
 
             listItem.classList.add("flex");
             listItem.classList.add("flex-row");
-            listItem.classList.add("pb-2");
+            listItem.classList.add("py-2");
             listItem.classList.add("border-b");
             listItem.classList.add("border-neutral-400");
         }
