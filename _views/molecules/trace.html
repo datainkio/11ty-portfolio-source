@@ -6,8 +6,8 @@
     <input id="trace-view" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
         <!-- Page content here -->
-        <label for="trace-view" class="btn btn-primary btn-sm w-80 drawer-button fixed top-0 left-0">
-            Debug
+        <label id="trace_button" for="trace-view" class="btn btn-primary btn-sm w-80 drawer-button fixed top-0 left-0">
+            Trace
         </label>
     </div>
     <div class="drawer-side">
@@ -48,7 +48,8 @@
                     const classList = obj.classList.length > 0 ? `.${[...obj.classList].join('.')}` : '(no classes)';
                     message = `<${obj.tagName.toLowerCase()}> id: ${id}, classes: ${classList}`;
                 } else if (obj instanceof Error) {
-                    message = `The object is an Error: ${obj.name} (message: "${obj.message}", stack: "${obj.stack.split('\n')[0]}")`;
+                    type = "error";
+                    message = `${obj.name} (message: "${obj.message}", stack: "${obj.stack.split('\n')[0]}")`;
                 } else {
                     type = "obj";
                     const keys = Object.keys(obj);
@@ -99,7 +100,7 @@
         console.log(message);
     }
 
-    function clear() {
+    function clearTrace() {
         view.innerHTML = "";
     }
 </script>

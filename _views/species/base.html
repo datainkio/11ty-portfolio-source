@@ -1,11 +1,10 @@
 <!-- @format -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<!-- HEAD -->
 	{% include "partials/head.html" %}
-
 	<body class="{{ body_styles }} relative">
+		{% include "molecules/trace.html" %}
 		<!-- GTM -->
 		{% include "partials/gtm_body.html" %}
 		<!-- PRELOADER -->
@@ -19,7 +18,7 @@
 		<!-- GLOBAL HEADER -->
 		{# {% include "organisms/headers/global.html" %} #}
 		<!-- CONTENT -->
-		<main data-speed="{{ parallax_speed }}" id="page-content" tabindex=" -1" class="{{ main_styles }}">
+		<main id="page-content" tabindex=" -1" class="{{ main_styles }}">
 			{% block cap %} {%endblock%}
 			{% block header %}
 				<header>

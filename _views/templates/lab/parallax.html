@@ -1,33 +1,46 @@
 <!-- @format -->
 {% extends "species/article.html" %}
-{% set title_styles = "col-span-full" %}
-{% set main_styles = "relative h-[200vh]" %}
+{% set main_styles = "bg-graphpaper" %}
 {% block primary %}
-<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-white ">
-	Section 1
-</section>
-<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-black">
-	Section 2
-</section>
-<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-white ">
-	Section 3
-</section>
-<section class="relative h-screen col-span-full flex justify-center items-center text-4xl text-black">
-	Section 4
-</section>
+<div id="smooth-content">
+	<section data-speed="clamp(0.5)" class="h-96 flex border-4 border-neutral-200 text-white">
+		<h2 class="m-auto">Section 1</h2>
+	</section>
+	<section class="parallax h-96 flex border-4 border-primary-200 text-white">
+		<h2 class="m-auto">Section 2</h2>
+	</section>
+	<section class="parallax h-96 flex border-4 border-secondary-200 text-white">
+		<h2 class="m-auto">Section 3</h2>
+	</section>
+	<section class="parallax h-96 flex border-4 border-accent-200 text-white">
+		<h2 class="m-auto">Section 4</h2>
+	</section>
+</div>
+<script src="/assets/js/gsap/gsap.js"></script>
+<script src="/assets/js/gsap/ScrollTrigger.js"></script>
+<script src="/assets/js/gsap/ScrollSmoother.min.js"></script>
 <script>
-	gsap.registerPlugin(ScrollTrigger);
+	try {
+		trace("setting up parallax...");
+		gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+		trace("ScrollSmoother");
 
-	// Parallax background effect
-	gsap.to("main", {
-		backgroundPosition: "0 35%",
-		ease: "none",
-		scrollTrigger: {
-			trigger: "main",
-			start: "top top",
-			end: "bottom top",
-			scrub: true
-		}
-	});
+		// see https://gsap.com/docs/v3/Plugins/ScrollSmoother/
+		// see https://codepen.io/GreenSock/pen/bGaWjpw
+		// create the smooth scroller FIRST!
+		const smoother = ScrollSmoother.create({
+			wrapper: "main",
+			smooth: 1,
+			normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
+			ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
+			effects: true,
+			preventDefault: true
+		});
+
+		trace("parallax setup complete");
+	} catch (e) {
+		trace("couldn't set up parallax");
+		trace(e);
+	}
 </script>
 {% endblock %}

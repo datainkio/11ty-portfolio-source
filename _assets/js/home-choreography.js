@@ -2,17 +2,43 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
     // PARALLAX
-    // apply parallax effect to any element with a data-speed attribute
-    gsap.to("[data-speed]", {
-    y: (i, el) => (1 - parseFloat(el.getAttribute("data-speed"))) * ScrollTrigger.maxScroll(window) ,
-    ease: "none",
-    scrollTrigger: {
-        start: 0,
-        end: "max",
-        invalidateOnRefresh: true,
-        scrub: 0
+    try {
+        trace("setting up parallax...");
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+        trace("ScrollSmoother");
+
+        // see https://codepen.io/GreenSock/pen/bGaWjpw
+        // create the smooth scroller FIRST!
+        const smoother = ScrollSmoother.create({
+            wrapper: "body",
+            content: "main",
+            smooth: 1,
+            normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
+            ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
+            effects: true,
+            preventDefault: true
+        });
+
+        gsap.set("#title", {
+            yPercent: -150,
+            opacity: 1
+        });
+
+        let tl = gsap.timeline();
+        // let mySplitText = new SplitText("#split-stagger", { type: "words,chars" });
+        let sections = gsap.utils.toArray("main section");
+        trace(sections);
+
+        sections.forEach((section, i) => {
+            smoother.effects(section, { speed: 1, lag: (i + 1) * 0.1 });
+        });
+
+        trace("parallax setup complete");
+    } catch(e) {
+        trace("couldn't set up parallax");
+        trace(e);
     }
-    });
+    
     
     // INTROS AND OUTROS
 
