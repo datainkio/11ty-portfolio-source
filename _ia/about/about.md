@@ -7,6 +7,9 @@ eleventyNavigation:
   key: About
   order: 3
 scripts: >
+  <script src="/assets/js/gsap/gsap.js"></script>
+  <script src="/assets/js/gsap/ScrollTrigger.js"></script>
+  <script src="/assets/js/home-choreography.js"></script>
 ---
 
 <!-- @format -->

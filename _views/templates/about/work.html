@@ -27,7 +27,6 @@
 </section>
 
 <script>
-
     document.addEventListener("DOMContentLoaded", (event) => {
 
         let dur = .25; // base value for animation duration (in seconds)
@@ -41,8 +40,7 @@
         const featured = gsap.utils.toArray(".project.card.featured");
         const controls = gsap.timeline();
 
-
-        console.log(projects);
+        // console.log(projects);
         projects.forEach(project => {
             // Set the default state for the project view
             project.style.opacity = 0;

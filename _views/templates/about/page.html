@@ -1,17 +1,23 @@
 <!-- @format -->
 {% extends "species/landing.html" %}
+{% set parallax_speed = "1" %}
 {% set main_styles = "landing bg-graphpaper bg-cover text-neutral-200 grid grid-cols-12 opacity-0" %}
 {% block header %}
 {% include "molecules/trace.html" %}
+{% set parallax_speed = "1" %}
 {% include "templates/about/title.html" %}
 {% endblock %}
 {% block primary %}
+{% set parallax_speed = ".25" %}
 {% include "templates/about/intro.html" %}
 {% set count = 0 %}
+{% set parallax_speed = ".25" %}
 {% include "templates/about/experience.html" %}
 {% set count = 1 %}
+{% set parallax_speed = ".25" %}
 {% include "templates/about/contributions.html" %}
 {% set count = 2 %}
+{% set parallax_speed = ".25" %}
 {% include "templates/about/work.html" %}
 {% set count = 3 %}
 

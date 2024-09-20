@@ -1,25 +1,18 @@
-const { gsap } = require("gsap/dist/gsap");
-
-gsap.registerPlugin(Flip,ScrollTrigger,Observer,ScrollToPlugin,Draggable,MotionPathPlugin,EaselPlugin,PixiPlugin,TextPlugin,DrawSVGPlugin,ScrollSmoother,GSDevTools,InertiaPlugin,MorphSVGPlugin,MotionPathHelper,Physics2DPlugin,PhysicsPropsPlugin,ScrambleTextPlugin,SplitText,RoughEase,ExpoScaleEase,SlowMo,CustomEase,CustomBounce,CustomWiggle);
 document.addEventListener("DOMContentLoaded", (event) => {
 
 
     // PARALLAX
-    // const parallax = gsap.utils.toArray("section.parallax");
-    gsap.to("section.parallax", {
-        yPercent: -175,
-        ease: "none",
-        delay: 1,
-        scrollTrigger: {
-            trigger: "main",
-            scrub: true,
-                        markers: {
-                indent: 150,
-                startColor: "grey",
-                endColor: "grey"
-            },
-        }
-    })
+    // apply parallax effect to any element with a data-speed attribute
+    gsap.to("[data-speed]", {
+    y: (i, el) => (1 - parseFloat(el.getAttribute("data-speed"))) * ScrollTrigger.maxScroll(window) ,
+    ease: "none",
+    scrollTrigger: {
+        start: 0,
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0
+    }
+    });
     
     // INTROS AND OUTROS
 

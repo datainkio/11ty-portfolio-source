@@ -4,7 +4,6 @@ introduction: "Playground for trying out new ideas and getting a handle on new t
 layout: "scratch.html"
 permalink: "scratch/index.html"
 scripts: >
-  <script type="text/javascript" src="../assets/js/gsap-test.js"></script>
 ---
 
 <!-- @format -->
