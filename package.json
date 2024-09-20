@@ -24,6 +24,7 @@
     "airtable": "^0.12.2",
     "daisyui": "^4.11.1",
     "dotenv": "^16.4.5",
+    "gsap": "npm:@gsap/simply@^3.12.5",
     "highcharts": "^11.4.8",
     "install": "^0.13.0",
     "markdown-it": "^14.1.0",

@@ -1,9 +1,27 @@
+const { gsap } = require("gsap/dist/gsap");
+
+gsap.registerPlugin(Flip,ScrollTrigger,Observer,ScrollToPlugin,Draggable,MotionPathPlugin,EaselPlugin,PixiPlugin,TextPlugin,DrawSVGPlugin,ScrollSmoother,GSDevTools,InertiaPlugin,MorphSVGPlugin,MotionPathHelper,Physics2DPlugin,PhysicsPropsPlugin,ScrambleTextPlugin,SplitText,RoughEase,ExpoScaleEase,SlowMo,CustomEase,CustomBounce,CustomWiggle);
 document.addEventListener("DOMContentLoaded", (event) => {
-    gsap.registerPlugin(ScrollTrigger)
-// Split the title text into a more manipulatible form
-    // var elem = document.getElementsByTagName("h1")[0];
-    // var letters = elem.innerText.split("");
-    // elem.innerHTML = "<span>" + letters.join("</span><span>") + "</span>";
+
+
+    // PARALLAX
+    // const parallax = gsap.utils.toArray("section.parallax");
+    gsap.to("section.parallax", {
+        yPercent: -175,
+        ease: "none",
+        delay: 1,
+        scrollTrigger: {
+            trigger: "main",
+            scrub: true,
+                        markers: {
+                indent: 150,
+                startColor: "grey",
+                endColor: "grey"
+            },
+        }
+    })
+    
+    // INTROS AND OUTROS
 
     // Bring the title and tagline into view
     var titleIntro = gsap.timeline({ 
@@ -15,29 +33,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
     titleIntro.add(gsap.from("#tagline", { duration: 1.5, opacity: 0}));
     // Wait until you're called on, most likely by the preloader
     titleIntro.pause();
-
-    // Bring the title and tagline out of view
-    var titleOutro = gsap.timeline({
-        id: "titleOutro",
-        scrollTrigger: {
-            trigger: '#main-header',
-            pin: true, // pin the trigger element while active
-            start: 'bottom center', // when the top of the trigger hits the top of the viewport
-            // end: '+=500', // end after scrolling 500px beyond the start
-            markers: {
-                indent: 150,
-                startColor: "white",
-                endColor: "white"
-            },
-        }
-    });
-
-    titleOutro.add(gsap.to("h1", { duration: 1.25, y: 25, opacity: 0}));
-    titleOutro.pause();
-
-    // Run the introduction sequence
-    // gsap.set("#intro h2", {opacity: 0});
-    var intro = gsap.timeline({ id: "intro"});
-    intro.add(gsap.from("h2", {duration: 5, opacity: 0}));
-    intro.pause(); 
 });
