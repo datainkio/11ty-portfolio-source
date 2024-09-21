@@ -2,6 +2,7 @@
     Display debugging output in a collapsible panel.
     Handy for developing w/o access to console
 -->
+{% if process.env.DEBUG %}
 <div class="drawer z-[100]">
     <input id="trace-view" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
@@ -17,6 +18,7 @@
         </ul>
     </div>
 </div>
+{% endif %}
 <script>
     const view = gsap.utils.toArray("#trace-content")[0];
     trace("ready");
@@ -69,7 +71,7 @@
                 message = '';
         }
 
-        if (view) {
+        if (view && process.env.DEBUG) {
             const listItem = document.createElement('li');
             const typeMsg = document.createElement('span');
             const msg = document.createElement('span');
@@ -101,6 +103,9 @@
     }
 
     function clearTrace() {
-        view.innerHTML = "";
+        if (process.env.DEBUG) {
+            view.innerHTML = "";
+        }
+        console.clear();
     }
 </script>
