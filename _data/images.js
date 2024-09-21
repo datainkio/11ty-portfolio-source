@@ -96,6 +96,8 @@ async function processRemoteImages(records) {
       return {
         ...restOfProduct,
         pictureElement,
+        url,
+        metadata
       };
     })
   );

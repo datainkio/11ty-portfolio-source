@@ -67,13 +67,13 @@ module.exports = function (eleventyConfig) {
    */
   eleventyConfig.addFilter(
     "stylePicture",
-    (pe, peStyles = "", imgStyles = "") => {
+    (pe, peStyles, imgStyles, peSpeed, imgSpeed) => {
       /**
        * It's possible to get requests for unpublished images, in which case the
        * template will throw up a little bit. So let's deal with that.
        **/
       if (pe) {
-        return stylePE(pe, peStyles, imgStyles);
+        return stylePE(pe, peStyles, imgStyles, peSpeed, imgSpeed);
       } else {
         return;
       }
@@ -108,11 +108,18 @@ module.exports = function (eleventyConfig) {
     return expanded;
   });
 
-  function stylePE(pe, peStyles, imgStyles) {
+  function stylePE(pe, peStyles, imgStyles, peSpeed, imgSpeed) {
     // Style the picture element
-    let result = pe.replace("<picture>", '<picture class="' + peStyles + '">');
+    let peData = typeof peSpeed === 'undefined' ? "" : ' data-speed="' + peSpeed + '" ';
+    let imgData = typeof imgSpeed === 'undefined' ? "" : ' data-speed="' + imgSpeed + '" ';
+    let peClass = typeof peStyles === 'undefined' ? "" : ' class="' + peStyles + '" ';
+    let imgClass = typeof imgStyles === 'undefined' ? "" : ' class="' + imgStyles + '" ';
+
+    typeof peSpeed === 'undefined' ? "" : console.log(peSpeed);
+
+    let result = pe.replace("<picture>", '<picture ' + peData + peClass + '>');
     // Style the img element
-    return result.replace("<img", '<img class="' + imgStyles + '" ');
+    return result.replace("<img", '<img' + imgData + imgClass + ' ');
   }
 
   /**
@@ -188,13 +195,10 @@ module.exports = function (eleventyConfig) {
    */
   eleventyConfig.addFilter("pluck", function (arr, values, attr) {
     if (Array.isArray(values)) {
-      // Check against a value array
-      // Assumes this is receiving a collection, hence the `data`
-      // If custom array such as from _data, update accordingly
-      return arr.filter((item) => values.includes(item.data[attr]));
+      return arr.filter((item) => values.includes(item[attr]));
     } else {
       // Check against a single value
-      return arr.filter((item) => item.data[attr] === values);
+      return arr.filter((item) => item[attr] === values);
     }
   });
 

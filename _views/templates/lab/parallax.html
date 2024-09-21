@@ -1,21 +1,56 @@
 <!-- @format -->
+{#
+	Images
+		Affinity Mapping	rec6FeU1OJlVbMY7k
+		Topic Mapping 		rec552HxTnhtw7pka
+		Blockframing Flow 	reciEFoxiuGHB1wV3
+		ICA 				recSBqt6mGLArZMBd
+		ICA 				recTLp5E5v59aqBbR
+		Lincoln Memorial 	recAuKyoWPNjBERTd
+		Live Hope Love 		recS4XB0LS3SKeBHx
+		Lucian Perkins 		recPgJmG8u9KMgRFL
+		Mootopia			recrptjcFvN39pklJ
+		ARC					recaW5dYksMdAxQuP
+		OES					rec78vOQpeWgxFmkz
+		Rembrandt			recPkMnRG6SF6sypP
+		USAID				recgXsMns3c4M5yfY
+		Lougheed			recliaSH2QzpfQReY
+		SBA					recYTRQKRVrUkSxwb
+#}
 {% extends "species/article.html" %}
-{% set main_styles = "bg-graphpaper" %}
+
+{% set image_ids =	[
+					"rec6FeU1OJlVbMY7k",
+					"rec552HxTnhtw7pka",
+					"reciEFoxiuGHB1wV3",
+					"recSBqt6mGLArZMBd",
+					"recTLp5E5v59aqBbR",
+					"recAuKyoWPNjBERTd",
+					"recS4XB0LS3SKeBHx",
+					"recPgJmG8u9KMgRFL",
+					"recrptjcFvN39pklJ",
+					"recaW5dYksMdAxQuP",
+					"rec78vOQpeWgxFmkz",
+					"recPkMnRG6SF6sypP",
+					"recgXsMns3c4M5yfY",
+					"recliaSH2QzpfQReY",
+					"recYTRQKRVrUkSxwb"
+					] %}
+{% set image_ids = ["recAuKyoWPNjBERTd"] %}
+
+{% set main_styles = "h-fit" %}
 {% block primary %}
-<div id="smooth-content">
-	<section data-speed="clamp(0.5)" class="h-96 flex border-4 border-neutral-200 text-white">
-		<h2 class="m-auto">Section 1</h2>
-	</section>
-	<section class="parallax h-96 flex border-4 border-primary-200 text-white">
-		<h2 class="m-auto">Section 2</h2>
-	</section>
-	<section class="parallax h-96 flex border-4 border-secondary-200 text-white">
-		<h2 class="m-auto">Section 3</h2>
-	</section>
-	<section class="parallax h-96 flex border-4 border-accent-200 text-white">
-		<h2 class="m-auto">Section 4</h2>
+<div id="wrapper" class="bg-graphpaper">
+	<section id="content" class="flex border-4 border-neutral-200 text-white grid grid-cols-2">
+		<h2 class="col-span-full text-center">Section 1</h2>
+		{% for image in images | pluck(image_ids, 'id') %}
+			<figure class="relative h-96">
+				{{ image.pictureElement | stylePicture("absolute top-0 border-2 border-accent-400 h-96 overflow-hidden","border-2 border-primary-400 w-full", "", "clamp(.9)") | safe }}
+			</figure>
+		{% endfor %}
 	</section>
 </div>
+<section class="w-full">Meh.</section>
 <script src="/assets/js/gsap/gsap.js"></script>
 <script src="/assets/js/gsap/ScrollTrigger.js"></script>
 <script src="/assets/js/gsap/ScrollSmoother.min.js"></script>
@@ -29,7 +64,8 @@
 		// see https://codepen.io/GreenSock/pen/bGaWjpw
 		// create the smooth scroller FIRST!
 		const smoother = ScrollSmoother.create({
-			wrapper: "main",
+			wrapper: "#wrapper", // or #smooth-wrapper
+			content: "#content", // or #smooth-content
 			smooth: 1,
 			normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
 			ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
