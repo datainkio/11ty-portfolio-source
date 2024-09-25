@@ -40,7 +40,8 @@ module.exports = {
 	plugins: [
 		require("@tailwindcss/typography"),
 		require("daisyui"),
-		require("@lostisworld/tailwind-mask"),
-		require("tailwind-clip-path"),
+		// require("@lostisworld/tailwind-mask"),
+		// require("tailwind-clip-path"),
+		require("@designbycode/tailwindcss-text-stroke"),
 	],
 };

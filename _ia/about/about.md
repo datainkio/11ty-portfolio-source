@@ -9,8 +9,9 @@ eleventyNavigation:
 scripts: >
   <script src="/assets/js/gsap/gsap.js"></script>
   <script src="/assets/js/gsap/ScrollTrigger.js"></script>
+  <script src="/assets/js/gsap/SplitText.js"></script>
   <script src="/assets/js/gsap/ScrollSmoother.min.js"></script>
-  <script src="/assets/js/home-choreography.js"></script>
+  <script src="/assets/js/choreography/home.js"></script>
 ---
 
 <!-- @format -->

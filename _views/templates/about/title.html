@@ -1,8 +1,27 @@
-<header id="main-header" class="parallax h-dvh p-4 mb-16 col-span-full grid grid-cols-subgrid place-content-end">
-    <h1 class="col-span-full order-2 text-fluid text-right">
+<header id="main-header" class="relative h-dvh p-4 mb-16 col-span-full grid-cols-subgrid place-content-end">
+    <h1 class="text-stroke text-stroke-[1px] text-stroke-neutral-200 col-span-full order-2 text-fluid text-right">
         {{ title }}
     </h1>
     <p id="tagline" class="col-start-9 col-span-4 text-neutral-200 text-balance w-full text-right">
         {{ introduction }}
     </p>
 </header>
+<script>
+    const mySplitText = new SplitText("h1", { type: "words,chars" });
+    const chars = mySplitText.chars; //an array of all the divs that wrap each character
+
+    var tl = gsap.getById("intro");
+
+    tl.add(gsap.from(chars, {
+        duration: 2,
+        opacity: 0,
+        stagger: 0.1
+    }))
+    tl.add(gsap.from(chars, {
+        duration: 2,
+        color: "#FFFFFF00",
+        // skewX: 45,
+        stagger: 0.1
+    }), "<15%");
+    // tl.pause();
+</script>

@@ -86,6 +86,12 @@
   picture.logo img {
     @apply w-full h-full object-contain;
   }
+
+  /* Custom dashed stroke class */
+  .stroke-dashed {
+    stroke-dasharray: 2 4;
+    /* Dash length and gap */
+  }
 }
 
 @layer components {
@@ -187,7 +193,6 @@
   .faded {
     @apply opacity-0;
   }
-
 
   /** ANIMATIONS **/
   .transition-transform {
