@@ -6,22 +6,3 @@
         {{ introduction }}
     </p>
 </header>
-<script>
-    const mySplitText = new SplitText("h1", { type: "words,chars" });
-    const chars = mySplitText.chars; //an array of all the divs that wrap each character
-
-    var tl = gsap.getById("intro");
-
-    tl.add(gsap.from(chars, {
-        duration: 2,
-        opacity: 0,
-        stagger: 0.1
-    }))
-    tl.add(gsap.from(chars, {
-        duration: 2,
-        color: "#FFFFFF00",
-        // skewX: 45,
-        stagger: 0.1
-    }), "<15%");
-    // tl.pause();
-</script>
