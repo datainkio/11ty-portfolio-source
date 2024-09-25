@@ -1,13 +1,23 @@
+import { fibonacci } from '/assets/js/fibonacci.js';
+
 window.onload = function() {
-    trace("choreography/home.js loaded");
+
+    /**
+     * The main timeline. This coordinates all of the timelines for the 
+     * different bits and bobs on the page, like sections and decorations.
+     */
     const main = gsap.timeline({
-        id: "main",   
+        id: "main",
+        onStart: onSegmentStart,
+        onStartParams: ["main"],
+        onComplete: onSegmentComplete,
+        onCompleteParams: ["main"]
     });
 
-    trace("Initialize title sequence");
+    // Here is where you set the order for everything by adding timelines
+    // in the proper sequence. Ideally it can be in any order.
     main.add(title("title"));
-    // main.pause();
-    // SEQUENCES
+
 
     /**
      * Run the title sequence
@@ -17,11 +27,20 @@ window.onload = function() {
     function title(id) {
         var tl = gsap.timeline({
             id: id,
-            onStart: onSegmentStart,
-            onStartParams: [id],
-            onComplete: onSegmentComplete,
-            onCompleteParams: [id]
+            // onStart: onSegmentStart,
+            // onStartParams: [id],
+            // onComplete: onSegmentComplete,
+            // onCompleteParams: [id]
         });
+        // FIBONACCI SPIRAL
+        var fib = fibonacci("#fib_title");
+        try {
+            tl.add(fib);
+        } catch (e) {
+            trace("Something went wrong with the Fibonacci timeline");
+            trace(e);
+        }
+        // LETTERS
         var st = new SplitText("h1", { type: "words,chars" });
         var chars = st.chars; //an array of all the divs that wrap each character
         tl.add(gsap.from(chars, {
@@ -39,7 +58,10 @@ window.onload = function() {
         return tl;
     }
 
+
+
     // EVENT HANDLING
+
     function onSegmentStart(obj) {
         trace("start: " + obj);
     }

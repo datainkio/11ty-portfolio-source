@@ -1,1 +1,3 @@
-console.log("main.js");
+export function test() {
+    trace("Hello there");
+}
