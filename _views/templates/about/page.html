@@ -7,13 +7,13 @@
 {% include "templates/about/title.html" %}
 {% endblock %}
 
-{% set images = [] %}
-trace("image count: " + image.)
 
 {% block primary %}
-<picture class=""> <!-- Add Tailwind classes here -->
-	<img src="./assets/images/Cards.jpg" alt="" class=""> <!-- Add Tailwind classes here -->
-</picture>
+{% for img in decorations %}
+	{% if img.id == "recIfSX6Swqo1bPtx" %}
+		{{ img.pictureElement | stylePicture("col-span-full w-full h-96", "w-full") | safe }}
+	{% endif %}
+ {% endfor %}
 {#
 {% set parallax_speed = ".25" %}
 {% include "templates/about/intro.html" %}

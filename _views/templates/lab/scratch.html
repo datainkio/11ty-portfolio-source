@@ -1,5 +1,10 @@
 {% extends "species/landing.html" %}
 {% set main_styles = "bg-graphpaper" %}
 {% block primary %}
-    {% include "atoms/svg/fibonacci.html" %}
+ {% for img in decorations %}
+    <figure class="columns-2">
+        {{ img.pictureElement | stylePicture("", "") | safe }}
+        <figcaption class="">{{ img.id }}</figcaption>
+    </figure>
+ {% endfor %}
 {% endblock %}

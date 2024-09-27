@@ -9,7 +9,7 @@ const IMAGES_URL_PATH = "/assets/content/images/cache/";
 const IMAGES_OUTPUT_DIR = `../dist${IMAGES_URL_PATH}`;
 
 async function getImageRecords() {
-    trace("::: Decorations.getImageRecords :::");
+    // trace("::: Decorations.getImageRecords :::");
     // console.log("::: getImageRecords :::");
     // Initialize Airtable API instance
     const base = new Airtable({
@@ -28,7 +28,7 @@ async function getImageRecords() {
         .all();
     } catch (e) {
         // Show error and return empty array on failures
-        console.log(":::::: OOPSIES :::::");
+        console.log(":::::: DECORATIONS OOPSIES :::::");
         console.error(e);
         return [];
     }
@@ -69,7 +69,7 @@ async function getImageRecords() {
 async function processRemoteImages(records) {
   // Using Promise.all to wait until all product objects
   // are processed.
-  console.log("::: PROCESS REMOTE IMAGES :::");
+  console.log("::: PROCESS REMOTE DECORATION IMAGES :::");
   return Promise.all(
     records.map(async (r) => {
       // Picking the first photo from the array
