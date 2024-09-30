@@ -1,6 +1,6 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
-{% set body_styles = "bg-graphpaper bg-fixed" %}
+{% set body_styles = "bg-graphpaper bg-fixed bg-top" %}
 {% set main_styles = "text-neutral-200 grid grid-cols-12 opacity-0 pb-96" %}
 {% block cap %}
 
@@ -10,6 +10,8 @@
 {% endblock %}
 
 {% block primary %}
+{% include "templates/about/background.html" %}
+{% include "templates/about/today.html" %}
 {% set count = 0 %}
 {% include "templates/about/intro.html" %}
 {% set count = 1 %}
@@ -17,8 +19,6 @@
 {% set count = 2 %}
 {% include "templates/about/experience.html" %}
 {#
-
-{% set parallax_speed = ".25" %}
 
 
 {% set count = 2 %}
