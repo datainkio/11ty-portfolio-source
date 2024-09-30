@@ -1,33 +1,28 @@
 <!-- @format -->
-{% extends "species/landing.html" %}
-{% set parallax_speed = "1" %}
-{% set main_styles = "landing bg-graphpaper bg-cover text-neutral-200 grid grid-cols-12 opacity-0" %}
+{% extends "species/parallax.html" %}
+{% set body_styles = "bg-graphpaper bg-fixed" %}
+{% set main_styles = "text-neutral-200 grid grid-cols-12 opacity-0 pb-96" %}
+{% block cap %}
+
+{% endblock %}
 {% block header %}
-{% set parallax_speed = "1" %}
-{% include "templates/about/title.html" %}
+	{% include "templates/about/title.html" %}
 {% endblock %}
 
-
 {% block primary %}
-{% for img in decorations %}
-	{% if img.id == "recIfSX6Swqo1bPtx" %}
-		{{ img.pictureElement | stylePicture("col-span-full w-full h-96", "w-full") | safe }}
-	{% endif %}
- {% endfor %}
-{#
-{% set parallax_speed = ".25" %}
-{% include "templates/about/intro.html" %}
 {% set count = 0 %}
-{% set parallax_speed = ".25" %}
-{% include "templates/about/experience.html" %}
+{% include "templates/about/intro.html" %}
 {% set count = 1 %}
-{% set parallax_speed = ".25" %}
 {% include "templates/about/contributions.html" %}
 {% set count = 2 %}
-{% set parallax_speed = ".25" %}
-{% include "templates/about/work.html" %}
-{% set count = 3 %}
+{% include "templates/about/experience.html" %}
+{#
 
+{% set parallax_speed = ".25" %}
+
+
+{% set count = 2 %}
+{% include "templates/about/work.html" %}
 <!--
 <section id="background" class="h-dvh py-24 items-center">
 	<header class="col-span-6 px-24"><h2 class="text-4xl font-black">Roots in anthropology</h2></header>

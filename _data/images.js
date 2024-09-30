@@ -9,33 +9,34 @@ const IMAGES_URL_PATH = "/assets/content/images/cache/";
 const IMAGES_OUTPUT_DIR = `../dist${IMAGES_URL_PATH}`;
 
 async function getImageRecords() {
-  console.log("::: getImageRecords :::");
-  // Initialize Airtable API instance
-  const base = new Airtable({
-    apiKey: process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN,
-  }).base(process.env.AIRTABLE_BASE_TOKEN);
-  let records = [];
-  try {
-    // Get all the records from a view.
-    // This is easier than getting data page wise
-    records = await base(airtableTable)
-      .select({
-        view: airtableTableView,
-        // filterByFormula: "{InStock} = 1",
-        sort: [{ field: "Weight", direction: "asc" }],
-      })
-      .all();
-  } catch (e) {
-    // Show error and return empty array on failures
-    console.log(":::::: OOPSIES :::::");
-    console.error(e);
-    return [];
-  }
+    console.log("::: Images.getImageRecords :::");
+    // console.log("::: getImageRecords :::");
+    // Initialize Airtable API instance
+    const base = new Airtable({
+        apiKey: process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN,
+    }).base(process.env.AIRTABLE_BASE_TOKEN);
+    let records = [];
+    try {
+        // Get all the records from a view.
+        // This is easier than getting data page wise
+        records = await base(airtableTable)
+        .select({
+            view: airtableTableView,
+            // filterByFormula: "{InStock} = 1",
+            // sort: [{ field: "Weight", direction: "asc" }],
+        })
+        .all();
+    } catch (e) {
+        // Show error and return empty array on failures
+        console.log(":::::: IMAGES OOPSIES :::::");
+        console.error(e);
+        return [];
+    }
 
-  // Get only fields
-  let fields = records.map((r) => {
-    return r.fields;
-  });
+    // Get only fields
+    let fields = records.map((r) => {
+        return r.fields;
+    });
 
   // console.log(fields);
 

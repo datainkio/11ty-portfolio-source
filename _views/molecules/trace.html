@@ -23,7 +23,7 @@
 </div>
 {% endif %}
 <script>
-    const view = gsap.utils.toArray("#trace-content")[0];
+    var view = gsap.utils.toArray("#trace-content")[0];
     trace("debug ready");
     function trace(obj) {          
             let message;

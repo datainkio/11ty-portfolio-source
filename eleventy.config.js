@@ -108,6 +108,15 @@ module.exports = function (eleventyConfig) {
     return expanded;
   });
 
+  /**
+   * 
+   * @param {*} pe The picture element created by Eleventy's Image plugin
+   * @param {*} peStyles CSS for the picture element
+   * @param {*} imgStyles CSS for the img element
+   * @param {*} peSpeed Parallax speed of the picture element
+   * @param {*} imgSpeed Parallax speed of the img element
+   * @returns 
+   */
   function stylePE(pe, peStyles, imgStyles, peSpeed, imgSpeed) {
     // Style the picture element
     let peData = typeof peSpeed === 'undefined' ? "" : ' data-speed="' + peSpeed + '" ';

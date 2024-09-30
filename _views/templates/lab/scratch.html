@@ -1,10 +1,13 @@
-{% extends "species/landing.html" %}
+{% extends "species/base.html" %}
 {% set main_styles = "bg-graphpaper" %}
 {% block primary %}
+{% include "templates/lab/parallax.html" %}
+{#
  {% for img in decorations %}
     <figure class="columns-2">
         {{ img.pictureElement | stylePicture("", "") | safe }}
         <figcaption class="">{{ img.id }}</figcaption>
     </figure>
  {% endfor %}
+ #}
 {% endblock %}

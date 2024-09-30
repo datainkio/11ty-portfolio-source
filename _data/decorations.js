@@ -9,7 +9,7 @@ const IMAGES_URL_PATH = "/assets/content/images/cache/";
 const IMAGES_OUTPUT_DIR = `../dist${IMAGES_URL_PATH}`;
 
 async function getImageRecords() {
-    // trace("::: Decorations.getImageRecords :::");
+    console.log("::: Decorations.getImageRecords :::");
     // console.log("::: getImageRecords :::");
     // Initialize Airtable API instance
     const base = new Airtable({

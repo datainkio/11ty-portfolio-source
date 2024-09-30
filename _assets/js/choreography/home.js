@@ -37,8 +37,8 @@ window.onload = function() {
         try {
             tl.add(fib);
         } catch (e) {
-            trace("Something went wrong with the Fibonacci timeline");
-            trace(e);
+            // trace("Something went wrong with the Fibonacci timeline");
+            // trace(e);
         }
         // LETTERS
         var st = new SplitText("h1", { type: "words,chars" });
@@ -63,10 +63,10 @@ window.onload = function() {
     // EVENT HANDLING
 
     function onSegmentStart(obj) {
-        trace("start: " + obj);
+        // trace("start: " + obj);
     }
     function onSegmentComplete(obj) {
-        trace("complete: " + obj);
+        // trace("complete: " + obj);
     }
     
 };
