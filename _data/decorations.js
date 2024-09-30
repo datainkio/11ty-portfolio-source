@@ -2,14 +2,14 @@ require("dotenv").config();
 const Airtable = require("airtable");
 const { AssetCache } = require("@11ty/eleventy-fetch");
 const airtableTable = "Images";
-const airtableTableView = "Published";
+const airtableTableView = "Decorations";
 const Image = require("@11ty/eleventy-img");
 
 const IMAGES_URL_PATH = "/assets/content/images/cache/";
 const IMAGES_OUTPUT_DIR = `../dist${IMAGES_URL_PATH}`;
 
 async function getImageRecords() {
-    console.log("::: Images.getImageRecords :::");
+    console.log("::: Decorations.getImageRecords :::");
     // console.log("::: getImageRecords :::");
     // Initialize Airtable API instance
     const base = new Airtable({
@@ -28,7 +28,7 @@ async function getImageRecords() {
         .all();
     } catch (e) {
         // Show error and return empty array on failures
-        console.log(":::::: IMAGES OOPSIES :::::");
+        console.log(":::::: DECORATIONS OOPSIES :::::");
         console.error(e);
         return [];
     }
@@ -69,7 +69,7 @@ async function getImageRecords() {
 async function processRemoteImages(records) {
   // Using Promise.all to wait until all product objects
   // are processed.
-  console.log("::: PROCESS REMOTE IMAGES :::");
+  console.log("::: PROCESS REMOTE DECORATION IMAGES :::");
   return Promise.all(
     records.map(async (r) => {
       // Picking the first photo from the array
@@ -105,7 +105,7 @@ async function processRemoteImages(records) {
 }
 
 module.exports = async function () {
-  const imagesCache = new AssetCache("Images");
+  const imagesCache = new AssetCache("Decorations");
   if (imagesCache.isCacheValid(process.env.IMAGE_CACHE_DUR)) {
     return imagesCache.getCachedValue(); // This returns a promise
   }

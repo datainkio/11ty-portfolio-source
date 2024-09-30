@@ -1,27 +1,30 @@
 <!-- 
     Display debugging output in a collapsible panel.
     Handy for developing w/o access to console
+
+    See https://stefirosca.netlify.app/blog/7-tips-tricks-to-make-your-console-log-output-stand-out/
 -->
-{% if process.env.DEBUG %}
+{% if true %}
 <div class="drawer z-[100]">
     <input id="trace-view" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
         <!-- Page content here -->
-        <label id="trace_button" for="trace-view" class="btn btn-primary btn-sm w-80 drawer-button fixed top-0 left-0">
+        <label id="trace_button" for="trace-view" class="btn btn-primary btn-sm drawer-button fixed top-0 left-0">
             Trace
         </label>
     </div>
     <div class="drawer-side">
         <label for="trace-view" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul id="trace-content" class="menu bg-base-200 text-base-content text-xs min-h-full w-80 p-4 pt-16">
+        <ul id="trace-content" class="menu border-t-accent-400 border-t-4 bg-base-200 text-base-content text-xs min-h-full w-80 p-4 pt-16">
             <!-- Sidebar content here -->
+             <li>trace inited</li>
         </ul>
     </div>
 </div>
 {% endif %}
 <script>
-    const view = gsap.utils.toArray("#trace-content")[0];
-    trace("ready");
+    var view = gsap.utils.toArray("#trace-content")[0];
+    trace("debug ready");
     function trace(obj) {          
             let message;
             let type;
@@ -71,7 +74,7 @@
                 message = '';
         }
 
-        if (view && process.env.DEBUG) {
+        if (view) {
             const listItem = document.createElement('li');
             const typeMsg = document.createElement('span');
             const msg = document.createElement('span');
@@ -103,9 +106,7 @@
     }
 
     function clearTrace() {
-        if (process.env.DEBUG) {
-            view.innerHTML = "";
-        }
+        view.innerHTML = "";
         console.clear();
     }
 </script>

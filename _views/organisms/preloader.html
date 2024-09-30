@@ -7,7 +7,8 @@
         detail: { text: () => "complete"},
     });
     window.addEventListener('load', function() {
-        // setTimeout(function () {
+        console.log('starting page load...');
+        setTimeout(function () {
             // Hide the loading view
             const loadingView = document.getElementById("loading-view");
             loadingView.classList.add("hidden");
@@ -17,7 +18,8 @@
             content.classList.remove("opacity-0");
             content.classList.add("opacity-100");
             dispatchEvent(eLoadComplete);
-            // gsap.getById("title").play();
-        // }, 1000);
+            console.log('page load complete. calling title.play');
+            gsap.getById("title").play();
+        }, 2500);
     });
 </script>

@@ -8,9 +8,12 @@ eleventyNavigation:
   order: 3
 scripts: >
   <script src="/assets/js/gsap/gsap.js"></script>
+  <script src="/assets/js/gsap/DrawSVGPlugin.js"></script>
   <script src="/assets/js/gsap/ScrollTrigger.js"></script>
+  <script src="/assets/js/gsap/SplitText.js"></script>
   <script src="/assets/js/gsap/ScrollSmoother.min.js"></script>
-  <script src="/assets/js/home-choreography.js"></script>
+  <script type="module" src="/assets/js/choreography/home.js"></script>
+  <script type="module" src="/assets/js/effects/parallax.js"></script>
 ---
 
 <!-- @format -->

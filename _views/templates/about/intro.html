@@ -1,4 +1,4 @@
-<section id="intro" class="parallax min-h-dvh grid-cols-subgrid content-start gap-4">
+<section id="intro" class="min-h-dvh col-span-full grid-cols-subgrid content-start gap-4 relative">
     <header class="col-span-full">
         <h2 class="parallax uppercase text-[.75rem]">{{ count }}/4 Intro</h2>
     </header>
@@ -6,4 +6,11 @@
     <h2>UX is more than usability</h2>
     <h2>UX is more than research</h2>
     <h2>UX is connective tissue</h2>
+    <!-- rec552HxTnhtw7pka -->
+    
+    {% for image in decorations %} {# Fix find/pluck filters #}
+        {% if image.id == "recYTRQKRVrUkSxwb" %}
+            {{ image.pictureElement | stylePicture("-z-10 absolute top-0 h-full col-span-full w-full block overflow-hidden", "w-full", "", "clamp(.9)")| safe }}
+        {% endif %}
+    {% endfor %}
 </section>

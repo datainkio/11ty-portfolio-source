@@ -1,80 +1,36 @@
-<!-- @format -->
-{#
-	Images
-		Affinity Mapping	rec6FeU1OJlVbMY7k
-		Topic Mapping 		rec552HxTnhtw7pka
-		Blockframing Flow 	reciEFoxiuGHB1wV3
-		ICA 				recSBqt6mGLArZMBd
-		ICA 				recTLp5E5v59aqBbR
-		Lincoln Memorial 	recAuKyoWPNjBERTd
-		Live Hope Love 		recS4XB0LS3SKeBHx
-		Lucian Perkins 		recPgJmG8u9KMgRFL
-		Mootopia			recrptjcFvN39pklJ
-		ARC					recaW5dYksMdAxQuP
-		OES					rec78vOQpeWgxFmkz
-		Rembrandt			recPkMnRG6SF6sypP
-		USAID				recgXsMns3c4M5yfY
-		Lougheed			recliaSH2QzpfQReY
-		SBA					recYTRQKRVrUkSxwb
-#}
-{% extends "species/article.html" %}
 
-{% set image_ids =	[
-					"rec6FeU1OJlVbMY7k",
-					"rec552HxTnhtw7pka",
-					"reciEFoxiuGHB1wV3",
-					"recSBqt6mGLArZMBd",
-					"recTLp5E5v59aqBbR",
-					"recAuKyoWPNjBERTd",
-					"recS4XB0LS3SKeBHx",
-					"recPgJmG8u9KMgRFL",
-					"recrptjcFvN39pklJ",
-					"recaW5dYksMdAxQuP",
-					"rec78vOQpeWgxFmkz",
-					"recPkMnRG6SF6sypP",
-					"recgXsMns3c4M5yfY",
-					"recliaSH2QzpfQReY",
-					"recYTRQKRVrUkSxwb"
-					] %}
-{% set image_ids = ["recAuKyoWPNjBERTd"] %}
+<section id="smooth-content">
+	{% for image in decorations %}
+	{{ image.pictureElement | stylePicture("max-h-96 block overflow-hidden", "", "", "clamp(.9)")| safe }}
+	{% endfor %}
+</section>
 
-{% set main_styles = "h-fit" %}
-{% block primary %}
-<div id="wrapper" class="bg-graphpaper">
-	<section id="content" class="flex border-4 border-neutral-200 text-white h-[1000px]">
-		<h2 class="col-span-full text-center">Section 1</h2>
-		{% for image in images | pluck(image_ids, 'id') %}
-			<figure class="relative h-96 overflow-hidden">
-				{{ image.pictureElement | stylePicture("h-dvh","", "", "clamp(.9)") | safe }}
-			</figure>
-		{% endfor %}
-	</section>
-</div>
+
 <section class="w-full">Meh.</section>
 <script src="/assets/js/gsap/gsap.js"></script>
 <script src="/assets/js/gsap/ScrollTrigger.js"></script>
 <script src="/assets/js/gsap/ScrollSmoother.min.js"></script>
+
 <script>
 	try {
-		gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+		gsap.registerPlugin(ScrollSmoother);
 
 		// see https://gsap.com/docs/v3/Plugins/ScrollSmoother/
 		// see https://codepen.io/GreenSock/pen/bGaWjpw
 		// create the smooth scroller FIRST!
 		const smoother = ScrollSmoother.create({
-			wrapper: "#wrapper", // or #smooth-wrapper
-			content: "#content", // or #smooth-content
+			wrapper: "body", // or #smooth-wrapper
+			content: "main", // or #smooth-content
 			smooth: 1,
-			normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
-			ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
+			// normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
+			// ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
 			effects: true,
-			preventDefault: true
+			// preventDefault: true
 		});
 
-		trace("parallax setup complete");
+		// trace("parallax setup complete");
 	} catch (e) {
-		trace("couldn't set up parallax");
-		trace(e);
+		// trace("couldn't set up parallax");
+		// trace(e);
 	}
 </script>
-{% endblock %}
