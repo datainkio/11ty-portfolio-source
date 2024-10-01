@@ -33,9 +33,9 @@ window.onload = function() {
             // onCompleteParams: [id]
         });
         // FIBONACCI SPIRAL
-        var fib = fibonacci("#fib_title");
+       //  var fib = fibonacci("#fib_title");
         try {
-            tl.add(fib);
+            // tl.add(fib);
         } catch (e) {
             // trace("Something went wrong with the Fibonacci timeline");
             // trace(e);

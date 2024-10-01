@@ -47,7 +47,7 @@ export function fibonacci(id) {
         })
         return graph;
     } catch (e) {
-        trace(e);
+        // trace(e);
         console.log(e);
         return e;
     }

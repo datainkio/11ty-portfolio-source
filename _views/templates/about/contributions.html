@@ -1,4 +1,4 @@
-<section id="contributions" class="z-10 col-span-full min-h-dvh grid grid-cols-subgrid grid-rows-4 items-start relative">
+<section id="contributions" class="z-10 col-span-full grid grid-cols-subgrid grid-rows-4 items-start relative">
     <header class="col-span-full">
         <h2 class="uppercase text-[.75rem]">{{ count }}/4 How I Work</h2>
     </header>
@@ -13,10 +13,5 @@
         using customer and business insights, brand, storytelling, and human-centered design to
         create products and services that meet real human needs.
     </p>
-    {# recjQzrkNRIuuubp6 #}
-    {% for image in decorations %} {# Fix find/pluck filters #}
-    {% if image.id == "recjQzrkNRIuuubp6" %}
-    {{ image.pictureElement | stylePicture("-z-[6] absolute top-0 col-span-full block", "object-fill h-full w-full", "", "clamp(.9)")| safe }}
-    {% endif %}
-    {% endfor %}
+    {% include "atoms/backgrounds/BlockframeSkyline.html" %}
 </section>

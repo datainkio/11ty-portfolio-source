@@ -1,4 +1,4 @@
-<section id="intro" class="z-50 min-h-dvh col-span-full grid-cols-subgrid content-start gap-4 relative">
+<section id="intro" class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative bg-black overflow-hidden p-12">
     <header class="col-span-full">
         <h2 class="parallax uppercase text-[.75rem]">{{ count }}/4 Intro</h2>
     </header>
@@ -9,7 +9,7 @@
     <!-- rec552HxTnhtw7pka -->
     {% for image in decorations %} {# Fix find/pluck filters #}
     {% if image.id == "recduasQwiZ2Btids" %}
-    {{ image.pictureElement | stylePicture("-z-[6] absolute top-0 h-full col-span-full block", "stroke-2", "", "clamp(.9)")| safe }}
+    {{ image.pictureElement | stylePicture("-z-[6] absolute bottom-0 h-full col-span-full block", "stroke-2", "", "clamp(.9)")| safe }}
     {% endif %}
     {% endfor %}
 </section>
