@@ -326,18 +326,14 @@
       var building_color = COLOR.node.appendChild(building.cloneNode());
 
       for (var story = 0; story <= height; story++) {
-        drawStory([building_bw, building_color], building_id, story);
-        var r = building_bw.querySelector(".story-" + story + " .roof");
-        if (story != height) {
-          r.setAttribute("display", "none");
-        }
+        drawStory([building_bw, building_color], building_id, story, story == height);
       }
       building_id += 1;
       building.remove();
     })
   }
 
-  function drawStory(building, b, s) {
+  function drawStory(building, b, s, r) {
     
     // Each story has a neutral and a color version
     var story_bw = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -359,8 +355,11 @@
     story_bw.appendChild(face_right[0]);
     story_color.appendChild(face_right[1]);
 
-    story_bw.appendChild(roof());
-    story_color.appendChild(roof());
+    // Do we need to add a roof?
+    if (r) {
+      story_bw.appendChild(roof());
+      story_color.appendChild(roof());
+    }
 
     story_bw.setAttribute(
       "transform",
@@ -438,8 +437,8 @@
     block.appendChild(type);
 
     // Create the two different views of the block
-    const stroked = block.cloneNode(true);
-    const painted = block.cloneNode(true);
+    const stroked = block.cloneNode(true); // BW
+    const painted = block.cloneNode(true); // COLOR
     block.remove(); // Garbage collection
 
     // BLACK AND WHITE
@@ -459,7 +458,7 @@
     var palette = random(COLORS);
     paintChrome(painted, palette);
     if (side) {
-      // stroked.setAttribute("filter", "url(#brightness)");
+      stroked.setAttribute("filter", "url(#brightness)");
       painted.setAttribute("filter", "url(#brightness)");
     }
     paintMe(painted, palette);
