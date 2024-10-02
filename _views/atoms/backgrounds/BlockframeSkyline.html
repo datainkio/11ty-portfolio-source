@@ -177,35 +177,6 @@
     return filter;
   }
 
-  function getBWFilter() {
-    // Create a filter element
-    const filter = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "filter"
-    );
-    filter.setAttribute("id", "saturation");
-    // Create feComponentTransfer element
-    const feComponentTransfer = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "feComponentTransfer"
-    );
-
-    // Create feFuncR, feFuncG, feFuncB elements and set their attributes
-    ["R", "G", "B"].forEach((channel) => {
-      const feFunc = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        `feFunc${channel}`
-      );
-      feFunc.setAttribute("type", "linear");
-      feFunc.setAttribute("slope", BRIGHTNESS);
-      feComponentTransfer.appendChild(feFunc);
-    });
-
-    // Append feComponentTransfer to filter
-    filter.appendChild(feComponentTransfer);
-    return filter;
-  }
-
   function paintChrome(chrome, palette) {
 
     // Set size and scale
@@ -355,6 +326,9 @@
     story_bw.appendChild(face_right[0]);
     story_color.appendChild(face_right[1]);
 
+    face_right[0].setAttribute("opacity", ".5");
+    face_right[1].setAttribute("filter", "url(#brightness)");
+
     // Do we need to add a roof?
     if (r) {
       story_bw.appendChild(roof());
@@ -369,6 +343,10 @@
       `translate(${SIZE / 2}, ${(ROWCOUNT - s) * SIZE})`);
   }
 
+  /**
+   * s: the building story
+   * side: 0 = left, 1 = right
+   **/
   function drawFace(s, side) {
     const block = SRC.querySelector(".Chrome").cloneNode(true);
     block.classList.remove("Chrome");
@@ -454,13 +432,8 @@
     // stroked.setAttribute("opacity", .5);
 
     // COLOR
-    // COLOR.node.appendChild(painted);
     var palette = random(COLORS);
     paintChrome(painted, palette);
-    if (side) {
-      stroked.setAttribute("filter", "url(#brightness)");
-      painted.setAttribute("filter", "url(#brightness)");
-    }
     paintMe(painted, palette);
 
     // Return the block's coords so something else can use them (e.g. adding a roof)
