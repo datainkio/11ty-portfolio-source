@@ -1,0 +1,6 @@
+{% for img in decorations %}
+<figure class="aspect-video bg-neutral-950 p-4">
+    <figcaption class="text-neutral-200">{{ img.id }}</figcaption>
+    {{ img.pictureElement | stylePicture("w-full p-2", "") | safe }}
+</figure>
+{% endfor %}

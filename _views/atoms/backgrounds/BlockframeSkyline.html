@@ -504,12 +504,14 @@
   function updateBackground() {
       // Set the two versions of the grid as the background images for their respective containers
     if (BW_CONTAINER) {
-      BW_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(BW.svg())}")`
+      // BW_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(BW.svg())}")`
+      BW_CONTAINER.innerHTML = BW.svg();
     } else if (!isInited) {
       BW.remove();
     };
     if (COLOR_CONTAINER) {
-      COLOR_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(COLOR.svg())}")`
+      // COLOR_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(COLOR.svg())}")`
+      COLOR_CONTAINER.innerHTML = COLOR.svg();
     } else if (!isInited){
       COLOR.remove();
     };
