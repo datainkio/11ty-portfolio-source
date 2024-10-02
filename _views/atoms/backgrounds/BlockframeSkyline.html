@@ -499,28 +499,6 @@
     isInited = true;
   }
 
- 
-  function animate() {
-    console.log("animate");
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".bg-blockframes-bw",
-        start: 'bottom bottom',
-        pin: true,
-      },
-      // onUpdate: updateBackground
-    })
-    // For each building, run through the stories
-    var buildings = BW.node.querySelectorAll(".building");
-    var i = 0;
-    buildings.forEach(building => {
-     var stories = building.querySelectorAll(".story");
-     gsap.set(stories, {display: "none"});
-     tl.add(gsap.set(stories, {display: "block", stagger: .5}));
-     i++;
-    });
-  }
-
   var isInited = false;
   async function init() {
     console.log("Initializing BlockframeLibrary \n...checking DOM");
@@ -532,7 +510,6 @@
     console.log("...drawing the grids");
     drawBuildings();
     updateBackground();
-    // animate();
   }
   init();
 
