@@ -326,13 +326,13 @@
     story_bw.appendChild(face_right[0]);
     story_color.appendChild(face_right[1]);
 
-    face_right[0].setAttribute("opacity", ".5");
+    face_right[0].setAttribute("opacity", ".5"); // TODO: For some reason applying the brightness filter to the BW causes it to throw up and not display
     face_right[1].setAttribute("filter", "url(#brightness)");
 
     // Do we need to add a roof?
     if (r) {
       story_bw.appendChild(roof());
-      story_color.appendChild(roof());
+      story_color.appendChild(roof(random(COLORS)[0]));
     }
 
     story_bw.setAttribute(
@@ -428,8 +428,8 @@
       path.style.strokeWidth = 2;
       path.style.opacity = .25;
     })
-    // stroked.setAttribute("style", "mix-blend-mode: multiply;");
-    // stroked.setAttribute("opacity", .5);
+    var background = stroked.querySelector(".background");
+    background.style.opacity = .1;
 
     // COLOR
     var palette = random(COLORS);
@@ -441,7 +441,7 @@
    
   }
 
-  function roof() {
+  function roof(color = null) {
     // Create the rectangle (square) element
     const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         // Desired width of the diamond
@@ -468,7 +468,9 @@
     const pointsString = points.map(point => point.join(',')).join(' ');
 
     poly.setAttribute('points', pointsString);
-    poly.setAttribute('fill', '#395596');
+    if (color) {
+      poly.setAttribute('fill', color);
+    }
     poly.classList.add("roof");
     return poly;
   }
