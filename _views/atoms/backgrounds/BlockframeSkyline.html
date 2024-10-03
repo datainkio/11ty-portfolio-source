@@ -15,8 +15,8 @@
 
   const BW_CONTAINER = document.getElementsByClassName("bg-blockframes-bw")[0];
   const COLOR_CONTAINER = document.getElementsByClassName("bg-blockframes-color")[0];
-  const COLCOUNT = 24; // The number of columns (halve to get number of buildings)
-  const ROWCOUNT = 12; // The number of rows
+  const COLCOUNT = 12; // The number of columns (halve to get number of buildings)
+  const ROWCOUNT = 4; // The number of rows
   const BUILDINGS = buildings(); // A range between 0 and ROWCOUNT gives the number of stories per building
   const SIZE = 100; // The size of each block (square)
   const ANGLE = 12; // The skew angle for each block (pos and neg)
@@ -485,7 +485,7 @@
     };
     if (COLOR_CONTAINER) {
       // COLOR_CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(COLOR.svg())}")`
-      COLOR_CONTAINER.innerHTML = COLOR.svg();
+      // COLOR_CONTAINER.innerHTML = COLOR.svg();
     } else if (!isInited){
       COLOR.remove();
     };

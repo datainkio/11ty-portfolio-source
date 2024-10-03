@@ -1,10 +1,8 @@
-<section class="col-span-full relative z-10 overflow-hidden bg-black p-12">
-    <p class="text-neutral-200">{{ background }}</p>
-    {# recOI5orvHfbhojhP #}
-    {% for image in decorations %} {# Fix find/pluck filters #}
-    {% if image.id == "recD90Q42uqWYITUE" %}
-    {{ image.pictureElement | stylePicture("-z-[6] absolute bottom-0 h-full col-span-full block", "stroke-2", "", "clamp(.9)")|
-    safe }}
-    {% endif %}
-    {% endfor %}
-</section>
+<p class="text-neutral-200">{{ background }}</p>
+{# recOI5orvHfbhojhP #}
+{% for image in decorations %} {# Fix find/pluck filters #}
+{% if image.id == "rec55N5oOKXbEUyWi" %}
+{{ image.pictureElement | stylePicture("-z-[6] absolute bottom-0 h-full col-span-full block", "stroke-2", "", "clamp(.9)")|
+safe }}
+{% endif %}
+{% endfor %}
