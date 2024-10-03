@@ -16,8 +16,8 @@ window.onload = function() {
 
     // Here is where you set the order for everything by adding timelines
     // in the proper sequence. Ideally it can be in any order.
+    // main.add(animateBlockframes("end", "y", "none"));
     main.add(title("title"));
-
 
     /**
      * Run the title sequence
@@ -58,8 +58,6 @@ window.onload = function() {
         return tl;
     }
 
-
-
     // EVENT HANDLING
 
     function onSegmentStart(obj) {
@@ -67,6 +65,32 @@ window.onload = function() {
     }
     function onSegmentComplete(obj) {
         // trace("complete: " + obj);
+    }
+
+    // EXPENSIVE BUT POTENTIAL FUN
+    function animateBlockframes(from, axis, ease) {
+        // Animate the grid of blockframes
+        var grid = [12,12]; //[rows, columns]
+        var gridTimeline = gsap.timeline({
+            id:"blockframes"
+        });
+        //one stagger call does all the animation:
+        gridTimeline.to(".story", {
+            duration: 1,
+            scale: 0.1, 
+            y: 60, 
+            repeat: 1, 
+            ease: "power1.inOut",
+            stagger: {
+                amount: 1.5, 
+                grid: grid, 
+                axis: axis, 
+                ease: ease,
+                from: from
+            }
+            }
+        );
+        return gridTimeline;
     }
     
 };

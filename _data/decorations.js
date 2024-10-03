@@ -106,10 +106,10 @@ async function processRemoteImages(records) {
 
 module.exports = async function () {
   const imagesCache = new AssetCache("Decorations");
-  if (imagesCache.isCacheValid("5m")) {
+  if (imagesCache.isCacheValid(process.env.IMAGE_CACHE_DUR)) {
     return imagesCache.getCachedValue(); // This returns a promise
   }
-  console.log("Cache expired. Fetching data from Airtable");
+  console.log("Decorations cache expired. Fetching data from Airtable");
   let records = await getImageRecords();
   records = await processRemoteImages(records);
   await imagesCache.save(records, "json");

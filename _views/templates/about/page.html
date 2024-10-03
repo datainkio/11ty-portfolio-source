@@ -1,23 +1,34 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
-{% set body_styles = "bg-graphpaper bg-fixed bg-top" %}
+{% set body_styles = "bg-graphpaper bg-neutral-900 bg-fixed" %}
 {% set main_styles = "text-neutral-200 grid grid-cols-12 opacity-0 pb-96" %}
 {% block cap %}
-
 {% endblock %}
 {% block header %}
 	{% include "templates/about/title.html" %}
 {% endblock %}
 
 {% block primary %}
-{% include "templates/about/background.html" %}
-{% include "templates/about/today.html" %}
-{% set count = 0 %}
-{% include "templates/about/intro.html" %}
-{% set count = 1 %}
-{% include "templates/about/contributions.html" %}
-{% set count = 2 %}
-{% include "templates/about/experience.html" %}
+	<section class="col-span-full relative z-10 overflow-hidden p-12">
+		{% include "templates/about/background.html" %}
+	</section>
+	<section class="col-span-full">
+		{% include "templates/about/today.html" %}
+	</section>
+	{% set count = 0 %}
+	<section id="intro"
+		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative overflow-hidden p-12">
+	{% include "templates/about/intro.html" %}
+	</section>
+	{% set count = 1 %}
+	<section id="contributions"
+		class="z-10 col-span-full grid grid-cols-subgrid grid-rows-4 items-start relative">
+		{% include "templates/about/contributions.html" %}
+	</section>
+	{% set count = 2 %}
+	<section class="col-span-full grid grid-cols-subgrid content-start gap-4">
+		{% include "templates/about/experience.html" %}
+	</section>
 {#
 
 
