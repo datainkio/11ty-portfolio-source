@@ -1,31 +1,39 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
 {% set body_styles = "bg-graphpaper bg-neutral-900 bg-fixed" %}
-{% set main_styles = "text-neutral-200 grid grid-cols-12 opacity-0 pb-96" %}
+{% set main_styles = "text-neutral-200 grid grid-cols-12 opacity-0" %}
 {% block cap %}
 {% endblock %}
 {% block header %}
-	{% include "templates/about/title.html" %}
+	<header id="main-header" class="col-start-4 col-span-9 content-center h-dvh">
+		{% include "templates/about/title.html" %}
+	</header>
+	<figure class="col-start-1 row-start-1 col-span-2 h-dvh content-center border-r border-neutral-200 px-4">
+		<figcaption class="sr-only">Recognition</figcaption>
+		{% include "molecules/lists/awards.html" %}
+	</figure>
 {% endblock %}
 
 {% block primary %}
-	<section class="col-span-full relative z-10 overflow-hidden p-12">
+	{% set count = 0 %}
+	<section class="col-span-full relative z-10 overflow-hidden border-t">
 		{% include "templates/about/background.html" %}
 	</section>
+	{% set count = 1 %}
 	<section class="col-span-full">
 		{% include "templates/about/today.html" %}
 	</section>
-	{% set count = 0 %}
+	{% set count = 2 %}
 	<section id="intro"
 		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative overflow-hidden p-12">
 	{% include "templates/about/intro.html" %}
 	</section>
-	{% set count = 1 %}
+	{% set count = 3 %}
 	<section id="contributions"
 		class="z-10 col-span-full grid grid-cols-subgrid grid-rows-4 items-start relative">
 		{% include "templates/about/contributions.html" %}
 	</section>
-	{% set count = 2 %}
+	{% set count = 4 %}
 	<section class="col-span-full grid grid-cols-subgrid content-start gap-4">
 		{% include "templates/about/experience.html" %}
 	</section>
