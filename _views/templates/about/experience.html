@@ -13,10 +13,3 @@
     designers toward more impactful solutions. By bringing a nuanced human perspective, I help engineers 
     translate possibilities into tangible outcomes.
 </p>
-
-{% for image in decorations %} {# Fix find/pluck filters #}
-{% if image.id == "recR4MTqtKhDmEWGZ" %}
-{{ image.pictureElement | stylePicture("-z-[6] absolute bottom-0 h-full col-span-full block", "stroke-2", "",
-"clamp(.9)")| safe }}
-{% endif %}
-{% endfor %}

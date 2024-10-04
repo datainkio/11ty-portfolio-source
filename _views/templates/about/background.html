@@ -1,7 +1,7 @@
-<header class="col-span-2 bg-neutral-200 ">
-    <h2 class="uppercase text-[.75rem] text-neutral-800">{{ count }}/4 Background</h2>
+<header class="col-span-full grid grid-cols-subgrid bg-neutral-200 ">
+    <h2 class="col-span-2 uppercase text-[.75rem] text-neutral-800">{{ count }}/4 Background</h2>
 </header>
-<p class="text-neutral-200">{{ background }}</p>
+<p class="col-span-full text-neutral-200 row-start-2 col-start-3 ">{{ background }}</p>
 {# recOI5orvHfbhojhP #}
 {% for image in decorations %} {# Fix find/pluck filters #}
 {% if image.id == "rec55N5oOKXbEUyWi" %}
