@@ -1,23 +1,31 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
 {% set body_styles = "bg-graphpaper bg-neutral-900 bg-fixed" %}
-{% set main_styles = "text-neutral-200 grid grid-cols-12 opacity-0" %}
+{% set main_styles = "text-neutral-200 grid grid-cols-12 gap-12 opacity-0" %}
 {% block cap %}
 {% endblock %}
 {% block header %}
-	<header id="main-header" class="col-start-4 col-span-9 content-center h-dvh">
+	<header id="main-header" class="col-span-full h-dvh">
 		{% include "templates/about/title.html" %}
 	</header>
-	<figure class="col-start-1 row-start-1 col-span-2 h-dvh content-center border-r border-neutral-200 px-4">
-		<figcaption class="sr-only">Recognition</figcaption>
-		{% include "molecules/lists/awards.html" %}
-	</figure>
 {% endblock %}
 
 {% block primary %}
 	{% set count = 0 %}
-	<section class="col-span-full relative z-10 overflow-hidden border-t">
+	<article class="col-span-full w-9/12 mx-auto p-12 grid grid-cols-12 items-start bg-neutral-200 text-neutral-800">
+		{% include "templates/about/intro.html" %}
+	</article>
+
+	<section class="col-span-full w-9/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
 		{% include "templates/about/background.html" %}
+	</section>
+	<section class="col-span-full bg-neutral-200">
+		<figure id="clients">
+			<figcaption class="sr-only">
+				<h3>Clients & Partners</h3>
+			</figcaption>
+			{% include "molecules/lists/organizations.html" %}
+		</figure>
 	</section>
 	{% set count = 1 %}
 	<section class="col-span-full">
@@ -25,8 +33,8 @@
 	</section>
 	{% set count = 2 %}
 	<section id="intro"
-		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative overflow-hidden p-12">
-	{% include "templates/about/intro.html" %}
+		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative p-12">
+	{% include "templates/about/philosophy.html" %}
 	</section>
 	{% set count = 3 %}
 	<section id="contributions"

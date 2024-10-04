@@ -50,7 +50,7 @@ window.onload = function() {
         }))
         tl.add(gsap.from(chars, {
             duration: 2,
-            color: "#FFFFFF00",
+            color: "#1A171C00",
             // skewX: 45,
             stagger: 0.1
         }), "<15%");

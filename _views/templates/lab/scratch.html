@@ -2,17 +2,8 @@
 {% set main_styles = "bg-graphpaper" %}
 {% block primary %}
 {% include "molecules/trace.html" %}
-<section class="bg-blockframes-color h-dvh w-fullflex flex-col items-center justify-center ">
-    <h1 class="pb-8">The background for this section is a dynamically generated SVG</h1>
-    <p>The SVG is applied to an element with the class name "bg-blockframes" via background-image.
-        The goal is to
-        maintain a clean DOM with minimal presentation elements.
-    </p>
-    <p>
-        Include atoms/svg/blockframes.html in a page, give an element the class name "bg-blockframes", and you are good
-        to go.
-    </p>
-</section>
-{% include "atoms/backgrounds/BlockframeSkyline.html" %}
+    <section class="col-span-full mx-auto w-8/12 grid grid-cols-subgrid bg-neutral-200 text-neutral-800">
+        {% include "templates/about/intro.html" %}
+    </section>
  
 {% endblock %}
