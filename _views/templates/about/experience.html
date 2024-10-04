@@ -2,7 +2,7 @@
     <h2 class="parallax uppercase text-xs text-left">{{ count }}/4 What I Do</h2>
 </header>
 <p class="order-3 px-4 mt-8 col-span-9 text-4xl font-bold text-pretty leading-snug text-neutral-200">
-    It's not the pixels
+    More than pixels
 </p>
 <p class="order-4 col-span-9 prose text-neutral-200 px-4">
     Good digital experience design doesn't just happen. It comes from a deep understanding of how and why
@@ -13,14 +13,3 @@
     designers toward more impactful solutions. By bringing a nuanced human perspective, I help engineers 
     translate possibilities into tangible outcomes.
 </p>
-<figure class="px-4 col-span-3 order-2 row-span-4">
-    <figcaption class="sr-only">Awards</figcaption>
-    {% include "molecules/lists/awards.html" %}
-</figure>
-
-{% for image in decorations %} {# Fix find/pluck filters #}
-{% if image.id == "recR4MTqtKhDmEWGZ" %}
-{{ image.pictureElement | stylePicture("-z-[6] absolute bottom-0 h-full col-span-full block", "stroke-2", "",
-"clamp(.9)")| safe }}
-{% endif %}
-{% endfor %}
