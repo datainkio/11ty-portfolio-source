@@ -5,7 +5,7 @@ module.exports = {
     sans: ["Poppins", "ui-sans-serif", "system-ui"],
     serif: ["Cormorant Garamond", "ui-serif", "Georgia"],
     mono: ["ui-monospace", "SFMono-Regular"],
-    display: ["Inter Tight"],
+    display: ["Noto Serif Display"],
     body: ["Poppins"],
   },
   fontWeight: {
