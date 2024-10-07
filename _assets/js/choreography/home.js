@@ -1,7 +1,7 @@
 import { fibonacci } from '/assets/js/fibonacci.js';
 
 window.onload = function() {
-
+    const SPEED = 1.25
     /**
      * The main timeline. This coordinates all of the timelines for the 
      * different bits and bobs on the page, like sections and decorations.
@@ -49,7 +49,7 @@ window.onload = function() {
             stagger: 0.1
         }))
         tl.add(gsap.from(chars, {
-            duration: 2,
+            duration: SPEED,
             color: "#1A171C00",
             // skewX: 45,
             stagger: 0.1
@@ -76,11 +76,11 @@ window.onload = function() {
         });
         //one stagger call does all the animation:
         gridTimeline.to(".story", {
-            duration: 1,
+            duration: SPEED * .75,
             scale: 0.1, 
             y: 60, 
             repeat: 1, 
-            ease: "power1.inOut",
+            ease: "sine.out",
             stagger: {
                 amount: 1.5, 
                 grid: grid, 

@@ -12,10 +12,12 @@
 
 {% block primary %}
 	{% set count = 0 %}
-	<article class="col-span-full w-9/12 mx-auto p-12 grid grid-cols-12 items-start bg-neutral-200 text-neutral-800">
+	<article class="col-span-full w-8/12 mx-auto p-12 grid grid-cols-12 items-start bg-neutral-200 text-neutral-800">
 		{% include "templates/about/intro.html" %}
 	</article>
-
+	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4">
+		{% include "templates/about/experience.html" %}
+	</section>
 	<section class="col-span-full w-9/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
 		{% include "templates/about/background.html" %}
 	</section>
@@ -37,14 +39,9 @@
 	{% include "templates/about/philosophy.html" %}
 	</section>
 	{% set count = 3 %}
-	<section id="contributions"
-		class="z-10 col-span-full h-dvh grid grid-cols-subgrid grid-rows-4 items-start relative">
-		{% include "templates/about/contributions.html" %}
-	</section>
+
 	{% set count = 4 %}
-	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4">
-		{% include "templates/about/experience.html" %}
-	</section>
+
 {#
 
 

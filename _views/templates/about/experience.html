@@ -1,15 +1,21 @@
 <header class="col-span-full order-1">
     <h2 class="parallax uppercase text-xs text-left">{{ count }}/4 What I Do</h2>
 </header>
-<p class="order-3 px-4 mt-8 col-span-9 text-4xl font-bold text-pretty leading-snug text-neutral-200">
+<p class="px-4 mt-8 col-span-9 text-4xl font-bold text-pretty leading-snug text-neutral-200">
     More than pixels
 </p>
-<p class="order-4 col-span-9 prose text-neutral-200 px-4">
+<p class="col-start-4 col-span-9 prose text-neutral-200 px-4">
     Good digital experience design doesn't just happen. It comes from a deep understanding of how and why
     people do what they do and connecting this with business goals.
-<p class="order-5 col-span-9 prose text-balance text-neutral-200 px-4">
+<p class="col-start-4 col-span-9 prose text-balance text-neutral-200 px-4">
     I work closely with user researchers to identify key questions and hypotheses that reveal critical 
     insights into human behavior. These insights directly shape the design strategies I develop, guiding 
     designers toward more impactful solutions. By bringing a nuanced human perspective, I help engineers 
     translate possibilities into tangible outcomes.
 </p>
+{% for image in decorations %} {# Fix find/pluck filters #}
+    {% if image.id == "recNjbpX7lBGxQzmg" %}
+    {{ image.pictureElement | stylePicture("-z-[6] absolute left-0 h-full col-span-4 block", "stroke-2", "",
+    "clamp(.9)")| safe }}
+    {% endif %}
+{% endfor %}
