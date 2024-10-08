@@ -10,6 +10,10 @@ module.exports = {
     outlined: "0 0 2px rgba(0, 0, 0, 1)",
   },
   bauhaus: {
+    ink: {
+      light: "#D0CAD3",
+      dark: "#1A171C"
+    },
     primary: {
       50: "#F1F7FD",
       100: "#E4F0FC",

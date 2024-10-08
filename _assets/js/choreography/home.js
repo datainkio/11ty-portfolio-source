@@ -1,4 +1,5 @@
 import { fibonacci } from '/assets/js/fibonacci.js';
+import { blockframe_animation_test } from '/assets/svg-animation/blockframe-animation-test';
 
 window.onload = function() {
     const SPEED = 1.25
@@ -17,46 +18,7 @@ window.onload = function() {
     // Here is where you set the order for everything by adding timelines
     // in the proper sequence. Ideally it can be in any order.
     // main.add(animateBlockframes("end", "y", "none"));
-    main.add(title("title"));
-
-    /**
-     * Run the title sequence
-     * @param {*} id 
-     * @returns GSAP timeline
-     */
-    function title(id) {
-        var tl = gsap.timeline({
-            id: id,
-            // onStart: onSegmentStart,
-            // onStartParams: [id],
-            // onComplete: onSegmentComplete,
-            // onCompleteParams: [id]
-        });
-        // FIBONACCI SPIRAL
-       //  var fib = fibonacci("#fib_title");
-        try {
-            // tl.add(fib);
-        } catch (e) {
-            // trace("Something went wrong with the Fibonacci timeline");
-            // trace(e);
-        }
-        // LETTERS
-        var st = new SplitText("h1", { type: "words,chars" });
-        var chars = st.chars; //an array of all the divs that wrap each character
-        tl.add(gsap.from(chars, {
-            duration: 2,
-            opacity: 0,
-            stagger: 0.1
-        }))
-        tl.add(gsap.from(chars, {
-            duration: SPEED,
-            color: "#1A171C00",
-            // skewX: 45,
-            stagger: 0.1
-        }), "<15%");
-        // tl.pause();
-        return tl;
-    }
+    // main.add(title("title"));
 
     // EVENT HANDLING
 

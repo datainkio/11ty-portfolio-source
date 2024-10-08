@@ -2,11 +2,11 @@
     {% set groups = ["Global Brands", "Healthcare", "Civic", "Museums", "Artists & Musicians", "Education"] %}
     {% for group in groups %}
     <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
-        <h4 class="font-bold text-xs sm:col-span-8 text-neutral-600">{{ group }}</h4>
+        <h4 class="font-bold text-xs sm:col-span-8">{{ group }}</h4>
         <ul>
             {% for organization in organizations %}
             {% if organization.Group == group %}
-            <li class="font-light text-xs text-neutral-800">{{ organization.Name }}</li>
+            <li class="font-light text-xs">{{ organization.Name }}</li>
             {% endif %}
             {% endfor %}
         </ul>

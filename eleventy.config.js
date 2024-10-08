@@ -166,7 +166,6 @@ module.exports = function (eleventyConfig) {
       }
     }
     }
-  
 
   /**
    * Return a specific item from a given array
