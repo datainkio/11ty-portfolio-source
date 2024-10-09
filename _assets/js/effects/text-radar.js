@@ -10,7 +10,6 @@ export function textRadar(id) {
     // settings();
     populate(id);
     updateView();
-    TL.pause();
     return TL;
 };
 
