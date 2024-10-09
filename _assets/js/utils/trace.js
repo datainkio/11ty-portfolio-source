@@ -11,30 +11,31 @@
             let type;
             switch (typeof obj) {
                 case 'string':
-                type = "str";
+                type = "🔠";
                 message = `${obj}`;
                 break;
             case 'number':
-                type = "num";
+                type = "🔢";
                 message = `${obj} (isNaN: ${isNaN(obj)})`;
                 break;
             case 'boolean':
-                type = "boo";
+                type = "☑️";
                 message = `${obj}`;
                 break;
             case 'object':
                 if (obj === null) {
+                    type = '\u2796'
                     message = 'The object is null';
                 } else if (Array.isArray(obj)) {
-                    type = `arr (len: ${obj.length})`;
+                    type = `📘 (len: ${obj.length})`;
                     message = `[${obj}]`;
                 } else if (obj instanceof HTMLElement) {
-                    type = "html";
+                    type = "🧱";
                     const id = obj.id ? `#${obj.id}` : '(no id)';
                     const classList = obj.classList.length > 0 ? `.${[...obj.classList].join('.')}` : '(no classes)';
                     message = `<${obj.tagName.toLowerCase()}> id: ${id}, classes: ${classList}`;
                 } else if (obj instanceof Error) {
-                    type = "error";
+                    type = "\u26A0";
                     message = `${obj.name} (message: "${obj.message}", stack: "${obj.stack.split('\n')[0]}")`;
                 } else {
                     type = "obj";
@@ -92,7 +93,7 @@
         const button = document.createElement("label");
         button.id = "trace-button";
         button.htmlFor = "trace-view";
-        button.classList.add("btn", "btn-primary", "btn-sm", "drawer-button", "fixed", "top-0", "left-0");
+        button.classList.add("btn", "btn-primary", "btn-sm", "rounded-none", "drawer-button", "fixed", "top-0", "left-0");
         button.textContent = "debug";
 
         const drawerSide = document.createElement("div");
