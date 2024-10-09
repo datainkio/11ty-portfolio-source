@@ -1,21 +1,27 @@
-import { fibonacci } from '/assets/js/fibonacci.js';
+import { trace } from '/assets/js/utils/trace.js';
 import { textRadar } from '/assets/js/effects/text-radar.js';
+import { fadeInAndUp, introLines } from '/assets/js/effects/text-interstitials.js';
 
 window.onload = function() {
-    const SPEED = 1.25
-
-    textRadar("main-title");
+    const SPEED = 1.25;
     /**
      * The main timeline. This coordinates all of the timelines for the 
      * different bits and bobs on the page, like sections and decorations.
      */
     const main = gsap.timeline({
         id: "main",
-        onStart: onSegmentStart,
+        onStart: onMainStart,
         onStartParams: ["main"],
-        onComplete: onSegmentComplete,
+        onComplete: onMainComplete,
         onCompleteParams: ["main"]
     });
+
+    main.add(fadeInAndUp("main-title"));
+    main.add(textRadar("main-title"));
+    main.add(introLines("practices"));
+
+   
+    // main.pause();
 
     // Here is where you set the order for everything by adding timelines
     // in the proper sequence. Ideally it can be in any order.
@@ -24,11 +30,11 @@ window.onload = function() {
 
     // EVENT HANDLING
 
-    function onSegmentStart(obj) {
-        // trace("start: " + obj);
+    function onMainStart(obj) {
+        trace("start: " + obj);
     }
-    function onSegmentComplete(obj) {
-        // trace("complete: " + obj);
+    function onMainComplete(obj) {
+        trace("complete: " + obj);
     }
 
     // EXPENSIVE BUT POTENTIAL FUN

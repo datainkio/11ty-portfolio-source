@@ -1,11 +1,18 @@
 const DUR = 2;
-const STEPS = 30; // Number of steps in the progression
+const STEPS = 15; // Number of steps in the progression
 const TL = gsap.timeline(); // The timeline we'll return for integration into other sequences
 var source; // The element supplying the text value
 var text; // The text value to repeat
 var amount = 600; // Use settings() to tweak until you find the ideal
 var base = 0 - amount - 1;
 
+/**
+ * Manipulate the display of an element's textContent by duplicating and positioning the duplicates
+ * at progressively father distances and with progressively less opacity.
+ * 
+ * @param {string} id - The id for the element containing the text we want to mess with
+ * @returns {GSAP timeline} - A timeline containing animations for each instance of the copied text
+ */
 export function textRadar(id) {
     // settings();
     populate(id);
@@ -45,7 +52,7 @@ function updateView() {
         from: "end"
     }); 
     let alpha = gsap.utils.distribute({
-        base: 0,
+        base: .1,
         amount: 1,
         ease: "expoScale",
         from: "end"
