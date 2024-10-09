@@ -12,7 +12,8 @@ module.exports = {
   bauhaus: {
     ink: {
       light: "#D0CAD3",
-      dark: "#1A171C"
+      dark: "#1A171C",
+      transparent: "#FFFFFF00"
     },
     primary: {
       50: "#F1F7FD",

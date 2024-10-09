@@ -212,6 +212,14 @@
   .blockframe-container {
     @apply w-full mx-auto absolute -top-16 left-0;
   }
+
+  /** TEXT RADAR **/
+  .text-radar {
+    @apply relative col-span-full font-bold text-8xl text-ink-dark;
+  }
+  .text-radar .text-radar-dupe {
+    @apply absolute inset-0 block font-bold text-8xl text-stroke text-stroke-[1px] text-stroke-white text-ink-transparent;
+  }
 }
 
 @layer utilities {

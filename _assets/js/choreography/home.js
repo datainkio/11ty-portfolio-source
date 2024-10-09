@@ -1,8 +1,10 @@
 import { fibonacci } from '/assets/js/fibonacci.js';
-import { blockframe_animation_test } from '/assets/svg-animation/blockframe-animation-test';
+import { textRadar } from '/assets/js/effects/text-radar.js';
 
 window.onload = function() {
     const SPEED = 1.25
+
+    textRadar("main-title");
     /**
      * The main timeline. This coordinates all of the timelines for the 
      * different bits and bobs on the page, like sections and decorations.
