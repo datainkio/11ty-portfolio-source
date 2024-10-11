@@ -10,13 +10,11 @@
 
 {% block primary %}
 	{% set count = 0 %}
-	<section class="col-span-full w-8/12 mx-auto p-12 grid grid-cols-12 items-start">
-		<p>data:ink:io is the creative studio for Russ Lebo</p>
-		<p>
-			He’s a creative director and experience designer who specializes in word-driven services, but above all he’s
-			a problem solver. Bring him a brand challenge, and he’ll deliver out-of-the-box solutions that spark engagement and
-			exceed expectations.
-		</p>
+	<section class="col-span-full grid grid-cols-4 gap-4">
+		{% include "templates/about/stats.html" %}
+	</section>
+	<section class="col-span-full grid grid-cols-subgrid">
+		{% include "templates/about/resume.html" %}
 	</section>
 	<section class="col-span-full w-8/12 mx-auto p-12">
 		{% include "templates/about/change.html" %}

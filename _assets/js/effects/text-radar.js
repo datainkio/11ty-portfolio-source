@@ -1,6 +1,10 @@
-const DUR = 2;
+const DUR = .75; // Timeline duration
 const STEPS = 15; // Number of steps in the progression
-const TL = gsap.timeline(); // The timeline we'll return for integration into other sequences
+const ALPHA_START = .85; // Opacity of first step
+const ALPHA_END = .25; // Opacity of last step
+const TL = gsap.timeline({
+    // repeat: -1
+}); // The timeline we'll return for integration into other sequences
 var source; // The element supplying the text value
 var text; // The text value to repeat
 var amount = 600; // Use settings() to tweak until you find the ideal
@@ -35,11 +39,14 @@ function populate(id) {
         // Add to the source container
         source.appendChild(dupe);
         dupe.style.zIndex = i;
-        // Style all but the last one to maintain the original
-        if (i < STEPS) {
+        if (i == STEPS - 1) {
+            // This dupe provides the outline for the text
+            dupe.classList.add("stroked");
+        } else if (i < STEPS) {
+            // These dupes get animated etc...
             dupe.classList.add("text-radar-dupe");
             dupe.style.opacity = 1 - i/STEPS * .75;
-        }
+        }      
     }
 }
 
@@ -52,18 +59,30 @@ function updateView() {
         from: "end"
     }); 
     let alpha = gsap.utils.distribute({
-        base: .5,
-        amount: .9,
+        base: ALPHA_END,
+        amount: ALPHA_START,
         ease: "expoScale",
         from: "end"
     });
+    // Animate duplicates 
     TL.add(
         gsap.to(".text-radar-dupe", {
         duration: DUR,
         y: pos,
         opacity: alpha,
-        ease: "power1.inOut"
+        ease: "power1.out",
+        stagger: .15
     }));
+
+    /**
+    TL.add(
+        gsap.to(".text-radar-dupe", {
+        duration: DUR * .5,
+        opacity: 0,
+        ease: "power1.inOut",
+        stagger: .15
+    }), "-=75%");
+    */
 }
 
 function settings() {

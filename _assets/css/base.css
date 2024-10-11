@@ -58,15 +58,17 @@
   .bg-ink-dark .border-t,
   .bg-ink-dark .border-r,
   .bg-ink-dark .border-b,
-  .bg-ink-dark .border-y {
-    @apply border-neutral-300;
+  .bg-ink-dark .border-y,
+  .bg-ink-dark .border-x {
+    @apply border-neutral-600;
   }
 
   .bg-ink-light .border-l,
   .bg-ink-light .border-t,
   .bg-ink-light .border-r,
   .bg-ink-light .border-b,
-  .bg-ink-dark .border-y {
+  .bg-ink-light .border-y,
+  .bg-ink-light .border-x {
     @apply border-neutral-400;
   }
 
@@ -215,7 +217,7 @@
 
   /** TEXT RADAR **/
   .text-radar {
-    @apply -rotate-12 relative col-span-full font-bold text-fluid text-ink-dark text-stroke text-stroke-[2px] text-stroke-ink-dark;
+    @apply relative;
   }
   .text-radar span {
     @apply absolute inset-0 block;
@@ -223,6 +225,18 @@
   .text-radar .text-radar-dupe {
     @apply text-stroke text-stroke-[2px] text-stroke-ink-light text-ink-transparent;
   }
+  .text-radar .stroked {
+    @apply text-stroke text-stroke-[18px] text-stroke-ink-dark;
+  }
+
+  /** TEXT ROLL **/
+  .text-roll {
+    @apply my-auto;
+  }
+  .text-roll-char {
+    @apply text-ink-light;
+  }
+
 }
 
 @layer utilities {
@@ -245,6 +259,11 @@
 
   .bg-main {
     @apply bg-hair bg-no-repeat bg-bottom bg-default;
+  }
+
+  .bg-horizontal-stripes {
+    background-image: linear-gradient(180deg, #000 75%, #2182E3 25%);
+    background-size: 100% 20px;
   }
 
   .bg-graphpaper {
