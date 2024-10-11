@@ -52,8 +52,8 @@ function updateView() {
         from: "end"
     }); 
     let alpha = gsap.utils.distribute({
-        base: .1,
-        amount: 1,
+        base: .5,
+        amount: .9,
         ease: "expoScale",
         from: "end"
     });

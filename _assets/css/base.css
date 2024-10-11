@@ -215,7 +215,7 @@
 
   /** TEXT RADAR **/
   .text-radar {
-    @apply -rotate-12 relative col-span-full font-bold text-8xl text-ink-dark text-stroke text-stroke-[2px] text-stroke-ink-dark;
+    @apply -rotate-12 relative col-span-full font-bold text-fluid text-ink-dark text-stroke text-stroke-[2px] text-stroke-ink-dark;
   }
   .text-radar span {
     @apply absolute inset-0 block;
