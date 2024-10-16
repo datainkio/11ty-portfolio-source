@@ -1,31 +1,47 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
-{% set body_styles = "bg-graphpaper bg-neutral-900 bg-fixed" %}
-{% set main_styles = "text-neutral-200 grid grid-cols-12 gap-12 opacity-0" %}
+{% set body_styles = "bg-graphpaper bg-ink-dark bg-fixed w-full" %}
+{% set main_styles = "text-ink-light grid grid-cols-12 gap-12 opacity-0" %}
 {% block cap %}
 {% endblock %}
 {% block header %}
-	<header id="main-header" class="col-span-full h-dvh">
-		{% include "templates/about/title.html" %}
-	</header>
+	{% include "templates/about/title.html" %}
 {% endblock %}
 
 {% block primary %}
-	{% set count = 0 %}
-	<article class="col-span-full w-9/12 mx-auto p-12 grid grid-cols-12 items-start bg-neutral-200 text-neutral-800">
-		{% include "templates/about/intro.html" %}
-	</article>
-
-	<section class="col-span-full w-9/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
-		{% include "templates/about/background.html" %}
+	<section id="projects" class="col-span-full grid grid-cols-4 gap-6">
+		{% include "templates/about/work.html" %}
 	</section>
-	<section class="col-span-full bg-neutral-200">
-		<figure id="clients">
-			<figcaption class="sr-only">
-				<h3>Clients & Partners</h3>
-			</figcaption>
-			{% include "molecules/lists/organizations.html" %}
-		</figure>
+	{% set count = 0 %}
+	<section class="col-span-full grid grid-cols-subgrid">
+		{% include "templates/about/resume.html" %}
+	</section>
+	<section class="col-span-full grid grid-cols-3 p-0">
+		{% include "templates/about/stats.html" %}
+	</section>
+	<section class="col-span-full mx-auto">
+		{% include "templates/about/change.html" %}
+	</section>
+	<figure id="clients" class="col-span-full">
+		<figcaption>
+			<h2>Selected Clients & Partners</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper sollicitudin feugiat. Curabitur congue metus
+				ut bibendum commodo. Proin rhoncus suscipit mollis. Cras euismod eu odio a molestie. Sed bibendum eros fermentum,
+				volutpat mauris eu, sollicitudin dui. Integer sit amet rhoncus tortor. Donec luctus id metus vel suscipit. Curabitur et
+				massa in mauris ullamcorper congue in nec sem. Morbi facilisis scelerisque ex, non sollicitudin urna dictum imperdiet.
+			</p>
+		</figcaption>
+		{% include "molecules/lists/organizations.html" %}
+	</figure>
+	<section class="col-span-full content-start gap-4">
+		{% include "templates/about/playbook.html" %}
+	</section>
+	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4 w-8/12 mx-auto">
+		{% include "templates/about/experience.html" %}
+	</section>
+	<section class="col-span-full w-8/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
+		{% include "templates/about/background.html" %}
 	</section>
 	{% set count = 1 %}
 	<section class="col-span-full h-dvh">
@@ -33,18 +49,13 @@
 	</section>
 	{% set count = 2 %}
 	<section id="intro"
-		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative p-12">
+		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative">
 	{% include "templates/about/philosophy.html" %}
 	</section>
 	{% set count = 3 %}
-	<section id="contributions"
-		class="z-10 col-span-full h-dvh grid grid-cols-subgrid grid-rows-4 items-start relative">
-		{% include "templates/about/contributions.html" %}
-	</section>
+
 	{% set count = 4 %}
-	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4">
-		{% include "templates/about/experience.html" %}
-	</section>
+
 {#
 
 

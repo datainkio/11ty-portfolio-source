@@ -15,14 +15,15 @@
 @layer base {
 
   body {
-    @apply text-neutral-800 bg-neutral-100;
+    @apply text-ink-light bg-neutral-100;
   }
+
   main {
     @apply relative;
   }
 
   h1 {
-    @apply text-2xl font-display hover:no-underline 
+    @apply text-2xl hover:no-underline 
     tracking-tight leading-none;
   }
   h2 {
@@ -36,13 +37,39 @@
     text-2xl my-0 col-span-full;
   }
   figcaption {
-    @apply text-neutral-300 hover:no-underline
+    @apply hover:no-underline
     text-balance leading-tight
     my-0 col-span-full;
   }
 
   p {
     @apply prose prose-sm hover:no-underline mb-4;
+  }
+
+  .bg-ink-dark p {
+    @apply text-ink-light;
+  }
+
+  .bg-ink-light p {
+    @apply text-ink-dark;
+  }
+
+  .bg-ink-dark .border-l,
+  .bg-ink-dark .border-t,
+  .bg-ink-dark .border-r,
+  .bg-ink-dark .border-b,
+  .bg-ink-dark .border-y,
+  .bg-ink-dark .border-x {
+    @apply border-neutral-600;
+  }
+
+  .bg-ink-light .border-l,
+  .bg-ink-light .border-t,
+  .bg-ink-light .border-r,
+  .bg-ink-light .border-b,
+  .bg-ink-light .border-y,
+  .bg-ink-light .border-x {
+    @apply border-neutral-400;
   }
 
   .lead {
@@ -147,7 +174,7 @@
   }
   .modal h2,
   .modal p {
-    @apply text-white mb-4;
+    @apply text-ink-light mb-4;
   }
 
   .stat {
@@ -187,6 +214,29 @@
   .blockframe-container {
     @apply w-full mx-auto absolute -top-16 left-0;
   }
+
+  /** TEXT RADAR **/
+  .text-radar {
+    @apply relative;
+  }
+  .text-radar span {
+    @apply absolute inset-0 block;
+  }
+  .text-radar .text-radar-dupe {
+    @apply text-stroke text-stroke-[1px] text-stroke-ink-light text-ink-transparent;
+  }
+  .text-radar .stroked {
+    @apply text-stroke text-stroke-[12px] text-stroke-ink-dark;
+  }
+
+  /** TEXT ROLL **/
+  .text-roll {
+    @apply my-auto;
+  }
+  .text-roll-char {
+    @apply text-ink-light;
+  }
+
 }
 
 @layer utilities {
@@ -209,6 +259,11 @@
 
   .bg-main {
     @apply bg-hair bg-no-repeat bg-bottom bg-default;
+  }
+
+  .bg-horizontal-stripes {
+    background-image: linear-gradient(180deg, #000 75%, #2182E3 25%);
+    background-size: 100% 20px;
   }
 
   .bg-graphpaper {

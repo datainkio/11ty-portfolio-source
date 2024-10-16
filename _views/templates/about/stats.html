@@ -1,0 +1,7 @@
+{% for stat in outcomes %}
+<div class="stat text-ink-light">
+    <div class="stat-title text-wrap leading-tight text-ink-light">{{ stat.Title }}</div>
+    <div class="stat-value text-2xl sm:text-4xl text-ink-light">{{ stat.Value }}</div>
+    <div class="stat-desc text-xs text-wrap leading-tight text-ink-light">{{ stat.Description }}</div>
+</div>
+{% endfor %}

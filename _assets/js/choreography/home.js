@@ -1,96 +1,69 @@
-import { fibonacci } from '/assets/js/fibonacci.js';
+import { trace } from '/assets/js/utils/trace.js';
+import { textRadar } from '/assets/js/effects/text-radar.js';
+import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
+import { textRoll } from '/assets/js/effects/text-roll.js';
+import { textLenticular } from '/assets/js/effects/text-lenticular.js';
 
 window.onload = function() {
-
-    /**
-     * The main timeline. This coordinates all of the timelines for the 
-     * different bits and bobs on the page, like sections and decorations.
-     */
-    const main = gsap.timeline({
-        id: "main",
-        onStart: onSegmentStart,
-        onStartParams: ["main"],
-        onComplete: onSegmentComplete,
-        onCompleteParams: ["main"]
-    });
-
-    // Here is where you set the order for everything by adding timelines
-    // in the proper sequence. Ideally it can be in any order.
-    // main.add(animateBlockframes("end", "y", "none"));
-    main.add(title("title"));
-
-    /**
-     * Run the title sequence
-     * @param {*} id 
-     * @returns GSAP timeline
-     */
-    function title(id) {
-        var tl = gsap.timeline({
-            id: id,
-            // onStart: onSegmentStart,
-            // onStartParams: [id],
-            // onComplete: onSegmentComplete,
-            // onCompleteParams: [id]
-        });
-        // FIBONACCI SPIRAL
-       //  var fib = fibonacci("#fib_title");
-        try {
-            // tl.add(fib);
-        } catch (e) {
-            // trace("Something went wrong with the Fibonacci timeline");
-            // trace(e);
-        }
-        // LETTERS
-        var st = new SplitText("h1", { type: "words,chars" });
-        var chars = st.chars; //an array of all the divs that wrap each character
-        tl.add(gsap.from(chars, {
-            duration: 2,
-            opacity: 0,
-            stagger: 0.1
-        }))
-        tl.add(gsap.from(chars, {
-            duration: 2,
-            color: "#1A171C00",
-            // skewX: 45,
-            stagger: 0.1
-        }), "<15%");
-        // tl.pause();
-        return tl;
-    }
-
-    // EVENT HANDLING
-
-    function onSegmentStart(obj) {
-        // trace("start: " + obj);
-    }
-    function onSegmentComplete(obj) {
-        // trace("complete: " + obj);
-    }
-
-    // EXPENSIVE BUT POTENTIAL FUN
-    function animateBlockframes(from, axis, ease) {
-        // Animate the grid of blockframes
-        var grid = [12,12]; //[rows, columns]
-        var gridTimeline = gsap.timeline({
-            id:"blockframes"
-        });
-        //one stagger call does all the animation:
-        gridTimeline.to(".story", {
-            duration: 1,
-            scale: 0.1, 
-            y: 60, 
-            repeat: 1, 
-            ease: "power1.inOut",
-            stagger: {
-                amount: 1.5, 
-                grid: grid, 
-                axis: axis, 
-                ease: ease,
-                from: from
-            }
-            }
-        );
-        return gridTimeline;
-    }
+    try {
     
+        gsap.registerPlugin(ScrollTrigger);
+        const SPEED = 1.25;
+        const ST = ScrollTrigger.create({
+            trigger: '#main-title',
+            start: 'bottom bottom',
+            end: "+=100%",
+            scrub: 1,
+        });
+
+        /**
+         * The main timeline. This coordinates all of the timelines for the 
+         * different bits and bobs on the page, like sections and decorations.
+         */
+        const TL = gsap.timeline({
+            id: "main",
+            trigger: ST,
+            onStart: onMainStart,
+            onStartParams: ["main"],
+            onComplete: onMainComplete,
+            onCompleteParams: ["main"]
+        });
+
+        TL.addLabel("start");
+        // TL.add(fadeInChars("main-title"));
+        // TL.add(textLenticular("main-title", trace));
+        // TL.add(textRoll("main-title"));
+        TL.addLabel("radar");
+        TL.add(textRadar("main-title"));
+        // main.add(introLines("practices"));
+
+        function onMainStart(obj) {
+            trace("start: " + obj);
+        }
+        function onMainComplete(obj) {
+            trace("complete: " + obj);
+        }
+
+        /**
+         * Individual elements bring themselves into view
+         */
+        const sequenced = gsap.utils.toArray(".sequenced");
+        // Get the computed style to determine the number of columns
+        const gridStyle = getComputedStyle(document.getElementById("projects"));
+        const columns = gridStyle.gridTemplateColumns.split(" ").length;
+        // Calculate the grid column based on the index
+        // return (elementIndex % columns);
+        sequenced.forEach((item, index) => {
+            gsap.from(item, {
+                duration: .5,
+                scrollTrigger: item,
+                opacity: 0,
+                y: 150,
+                delay: (index % columns) * .5,
+                ease: "power1.out"
+            })
+        })
+    } catch(e) {
+        trace(e);
+    }
 };

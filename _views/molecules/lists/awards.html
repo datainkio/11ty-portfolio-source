@@ -4,7 +4,7 @@
     <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
         {% for award in awards | find("id", img.Recognition) %}
         {% if loop.index === 1 %}
-        <h4 class="font-bold text-xs text-neutral-600">{{ award.Organization }}</h4>
+        <h4 class="font-bold text-xs">{{ award.Organization }}</h4>
         <ul class="sm:col-span-8">
             {% endif %}
             <li class="font-light text-xs">{{ award.Title }}</li>

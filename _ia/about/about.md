@@ -1,5 +1,5 @@
 ---
-title: "Design Answers"
+title: "data:ink:io"
 layout: "about/page.html"
 permalink: "about/"
 eleventyNavigation:
