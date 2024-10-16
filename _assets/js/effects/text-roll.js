@@ -21,7 +21,7 @@ export function textRoll(id) {
         charsClass: "text-roll-char"
     });
 
-    // settings();
+    settings();
 
     // Create the static copy of the text
     var span = document.createElement("span");

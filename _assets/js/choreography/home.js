@@ -1,37 +1,69 @@
 import { trace } from '/assets/js/utils/trace.js';
-// import { textRadar } from '/assets/js/effects/text-radar.js';
-import { fadeInAndUp, introLines } from '/assets/js/effects/text-interstitials.js';
-// import { textRoll } from '/assets/js/effects/text-roll.js';
+import { textRadar } from '/assets/js/effects/text-radar.js';
+import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
+import { textRoll } from '/assets/js/effects/text-roll.js';
 import { textLenticular } from '/assets/js/effects/text-lenticular.js';
 
 window.onload = function() {
-    const SPEED = 1.25;
-    /**
-     * The main timeline. This coordinates all of the timelines for the 
-     * different bits and bobs on the page, like sections and decorations.
-     */
-    const main = gsap.timeline({
-        id: "main",
-        onStart: onMainStart,
-        onStartParams: ["main"],
-        onComplete: onMainComplete,
-        onCompleteParams: ["main"]
-    });
-
     try {
-        // main.add(fadeInAndUp("main-title"));
-        main.add(textLenticular("main-title", trace));
-        // main.add(textRoll("main-title"));
-        // main.add(textRadar("main-title"), "-=25%");
+    
+        gsap.registerPlugin(ScrollTrigger);
+        const SPEED = 1.25;
+        const ST = ScrollTrigger.create({
+            trigger: '#main-title',
+            start: 'bottom bottom',
+            end: "+=100%",
+            scrub: 1,
+        });
+
+        /**
+         * The main timeline. This coordinates all of the timelines for the 
+         * different bits and bobs on the page, like sections and decorations.
+         */
+        const TL = gsap.timeline({
+            id: "main",
+            trigger: ST,
+            onStart: onMainStart,
+            onStartParams: ["main"],
+            onComplete: onMainComplete,
+            onCompleteParams: ["main"]
+        });
+
+        TL.addLabel("start");
+        // TL.add(fadeInChars("main-title"));
+        // TL.add(textLenticular("main-title", trace));
+        // TL.add(textRoll("main-title"));
+        TL.addLabel("radar");
+        TL.add(textRadar("main-title"));
         // main.add(introLines("practices"));
+
+        function onMainStart(obj) {
+            trace("start: " + obj);
+        }
+        function onMainComplete(obj) {
+            trace("complete: " + obj);
+        }
+
+        /**
+         * Individual elements bring themselves into view
+         */
+        const sequenced = gsap.utils.toArray(".sequenced");
+        // Get the computed style to determine the number of columns
+        const gridStyle = getComputedStyle(document.getElementById("projects"));
+        const columns = gridStyle.gridTemplateColumns.split(" ").length;
+        // Calculate the grid column based on the index
+        // return (elementIndex % columns);
+        sequenced.forEach((item, index) => {
+            gsap.from(item, {
+                duration: .5,
+                scrollTrigger: item,
+                opacity: 0,
+                y: 150,
+                delay: (index % columns) * .5,
+                ease: "power1.out"
+            })
+        })
     } catch(e) {
         trace(e);
-    }
-
-    function onMainStart(obj) {
-        trace("start: " + obj);
-    }
-    function onMainComplete(obj) {
-        trace("complete: " + obj);
     }
 };

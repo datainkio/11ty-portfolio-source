@@ -223,10 +223,10 @@
     @apply absolute inset-0 block;
   }
   .text-radar .text-radar-dupe {
-    @apply text-stroke text-stroke-[2px] text-stroke-ink-light text-ink-transparent;
+    @apply text-stroke text-stroke-[1px] text-stroke-ink-light text-ink-transparent;
   }
   .text-radar .stroked {
-    @apply text-stroke text-stroke-[18px] text-stroke-ink-dark;
+    @apply text-stroke text-stroke-[12px] text-stroke-ink-dark;
   }
 
   /** TEXT ROLL **/

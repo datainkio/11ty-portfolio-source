@@ -1,6 +1,6 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
-{% set body_styles = "bg-graphpaper bg-ink-dark bg-fixed" %}
+{% set body_styles = "bg-graphpaper bg-ink-dark bg-fixed w-full" %}
 {% set main_styles = "text-ink-light grid grid-cols-12 gap-12 opacity-0" %}
 {% block cap %}
 {% endblock %}
@@ -9,17 +9,20 @@
 {% endblock %}
 
 {% block primary %}
-	{% set count = 0 %}
-	<section class="col-span-full grid grid-cols-4 gap-4">
-		{% include "templates/about/stats.html" %}
+	<section id="projects" class="col-span-full grid grid-cols-4 gap-6">
+		{% include "templates/about/work.html" %}
 	</section>
+	{% set count = 0 %}
 	<section class="col-span-full grid grid-cols-subgrid">
 		{% include "templates/about/resume.html" %}
 	</section>
-	<section class="col-span-full w-8/12 mx-auto p-12">
+	<section class="col-span-full grid grid-cols-3 p-0">
+		{% include "templates/about/stats.html" %}
+	</section>
+	<section class="col-span-full mx-auto">
 		{% include "templates/about/change.html" %}
 	</section>
-	<figure id="clients" class="col-span-full w-8/12 mx-auto p-12">
+	<figure id="clients" class="col-span-full">
 		<figcaption>
 			<h2>Selected Clients & Partners</h2>
 			<p>
@@ -34,10 +37,10 @@
 	<section class="col-span-full content-start gap-4">
 		{% include "templates/about/playbook.html" %}
 	</section>
-	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4">
+	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4 w-8/12 mx-auto">
 		{% include "templates/about/experience.html" %}
 	</section>
-	<section class="col-span-full w-9/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
+	<section class="col-span-full w-8/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
 		{% include "templates/about/background.html" %}
 	</section>
 	{% set count = 1 %}
@@ -46,7 +49,7 @@
 	</section>
 	{% set count = 2 %}
 	<section id="intro"
-		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative p-12">
+		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative">
 	{% include "templates/about/philosophy.html" %}
 	</section>
 	{% set count = 3 %}

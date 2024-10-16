@@ -1,21 +1,18 @@
-{% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
-{% set action = ["modal_", project.id, ".showModal()"] | join %}
 <a
   id="{{ project.id }}"
   onclick="{{ action }}"
-  class="aspect-video project hover:bg-neutral-900 all {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }} card {{ orientation }}"
+  class="sequenced project all grid grid-cols-12 border-t pt-2 pb-8 {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }}"
 >
-  {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement |
-  stylePicture("", "") | safe }} {% endfor %}
-  <div class="card-body p-4 flex content-end aspect-video gap-0 text-pretty">
-    <h4 class="text-xs font-bold sm:col-span-8">
-      {{ project.Title }}
-    </h4>
-      <ul>
-        {% for role in roles | find('id', project.Role) %}
-        <li class="font-light text-xs">{{ role.Name }}{% if loop.last %}{% else %}, {% endif %}</li>
-        {% endfor %}
-      </ul>
-  </div>
+  <h4 class="text-xs font-bold col-span-11">
+    {{ project.Title }}
+  </h4>
+  {% if project.Recognition %}
+    {% include "atoms/svg/award.svg" %}
+  {% endif %}
+  <p class="font-light text-xs col-span-full">
+    {% for role in roles | find('id', project.Role) %}
+    {{ role.Name }}{% if loop.last %}{% else %}, {% endif %}
+    {% endfor %}
+  </p>
+  {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-full", "p-8 pb-0 bg-neutral-800") | safe }} {% endfor %}
 </a>
-{% include "templates/project/modal.html" %}

@@ -24,14 +24,13 @@ export function fadeInChars(id) {
     var tl = gsap.timeline();
 
     // LETTERS
-    var st = new SplitText(elem, { type: "words,chars" });
-    var chars = st.chars; //an array of all the divs that wrap each character
-    tl.to(gsap.from(chars, {
+    var st = new SplitText(elem, { type: "chars" });
+    tl.to(gsap.from(st.chars, {
         duration: 2,
         opacity: 0,
         stagger: 0.1
     }))
-    tl.add(gsap.from(chars, {
+    tl.add(gsap.from(st.chars, {
         duration: SPEED,
         color: "#1A171C00",
         // skewX: 45,

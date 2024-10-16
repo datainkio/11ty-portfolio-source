@@ -1,14 +1,14 @@
-const DUR = .75; // Timeline duration
-const STEPS = 15; // Number of steps in the progression
+gsap.registerPlugin(ScrollTrigger);
+
+const DUR = .15; // Timeline duration
+const STEPS = 30; // Number of steps in the progression
 const ALPHA_START = .85; // Opacity of first step
 const ALPHA_END = .25; // Opacity of last step
-const TL = gsap.timeline({
-    // repeat: -1
-}); // The timeline we'll return for integration into other sequences
+const TL = gsap.timeline({}); // The timeline we'll return for integration into other sequences
 var source; // The element supplying the text value
 var text; // The text value to repeat
 var amount = 600; // Use settings() to tweak until you find the ideal
-var base = 0 - amount - 1;
+var base = -601;
 
 /**
  * Manipulate the display of an element's textContent by duplicating and positioning the duplicates
@@ -71,18 +71,16 @@ function updateView() {
         y: pos,
         opacity: alpha,
         ease: "power1.out",
-        stagger: .15
+        stagger: .1
     }));
-
-    /**
     TL.add(
         gsap.to(".text-radar-dupe", {
         duration: DUR * .5,
-        opacity: 0,
+        opacity: .25,
         ease: "power1.inOut",
-        stagger: .15
-    }), "-=75%");
-    */
+        stagger: .1,
+    }), "-=5%");
+
 }
 
 function settings() {
