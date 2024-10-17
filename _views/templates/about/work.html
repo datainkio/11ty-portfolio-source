@@ -21,7 +21,7 @@
         <a id="all" class="btn btn-sm btn-outline text-neutral-200 btn-neutral-200 category">All</a>
     </li>
 </ul>
-<section id="projects" class="col-span-full grid grid-cols-4">
+<section id="projects" class="col-span-full grid grid-cols-4 gap-8">
 {% for project in projects | sortByAttribute('Weight') %}
     {% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
     {% set action = ["modal_", project.id, ".showModal()"] | join %}

@@ -55,7 +55,7 @@ window.onload = function() {
         // return (elementIndex % columns);
         sequenced.forEach((item, index) => {
             gsap.from(item, {
-                duration: .5,
+                duration: 1.5,
                 scrollTrigger: item,
                 opacity: 0,
                 y: 150,

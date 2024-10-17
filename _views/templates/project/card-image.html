@@ -14,5 +14,5 @@
     {{ role.Name }}{% if loop.last %}{% else %}, {% endif %}
     {% endfor %}
   </p>
-  {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-full", "p-8 pb-0 bg-neutral-800") | safe }} {% endfor %}
+  {% for img in images | find("id", project.Thumbnail) %}{{ img.pictureElement | stylePicture("col-span-full", "p-12 pb-0 bg-neutral-800") | safe }} {% endfor %}
 </a>
