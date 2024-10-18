@@ -1,9 +1,12 @@
 {% extends "species/base.html" %}
-{% set main_styles = "bg-graphpaper" %}
+{% set main_styles = "" %}
 {% block primary %}
-{% include "molecules/trace.html" %}
-    <section class="col-span-full mx-auto w-8/12 grid grid-cols-subgrid bg-ink-dark text-ink-light">
 
-    </section>
- 
+<h1 id="main-title" data-text="{{ title }}" class="font-black h-dvh align-center text-center text-fluid center mx-auto">
+    data:ink:io
+</h1>
+<script type="module">
+    import { wandering_gel } from "/assets/js/effects/text-wandering-gel.js";
+    wandering_gel("main-title");
+</script>
 {% endblock %}

@@ -237,6 +237,10 @@
     @apply text-ink-light;
   }
 
+  /** WANDERING GEL **/
+  .wandering-gel {
+    @apply block;
+  }
 }
 
 @layer utilities {

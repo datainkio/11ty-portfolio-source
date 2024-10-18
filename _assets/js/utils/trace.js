@@ -3,7 +3,6 @@
  * See https://stefirosca.netlify.app/blog/7-tips-tricks-to-make-your-console-log-output-stand-out/
 */
 
-
     const VIEW = createView();
 
     export function trace(obj) {          

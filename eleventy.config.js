@@ -36,6 +36,7 @@ module.exports = function (eleventyConfig) {
       // Pull out the URLs for the different versions of the image file, and
       // return the requested size
       var srcset = source[0].attributes[1].nodeValue.split(", "); // note the space following the comma
+  
       if (srcset.length == 1) {
         return srcset[0];
       } else {
