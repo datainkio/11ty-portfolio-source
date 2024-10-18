@@ -15,7 +15,7 @@
 @layer base {
 
   body {
-    @apply text-ink-light bg-neutral-100;
+    @apply bg-neutral-100;
   }
 
   main {
@@ -46,11 +46,11 @@
     @apply prose prose-sm hover:no-underline mb-4;
   }
 
-  .bg-ink-dark p {
+  .bg-ink-dark {
     @apply text-ink-light;
   }
 
-  .bg-ink-light p {
+  .bg-ink-light {
     @apply text-ink-dark;
   }
 

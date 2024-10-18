@@ -1,21 +1,24 @@
 <!-- @format -->
 {% extends "species/parallax.html" %}
 {% set body_styles = "bg-graphpaper bg-ink-dark bg-fixed w-full" %}
-{% set main_styles = "text-ink-light grid grid-cols-12 gap-12 opacity-0" %}
+{% set main_styles = "text-ink-light grid grid-cols-12 opacity-0 max-w-360  mx-auto" %}
 {% block cap %}
 {% endblock %}
 {% block header %}
-	{% include "templates/about/title.html" %}
+	<header id="main-header" class="relative col-span-full h-dvh content-end grid grid-cols-6 gap-10 m-0">
+		{% include "templates/about/title.html" %}
+	</header>
 {% endblock %}
 
 {% block primary %}
+	{% set count = 0 %}
+	<section class="col-span-full grid grid-cols-12 w-xl mx-auto bg-ink-light py-4 px-8">
+			{% include "templates/about/resume.html" %}
+	</section>
 	<section id="projects" class="col-span-full grid grid-cols-4 gap-6">
 		{% include "templates/about/work.html" %}
 	</section>
-	{% set count = 0 %}
-	<section class="col-span-full grid grid-cols-subgrid">
-		{% include "templates/about/resume.html" %}
-	</section>
+
 	<section class="col-span-full grid grid-cols-3 p-0">
 		{% include "templates/about/stats.html" %}
 	</section>
