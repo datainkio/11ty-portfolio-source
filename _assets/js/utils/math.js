@@ -27,3 +27,12 @@ export function generateLogarithmicProgression(start, end, steps) {
   }
   return progression;
 }
+
+// Return a random value between -1 and 1, excluding any values between -N and N
+export function generateDualRangedRandom(n = 0) {
+  let randomNumber;
+  do {
+    randomNumber = (Math.random() * 2) - 1;
+  } while (randomNumber > 0 - n && randomNumber < n);
+  return randomNumber
+}

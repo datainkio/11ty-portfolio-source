@@ -1,4 +1,5 @@
 import { trace } from '/assets/js/utils/trace.js';
+import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
 import { textRadar } from '/assets/js/effects/text-radar.js';
 import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
 import { textRoll } from '/assets/js/effects/text-roll.js';
@@ -33,8 +34,8 @@ window.onload = function() {
         // TL.add(fadeInChars("main-title"));
         // TL.add(textLenticular("main-title", trace));
         // TL.add(textRoll("main-title"));
-        TL.addLabel("radar");
-        TL.add(textRadar("main-title"));
+        // TL.add(textRadar("main-title"));
+        TL.add(WanderingGel("main-title", -8, -8, .75, 30, ["alpha", "bravo"], 50));
         // main.add(introLines("practices"));
 
         function onMainStart(obj) {

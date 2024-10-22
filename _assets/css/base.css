@@ -15,7 +15,7 @@
 @layer base {
 
   body {
-    @apply bg-neutral-100;
+    @apply bg-neutral-200;
   }
 
   main {
@@ -239,11 +239,22 @@
 
   /** WANDERING GEL **/
   .wandering-gel {
-    @apply block;
+    @apply absolute inset-0 flex items-center justify-center mix-blend-multiply;
   }
+  .wandering-gel.alpha {
+    @apply text-[#06608D];
+  }
+  .wandering-gel.bravo {
+    @apply text-[#EB5E28];
+  }
+  .wandering-gel.charlie {
+    @apply text-[#FBC30B];
+  }
+
 }
 
 @layer utilities {
+
   .faded {
     @apply opacity-0;
   }
