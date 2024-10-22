@@ -5,6 +5,17 @@ import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
 import { textRoll } from '/assets/js/effects/text-roll.js';
 import { textLenticular } from '/assets/js/effects/text-lenticular.js';
 
+const WGParams = {
+    id: "main-title", 
+    w: -8,
+    h: -8,
+    envelope: 0,
+    duration: 1, 
+    colors: ["alpha", "bravo"], 
+    wiggles: 50,
+    debug: trace
+}
+
 window.onload = function() {
     try {
     
@@ -35,7 +46,7 @@ window.onload = function() {
         // TL.add(textLenticular("main-title", trace));
         // TL.add(textRoll("main-title"));
         // TL.add(textRadar("main-title"));
-        TL.add(WanderingGel("main-title", -8, -8, .75, 30, ["alpha", "bravo"], 50));
+        TL.add(WanderingGel(WGParams));
         // main.add(introLines("practices"));
 
         function onMainStart(obj) {

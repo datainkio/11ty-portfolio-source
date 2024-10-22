@@ -242,13 +242,13 @@
     @apply absolute inset-0 flex items-center justify-center mix-blend-multiply;
   }
   .wandering-gel.alpha {
-    @apply text-[#06608D];
+    @apply text-[#06608D] mix-blend-multiply;
   }
   .wandering-gel.bravo {
-    @apply text-[#EB5E28];
+    @apply text-[#EB5E28] mix-blend-multiply;
   }
   .wandering-gel.charlie {
-    @apply text-[#FBC30B];
+    @apply text-[#FBC30B] mix-blend-multiply;
   }
 
 }
