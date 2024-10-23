@@ -15,6 +15,9 @@ module.exports = {
       dark: "#1A171C",
       transparent: "#FFFFFF00"
     },
+    borderColor: {
+      DEFAULT: "#342E37"
+    },
     primary: {
       50: "#F1F7FD",
       100: "#E4F0FC",

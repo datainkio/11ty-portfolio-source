@@ -20,6 +20,7 @@ module.exports = {
 			spacing: layout.spacing,
 			margin: layout.margin,
 			colors: palettes.bauhaus,
+			borderColor: palettes.bauhaus.borderColor,
 			container: layout.container,
 			fontFamily: typography.fontFamily,
 			fontSize: typography.fontSize,

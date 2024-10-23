@@ -7,8 +7,8 @@ import { textLenticular } from '/assets/js/effects/text-lenticular.js';
 
 const WGParams = {
     id: "main-title", 
-    w: -8,
-    h: -8,
+    w: -6,
+    h: -6,
     envelope: 0,
     duration: 1, 
     colors: ["alpha", "bravo"], 

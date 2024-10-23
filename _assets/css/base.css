@@ -54,24 +54,6 @@
     @apply text-ink-dark;
   }
 
-  .bg-ink-dark .border-l,
-  .bg-ink-dark .border-t,
-  .bg-ink-dark .border-r,
-  .bg-ink-dark .border-b,
-  .bg-ink-dark .border-y,
-  .bg-ink-dark .border-x {
-    @apply border-neutral-600;
-  }
-
-  .bg-ink-light .border-l,
-  .bg-ink-light .border-t,
-  .bg-ink-light .border-r,
-  .bg-ink-light .border-b,
-  .bg-ink-light .border-y,
-  .bg-ink-light .border-x {
-    @apply border-neutral-400;
-  }
-
   .lead {
     @apply first-line:uppercase first-line:tracking-widest
     first-letter:text-7xl first-letter:font-black

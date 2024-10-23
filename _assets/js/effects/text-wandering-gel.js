@@ -28,13 +28,12 @@ export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["a
             }
             
             if (i > 0) {
-                var st = new SplitText(span, { type: "chars"});
-                TL.to(st.chars, {
-                    duration: .25,
+                // var st = new SplitText(span, { type: "chars"});
+                TL.to(span, {
+                    duration: duration,
                     x: "+=" + w * range,
                     y: "+=" + h * range,
-                    stagger: 0.1
-                }, .35)
+                })
                 // Move all of the things (except for the first) to a new position
                 // .to(span, 1.5, {x:"+=" + w, y:"+=" + h, ease: "power3.inOut"}, 2)
                 // .to(st.chars, duration, {x: "+=" + Math.abs(w * range), repeat:-1, ease:CustomWiggle.create("", {type:"random", wiggles:wiggles})}, delay)
