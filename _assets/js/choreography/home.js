@@ -1,9 +1,10 @@
 import { trace } from '/assets/js/utils/trace.js';
 import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
-import { textRadar } from '/assets/js/effects/text-radar.js';
-import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
-import { textRoll } from '/assets/js/effects/text-roll.js';
-import { textLenticular } from '/assets/js/effects/text-lenticular.js';
+import { Halftone } from '/assets/js/effects/image-halftone.js';
+import { TextRadar } from '/assets/js/effects/text-radar.js';
+// import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
+// import { textRoll } from '/assets/js/effects/text-roll.js';
+import { TextLenticular } from '/assets/js/effects/text-lenticular.js';
 
 const WGParams = {
     id: "main-title", 
@@ -13,12 +14,41 @@ const WGParams = {
     duration: 1, 
     colors: ["alpha", "bravo"], 
     wiggles: 50,
-    debug: trace
-}
+    // debug: trace
+};
+
+const TRParams = {
+    id: "main-title"
+};
+
+const HalftoneParams = {
+    container: "avatar",
+    dotsize: 10,
+    color: true,
+    debug: false
+};
 
 window.onload = function() {
+
     try {
-    
+         /**
+         * The intro timeline. This runs when the page load completes.
+         * This has its own timeline to decouple it from the main. This
+         * reduces interference with scroll events.
+         */
+        const INTRO = gsap.timeline();
+        INTRO.onStart = onStart,
+        INTRO.onStartParams = "intro",
+        INTRO.onComplete = onComplete,
+        INTRO.onCompleteParams = "intro";
+        // INTRO.pause();
+
+        // const HT = Halftone(HalftoneParams);
+        const WG = WanderingGel(WGParams);
+        // const TR = TextRadar(TRParams);
+        // const TLen = TextLenticular("main-title");
+        INTRO.add(WG);
+
         gsap.registerPlugin(ScrollTrigger);
         const SPEED = 1.25;
         const ST = ScrollTrigger.create({
@@ -27,7 +57,7 @@ window.onload = function() {
             end: "+=100%",
             scrub: 1,
         });
-
+        
         /**
          * The main timeline. This coordinates all of the timelines for the 
          * different bits and bobs on the page, like sections and decorations.
@@ -35,9 +65,9 @@ window.onload = function() {
         const TL = gsap.timeline({
             id: "main",
             trigger: ST,
-            onStart: onMainStart,
+            onStart: onStart,
             onStartParams: ["main"],
-            onComplete: onMainComplete,
+            onComplete: onComplete,
             onCompleteParams: ["main"]
         });
 
@@ -46,15 +76,9 @@ window.onload = function() {
         // TL.add(textLenticular("main-title", trace));
         // TL.add(textRoll("main-title"));
         // TL.add(textRadar("main-title"));
-        TL.add(WanderingGel(WGParams));
+        // TL.add(WanderingGel(WGParams));
         // main.add(introLines("practices"));
 
-        function onMainStart(obj) {
-            trace("start: " + obj);
-        }
-        function onMainComplete(obj) {
-            trace("complete: " + obj);
-        }
 
         /**
          * Individual elements bring themselves into view
@@ -74,8 +98,16 @@ window.onload = function() {
                 delay: (index % columns) * .5,
                 ease: "power1.out"
             })
-        })
+        });
+        TL.pause();
     } catch(e) {
         trace(e);
     }
 };
+
+function onStart(obj) {
+    trace("start: " + obj);
+}
+function onComplete(obj) {
+    trace("complete: " + obj);
+}

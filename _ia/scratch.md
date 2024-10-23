@@ -7,7 +7,6 @@ scripts: >
   <script src="/assets/js/gsap/gsap.js"></script>
   <script src="/assets/js/gsap/CustomEase.js"></script>
   <script src="/assets/js/gsap/CustomWiggle.js"></script>
-  <script type="module" src="/assets/js/effects/text-wandering-gel.js"></script>
 ---
 
 <!-- @format -->

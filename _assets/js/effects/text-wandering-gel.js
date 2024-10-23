@@ -1,8 +1,10 @@
 import { generateDualRangedRandom } from "/assets/js/utils/math.js";
-gsap.registerPlugin(CustomEase, CustomWiggle, SplitText); // register
+var DEBUG = false;
 
-export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["alpha", "bravo"], wiggles = false, debug = false}) {
 
+export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["alpha", "bravo", "charlie"], wiggles = false, debug = false}) {
+    gsap.registerPlugin(CustomEase, CustomWiggle, SplitText);
+    DEBUG = debug;
     const CONTAINER = document.getElementById(id); // The element with the text we want to tweak
     const SRC = CONTAINER.innerText; // The original text
     var span; // The final result will replace the original text with N copies wrapped in spans
@@ -41,8 +43,8 @@ export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["a
             };
         }
     } catch(e) {
-        if (debug) {
-            debug(e);
+        if (DEBUG) {
+            DEBUG(e);
         }
     }
 

@@ -221,7 +221,7 @@
 
   /** WANDERING GEL **/
   .wandering-gel {
-    @apply absolute inset-0 flex items-center justify-center mix-blend-multiply;
+    @apply absolute inset-0 flex items-center justify-center;
   }
   .wandering-gel.alpha {
     @apply text-[#06608D] mix-blend-multiply;

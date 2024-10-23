@@ -2,10 +2,14 @@
 {% set main_styles = "" %}
 {% block primary %}
 
-<h1 id="main-title" data-text="{{ title }}" class="font-black h-dvh align-center text-center text-fluid center mx-auto">
-    data:ink:io
-</h1>
-<p class="wandering-gel alpha">Hi there</p>
-<p class="wandering-gel charlie">Hi there</p>
-<p class="wandering-gel bravo">Hi there</p>
+<!-- @format -->
+<div id="avatar" class="size-72 mx-auto">
+    {% for img in decorations %} {% if img.id == "recfjgiNd5lYlAfSt" %} {{
+    img.pictureElement | stylePicture("avatar", "place-self-end m-4 w-72 rounded-full") | safe }} {% endif %} {% endfor
+    %}
+    {# hair: recUaDUods0LUKmzC #}
+</div>
+<script>
+
+</script>
 {% endblock %}

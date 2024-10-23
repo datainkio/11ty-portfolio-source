@@ -4,7 +4,8 @@ introduction: "A page for experimentation"
 layout: "lab/scratch.html"
 permalink: "lab/scratch/"
 scripts: >
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="/assets/js/gsap/gsap.js"></script>
+  <script type="module" src="/assets/js/effects/image-halftone.js"></script>
 ---
 
 <!-- @format -->

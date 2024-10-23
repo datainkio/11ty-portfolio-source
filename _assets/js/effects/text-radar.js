@@ -1,5 +1,3 @@
-gsap.registerPlugin(ScrollTrigger);
-
 const DUR = .15; // Timeline duration
 const STEPS = 30; // Number of steps in the progression
 const ALPHA_START = .85; // Opacity of first step
@@ -17,15 +15,16 @@ var base = -601;
  * @param {string} id - The id for the element containing the text we want to mess with
  * @returns {GSAP timeline} - A timeline containing animations for each instance of the copied text
  */
-export function textRadar(id) {
+export function TextRadar({id}) {
     // settings();
-    populate(id);
-    updateView();
+    TL.onStart = populate;
+    TL.onStartParams = [id];
     return TL;
 };
 
 function populate(id) {
     source = document.getElementById(id);
+    source.classList.add("text-radar");
     text = source.textContent;
     // source.textContent = '';
     // Create the duplicates
@@ -48,6 +47,7 @@ function populate(id) {
             dupe.style.opacity = 1 - i/STEPS * .75;
         }      
     }
+    updateView();
 }
 
 function updateView() {
