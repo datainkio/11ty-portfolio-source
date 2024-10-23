@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Halftone Effect with GSAP</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        #controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+    </style>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Controls for adjusting dot size and grid size -->
+    <div id="controls">
+        <label for="dotSizeSlider">Adjust Dot Size: </label>
+        <input type="range" id="dotSizeSlider" min="2" max="50" value="10"><br><br>
+        <label for="gridSizeSlider">Adjust Grid Size: </label>
+        <input type="range" id="gridSizeSlider" min="2" max="50" value="10">
+    </div>
+
+    <!-- Example <picture> element -->
+    <picture id="imageContainer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
+            alt="Example Image">
+    </picture>
+
+    <script>
+        let canvas;
+        let ctx;
+        let imageData;
+        const image = new Image();
+
+        // Function to create a canvas dynamically and apply the color halftone effect with animation
+        function applyColorHalftoneEffect(dotSize, gridSize) {
+            // Set canvas dimensions based on the image
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            // Get the image data again (in case the canvas was cleared)
+            const pixels = ctx.getImageData(0, 0, image.width, image.height).data;
+
+            // Clear the canvas for halftone drawing
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Array to hold the dot animation data
+            const dots = [];
+
+            // Loop through the image in a grid defined by the gridSize
+            for (let y = 0; y < image.height; y += gridSize) {
+                for (let x = 0; x < image.width; x += gridSize) {
+
+                    // Calculate the average color and brightness of the block
+                    let totalR = 0, totalG = 0, totalB = 0;
+                    let totalBrightness = 0;
+                    let count = 0;
+
+                    // Loop through the pixels in the block
+                    for (let dy = 0; dy < gridSize; dy++) {
+                        for (let dx = 0; dx < gridSize; dx++) {
+                            const pixelX = x + dx;
+                            const pixelY = y + dy;
+
+                            if (pixelX < image.width && pixelY < image.height) {
+                                const index = (pixelY * image.width + pixelX) * 4;
+                                const r = pixels[index];
+                                const g = pixels[index + 1];
+                                const b = pixels[index + 2];
+
+                                // Sum the color values
+                                totalR += r;
+                                totalG += g;
+                                totalB += b;
+
+                                // Calculate the grayscale value for brightness
+                                const brightness = (r + g + b) / 3;
+                                totalBrightness += brightness;
+                                count++;
+                            }
+                        }
+                    }
+
+                    // Average color and brightness of the block
+                    const avgR = totalR / count;
+                    const avgG = totalG / count;
+                    const avgB = totalB / count;
+                    const averageBrightness = totalBrightness / count;
+
+                    // Calculate the radius of the dot (inversely proportional to brightness)
+                    const radius = ((255 - averageBrightness) / 255) * (dotSize / 2);
+
+                    // Store the dot data for animation
+                    dots.push({
+                        x: x + gridSize / 2,
+                        y: y + gridSize / 2,
+                        radius: radius,
+                        color: `rgb(${avgR}, ${avgG}, ${avgB})`
+                    });
+                }
+            }
+
+            // Animate the dots using GSAP
+            dots.forEach(dot => {
+                // Start with radius 0 for the animation effect
+                gsap.to(dot, {
+                    radius: dot.radius, // Animate to the calculated radius
+                    duration: 1,
+                    ease: "elastic.out(1, 0.5)",
+                    onUpdate: () => {
+                        // Clear the canvas for every frame
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        dots.forEach(d => {
+                            // Draw each dot with its animated radius
+                            ctx.beginPath();
+                            ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
+                            ctx.fillStyle = d.color;
+                            ctx.fill();
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize the canvas and image
+        function initCanvas() {
+            // Create the canvas dynamically
+            canvas = document.createElement('canvas');
+            ctx = canvas.getContext('2d');
+
+            // Replace the picture element with the canvas
+            const pictureElement = document.getElementById('imageContainer');
+            pictureElement.replaceWith(canvas);
+
+            // Set canvas dimensions and draw the image
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0, image.width, image.height);
+
+            // Store the image data (for restoring between halftone effects)
+            imageData = ctx.getImageData(0, 0, image.width, image.height);
+        }
+
+        // Event listener for the slider input to adjust dot size and grid size
+        function updateHalftoneEffect() {
+            const dotSize = parseInt(document.getElementById('dotSizeSlider').value, 10);
+            const gridSize = parseInt(document.getElementById('gridSizeSlider').value, 10);
+            applyColorHalftoneEffect(dotSize, gridSize);  // Reapply halftone effect with new dot and grid size
+        }
+
+        // Attach event listeners to both sliders
+        document.getElementById('dotSizeSlider').addEventListener('input', updateHalftoneEffect);
+        document.getElementById('gridSizeSlider').addEventListener('input', updateHalftoneEffect);
+
+        // Load the image and initialize the canvas
+        image.src = 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png';  // Example image
+        image.crossOrigin = 'Anonymous'; // Allow cross-origin images to load
+        image.onload = () => {
+            initCanvas();  // Initialize canvas and draw the original image
+            applyColorHalftoneEffect(10, 10);  // Apply halftone effect with the default dot and grid size
+        };
+    </script>
+
+</body>
+
+</html>
