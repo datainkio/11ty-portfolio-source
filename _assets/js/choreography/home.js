@@ -1,32 +1,11 @@
 import { trace } from '/assets/js/utils/trace.js';
+import { HalftoneParams, WGParams, TRParams} from '/assets/js/choreography/config.js';
 import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
 import { Halftone } from '/assets/js/effects/image-halftone.js';
-import { TextRadar } from '/assets/js/effects/text-radar.js';
+// import { TextRadar } from '/assets/js/effects/text-radar.js';
 // import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
 // import { textRoll } from '/assets/js/effects/text-roll.js';
-import { TextLenticular } from '/assets/js/effects/text-lenticular.js';
-
-const WGParams = {
-    id: "main-title", 
-    w: -6,
-    h: -6,
-    envelope: 0,
-    duration: 1, 
-    colors: ["alpha", "bravo"], 
-    wiggles: 50,
-    // debug: trace
-};
-
-const TRParams = {
-    id: "main-title"
-};
-
-const HalftoneParams = {
-    container: "avatar",
-    dotsize: 10,
-    color: true,
-    debug: false
-};
+// import { TextLenticular } from '/assets/js/effects/text-lenticular.js';
 
 window.onload = function() {
 
@@ -43,7 +22,7 @@ window.onload = function() {
         INTRO.onCompleteParams = "intro";
         // INTRO.pause();
 
-        // const HT = Halftone(HalftoneParams);
+        const HT = Halftone(HalftoneParams);
         const WG = WanderingGel(WGParams);
         // const TR = TextRadar(TRParams);
         // const TLen = TextLenticular("main-title");
@@ -97,7 +76,7 @@ window.onload = function() {
                 y: 150,
                 delay: (index % columns) * .5,
                 ease: "power1.out"
-            })
+            });
         });
         TL.pause();
     } catch(e) {

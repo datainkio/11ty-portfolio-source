@@ -17,24 +17,25 @@ export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["a
     const TL = gsap.timeline();
     var delay; // Keeps the x and y coords independent of each other 
     var range; // Tweak the w and h values to provide a bit of variation
+    var direction; // A positive/negative modifier for x/y values
     try {
         for (var i = 0; i < colors.length; i++) {
             // Create a duplicate
             span = CONTAINER.appendChild(document.createElement('span'));
             span.innerText = SRC;
             span.classList.add(CLASS_NAME, colors[i]);
-            delay = Math.random * duration;
+            // delay = Math.random * duration;
             range = 1;
+            direction = (i % 2 === 0 ? -.8 : 1);
             if (colors.length > 2) {
-                range = generateDualRangedRandom(envelope);
+                // range = generateDualRangedRandom(envelope);
             }
             
             if (i > 0) {
-                // var st = new SplitText(span, { type: "chars"});
                 TL.to(span, {
                     duration: duration,
-                    x: "+=" + w * range,
-                    y: "+=" + h * range,
+                    x: "+=" + w * range * direction,
+                    y: "+=" + h * range * direction,
                 })
                 // Move all of the things (except for the first) to a new position
                 // .to(span, 1.5, {x:"+=" + w, y:"+=" + h, ease: "power3.inOut"}, 2)

@@ -9,7 +9,10 @@ var DOTSIZE = 5;
 var GRIDSIZE = 5;
 var COLOR = false;
 
-// const HT = Halftone(HalftoneParams);
+
+/**
+ * Example Implementation
+ *
     window.onload = function() {
         Halftone({
             container: "avatar",
@@ -20,7 +23,7 @@ var COLOR = false;
         });
         settings(50, 0, 100);
     }
-
+*/
 
 // Receive a raster image from a picture element and render it as a halftone
 export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = false, debug = false}) {
@@ -35,10 +38,12 @@ export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = 
         // Get the picture element containing the image
         var pe = document.getElementById(container).querySelector("picture");
         IMAGE = pe.querySelector("img");
+        // When the image finishes loading...
         IMAGE.onload = function() {
-            initCanvas(pe);
-            applyHalftoneEffect(dotSize,gridSize);
-            initAnimation();
+            initCanvas(pe); // Initialize the canvas element
+            applyHalftoneEffect(DOTSIZE,GRIDSIZE); // Transform the image
+            updateView(); // Display the transformed image
+            initAnimation(); // Animate all the things
         };
         if (IMAGE.complete) {
             IMAGE.onload();
@@ -48,18 +53,27 @@ export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = 
         log("initializion failed");
         log(e);
     }
-    // return TL;
+    return TL;
 };
+
+/**
+ * Get things started by swapping the source picture element with the canvas
+ */
 function initCanvas(pe){
     log("initCanvas");
     pe.replaceWith(CANVAS);
-    // CANVAS.className = pe.className;
+    combineClassLists(pe, IMAGE).forEach(className => {
+        CANVAS.classList.add(className);
+    })
     CANVAS.width = IMAGE.width;
     CANVAS.height = IMAGE.height;
     CTX.drawImage(IMAGE, 0, 0, IMAGE.width, IMAGE.height);
     IMAGE_DATA = CTX.getImageData(0,0,IMAGE.width,IMAGE.height);
 }
 
+/**
+ * Update the display of the image data by rendering the dots
+ */
 function updateView() {
     // log("updateView");
     CTX.clearRect(0,0,CANVAS.width,CANVAS.height);
@@ -71,7 +85,12 @@ function updateView() {
     });
 };
 
-// Function to apply the halftone effect
+/**
+ * Store the halftone data as an array of objects defining the size and color
+ * of each "dot."
+ * @dotSize - The radius in pixels of the dot at a given location in the grid
+ * @gridSize - The density of dots
+ */
 function applyHalftoneEffect(dotSize,gridSize) {
     log("applyHalftoneEffect");
     CANVAS.width = IMAGE.width;
@@ -142,12 +161,6 @@ function applyHalftoneEffect(dotSize,gridSize) {
 
         } // end loop through image grid columns
     } // end loop through image grid rows
-    log(DOTS.length + " dots");
-    log(rows *  cols + " blocks");
-    log([rows, cols] + " rows,cols");
-    log([Math.floor(IMAGE.width / DOTSIZE), Math.floor(IMAGE.height / DOTSIZE)] + " floor");
-    log([Math.ceil(IMAGE.width / DOTSIZE), Math.ceil(IMAGE.height / DOTSIZE)] + " ceiling");
-    updateView();
 };
 
 const TL = gsap.timeline({
@@ -159,10 +172,9 @@ const TL = gsap.timeline({
 });
 function initAnimation() {
     log("initAnimation");
-
     var grid = [Math.floor(IMAGE.width / DOTSIZE), Math.floor(IMAGE.height / DOTSIZE)];
     // log(grid);
-    TL.from(DOTS, scatter());
+    TL.from(DOTS, edges());
 };
 
 function scatter() {
@@ -181,15 +193,13 @@ function scatter() {
 
 function edges() {
     return {
-        duration: 2,
+        duration: 1,
         // yoyo: true,
         // repeat: -1,
-        radius: "*=" + .25,
-        physics2D: {
-            velocity: "random(200, 650)",
-            angle: "random(250, 290)",
-            gravity: 500
-        },
+        radius: 0,
+        stagger: distributeByPosition({
+            from: "edges"
+        })
     }
 }
 
@@ -205,6 +215,87 @@ function onUpdate() {
 function onComplete() {
     log("onComplete");
 }
+
+/** UTILITIES AND HELPERS */
+
+function combineClassLists(element1, element2) {
+    // Combine and deduplicate classes from both elements
+    const combinedClasses = [...new Set([...element1.classList, ...element2.classList])];
+    return combinedClasses;
+}
+
+
+/*
+pass in an object with any of the following optional properties (just like the stagger special object):
+{
+  amount: amount (in seconds) that should be distributed
+  from: "center" | "end" | "edges" | start" | index value (integer)
+  ease: any ease, like "power1"
+  axis: "x" | "y" (or omit, and it'll be based on both the x and y positions)
+}
+*/
+function distributeByPosition(vars) {
+	var ease = vars.ease && gsap.parseEase(vars.ease),
+		from = vars.from || 0,
+		base = vars.base || 0,
+		axis = vars.axis,
+		ratio = {center: 0.5, end: 1, edges:0.5}[from] || 0,
+		distances;
+	return function(i, target, a) {
+		var l = a.length,
+			originX, originY, x, y, d, j, minX, maxX, minY, maxY, positions;
+		if (!distances) {
+			distances = [];
+			minX = minY = Infinity;
+			maxX = maxY = -minX;
+			positions = [];
+			for (j = 0; j < l; j++) {
+				var dot = a[j]; //.getBoundingClientRect();
+				d = dot.radius;
+                x = dot.x; // (d.left + d.right) / 2; //based on the center of each element
+				y = dot.y; // (d.top + d.bottom) / 2;
+				if (x < minX) {
+					minX = x;
+				}
+				if (x > maxX) {
+					maxX = x;
+				}
+				if (y < minY) {
+					minY = y;
+				}
+				if (y > maxY) {
+					maxY = y;
+				}
+				positions[j] = {x:x, y:y};
+			}
+			originX = isNaN(from) ? minX + (maxX - minX) * ratio : positions[from].x || 0;
+			originY = isNaN(from) ? minY + (maxY - minY) * ratio : positions[from].y || 0;
+			maxX = 0;
+			minX = Infinity;
+			for (j = 0; j < l; j++) {
+				x = positions[j].x - originX;
+				y = originY - positions[j].y;
+				distances[j] = d = !axis ? Math.sqrt(x * x + y * y) : Math.abs((axis === "y") ? y : x);
+				if (d > maxX) {
+					maxX = d;
+				}
+				if (d < minX) {
+					minX = d;
+				}
+			}
+			distances.max = maxX - minX;
+			distances.min = minX;
+			distances.v = l = (vars.amount || (vars.each * l) || 0) * (from === "edges" ? -1 : 1);
+			distances.b = (l < 0) ? base - l : base;
+		}
+		l = (distances[i] - distances.min) / distances.max;
+		return distances.b + (ease ? ease(l) : l) * distances.v;
+	};
+}
+
+//END FUNCTION
+//this just helps avoid the pixel-snapping that some browsers do.
+gsap.set("#grid div i", {rotation:0.5, force3D:true}); 
 
 // Controls to adjust settings at runtime
 function settings({value = 50, min = 0, max = 100}) {
