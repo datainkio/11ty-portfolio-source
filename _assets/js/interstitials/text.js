@@ -1,4 +1,3 @@
-
 export function fadeInAndUp(id) {
     var elem = document.getElementById(id);
     var tl = gsap.timeline();
@@ -36,6 +35,5 @@ export function fadeInChars(id) {
         // skewX: 45,
         stagger: 0.1
     }));
-
     return tl;
 }

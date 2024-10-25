@@ -1,4 +1,5 @@
 import { trace } from '/assets/js/utils/trace.js';
+import { fadeInAndUp, fadeInChars, introLines } from '/assets/js/interstitials/text.js';
 import { HalftoneParams, WGParams, TRParams} from '/assets/js/choreography/config.js';
 import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
 import { Halftone } from '/assets/js/effects/image-halftone.js';
@@ -6,6 +7,7 @@ import { Halftone } from '/assets/js/effects/image-halftone.js';
 // import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
 // import { textRoll } from '/assets/js/effects/text-roll.js';
 // import { TextLenticular } from '/assets/js/effects/text-lenticular.js';
+gsap.registerPlugin(ScrollTrigger);
 
 window.onload = function() {
 
@@ -15,11 +17,19 @@ window.onload = function() {
          * This has its own timeline to decouple it from the main. This
          * reduces interference with scroll events.
          */
-        const INTRO = gsap.timeline();
-        INTRO.onStart = onStart,
-        INTRO.onStartParams = "intro",
-        INTRO.onComplete = onComplete,
-        INTRO.onCompleteParams = "intro";
+        log("choreography.home is setting up...");
+        const INTRO = gsap.timeline({
+            onStart: onStart,
+            onStartParams: ["intro"],
+            onUpdate: onUpdate,
+            onUpdateParams: ["intro"],
+            onComplete: onComplete,
+            onCompleteParams: ["intro"]
+        });
+        // INTRO.onStart = onStart,
+        // INTRO.onStartParams = "intro",
+        // INTRO.onComplete = onComplete,
+        // INTRO.onCompleteParams = "intro";
         // INTRO.pause();
 
         const HT = Halftone(HalftoneParams);
@@ -28,7 +38,20 @@ window.onload = function() {
         // const TLen = TextLenticular("main-title");
         INTRO.add(WG);
 
-        gsap.registerPlugin(ScrollTrigger);
+
+        // Set up ScrollTrigger to pin the #types <ul> and keep it vertically centered
+        const types = document.getElementById("types");
+        gsap.to(types, {
+            scrollTrigger: {
+                trigger: "#work",
+                start: "top center",          // Start when the top of the section hits the center of the viewport
+                end: "bottom bottom",         // End when the bottom of the section hits the center of the viewport
+                pin: types,                    // Keep the element fixed in place
+                // pinSpacing: false,            // Disable additional space after pinning ends
+                scrub: 2
+            }
+        });
+
         const SPEED = 1.25;
         const ST = ScrollTrigger.create({
             trigger: '#main-title',
@@ -85,8 +108,17 @@ window.onload = function() {
 };
 
 function onStart(obj) {
-    trace("start: " + obj);
+    log(obj + ".onStart");
+}
+function onUpdate(obj) {
+    log(obj + ".onUpdate");
 }
 function onComplete(obj) {
-    trace("complete: " + obj);
+    log(obj + ".onComplete");
+}
+
+function log(obj) {
+    if(typeof trace === 'function') {
+        trace(obj);
+    }
 }

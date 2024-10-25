@@ -264,9 +264,17 @@
   }
 
   .bg-graphpaper {
-    @apply inset-0 w-full bg-neutral-900 bg-blend-screen
+    @apply inset-0 w-full 
 		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
 		bg-[size:1rem_1rem];
+  }
+
+  .bg-graphpaper-dark {
+    @apply bg-graphpaper bg-neutral-900 bg-blend-screen;
+  }
+
+  .bg-graphpaper-light {
+    @apply bg-graphpaper bg-neutral-200;
   }
 
   .bg-blockframes-bw,
