@@ -1,10 +1,9 @@
-import { trace } from '/assets/js/utils/trace.js';
+// import { trace } from '/assets/js/utils/trace.js';
 const CANVAS = document.createElement("canvas");
 const CTX = CANVAS.getContext('2d', {"willReadFrequently": true});
 var IMAGE = new Image();
 var IMAGE_DATA;
 var DOTS = [];
-var DEBUG = true;
 var DOTSIZE = 5;
 var GRIDSIZE = 5;
 var COLOR = false;
@@ -18,19 +17,17 @@ var COLOR = false;
             container: "avatar",
             dotSize: 12,
             gridSize: 10,
-            color: true,
-            debug: true
+            color: true
         });
         settings(50, 0, 100);
     }
 */
 
 // Receive a raster image from a picture element and render it as a halftone
-export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = false, debug = false}) {
+export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = false,}) {
     log("initializing");
     gsap.registerPlugin(CustomEase, CustomWiggle);
     try {
-        DEBUG = debug;
         DOTSIZE = dotSize;
         GRIDSIZE = gridSize;
         COLOR = color;
@@ -299,7 +296,7 @@ gsap.set("#grid div i", {rotation:0.5, force3D:true});
 
 // Controls to adjust settings at runtime
 function settings({value = 50, min = 0, max = 100}) {
-    if (DEBUG) {
+    if (trace) {
         // Create the container
         const container = document.createElement("div");
         container.classList.add("absolute", "top-0", "right-0", "w-80", "z-50", "flex");
@@ -331,7 +328,8 @@ function settings({value = 50, min = 0, max = 100}) {
 };
 
 function log(obj) {
-    if (DEBUG) {
+    if (typeof trace === 'function' ) {
         trace("Halftone: " + obj);
     }
+    console.log(obj);
 }
