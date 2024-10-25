@@ -5,16 +5,16 @@ var IMAGE = new Image();
 var IMAGE_DATA;
 var DOTS = [];
 var DEBUG = true;
-var DOTSIZE = 10;
-var GRIDSIZE = 10;
+var DOTSIZE = 5;
+var GRIDSIZE = 5;
 var COLOR = false;
 
 // const HT = Halftone(HalftoneParams);
     window.onload = function() {
         Halftone({
             container: "avatar",
-            dotsize: 20,
-            gridsize: 18,
+            dotSize: 12,
+            gridSize: 10,
             color: true,
             debug: true
         });
@@ -23,8 +23,9 @@ var COLOR = false;
 
 
 // Receive a raster image from a picture element and render it as a halftone
-export function Halftone({container = "", dotSize = 10, gridSize = 10, color = false, debug = false}) {
+export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = false, debug = false}) {
     log("initializing");
+    gsap.registerPlugin(CustomEase, CustomWiggle);
     try {
         DEBUG = debug;
         DOTSIZE = dotSize;
@@ -60,7 +61,7 @@ function initCanvas(pe){
 }
 
 function updateView() {
-    log("updateView");
+    // log("updateView");
     CTX.clearRect(0,0,CANVAS.width,CANVAS.height);
     DOTS.forEach((d, index) => {
         CTX.beginPath();
@@ -79,9 +80,12 @@ function applyHalftoneEffect(dotSize,gridSize) {
     CTX.clearRect(0,0,CANVAS.width,CANVAS.height);
 
     // Loop through the image in a grid defined by the gridSize
+    var rows = 0;
+    var cols = 0;
     for (let y = 0; y < IMAGE.height; y += gridSize) {
+        rows += 1;
         for (let x = 0; x < IMAGE.width; x += gridSize) {
-
+            cols += 1;
             // Calculate the block's color profile
             let totalBrightness = 0;
             let totalR = 0;
@@ -138,13 +142,17 @@ function applyHalftoneEffect(dotSize,gridSize) {
 
         } // end loop through image grid columns
     } // end loop through image grid rows
-    // log(DOTS[DOTS.length - 1]);
+    log(DOTS.length + " dots");
+    log(rows *  cols + " blocks");
+    log([rows, cols] + " rows,cols");
+    log([Math.floor(IMAGE.width / DOTSIZE), Math.floor(IMAGE.height / DOTSIZE)] + " floor");
+    log([Math.ceil(IMAGE.width / DOTSIZE), Math.ceil(IMAGE.height / DOTSIZE)] + " ceiling");
     updateView();
 };
 
 const TL = gsap.timeline({
-    repeat: -1, 
-    repeatDelay: 0.5,
+    // repeat: -1, 
+    // repeatDelay: 5,
     onStart: onStart,
     onUpdate: onUpdate,
     onComplete: onComplete
@@ -152,30 +160,45 @@ const TL = gsap.timeline({
 function initAnimation() {
     log("initAnimation");
 
-    var grid = [Math.floor(IMAGE.width / GRIDSIZE), Math.floor(IMAGE.height / GRIDSIZE)];
-    TL.to(DOTS, {
-        duration: 1,
-        radius: 0,
-        yoyo: true,
-        repeat: 1,
-        ease: "power1.inOut",
-        stagger: {
-            amount: 1.5,
-            grid: grid,
-            ease: "none",
-            from: "random"
-        }
-    });
-    TL.pause();
-    TL.play();
+    var grid = [Math.floor(IMAGE.width / DOTSIZE), Math.floor(IMAGE.height / DOTSIZE)];
+    // log(grid);
+    TL.from(DOTS, scatter());
 };
+
+function scatter() {
+    return {
+        duration: 2,
+        // yoyo: true,
+        // repeat: -1,
+        radius: "*=" + .25,
+        physics2D: {
+            velocity: "random(200, 650)",
+            angle: "random(250, 290)",
+            gravity: 500
+        },
+    }
+}
+
+function edges() {
+    return {
+        duration: 2,
+        // yoyo: true,
+        // repeat: -1,
+        radius: "*=" + .25,
+        physics2D: {
+            velocity: "random(200, 650)",
+            angle: "random(250, 290)",
+            gravity: 500
+        },
+    }
+}
 
 function onStart() {
     log("onStart");
 }
 
 function onUpdate() {
-    log("onUpdate");
+    // log("onUpdate");
     updateView();
 }
 
