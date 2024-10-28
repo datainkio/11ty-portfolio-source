@@ -291,7 +291,7 @@ function distributeByPosition(vars) {
 
 //END FUNCTION
 //this just helps avoid the pixel-snapping that some browsers do.
-gsap.set("#grid div i", {rotation:0.5, force3D:true}); 
+// gsap.set("#grid div i", {rotation:0.5, force3D:true}); 
 
 // Controls to adjust settings at runtime
 function settings({value = 50, min = 0, max = 100}) {

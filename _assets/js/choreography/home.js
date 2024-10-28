@@ -3,7 +3,7 @@ import { fadeInAndUp, fadeInChars, introLines } from '/assets/js/interstitials/t
 import { HalftoneParams, WGParams, ARCParams} from '/assets/js/choreography/config.js';
 import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
 import { Halftone } from '/assets/js/effects/image-halftone.js';
-import { ARC } from '/assets/js/svg-animation/blockframe-animation-test.js';
+import *  as Diagram from '/assets/js/choreography/diagram.js';
 // import { TextRadar } from '/assets/js/effects/text-radar.js';
 // import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
 // import { textRoll } from '/assets/js/effects/text-roll.js';
@@ -27,15 +27,10 @@ window.onload = function() {
             onComplete: onComplete,
             onCompleteParams: ["intro"]
         });
-        // INTRO.onStart = onStart,
-        // INTRO.onStartParams = "intro",
-        // INTRO.onComplete = onComplete,
-        // INTRO.onCompleteParams = "intro";
-        // INTRO.pause();
 
         const HT = Halftone(HalftoneParams);
         const WG = WanderingGel(WGParams);
-        const ANIM = ARC(ARCParams, this);
+        const ARC = Diagram.arc("diagram_arc");
         // const TRoll = TextRadar(TRParams);
         // const TLen = TextLenticular("main-title");
         INTRO.add(WG);
