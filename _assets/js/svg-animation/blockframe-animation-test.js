@@ -1,14 +1,17 @@
-export function blockframe_animation_test() {
+export function ARC(ARCParams, parent) {
     var tl = gsap.timeline({
-        id: "blockframe_animation_test"
+        scrollTrigger: ARCParams.scrollTrigger,
+        onStart: parent.onStart,
+        onStartParams: ["anim"],
+        onComplete: parent.onComplete,
+        onCompleteParams: ["anim"]
     })
-    tl.add(gsap.from("#Block_01", {opacity: 0}));
-    tl.add(gsap.from("#Arrow", {opacity: 0}));
-    tl.add(gsap.from("#Block_02", {opacity: 0}));
-    tl.add(gsap.from("#Jump", {opacity: 0}));
-    tl.add(gsap.from("#Drag", {opacity: 0}));
-    tl.add(gsap.from("#Select", {opacity: 0}));
-    tl.add(gsap.from("#Destination", {opacity: 0}));
-    tl.pause();
+    tl.from("#Block_01", {duration: ARCParams.duration, opacity: 0});
+    tl.from("#Arrow", {duration: ARCParams.duration, opacity: 0}, ARCParams.overlap);
+    tl.from("#Block_02", {duration: ARCParams.duration, opacity: 0}, ARCParams.overlap);
+    tl.from("#Jump", {duration: ARCParams.duration, opacity: 0}, ARCParams.overlap);
+    tl.from("#Drag", {duration: ARCParams.duration, opacity: 0}, ARCParams.overlap);
+    tl.from("#Select", {duration: ARCParams.duration, opacity: 0}, ARCParams.overlap);
+    tl.from("#Destination", {duration: ARCParams.duration, opacity: 0}, ARCParams.overlap);
     return tl;
 }

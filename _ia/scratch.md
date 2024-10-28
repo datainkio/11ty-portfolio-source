@@ -5,8 +5,8 @@ layout: "scratch.html"
 permalink: "scratch/index.html"
 scripts: >
   <script src="/assets/js/gsap/gsap.js"></script>
-  <script src="/assets/js/gsap/CustomEase.js"></script>
-  <script src="/assets/js/gsap/CustomWiggle.js"></script>
+  <script type="module" src="/assets/js/utils/trace.js"></script>
+  <script type="module" src="/assets/js/svg-animation/blockframe-animation-test.js"></script>
 ---
 
 <!-- @format -->

@@ -11,17 +11,16 @@ var COLOR = false;
 
 /**
  * Example Implementation
- *
-    window.onload = function() {
-        Halftone({
-            container: "avatar",
-            dotSize: 12,
-            gridSize: 10,
-            color: true
-        });
-        settings(50, 0, 100);
-    }
-*/
+ **/
+window.onload = function() {
+    Halftone({
+        container: "avatar",
+        dotSize: 6,
+        gridSize: 6,
+        color: true
+    });
+    settings(50, 0, 100);
+}
 
 // Receive a raster image from a picture element and render it as a halftone
 export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = false,}) {

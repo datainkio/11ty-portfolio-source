@@ -1,8 +1,9 @@
 import { trace } from '/assets/js/utils/trace.js';
 import { fadeInAndUp, fadeInChars, introLines } from '/assets/js/interstitials/text.js';
-import { HalftoneParams, WGParams, TRParams} from '/assets/js/choreography/config.js';
+import { HalftoneParams, WGParams, ARCParams} from '/assets/js/choreography/config.js';
 import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
 import { Halftone } from '/assets/js/effects/image-halftone.js';
+import { ARC } from '/assets/js/svg-animation/blockframe-animation-test.js';
 // import { TextRadar } from '/assets/js/effects/text-radar.js';
 // import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
 // import { textRoll } from '/assets/js/effects/text-roll.js';
@@ -34,7 +35,8 @@ window.onload = function() {
 
         const HT = Halftone(HalftoneParams);
         const WG = WanderingGel(WGParams);
-        const TRoll = TextRadar(TRParams);
+        const ANIM = ARC(ARCParams, this);
+        // const TRoll = TextRadar(TRParams);
         // const TLen = TextLenticular("main-title");
         INTRO.add(WG);
 
@@ -108,13 +110,13 @@ window.onload = function() {
     }
 };
 
-function onStart(obj) {
+export function onStart(obj) {
     log(obj + ".onStart");
 }
-function onUpdate(obj) {
+export function onUpdate(obj) {
     log(obj + ".onUpdate");
 }
-function onComplete(obj) {
+export function onComplete(obj) {
     log(obj + ".onComplete");
 }
 
