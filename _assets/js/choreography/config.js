@@ -1,10 +1,10 @@
 export const WGParams = {
     id: "main-title", 
-    w: -4,
-    h: -4,
+    w: -6,
+    h: -6,
     envelope: 0,
     duration: 1, 
-    colors: ["alpha", "bravo", "charlie"], 
+    colors: ["alpha", "bravo"], 
     wiggles: 50,
     // debug: trace
 };

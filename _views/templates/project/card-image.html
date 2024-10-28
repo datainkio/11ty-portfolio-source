@@ -1,7 +1,7 @@
 <a
   id="{{ project.id }}"
   onclick="{{ action }}"
-  class="max-h-72 overflow-hidden sequenced project all grid grid-cols-12 border-t pt-2 pb-8 {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }}"
+  class="max-h-72 overflow-hidden project all grid grid-cols-12 pt-2 pb-8 text-neutral-800 {% if project.isFeatured %}featured{% endif %} {{ project.CategorySlug }} weight-{{ project.Weight }}"
 >
   <h4 class="text-xs font-bold col-span-11">
     {{ project.Title }}
@@ -9,7 +9,7 @@
   {% if project.Recognition %}
     {% include "atoms/svg/award.svg" %}
   {% endif %}
-  <p class="font-light text-xs col-span-full w-full text-ink-light">
+  <p class="font-light text-xs text-neutral-600 col-span-full w-full">
     {% for role in roles | find('id', project.Role) %}
     {{ role.Name }}{% if loop.last %}{% else %}, {% endif %}
     {% endfor %}

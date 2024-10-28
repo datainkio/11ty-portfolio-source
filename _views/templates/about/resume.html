@@ -1,69 +1,74 @@
 
-<h2 class="sr-only">Introduction</h2>
+<section class="col-span-full grid grid-cols-12 max-w-360 mx-auto p-12">
+    <h2 class="sr-only">Introduction</h2>
 
-<header class="sequenced col-span-full grid grid-cols-subgrid p-0">
-    <h3 class="sr-only">Introduction</h3>
-    <section class="col-span-2 m-0 p-0 border-r">
-        <h4 class="font-bold text-xs pt-2">My name is</h4>
-        <p class="text-lg my-6">Russell S. Lebo</p>
-    </section>
-    <section class="col-span-10 m-0 p-0 ml-16">
-        <h4 class="font-bold text-xs pt-2">Owner of</h3>
-        <p class="text-lg my-6">data:ink:io <span class="text-sm">llc</span></p>
-    </section>
-    <section class="col-span-full m-0 p-0 border-y">
-        <h4 class="font-bold text-xs pt-2">Homebase</h4>
-        <p class="text-lg my-6">Baltimore, MD</p>
-    </section>
-</header>
+    <header class="col-span-full grid grid-cols-subgrid p-0">
+        <h3 class="sr-only">Introduction</h3>
+        <section class="col-span-2 m-0 p-0 border-r">
+            <h4 class="font-bold text-xs pt-2">My name is</h4>
+            <p class="text-lg my-6">Russell S. Lebo</p>
+        </section>
+        <section class="col-span-10 m-0 p-0 ml-16">
+            <h4 class="font-bold text-xs pt-2">Owner of</h3>
+            <p class="text-lg my-6">data:ink:io <span class="text-sm">llc</span></p>
+        </section>
+        <section class="col-span-full m-0 p-0 border-y">
+            <h4 class="font-bold text-xs pt-2">Homebase</h4>
+            <p class="text-lg my-6">Baltimore, MD</p>
+        </section>
+    </header>
 
-<section id="statement" class="sequenced col-span-8 pr-6">
-    <h3 class="font-bold text-xs mb-6">I am</h3>
-    <p class="text-neutral-800">{{ statement.introduction }}</p>
-    <p class="text-neutral-800">{{ statement.background }}</p>
-    <p class="text-neutral-800">{{ statement.activities }}</p>
-</section>
-<figure id="practice-areas" class="col-span-8 grid grid-cols-8 gap-2 p-2 border-t mt-6">
-    <figcaption class="sequenced col-span-full">
-        <h4 class="font-bold text-xs">Practice Areas</h4>
-    </figcaption>
-    <div class="sequenced col-span-2 aspect-square">
-        <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
-            <p class="text-xs mx-auto text-center align-bottom">Creative Direction</p>
-        </div>
-    </div>
-    <div class="sequenced col-span-2 aspect-square">
-        <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
-            <p class="text-xs mx-auto text-center align-bottom">Research</p>
-        </div>
-    </div>
-    <div class="sequenced col-span-2 aspect-square">
-        <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
-            <p class="text-xs mx-auto text-center align-bottom">Human-Centered Design</p>
-        </div>
-    </div>
-    <div class="sequenced col-span-2 aspect-square">
-        <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
-            <p class="text-xs mx-auto text-center align-bottom">Design Systemization</p>
-        </div>
-    </div>
-</figure>
-<section id="philosophy" class="sequenced col-span-8 pr-6">
-    <h3 class="font-bold text-xs mb-6">Philosophy</h3>
-    <p class="text-neutral-800">{{ philosophy.title }}</p>
-    <p class="text-neutral-800">{{ philosophy.body }}</p>
-</section>
-<aside class="sequenced col-start-9 row-start-2 row-span-2 col-span-4 border-l">
-    <div id="avatar" class="size-72 mx-auto">
-        {% for img in decorations %} {% if img.id == "recfjgiNd5lYlAfSt" %} {{
-        img.pictureElement | stylePicture("avatar", "place-self-end m-4 w-72 rounded-full") | safe }} {% endif %} {% endfor
-        %}
-        {# hair: recUaDUods0LUKmzC #}
-    </div>
-    <figure id="awards" class="p-6">
-        <figcaption class="sr-only">
-            <h3>Awards</h3>
+    <section id="statement" class="col-span-8 pr-6">
+        <h3 class="font-bold text-xs mb-6">I am</h3>
+        <p class="text-neutral-800">{{ statement.introduction }}</p>
+        <p class="text-neutral-800">{{ statement.background }}</p>
+        <p class="text-neutral-800">{{ statement.activities }}</p>
+    </section>
+    
+    <figure id="practice-areas" class="col-span-8 grid grid-cols-8 gap-2 p-2 border-t mt-6">
+        <figcaption class="col-span-full">
+            <h4 class="font-bold text-xs">Practice Areas</h4>
         </figcaption>
-        {% include "molecules/lists/awards.html" %}
+        <div class="col-span-2 aspect-square">
+            <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
+                <p class="text-xs mx-auto text-center align-bottom">Creative Direction</p>
+            </div>
+        </div>
+        <div class="col-span-2 aspect-square">
+            <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
+                <p class="text-xs mx-auto text-center align-bottom">Research</p>
+            </div>
+        </div>
+        <div class="col-span-2 aspect-square">
+            <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
+                <p class="text-xs mx-auto text-center align-bottom">Human-Centered Design</p>
+            </div>
+        </div>
+        <div class="col-span-2 aspect-square">
+            <div class="w-full h-full bg-neutral-400 mask mask-circle flex items-center w-36">
+                <p class="text-xs mx-auto text-center align-bottom">Design Systemization</p>
+            </div>
+        </div>
     </figure>
-</aside>
+
+    <section id="philosophy" class="col-span-8 pr-6">
+        <h3 class="font-bold text-xs mb-6">Philosophy</h3>
+        <p class="text-neutral-800">{{ philosophy.title }}</p>
+        <p class="text-neutral-800">{{ philosophy.body }}</p>
+    </section>
+
+    <aside class="col-start-9 row-start-2 row-span-2 col-span-4 border-l">
+        <div id="avatar" class="size-72 mx-auto">
+            {% for img in decorations %} {% if img.id == "recfjgiNd5lYlAfSt" %} {{
+            img.pictureElement | stylePicture("avatar", "place-self-end m-4 w-72 rounded-full") | safe }} {% endif %} {% endfor
+            %}
+            {# hair: recUaDUods0LUKmzC #}
+        </div>
+        <figure id="awards" class="p-6">
+            <figcaption class="sr-only">
+                <h3>Awards</h3>
+            </figcaption>
+            {% include "molecules/lists/awards.html" %}
+        </figure>
+    </aside>
+</section>

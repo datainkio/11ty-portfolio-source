@@ -1,32 +1,34 @@
-<header class="col-span-full">
-    <h2 class="parallax uppercase text-[.75rem]">{{ count }}/4 What I've Done</h2>
-</header>
-<p class="col-span-full text-neutral-200">
-    Twenty years of award-winning, meaningful, and intuitive digital experiences.
-</p>
-<!-- Project category controls-->
-<ul id="types" class="h-min menu menu-vertical mx-auto gap-2">
-    <li>
-        <a id="featured"
-            class="btn btn-sm  btn-outline text-neutral-200 btn-neutral-200 category btn-active">Featured</a>
-    </li>
-    {% for category in ia %}
-    <li>
-        <a id="{{ category.Slug | slugify }}"
-            class="btn btn-sm text-neutral-200 btn-outline btn-neutral-200 category">{{ category.Title
-            }}</a>
-    </li>
-    {% endfor %}
-    <li class="aspect-video">
-        <a id="all" class="btn btn-sm btn-outline text-neutral-200 btn-neutral-200 category">All</a>
-    </li>
-</ul>
-<figure id="projects" class="col-span-5 grid grid-cols-3 gap-8">
-    <figcaption class="sr-only">Project List</figcaption>
-    {% for project in projects | sortByAttribute('Weight') %}
-        {% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
-        {% set action = ["modal_", project.id, ".showModal()"] | join %}
-        {% include "templates/project/card-image.html" %}
-        {% include "templates/project/modal.html" %}
-    {% endfor %}
-</figure>
+<section id="work" class="col-span-full grid grid-cols-6 max-w-360 mx-auto p-12">
+    <header class="col-span-full">
+        <h2 class="uppercase text-[.75rem]">{{ count }}/4 What I've Done</h2>
+    </header>
+    <p class="col-span-full text-neutral-200">
+        Twenty years of award-winning, meaningful, and intuitive digital experiences.
+    </p>
+    <!-- Project category controls-->
+    <ul id="types" class="h-min menu menu-vertical mx-auto gap-2">
+        <li>
+            <a id="featured"
+                class="btn btn-sm  btn-outline text-neutral-800 btn-neutral-800 category btn-active">Featured</a>
+        </li>
+        {% for category in ia %}
+        <li>
+            <a id="{{ category.Slug | slugify }}"
+                class="btn btn-sm btn-outline text-neutral-800 btn-neutral-800  category">{{ category.Title
+                }}</a>
+        </li>
+        {% endfor %}
+        <li class="aspect-video">
+            <a id="all" class="btn btn-sm btn-outline text-neutral-800 btn-neutral-800  category">All</a>
+        </li>
+    </ul>
+    <figure id="projects" class="col-span-5 grid grid-cols-3 gap-8">
+        <figcaption class="sr-only">Project List</figcaption>
+        {% for project in projects | sortByAttribute('Weight') %}
+            {% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
+            {% set action = ["modal_", project.id, ".showModal()"] | join %}
+            {% include "templates/project/card-image.html" %}
+            {% include "templates/project/modal.html" %}
+        {% endfor %}
+    </figure>
+</section>

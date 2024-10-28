@@ -1,6 +1,6 @@
 import { generateDualRangedRandom } from "/assets/js/utils/math.js";
 var DEBUG = false;
-
+const TL = gsap.timeline();
 
 export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["alpha", "bravo", "charlie"], wiggles = false, debug = false}) {
     gsap.registerPlugin(CustomEase, CustomWiggle, SplitText);
@@ -14,7 +14,7 @@ export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["a
     CONTAINER.innerText = ''; // Because.
       
     // Set up the animation
-    const TL = gsap.timeline();
+
     var delay; // Keeps the x and y coords independent of each other 
     var range; // Tweak the w and h values to provide a bit of variation
     var direction; // A positive/negative modifier for x/y values
@@ -22,6 +22,7 @@ export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["a
         for (var i = 0; i < colors.length; i++) {
             // Create a duplicate
             span = CONTAINER.appendChild(document.createElement('span'));
+            span.id = "wanderinggel_" + i;
             span.innerText = SRC;
             span.classList.add(CLASS_NAME, colors[i]);
             // delay = Math.random * duration;

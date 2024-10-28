@@ -21,7 +21,7 @@ window.onload = function() {
         const INTRO = gsap.timeline({
             onStart: onStart,
             onStartParams: ["intro"],
-            onUpdate: onUpdate,
+            // onUpdate: onUpdate,
             onUpdateParams: ["intro"],
             onComplete: onComplete,
             onCompleteParams: ["intro"]
@@ -34,7 +34,7 @@ window.onload = function() {
 
         const HT = Halftone(HalftoneParams);
         const WG = WanderingGel(WGParams);
-        // const TR = TextRadar(TRParams);
+        const TRoll = TextRadar(TRParams);
         // const TLen = TextLenticular("main-title");
         INTRO.add(WG);
 
@@ -44,7 +44,7 @@ window.onload = function() {
         gsap.to(types, {
             scrollTrigger: {
                 trigger: "#work",
-                start: "top center",          // Start when the top of the section hits the center of the viewport
+                start: "top 33%",          // Start when the top of the section hits the center of the viewport
                 end: "bottom bottom",         // End when the bottom of the section hits the center of the viewport
                 pin: types,                    // Keep the element fixed in place
                 // pinSpacing: false,            // Disable additional space after pinning ends
@@ -101,6 +101,7 @@ window.onload = function() {
                 ease: "power1.out"
             });
         });
+        log("choreography.home is done setting up.");
         TL.pause();
     } catch(e) {
         trace(e);
