@@ -1,18 +1,18 @@
 <!-- @format -->
 {% extends "species/base.html" %}
-{% set body_styles = "bg-graphpaper-light w-full" %}
-{% set main_styles = "grid grid-cols-12 opacity-0 max-w-360  mx-auto" %}
+{% set body_styles = "w-full bg-graphpaper-dark" %}
+{% set main_styles = "grid grid-cols-12 opacity-0" %}
 {% block cap %}
 {% endblock %}
 {% block header %}
-	<header id="main-header" class="col-span-full h-dvh grid content-center">
+	<header id="main-header" class="bg-neutral-200 col-span-full h-dvh grid content-center">
 		{% include "templates/about/title.html" %}
 	</header>
 {% endblock %}
 
 {% block primary %}
 	{% set count = 0 %}
-	<section class="col-span-full bg-graphpaper-dark h-dvh">
+	<section class="col-span-full bg-graphpaper-dark ">
 		{% include "atoms/svg/diagram_arc.svg" %}
 	</section>
 	

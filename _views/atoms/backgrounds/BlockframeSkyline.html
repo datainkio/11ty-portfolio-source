@@ -8,9 +8,10 @@
 <svg id="container">I'm just here to provide bounding boxes for elements. I'll get removed during garbage
   collection.</svg>
 <script type="module">
+  import { trace } from '/assets/js/utils/trace.js';
   import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
   import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
-
+  console.log("what what?")
   console.clear();
 
   const BW_CONTAINER = document.getElementsByClassName("bg-blockframes-bw")[0];

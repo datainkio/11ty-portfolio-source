@@ -205,10 +205,10 @@
     @apply absolute inset-0 block;
   }
   .text-radar .text-radar-dupe {
-    @apply text-stroke text-stroke-[1px] text-stroke-ink-light text-ink-transparent;
+    @apply text-stroke text-stroke-[1px] text-stroke-ink-dark text-transparent;
   }
   .text-radar .stroked {
-    @apply text-stroke text-stroke-[12px] text-stroke-ink-dark;
+    @apply text-stroke text-stroke-[12px] text-stroke-ink-dark text-transparent;
   }
 
   /** TEXT ROLL **/
@@ -217,6 +217,9 @@
   }
   .text-roll-char {
     @apply text-ink-light;
+  }
+  .text-roll-line {
+    @apply overflow-hidden;
   }
 
   /** WANDERING GEL **/

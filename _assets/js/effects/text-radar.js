@@ -1,8 +1,9 @@
-const DUR = .15; // Timeline duration
-const STEPS = 30; // Number of steps in the progression
-const ALPHA_START = .85; // Opacity of first step
-const ALPHA_END = .25; // Opacity of last step
 const TL = gsap.timeline({}); // The timeline we'll return for integration into other sequences
+var DUR = .15; // Timeline duration
+var STEPS = 30; // Number of steps in the progression
+var ALPHA_START = .85; // Opacity of first step
+var ALPHA_END = .25; // Opacity of last step
+var Log;
 var source; // The element supplying the text value
 var text; // The text value to repeat
 var amount = 600; // Use settings() to tweak until you find the ideal
@@ -15,14 +16,22 @@ var base = -601;
  * @param {string} id - The id for the element containing the text we want to mess with
  * @returns {GSAP timeline} - A timeline containing animations for each instance of the copied text
  */
-export function TextRadar({id}) {
-    // settings();
-    TL.onStart = populate;
-    TL.onStartParams = [id];
+export function TextRadar(params) {
+    settings();
+    Log = params.debug;
+    Log("TextRadar is here");
+    DUR = params.duration; // .15; // Timeline duration
+    STEPS = params.steps; // Number of steps in the progression
+    ALPHA_START = params.alpha_start; // Opacity of first step
+    ALPHA_END = params.alpha_end; // Opacity of last step
+    amount = params.amount;
+    base = params.base;
+    populate(params.id);
     return TL;
 };
 
 function populate(id) {
+    Log("populate");
     source = document.getElementById(id);
     source.classList.add("text-radar");
     text = source.textContent;

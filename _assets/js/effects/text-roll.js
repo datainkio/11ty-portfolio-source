@@ -1,35 +1,44 @@
 var SOURCE;
 var SPLIT;
-const DELAY = 2;
-const DUR = .5;
-const STAGGER = .1;
-const TIMING = "-=75%";
-const EASE = "power1.inOut";
+var DELAY = 2;
+var DUR = .5;
+var STAGGER = .1;
+var TIMING = "-=75%";
+var EASE = "power1.inOut";
 var Y_DELTA = 225;
 var ROTATION = 12;
 const TL = gsap.timeline({
-        repeat: -1,
-        repeatRefresh: true
+        // repeat: -1,
+        // repeatRefresh: true
     });
-const CONTROL = document.createElement('input');
+// const CONTROL = document.createElement('input');
 
-export function textRoll(id) {
-    SOURCE = document.getElementById(id);
+export function TextRoll(params) {
+    SOURCE = document.getElementById(params.id);
+    DELAY = params.delay;
+    DUR = params.duration;
+    STAGGER = params.stagger;
+    TIMING = params.timing;
+    EASE = params.ease;
+    Y_DELTA = params.y_delta;
+    ROTATION = params.rotation;
     // SOURCE.classList.add("overflow-hidden");
     SPLIT = new SplitText(SOURCE, {
-        type: "chars",
-        charsClass: "text-roll-char"
+        type: "chars, lines",
+        charsClass: "text-roll-char",
+        linesClass: "text-roll-line"
     });
 
-    settings();
+    // settings();
 
     // Create the static copy of the text
-    var span = document.createElement("span");
-    span.textContent = SOURCE.textContent;
-    span.classList.add("absolute", "inset-0");
-    SOURCE.append(span);
+    // var span = document.createElement("span");
+    // span.textContent = SOURCE.textContent;
+    // span.classList.add("absolute", "inset-0");
+    // SOURCE.append(span);
 
     // Set up the animation
+    TL.addLabel("intro");
     TL.add(gsap.from(SPLIT.chars, {
         duration: DUR,
         y: startY,
@@ -38,7 +47,8 @@ export function textRoll(id) {
         opacity: 0,
         stagger: STAGGER,
         ease: EASE
-    }, TIMING))
+    }, TIMING));
+    TL.addLabel("outro");
     TL.add(gsap.to(SPLIT.chars, {
         delay: DELAY,
         duration: DUR,

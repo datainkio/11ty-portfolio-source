@@ -1,12 +1,12 @@
-import { trace } from '/assets/js/utils/trace.js';
 import { fadeInAndUp, fadeInChars, introLines } from '/assets/js/interstitials/text.js';
-import { HalftoneParams, WGParams, ARCParams} from '/assets/js/choreography/config.js';
+import * as Config from '/assets/js/choreography/config.js';
 import { WanderingGel } from '/assets/js/effects/text-wandering-gel.js';
 import { Halftone } from '/assets/js/effects/image-halftone.js';
+import * as TextParty from '/assets/js/effects/TextParty.js';
 import *  as Diagram from '/assets/js/choreography/diagram.js';
 // import { TextRadar } from '/assets/js/effects/text-radar.js';
 // import { fadeInChars } from '/assets/js/effects/text-interstitials.js';
-// import { textRoll } from '/assets/js/effects/text-roll.js';
+import { TextRoll } from '/assets/js/effects/text-roll.js';
 // import { TextLenticular } from '/assets/js/effects/text-lenticular.js';
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,8 +18,9 @@ window.onload = function() {
          * This has its own timeline to decouple it from the main. This
          * reduces interference with scroll events.
          */
-        log("choreography.home is setting up...");
+        Config.log("choreography.home is setting up...");
         const INTRO = gsap.timeline({
+            paused: true,
             onStart: onStart,
             onStartParams: ["intro"],
             // onUpdate: onUpdate,
@@ -28,16 +29,20 @@ window.onload = function() {
             onCompleteParams: ["intro"]
         });
 
-        const HT = Halftone(HalftoneParams);
-        const WG = WanderingGel(WGParams);
-        const ARC = Diagram.arc("diagram_arc");
-        // const TRoll = TextRadar(TRParams);
-        // const TLen = TextLenticular("main-title");
-        INTRO.add(WG);
+        // const OF = OutlineToFill(Config.OFParams);
+        // const HT = Halftone(Config.HalftoneParams);
+        // const ARC = Diagram.arc("diagram_arc");
+        // const TRoll = TextRoll(TRollParams);
+
+        // INTRO.add(TextParty.Radar(Config.RadarParams));
+        INTRO.add(WanderingGel(Config.WGParams));
+        // INTRO.add(WanderingGel(Config.WGParams));
+
+        INTRO.play();
 
 
         // Set up ScrollTrigger to pin the #types <ul> and keep it vertically centered
-        const types = document.getElementById("types");
+        const types = gsap.utils.toArray("#work aside")[0];
         gsap.to(types, {
             scrollTrigger: {
                 trigger: "#work",
@@ -98,25 +103,19 @@ window.onload = function() {
                 ease: "power1.out"
             });
         });
-        log("choreography.home is done setting up.");
+        Config.log("choreography.home is done setting up.");
         TL.pause();
     } catch(e) {
-        trace(e);
+        Config.log(e);
     }
 };
 
 export function onStart(obj) {
-    log(obj + ".onStart");
+    Config.log(obj + ".onStart");
 }
 export function onUpdate(obj) {
-    log(obj + ".onUpdate");
+    Config.log(obj + ".onUpdate");
 }
 export function onComplete(obj) {
-    log(obj + ".onComplete");
-}
-
-function log(obj) {
-    if(typeof trace === 'function') {
-        trace(obj);
-    }
+    Config.log(obj + ".onComplete");
 }

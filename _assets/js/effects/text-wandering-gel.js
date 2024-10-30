@@ -32,17 +32,17 @@ export function WanderingGel({id, w, h, envelope = 0, duration = 1, colors = ["a
                 // range = generateDualRangedRandom(envelope);
             }
             
-            if (i > 0) {
+            // if (i > 0) {
                 TL.to(span, {
                     duration: duration,
                     x: "+=" + w * range * direction,
                     y: "+=" + h * range * direction,
-                })
+                }, "<")
                 // Move all of the things (except for the first) to a new position
                 // .to(span, 1.5, {x:"+=" + w, y:"+=" + h, ease: "power3.inOut"}, 2)
                 // .to(st.chars, duration, {x: "+=" + Math.abs(w * range), repeat:-1, ease:CustomWiggle.create("", {type:"random", wiggles:wiggles})}, delay)
                 // .to(st.chars, duration, {y: "+=" + Math.abs(h * range), repeat:-1, ease:CustomWiggle.create("", {type:"random", wiggles:wiggles})}, delay);
-            };
+            // };
         }
     } catch(e) {
         if (DEBUG) {
