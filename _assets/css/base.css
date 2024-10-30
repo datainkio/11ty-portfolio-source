@@ -197,6 +197,11 @@
     @apply w-full mx-auto absolute -top-16 left-0;
   }
 
+  /** TEXT OUTLINE **/
+  .text-outline {
+    @apply text-stroke text-stroke-[1px] text-stroke-ink-dark text-transparent
+  }
+
   /** TEXT RADAR **/
   .text-radar {
     @apply relative;

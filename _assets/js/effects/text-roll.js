@@ -7,14 +7,11 @@ var TIMING = "-=75%";
 var EASE = "power1.inOut";
 var Y_DELTA = 225;
 var ROTATION = 12;
-const TL = gsap.timeline({
-        // repeat: -1,
-        // repeatRefresh: true
-    });
 // const CONTROL = document.createElement('input');
 
 export function TextRoll(params) {
-    SOURCE = document.getElementById(params.id);
+    const TL = gsap.timeline({id: params.id});
+    SOURCE = document.getElementById(params.container);
     DELAY = params.delay;
     DUR = params.duration;
     STAGGER = params.stagger;
@@ -28,7 +25,7 @@ export function TextRoll(params) {
         charsClass: "text-roll-char",
         linesClass: "text-roll-line"
     });
-
+    TL.set(SPLIT.chars, {opacity: 0});
     // settings();
 
     // Create the static copy of the text
@@ -48,6 +45,7 @@ export function TextRoll(params) {
         stagger: STAGGER,
         ease: EASE
     }, TIMING));
+    TL.revert();
     TL.addLabel("outro");
     TL.add(gsap.to(SPLIT.chars, {
         delay: DELAY,
@@ -59,7 +57,7 @@ export function TextRoll(params) {
         stagger: STAGGER,
         ease: EASE
     }, TIMING), TIMING);
-
+    TL.addPause("outro");
     return TL;
 }
 

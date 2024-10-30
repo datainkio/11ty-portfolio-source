@@ -6,15 +6,32 @@ export function log(obj) {
     }
 }
 
+export const RevealParams = {
+    origin: {
+        y: 25,
+        opacity: 0
+    },
+    destination: {
+        y: 0,
+        opacity: 1
+    },
+    ease: "none",
+    duration: .75 
+}
+
+export const IntroParams = {
+    id: "intro",
+}
+
 export const WGParams = {
-    id: "main-title", 
+    id: "main-title",
     w: -3,
     h: -3,
     envelope: 0,
     duration: 2, 
     colors: ["alpha", "bravo"], 
     wiggles: 50,
-    debug: trace
+    // debug: trace
     // debug: trace
 };
 
@@ -30,12 +47,17 @@ export const RadarParams = {
 }
 
 export const OFParams = {
-    id: "main-title",
-    duration: 2
+    id: "fill",
+    container: "#main-title",
+    duration: 2,
+    stagger: 0.1,
+    overlap: "<15%",
+    color: "#1A171C00"
 };
 
 export const TRollParams = {
-    id: "main-title",
+    id: "troll",
+    container: "main-title",
     delay: 2,
     duration: .5,
     stagger: .1,

@@ -1,12 +1,6 @@
-export function fadeInAndUp(id) {
-    var elem = document.getElementById(id);
-    var tl = gsap.timeline();
-    tl.fromTo(elem, {y: 50, opacity: 0}, {duration: 1.25, y:0, opacity: 1, ease: "power1.inOut"});
-    return tl;
-}
 
-export function introLines(id) {
-    var elem = document.getElementById(id);
+export function introLines(elem) {
+    // var elem = document.getElementById(id);
     var st = new SplitText(elem, { type: "lines"});
     var tl = gsap.timeline();
     tl.from(st.lines, {
@@ -18,8 +12,8 @@ export function introLines(id) {
     return tl;
 }
 
-export function fadeInChars(id) {
-    var elem = document.getElementById(id);
+export function fadeInChars(elem) {
+    // var elem = document.getElementById(id);
     var tl = gsap.timeline();
 
     // LETTERS

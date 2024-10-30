@@ -3,25 +3,25 @@
  * @param {*} id 
  * @returns GSAP timeline
  * 
- * DEPRECATED FOR TEXTPARTY.JS
  */
-export function text_outline_to_fill(id) {
+export function OutlineToFill(params) {
     var tl = gsap.timeline({});
-    const elem = document.getElementById(id);
+    var container = document.getElementById(params.container);
+    container.classList.add("text-outline");
     // LETTERS
-    var st = new SplitText(elem, { type: "words,chars" });
+    var st = new SplitText(container, { type: "words,chars" });
     var chars = st.chars; //an array of all the divs that wrap each character
     tl.add(gsap.from(chars, {
-        duration: 2,
+        duration: params.duration,
         opacity: 0,
-        stagger: 0.1
+        stagger: params.stagger
     }))
     tl.add(gsap.from(chars, {
-        duration: SPEED,
-        color: "#1A171C00",
+        duration: params.duration,
+        color: params.color, // "#1A171C00",
         // skewX: 45,
-        stagger: 0.1
-    }), "<15%");
+        stagger: params.stagger
+    }), params.overlap);
     // tl.pause();
     return tl;
 }
