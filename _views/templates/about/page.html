@@ -5,8 +5,11 @@
 {% block cap %}
 {% endblock %}
 {% block header %}
-	<header id="main-header" class="bg-neutral-200 col-span-full h-dvh grid content-center">
+	<header id="main-header" class="bg-blockframes-bw bg-neutral-200 col-span-full h-dvh grid content-center">
 		{% include "templates/about/title.html" %}
+		{% include "atoms/svg/blockframes.svg" %}
+		<svg id="container">I'm just here to provide bounding boxes for elements. I'll get removed during garbage
+			collection.</svg>
 	</header>
 {% endblock %}
 

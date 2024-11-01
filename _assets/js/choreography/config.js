@@ -6,6 +6,11 @@ export function log(obj) {
     }
 }
 
+export const BlockLineParams = {
+    id: "blockline",
+    delay: 2
+}
+
 export const RevealParams = {
     origin: {
         y: 25,
@@ -21,12 +26,15 @@ export const RevealParams = {
 
 export const IntroParams = {
     id: "intro",
+    delay: 1.5
 }
 
 export const WGParams = {
-    id: "main-title",
+    id: "wg",
+    container: "main-title",
     w: -3,
     h: -3,
+    range: 1,
     envelope: 0,
     duration: 2, 
     colors: ["alpha", "bravo"], 

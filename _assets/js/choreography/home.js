@@ -4,6 +4,7 @@ import * as Config from '/assets/js/choreography/config.js';
 // import * as Transitions from '/assets/js/effects/Transitions.js';
 import * as TextParty from '/assets/js/effects/TextParty.js';
 // import *  as Diagram from '/assets/js/choreography/diagram.js';
+import * as BlockLine from '/assets/js/displays/blockline.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,24 +16,31 @@ window.onload = function() {
          * This has its own timeline to decouple it from the main. This
          * reduces interference with scroll events.
          */
-        const INTRO = register(gsap.timeline({id: Config.IntroParams.id}));
-        INTRO.addLabel("intro");
-        // INTRO.addPause("intro");
-        INTRO.addLabel("idle");
-        // INTRO.addPause("idle");
-        INTRO.addLabel("outro");
-        // INTRO.addPause("outro");
-
-        const TEST = register(gsap.timeline({id: "TEST"}));
-        INTRO.add(TEST, "idle");
+        const INTRO = register(gsap.timeline(Config.IntroParams));
+        // INTRO.addLabel("intro");
+        // INTRO.addLabel("idle");
+        // INTRO.addLabel("outro");
 
         // const ROLL = register(TextParty.roll(Config.TRollParams));
-        // const WG = register(TextParty.Gel(Config.WGParams), "WanderingGel");
+        const WG = register(TextParty.gel(Config.WGParams));
+        const BL = register(BlockLine.build(Config.BlockLineParams));
+
+        INTRO.add(BL);
+        INTRO.add(WG);
+        
+        // INTRO.addPause("idle");
+        // INTRO.add(ROLL, "idle");
+        // 
+        // ROLL.eventCallback("onComplete", TextParty.gel, [Config.TRollParams]);
+        // ROLL.play("intro");
+        // 
         // const OF = register(TextParty.fill(Config.OFParams));
-        // INTRO.add(ROLL, "intro");       
+        // INTRO.add(ROLL, "intro");
+        // INTRO.add(ROLL.reverse(), "outro");       
         // INTRO.add(WG, "idle");
         // INTRO.add(OF, "intro");  
         // INTRO.play("idle");
+        // INTRO.play();
     } catch(e) {
         Config.log(e);
     }

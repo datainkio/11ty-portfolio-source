@@ -11,6 +11,7 @@ var ROTATION = 12;
 
 export function TextRoll(params) {
     const TL = gsap.timeline({id: params.id});
+    
     SOURCE = document.getElementById(params.container);
     DELAY = params.delay;
     DUR = params.duration;
