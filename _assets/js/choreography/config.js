@@ -1,14 +1,6 @@
-import { trace } from '/assets/js/utils/trace.js';
-
-export function log(obj) {
-    if(typeof trace === 'function') {
-        trace(obj);
-    }
-}
-
 export const BlockLineParams = {
     id: "blockline",
-    delay: 2
+    delay: 2,
 }
 
 export const RevealParams = {
@@ -24,23 +16,16 @@ export const RevealParams = {
     duration: .75 
 }
 
-export const IntroParams = {
-    id: "intro",
-    delay: 1.5
-}
-
 export const WGParams = {
     id: "wg",
     container: "main-title",
-    w: -3,
-    h: -3,
+    w: -6,
+    h: -6,
     range: 1,
     envelope: 0,
     duration: 2, 
     colors: ["alpha", "bravo"], 
     wiggles: 50,
-    // debug: trace
-    // debug: trace
 };
 
 export const RadarParams = {
@@ -56,11 +41,11 @@ export const RadarParams = {
 
 export const OFParams = {
     id: "fill",
-    container: "#main-title",
-    duration: 2,
+    container: "main-title",
+    duration: 1,
     stagger: 0.1,
     overlap: "<15%",
-    color: "#1A171C00"
+    color: "#1A171C00",
 };
 
 export const TRollParams = {

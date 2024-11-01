@@ -4,24 +4,37 @@
  * @returns GSAP timeline
  * 
  */
+
+const TL = gsap.timeline();
+
 export function OutlineToFill(params) {
-    var tl = gsap.timeline({});
+    TL.id = params.id;
     var container = document.getElementById(params.container);
-    container.classList.add("text-outline");
-    // LETTERS
+
     var st = new SplitText(container, { type: "words,chars" });
-    var chars = st.chars; //an array of all the divs that wrap each character
-    tl.add(gsap.from(chars, {
+    var chars = st.chars; // an array of all the divs that wrap each character
+    TL.to({}, { duration: 0.0001 });
+    TL.add(gsap.from(chars, {
         duration: params.duration,
         opacity: 0,
-        stagger: params.stagger
-    }))
+        stagger: params.stagger,
+        onStart: onStart,
+        onStartParams: [params],
+    }));
+
+    /**
+     * Something's up here. The fill is not appearing.
     tl.add(gsap.from(chars, {
         duration: params.duration,
         color: params.color, // "#1A171C00",
-        // skewX: 45,
         stagger: params.stagger
-    }), params.overlap);
-    // tl.pause();
-    return tl;
+    }));
+    */
+    return TL;
+};
+
+function onStart(params) {
+    console.log("Outline-to-Fill local onStart");
+    var container = document.getElementById(params.container);
+    container.classList.add("text-outline"); 
 }

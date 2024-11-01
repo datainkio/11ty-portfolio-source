@@ -3,7 +3,24 @@
  * See https://stefirosca.netlify.app/blog/7-tips-tricks-to-make-your-console-log-output-stand-out/
 */
 
-    const VIEW = createView();
+(function() {
+    const originalConsoleLog = console.log; // Save original console.log
+    // const outputDiv = document.getElementById("consoleOutput");
+
+    console.log = function(message) {
+        // Call original console.log to still output to console
+        originalConsoleLog.apply(console, arguments);
+
+        // Create a new list item for each log entry
+        const newMessage = document.createElement("li");
+        newMessage.textContent = message;
+
+        // Append the new message to the div
+        VIEW.appendChild(newMessage);
+    };
+})();
+
+    const VIEW = getView();
 
     export function trace(obj) {          
             let message;
@@ -57,6 +74,14 @@
         updateView(message, type);
     }
 
+    function getView() {
+        if (document.getElementById("trace-content")) {
+            return document.getElementById("trace-content");
+        } else {
+            return createView();
+        }
+    }
+
     function updateView(message, type) {
 
         const listItem = document.createElement('li');
@@ -79,6 +104,7 @@
 
     function createView() {
         const drawer = document.createElement('div');
+        drawer.id = "trace";
         drawer.classList.add("drawer", "z-[100]");
         
         const toggle = document.createElement('input');
