@@ -24,10 +24,11 @@ export function fill(params) {
 }
 
 
-export function introLines(elem) {
-    // var elem = document.getElementById(id);
-    var st = new SplitText(elem, { type: "lines"});
+export function lines(id) {
+    var pars = document.getElementById(id).querySelectorAll("p");
+    var st = new SplitText(pars, { type: "lines"});
     var tl = gsap.timeline();
+    tl.id = id;
     tl.from(st.lines, {
         duration: 2,
         opacity: 0,

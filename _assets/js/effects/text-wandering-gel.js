@@ -8,7 +8,9 @@ export function WanderingGel(params) {
     const SRC = CONTAINER.innerText; // The original text
     CONTAINER.innerText = '';
     var span; // The final result will replace the original text with N copies wrapped in spans
-    TL.id = params.id;
+    if (params.id) {
+        TL.id = params.id;
+    };
     TL.add({}, {
         duration: 0.0001,
         onStart: onStart,
@@ -48,5 +50,5 @@ export function WanderingGel(params) {
 };
 
 function onStart(params) {
-    console.log("wg local onStart");
+    console.log("WanderingGel.onStart");
 }

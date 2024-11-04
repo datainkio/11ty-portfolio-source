@@ -1,23 +1,18 @@
 <!-- @format -->
 {% extends "species/base.html" %}
 {% set body_styles = "w-full bg-graphpaper-dark" %}
-{% set main_styles = "grid grid-cols-12 opacity-0" %}
+{% set main_styles = "bg-neutral-200 grid grid-cols-12 opacity-0 px-0" %}
 {% block cap %}
 {% endblock %}
 {% block header %}
-	<header id="main-header" class="bg-blockframes-bw bg-neutral-200 col-span-full h-dvh grid content-center">
+	<header id="main-header" class="bg-neutral-200 col-span-full h-dvh grid content-center">
 		{% include "templates/about/title.html" %}
-		{% include "atoms/svg/blockframes.svg" %}
-		<svg id="container">I'm just here to provide bounding boxes for elements. I'll get removed during garbage
-			collection.</svg>
+		<p class="mx-auto prose">{{ statement.introduction }}</p>
 	</header>
 {% endblock %}
 
 {% block primary %}
 	{% set count = 0 %}
-	<section class="col-span-full bg-graphpaper-dark ">
-		{% include "atoms/svg/diagram_arc.svg" %}
-	</section>
 	
 	{% include "templates/about/resume.html" %}
 	
