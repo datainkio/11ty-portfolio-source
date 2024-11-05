@@ -2,8 +2,6 @@
 import '/assets/js/utils/trace.js';
 import * as Config from '/assets/js/choreography/config.js';
 import * as Resume from '/assets/js/choreography/resume.js';
-
-// import { Halftone } from '/assets/js/effects/image-halftone.js';
 // import * as Transitions from '/assets/js/effects/Transitions.js';
 import * as TextParty from '/assets/js/effects/TextParty.js';
 // import *  as Diagram from '/assets/js/choreography/diagram.js';
@@ -26,11 +24,22 @@ window.onload = function() {
         INTRO.id = "intro";
         registerTimeline(INTRO);
 
+        const APPROACH = TextParty.lines("approach");
+        APPROACH.id = "approach";
+        APPROACH.scrollTrigger = {
+                trigger: '#approach',
+                start: 'top top',
+                pin: "#approach p"
+            }
+        registerTimeline(APPROACH);
+
         const CV = Resume.animate();
         CV.id = "cv";
         registerTimeline(CV);
 
         // SCROLLING
+
+        
 
     } catch(e) {
         console.log(e);

@@ -12,6 +12,7 @@ var COLOR = false;
 /**
  * Example Implementation
  **/
+/**
 window.onload = function() {
     Halftone({
         container: "avatar",
@@ -21,6 +22,7 @@ window.onload = function() {
     });
     settings(50, 0, 100);
 }
+    **/
 
 // Receive a raster image from a picture element and render it as a halftone
 export function Halftone({container = "", dotSize = 10, gridSize = 10 , color = false,}) {
@@ -184,6 +186,13 @@ function scatter() {
             angle: "random(250, 290)",
             gravity: 500
         },
+    }
+}
+
+function focus() {
+    return {
+        duration: 2,
+        gridSize: 1,
     }
 }
 

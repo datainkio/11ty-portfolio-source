@@ -1,14 +1,14 @@
 
-<section id="resume" class="col-span-full grid grid-cols-12 max-w-360 px-12 mx-auto">
+<section id="resume" class="col-span-full grid grid-cols-12 px-12">
     <h2 class="sr-only">Introduction</h2>
 
     <header class="col-span-full grid grid-cols-subgrid p-0">
         <h3 class="sr-only">Introduction</h3>
-        <section class="col-span-2 m-0 p-0 border-r">
+        <section class="col-span-2 m-0 p-0">
             <h4 class="font-bold text-xs pt-2">My name is</h4>
             <p class="text-lg my-6">Russell S. Lebo</p>
         </section>
-        <section class="col-span-10 m-0 p-0 ml-16">
+        <section class="col-span-10 m-0 p-0 pl-16 border-l">
             <h4 class="font-bold text-xs pt-2">Owner of</h3>
             <p class="text-lg my-6">data:ink:io <span class="text-sm">llc</span></p>
         </section>
@@ -25,6 +25,7 @@
         <p class="text-neutral-800">{{ statement.activities }}</p>
     </section>
     
+    <!--
     <figure id="practice-areas" class="col-span-8 grid grid-cols-8 gap-2 p-2 border-t mt-6">
         <figcaption class="col-span-full">
             <h4 class="font-bold text-xs">Practice Areas</h4>
@@ -56,19 +57,14 @@
         <p class="text-neutral-800">{{ philosophy.title }}</p>
         <p class="text-neutral-800">{{ philosophy.body }}</p>
     </section>
+-->
 
     <aside class="col-start-9 row-start-2 row-span-2 col-span-4 border-l">
-        <div id="avatar" class="size-72 mx-auto">
+        <div class="avatar size-72 mx-auto">
             {% for img in decorations %} {% if img.id == "recfjgiNd5lYlAfSt" %} {{
             img.pictureElement | stylePicture("avatar", "place-self-end m-4 w-72 rounded-full") | safe }} {% endif %} {% endfor
             %}
             {# hair: recUaDUods0LUKmzC #}
         </div>
-        <figure id="awards" class="p-6">
-            <figcaption class="sr-only">
-                <h3>Awards</h3>
-            </figcaption>
-            {% include "molecules/lists/awards.html" %}
-        </figure>
     </aside>
 </section>
