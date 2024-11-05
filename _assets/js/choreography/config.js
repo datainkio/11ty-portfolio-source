@@ -18,6 +18,7 @@ export const RevealParams = {
 
 export const WGParams = {
     id: "wg",
+    paused: true,
     container: "main-title",
     w: -6,
     h: -6,

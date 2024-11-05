@@ -1,8 +1,12 @@
 import { Halftone } from '/assets/js/effects/image-halftone.js';
 const TL = gsap.timeline();
 
-export function animate() {
-    // registerTimeline(headerAnimation(gsap.utils.toArray("#resume header")[0]));
+export function init() {
+    TL.scrollTrigger = {
+        trigger: '#resume',
+        start: 'top top'
+    };
+    registerTimeline(headerAnimation(gsap.utils.toArray("#resume header")[0]));
     // registerTimeline(statementAnimation(gsap.utils.toArray("#statement")[0]));
     // registerTimeline(practicesAnimation(gsap.utils.toArray("#practices")[0]));
     // registerTimeline(philosophyAnimation(gsap.utils.toArray("#philosophy")[0]));
@@ -13,7 +17,7 @@ export function animate() {
 
 function headerAnimation(elem) {
     const tl = gsap.timeline();
-    
+    tl.id = "header";
     return tl;
 };
 

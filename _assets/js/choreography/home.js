@@ -16,26 +16,23 @@ MAIN.eventCallback("onComplete", onComplete, [MAIN.id]);
 window.onload = function() {
     try {
         // INTROS AND OUTROS
-        const TITLE = TextParty.gel(Config.WGParams);
-        TITLE.id = "title";
-        registerTimeline(TITLE);
-
-        const INTRO = TextParty.lines("main-header");
+        const INTRO = TextParty.gel(Config.WGParams);
         INTRO.id = "intro";
-        registerTimeline(INTRO);
+        registerTimeline(intro);
 
-        const APPROACH = TextParty.lines("approach");
-        APPROACH.id = "approach";
-        APPROACH.scrollTrigger = {
-                trigger: '#approach',
-                start: 'top top',
-                pin: "#approach p"
-            }
-        registerTimeline(APPROACH);
+        gsap.to("header", {
+            id: "outro",
+            scrollTrigger: {
+                trigger: "header",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+                pin: true
+            },
+            height: "auto"
+        });
+        // registerTimeline(OUTRO);
 
-        const CV = Resume.animate();
-        CV.id = "cv";
-        registerTimeline(CV);
 
         // SCROLLING
 
@@ -50,7 +47,8 @@ function registerTimeline(tl) {
     tl.eventCallback("onStart", onStart, [tl.id]);
     tl.eventCallback("onComplete", onComplete, [tl.id]);
     MAIN.addLabel(tl.id);
-    MAIN.add(tl, tl.id);
+    MAIN.add(tl.play(), tl.id);
+    MAIN.add(gsap.delayedCall(tl.duration(), () => MAIN.pause())); // 
 }
 
 function onStart(id) {
