@@ -35,7 +35,6 @@ export const RadarParams = {
     steps: 10,
     alpha_start: .85,
     alpha_end: .25,
-    debug: trace,
     amount: 600,
     base: -601
 }
@@ -59,7 +58,6 @@ export const TRollParams = {
     ease: "power1.inOut",
     y_delta: 12,
     rotation: 4,
-    debug: trace
 };
 
 export const HalftoneParams = {
@@ -67,11 +65,9 @@ export const HalftoneParams = {
     dotSize: 10,
     gridSize: 8,
     color: true,
-    debug: trace,
 };
 
 export const ARCParams = {
-    debug: trace,
     scrollTrigger: {
         trigger: '#arc-animation',
         // pin: true, // pin the trigger element while active

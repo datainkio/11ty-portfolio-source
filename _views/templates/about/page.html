@@ -5,56 +5,15 @@
 {% block cap %}
 {% endblock %}
 {% block header %}
-	<header id="main-header" class="bg-neutral-200 h-dvh content-center fixed top-0 w-full flex justify-center items-center">
+	<header id="main-header" class="col-span-full h-dvh w-full flex items-center bg-neutral-200">
 		{% include "templates/about/title.html" %}
 	</header>
 {% endblock %}
 
 {% block primary %}
-	{% set count = 0 %}
-
-	{% include "molecules/lists/organizations.html" %}
-
-	{% include "templates/about/work.html" %}
-
-	{% include "templates/about/resume.html" %}
-
-	{% include "templates/about/approach.html" %}
-	
-	{% include "templates/about/stats.html" %}
-
-	<figure id="clients" class="col-span-full">
-		<figcaption>
-			<h2>Selected Clients & Partners</h2>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper sollicitudin feugiat. Curabitur congue metus
-				ut bibendum commodo. Proin rhoncus suscipit mollis. Cras euismod eu odio a molestie. Sed bibendum eros fermentum,
-				volutpat mauris eu, sollicitudin dui. Integer sit amet rhoncus tortor. Donec luctus id metus vel suscipit. Curabitur et
-				massa in mauris ullamcorper congue in nec sem. Morbi facilisis scelerisque ex, non sollicitudin urna dictum imperdiet.
-			</p>
-		</figcaption>
-	</figure>
-	<section class="col-span-full content-start gap-4
-		{% include "templates/about/playbook.html" %}
-	</section>
-	<section class="col-span-full h-dvh grid grid-cols-subgrid content-start gap-4 w-8/12 mx-auto">
-		{% include "templates/about/experience.html" %}
-	</section>
-	<section class="col-span-full w-8/12 mx-auto h-dvh grid grid-cols-12 z-10 relative">
-		{% include "templates/about/background.html" %}
-	</section>
-	{% set count = 1 %}
-	<section class="col-span-full h-dvh">
-		{% include "templates/about/today.html" %}
-	</section>
-	{% set count = 2 %}
-	<section id="intro"
-		class="z-50 col-span-full grid-cols-subgrid content-start gap-4 relative">
-	{% include "templates/about/philosophy.html" %}
-	</section>
-	{% set count = 3 %}
-
-	{% set count = 4 %}
+<section class="col-span-full h-dvh">
+	<h2>Hi there</h2>
+</section>
 
 {#
 

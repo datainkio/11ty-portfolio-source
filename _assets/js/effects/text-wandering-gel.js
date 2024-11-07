@@ -14,7 +14,9 @@ export function WanderingGel(params) {
     TL.add({}, {
         duration: 0.0001,
         onStart: onStart,
-        onStartParams: [params] });
+        onStartParams: [params],
+        onComplete: onComplete,
+        onCompleteParams: [params],});
       
     // Set up the animation
 
@@ -24,7 +26,6 @@ export function WanderingGel(params) {
         for (var i = 0; i < params.colors.length; i++) {
             span = document.createElement('span');
             span.id = "wg-" + i;
-            span.testy = "hi there";
             span.innerText = SRC;
             span.classList.add(CLASS_NAME, params.colors[i]);
             CONTAINER.appendChild(span);
@@ -51,4 +52,7 @@ export function WanderingGel(params) {
 
 function onStart(params) {
     console.log("WanderingGel.onStart");
+}
+function onComplete(params) {
+    console.log("WanderingGel.onComplete");
 }

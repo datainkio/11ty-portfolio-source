@@ -13,7 +13,12 @@
 
         // Create a new list item for each log entry
         const newMessage = document.createElement("li");
-        newMessage.textContent = message;
+        if (message instanceof Error) {
+            newMessage.innerHTML = "<span style='border-radius: 0; color: red;'>" + message + "</span>";
+        } else {
+            newMessage.innerHTML = message;
+        }
+       
 
         // Append the new message to the div
         VIEW.appendChild(newMessage);
@@ -118,7 +123,7 @@
         const button = document.createElement("label");
         button.id = "trace-button";
         button.htmlFor = "trace-view";
-        button.classList.add("btn", "btn-primary", "btn-sm", "rounded-none", "drawer-button", "fixed", "top-0", "left-0");
+        button.classList.add("btn", "btn-sm", "btn-primary", "fixed", "top-0", "left-0");
         button.textContent = "debug";
 
         const drawerSide = document.createElement("div");

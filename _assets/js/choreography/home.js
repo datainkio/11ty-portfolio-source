@@ -1,5 +1,5 @@
 // import { fadeInAndUp, fadeInChars, introLines } from '/assets/js/interstitials/text.js';
-import '/assets/js/utils/trace.js';
+// import '/assets/js/utils/trace.js';
 import * as Config from '/assets/js/choreography/config.js';
 import * as Resume from '/assets/js/choreography/resume.js';
 // import * as Transitions from '/assets/js/effects/Transitions.js';
@@ -16,23 +16,11 @@ MAIN.eventCallback("onComplete", onComplete, [MAIN.id]);
 window.onload = function() {
     try {
         // INTROS AND OUTROS
-        const INTRO = TextParty.gel(Config.WGParams);
-        INTRO.id = "intro";
-        registerTimeline(intro);
+        const TITLE = TextParty.gel(Config.WGParams);
+        TITLE.id = "title";
+        // registerTimeline(intro);
 
-        gsap.to("header", {
-            id: "outro",
-            scrollTrigger: {
-                trigger: "header",
-                start: "top top",
-                end: "bottom top",
-                scrub: true,
-                pin: true
-            },
-            height: "auto"
-        });
-        // registerTimeline(OUTRO);
-
+        // const AVATAR = Resume.avatarAnimation("main-header");
 
         // SCROLLING
 
