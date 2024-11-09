@@ -9,10 +9,9 @@ var Y_DELTA = 225;
 var ROTATION = 12;
 // const CONTROL = document.createElement('input');
 
-export function TextRoll(params) {
+export function TextRoll(container, params) {
     const TL = gsap.timeline({id: params.id});
-    
-    SOURCE = document.getElementById(params.container);
+    SOURCE = document.getElementById(container);
     DELAY = params.delay;
     DUR = params.duration;
     STAGGER = params.stagger;
@@ -26,39 +25,16 @@ export function TextRoll(params) {
         charsClass: "text-roll-char",
         linesClass: "text-roll-line"
     });
-    TL.set(SPLIT.chars, {opacity: 0});
-    // settings();
-
-    // Create the static copy of the text
-    // var span = document.createElement("span");
-    // span.textContent = SOURCE.textContent;
-    // span.classList.add("absolute", "inset-0");
-    // SOURCE.append(span);
-
-    // Set up the animation
-    TL.addLabel("intro");
-    TL.add(gsap.from(SPLIT.chars, {
+    TL.from(SPLIT.chars, {
         duration: DUR,
+        paused: true,
         y: startY,
         rotation: 0 - ROTATION,
         scaleY: 0,
         opacity: 0,
         stagger: STAGGER,
         ease: EASE
-    }, TIMING));
-    TL.revert();
-    TL.addLabel("outro");
-    TL.add(gsap.to(SPLIT.chars, {
-        delay: DELAY,
-        duration: DUR,
-        y: finishY,
-        rotation: ROTATION,
-        scaleY: 0,
-        opacity: 0,
-        stagger: STAGGER,
-        ease: EASE
-    }, TIMING), TIMING);
-    TL.addPause("outro");
+    });
     return TL;
 }
 

@@ -218,7 +218,7 @@ function onUpdate() {
 }
 
 function onComplete() {
-    log("onComplete");
+    console.log("ImageHalftone.onComplete");
 }
 
 /** UTILITIES AND HELPERS */
@@ -304,40 +304,31 @@ function distributeByPosition(vars) {
 
 // Controls to adjust settings at runtime
 function settings({value = 50, min = 0, max = 100}) {
-    if (trace) {
-        // Create the container
-        const container = document.createElement("div");
-        container.classList.add("absolute", "top-0", "right-0", "w-80", "z-50", "flex");
-        
-        // Create the dot size slider
-        const control = document.createElement('input');
-        control.type = "range";
-        control.min = min;
-        control.max = max;
-        control.value = value;
-        control.classList.add("range", "range-primary");
+    // Create the container
+    const container = document.createElement("div");
+    container.classList.add("absolute", "top-0", "right-0", "w-80", "z-50", "flex");
+    
+    // Create the dot size slider
+    const control = document.createElement('input');
+    control.type = "range";
+    control.min = min;
+    control.max = max;
+    control.value = value;
+    control.classList.add("range", "range-primary");
 
-        // Create the value display
-        const display = document.createElement("span");
-        display.classList.add("basis-1/6");
-        display.textContent = control.value;
+    // Create the value display
+    const display = document.createElement("span");
+    display.classList.add("basis-1/6");
+    display.textContent = control.value;
 
-        container.appendChild(display);
-        container.appendChild(control);
-        document.body.appendChild(container);
+    container.appendChild(display);
+    container.appendChild(control);
+    document.body.appendChild(container);
 
-        // Update the view when the range changes
-        control.addEventListener('input', (event) => {
-            display.textContent = event.target.value;
-            DOTSIZE = parseInt(event.target.value, 10);
-            updateView();
-        });
-    }
+    // Update the view when the range changes
+    control.addEventListener('input', (event) => {
+        display.textContent = event.target.value;
+        DOTSIZE = parseInt(event.target.value, 10);
+        updateView();
+    });
 };
-
-function log(obj) {
-    if (typeof trace === 'function' ) {
-        trace("Halftone: " + obj);
-    }
-    console.log(obj);
-}

@@ -231,14 +231,19 @@
   .wandering-gel {
     @apply absolute inset-0 flex items-center justify-center;
   }
+
+  .wandering-gel.dupe {
+    @apply text-stroke text-stroke-[2px] text-stroke-ink-dark text-transparent;
+  }
+
   .wandering-gel.alpha {
-    @apply text-[#06608D] mix-blend-multiply;
+    @apply text-stroke-[2px] text-stroke-[#06608D80] text-[#06608D30] mix-blend-multiply;
   }
   .wandering-gel.bravo {
-    @apply text-[#EB5E28] mix-blend-multiply;
+    @apply text-stroke-[2px] text-stroke-[#EB5E2880] text-[#EB5E2830] mix-blend-multiply;
   }
   .wandering-gel.charlie {
-    @apply text-[#FBC30B] mix-blend-multiply;
+    @apply text-stroke-[2px] text-stroke-[#FBC30B80] text-[#FBC30B30] mix-blend-multiply;
   }
 
 }

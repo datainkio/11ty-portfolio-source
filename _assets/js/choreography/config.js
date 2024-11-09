@@ -19,7 +19,6 @@ export const RevealParams = {
 export const WGParams = {
     id: "wg",
     paused: true,
-    container: "main-title",
     w: -6,
     h: -6,
     range: 1,
@@ -50,7 +49,8 @@ export const OFParams = {
 
 export const TRollParams = {
     id: "troll",
-    container: "main-title",
+    paused: true,
+    container: "#main-header",
     delay: 2,
     duration: .5,
     stagger: .1,
