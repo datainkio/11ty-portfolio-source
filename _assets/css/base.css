@@ -206,14 +206,8 @@
   .text-radar {
     @apply relative;
   }
-  .text-radar span {
-    @apply absolute inset-0 block;
-  }
-  .text-radar .text-radar-dupe {
-    @apply text-stroke text-stroke-[1px] text-stroke-ink-dark text-transparent;
-  }
-  .text-radar .stroked {
-    @apply text-stroke text-stroke-[12px] text-stroke-ink-dark text-transparent;
+  .text-radar-dupe {
+    @apply absolute inset-0 flex items-center justify-center text-stroke text-stroke-[2px] text-stroke-primary-600 text-transparent;
   }
 
   /** TEXT ROLL **/
@@ -221,29 +215,25 @@
     @apply my-auto;
   }
   .text-roll-char {
-    @apply text-ink-light;
+    @apply origin-bottom-left leading-none;
   }
   .text-roll-line {
-    @apply overflow-hidden;
+    @apply overflow-hidden leading-none h-28;
   }
 
   /** WANDERING GEL **/
   .wandering-gel {
-    @apply absolute inset-0 flex items-center justify-center;
-  }
-
-  .wandering-gel.dupe {
-    @apply text-stroke text-stroke-[2px] text-stroke-ink-dark text-transparent;
+    @apply absolute inset-0 flex items-center justify-center mix-blend-multiply;
   }
 
   .wandering-gel.alpha {
-    @apply text-stroke-[2px] text-stroke-[#06608D80] text-[#06608D30] mix-blend-multiply;
+    @apply text-semantic-failure-600 
   }
   .wandering-gel.bravo {
-    @apply text-stroke-[2px] text-stroke-[#EB5E2880] text-[#EB5E2830] mix-blend-multiply;
+    @apply text-primary-600;
   }
   .wandering-gel.charlie {
-    @apply text-stroke-[2px] text-stroke-[#FBC30B80] text-[#FBC30B30] mix-blend-multiply;
+    @apply text-accent-400;
   }
 
 }
@@ -290,9 +280,8 @@
     @apply bg-graphpaper bg-neutral-200;
   }
 
-  .bg-blockframes-bw,
-  .bg-blockframes-color {
-    @apply bg-contain bg-no-repeat bg-top;
+  .bg-blocklines {
+    @apply bg-contain bg-no-repeat bg-bottom;
   }
 
   .bg-fibonacci {

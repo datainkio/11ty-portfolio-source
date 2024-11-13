@@ -1,3 +1,6 @@
+import { findFarthestColor } from "../../../utils/color.js";
+import { paintElement } from "../painter.js";
+
 export function paint(timeline, palette) {
     var chop = timeline.querySelector(".chop");
     var bullets = timeline.querySelector(".bullets");
@@ -8,6 +11,6 @@ export function paint(timeline, palette) {
         .setAttribute("fill", findFarthestColor(palette[1], palette));
     chop
         .querySelector(".star")
-    paint(bullets, palette[3], 1);
-    paint(history, palette[2], 1);
+    paintElement(bullets, palette[3], 1);
+    paintElement(history, palette[2], 1);
 }

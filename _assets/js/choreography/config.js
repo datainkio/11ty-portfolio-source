@@ -1,6 +1,14 @@
 export const BlockLineParams = {
-    id: "blockline",
-    delay: 2,
+    type: "background", // "element" or "background" depending on purpose
+    id: "BlockframeLibrary",
+    container: "main-header",
+    colCount: 24,  // Number of buildings * 2
+    rowCount: 8,
+    size: 100, // WTF is this for now other than not being 0?
+    angle: 12,
+    brightness: 0.25,
+    opacity: 1,
+    types: ["Article","Calendar","Cart","Contact","Landing","Map","Timeline"]
 }
 
 export const RevealParams = {
@@ -24,7 +32,7 @@ export const WGParams = {
     range: 1,
     envelope: 0,
     duration: 2, 
-    colors: ["alpha", "bravo"], 
+    colors: ["bravo", "alpha"], 
     wiggles: 50,
 };
 
@@ -34,8 +42,9 @@ export const RadarParams = {
     steps: 10,
     alpha_start: .85,
     alpha_end: .25,
-    amount: 600,
-    base: -601
+    amount: 60,
+    base: -61,
+    settings: true
 }
 
 export const OFParams = {
@@ -51,13 +60,11 @@ export const TRollParams = {
     id: "troll",
     paused: true,
     container: "#main-header",
-    delay: 2,
-    duration: .5,
-    stagger: .1,
-    timing: "-=75%",
+    duration: .25,
+    stagger: .5,
+    overlap: "<25%",
     ease: "power1.inOut",
-    y_delta: 12,
-    rotation: 4,
+    rotation: -90,
 };
 
 export const HalftoneParams = {

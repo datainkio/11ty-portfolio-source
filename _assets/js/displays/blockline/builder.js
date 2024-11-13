@@ -1,87 +1,158 @@
-var BUILDER;
+import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
+import * as Painter from "./painter.js";
 
-export function init(b) {
-  BUILDER = b;
+var SRC, COLOR, BW, COLS, ROWS, SIZE, ANGLE, OPACITY, TYPES;
+
+export function build(params) {
+  console.log("Builder.build");
+  SRC = params.src;
+  COLS = params.cols;
+  ROWS = params.rows;
+  SIZE = params.size;
+  ANGLE = params.angle;
+  OPACITY = params.opacity;
+  TYPES = params.types;
+
+  // Create the SVG objects that will display the blockline
+  COLOR = SVG().size("100%", "100%").viewbox(`0 0 ${COLS * SIZE} ${ROWS * SIZE} `);
+  BW = SVG().size("100%", "100%").viewbox(`0 0 ${COLS * SIZE} ${ROWS * SIZE} `);
+
+  // Add them to a temporary container in the DOM so that we can measure and scale their children
+  // appropriately. We'll remove it later when we call updateView.
+  const tmp = document.createElement("div");
+  tmp.style.position = "absolute";
+  tmp.style.visibility = "hidden";
+  tmp.style.width = 0;
+  tmp.style.height = 0;
+
+  tmp.appendChild(COLOR.node);
+  tmp.appendChild(BW.node);
+  document.body.appendChild(tmp);
+
+  // Create building objects
+  var building_id = 0;
+  const b = buildings(ROWS, COLS);
+  b.forEach(height => {
+    // Create an empty group node to represent the building. We'll clone this twice, then remove it
+    let building = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    building.classList.add("building");
+
+    // Distribute the buildings horizontally along a single value of y
+    building.setAttribute("transform",`translate(${building_id * SIZE * 2}, 0)`);
+    let building_color = COLOR.node.appendChild(building.cloneNode());
+    let building_bw = BW.node.appendChild(building.cloneNode());
+    
+    building.remove(); // garbage collection
+    
+    // For each story in the building (aka value at the given index)
+    for (var story = 0; story <= height; story++) {
+      drawStory([building_bw, building_color], building_id, story, story == height);
+    }
+    // Increment so the buildings display properly without overlap
+    building_id += 1;
+  });
+
+  // Return the populated SVGs
+  return [COLOR, BW];
+};
+
+/**
+ * Returns an array supplying building heights. By default all buildings have the same
+ * height (determined by cols). Note that the a building's height can be randomly 
+ * determined. Another alternative - if you want more control over things - is to populate
+ * the array manually. 
+ * 
+ * @param {*} rows 
+ * @param {*} cols 
+ * @returns Array of row counts (each index == one building)
+ */
+function buildings(rows, cols) {
+  var arr = [];
+  for (var c = 0; c < cols/2; c++) {
+    var h = Math.ceil(Math.random() * rows);
+    arr.push(h);
+  }
+  return arr;
 }
 
-
-export async function build() {
-    console.log("drawBuildings");
-    var building_id = 0;
-    const b = buildings();
-    b.forEach(height => {
-        // console.log("draw building " + building_id + " with " + (height + 1) + " stories");
-        var building = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        building.classList.add("building");
-        building.setAttribute(
-        "transform",
-        `translate(${building_id * Settings.size * 2}, 0)`);
-
-        var building_bw = BW.node.appendChild(building.cloneNode());
-        var building_color = COLOR.node.appendChild(building.cloneNode());
-
-        for (var story = 0; story <= height; story++) {
-        drawStory([building_bw, building_color], building_id, story, story == height);
-        }
-        building_id += 1;
-        building.remove();
-    })
-};
-
+/**
+ * A building is composed of stories positioned vertically. Each story is composed
+ * of two faces. If a story is positioned at the top of the building, then it has
+ * a roof.
+ * 
+ * @param {*} building 
+ * @param {*} b the building ID (int)
+ * @param {*} s the story (int)
+ * @param {*} r boolean for adding a roof
+ */
 function drawStory(building, b, s, r) {
 
-    // Each story has a neutral and a color version
-    var story_bw = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    story_bw.classList.add("story");
-    story_bw.classList.add("story-" + s);
-    var story_color = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    story_color.classList.add("story");
-    story_color.classList.add("story-" + s);
+  // Each story has a neutral and a color version
+  let story_bw = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  story_bw.classList.add("story");
+  story_bw.classList.add("story-" + s);
+  let story_color = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  story_color.classList.add("story");
+  story_color.classList.add("story-" + s);
 
-    building[0].appendChild(story_bw);
-    building[1].appendChild(story_color);
+  // Add the story to the building so that we can access its dimensions
+  building[0].appendChild(story_bw);
+  building[1].appendChild(story_color);
 
-    // Draw the left and right faces of the story
-    var face_left = drawFace(s, 0);
-    story_bw.appendChild(face_left[0]);
-    story_color.appendChild(face_left[1]);
+  // Draw the left and right faces of the story
+  var face_left = drawFace(s, 0);
+  var face_right = drawFace(s, 1);
 
-    var face_right = drawFace(s, 1);
-    story_bw.appendChild(face_right[0]);
-    story_color.appendChild(face_right[1]);
+  // scaleFace(face_left);
+  // scaleFace(face_right);
 
-    face_right[0].setAttribute("opacity", ".5"); // TODO: For some reason applying the brightness filter to the BW causes it to throw up and not display
-    face_right[1].setAttribute("filter", "url(#brightness)");
+  // Add the faces of the story
+  story_bw.appendChild(face_left[0]);
+  story_color.appendChild(face_left[1]);
+  story_bw.appendChild(face_right[0]);
+  story_color.appendChild(face_right[1]);
 
-    // Do we need to add a roof?
-    if (r) {
-        story_bw.appendChild(roof());
-        story_color.appendChild(roof(random(Settings.colors)[0]));
-    }
+  // Do we need to add a roof?
+  if (r) {
+      story_bw.appendChild(roof());
+      story_color.appendChild(roof());
+  }
 
-    story_bw.setAttribute(
-        "transform",
-        `translate(${Settings.size/2}, ${(Settings.rowCount - s) * Settings.size})`);
-    story_color.setAttribute(
-        "transform",
-        `translate(${Settings.size / 2}, ${(Settings.rowCount - s) * Settings.size})`);
+  // Scale the faces
+  scaleFace(face_left, 0);
+  scaleFace(face_right, 1);
+
+  // Size things to suit
+    // Style one of the faces to provide a bit of shadow relative to the other
+  // face_right[0].setAttribute("opacity", ".5");
+  face_right[1].setAttribute("filter", "url(#brightness)");
+
+
+  // Set the xy coords for the story to position it within a given building
+  let x = SIZE / 2; // makes sure it's in the right building
+  let y = (ROWS - s + 1) * SIZE; // places it at the right floor (+1 ensures that the top doesn't get cropped. I don't know why.)
+  story_bw.setAttribute("transform",`translate(${x}, ${y})`);
+  story_color.setAttribute("transform",`translate(${x}, ${y})`);
+
 };
 
-function roof(color = null) {
+/**
+ * 
+ * @param {*} color 
+ * @returns An SVG polygon representing the roof of a given building
+ */
+function roof(color = "#AAA") {
     // Create the rectangle (square) element
     const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-        // Desired width of the diamond
-    const width = Settings.size * 2 * .95;
-
+    // Desired width of the diamond
+    const width = SIZE * 2;
     // Convert degrees to radians for JavaScript trigonometric functions
-    const radians = Settings.angle * (Math.PI / 180);
-
+    const radians = ANGLE * (Math.PI / 180);
     // Calculate the height using the formula h = width * tan(angle)
     const height = width * Math.tan(radians);
-
     // Calculate the coordinates of the diamond vertices
-    const centerX = Settings.size/2 - 2; // Center X position in the SVG canvas
-    const centerY = Settings.size/2 * -1 - 12; // Center Y position in the SVG canvas
+    const centerX = SIZE/2; // Center X position in the SVG canvas
+    const centerY = 0 - SIZE/2 - ANGLE; // Center Y position in the SVG canvas
 
     const points = [
         [centerX - width / 2, centerY], // Left vertex (24 degrees)
@@ -101,100 +172,31 @@ function roof(color = null) {
     return poly;
 }
 
-/**
-   * s: the building story
-   * side: 0 = left, 1 = right
-   **/
+  /**
+   * @param {*} s 
+   * @param {*} side 
+   * @returns Two SVG nodes representing the color and BW versions of a given face
+   */
   function drawFace(s, side) {
+    // Every face starts with an instance of Chrome as its foundation
+    // console.log(SRC.querySelector(".Chrome").getBBox());
     const block = SRC.querySelector(".Chrome").cloneNode(true);
     block.classList.remove("Chrome");
     block.classList.add("face");
-
-    // We're only adding it to the stage so that we can get the dimensions. It will be removed later.
-    document.getElementById("container").appendChild(block);
-    const rect = block.getBoundingClientRect();
-    const scaleX = Settings.size / rect.width;
-    const scaleY = Settings.size / rect.width;
-    const scale = Math.min(scaleX, scaleY) * .95// Uniform scaling
-    const skewYangle = side % 2 === 0 ? Settings.angle : Settings.angle * -1;
-    const x = ( side === 0 ? 0 : Settings.size );
-
-    block.setAttribute("width", Settings.size);
-    block.setAttribute("height", Settings.size);
-    block.setAttribute("fill", "#CCC");
-    block.setAttribute("stroke", "#000");
-    block.setAttribute("opacity", Settings.opacity);
-    // block.setAttribute("class", styles);
-
-    // Apply skew transform to the square around its center
-    block.setAttribute(
-      "transform",
-      `translate(${x}, 0) skewY(${skewYangle}) translate(${-Settings.size / 2}, ${-Settings.size / 2
-      }) scale(${scale})`
-    );
-
-    // Add the blockframe's content
-    var type;
-    var paintMe;
-    switch (random(Settings.types)) {
-      case "About":
-        type = SRC.querySelector(".About").cloneNode(true);
-        // paintMe = paintAbout;
-        break;
-      case "Calendar":
-        type = SRC.querySelector(".Calendar").cloneNode(true);
-        paintMe = paintCalendar;
-        break;
-      case "Article":
-        type = SRC.querySelector(".Article").cloneNode(true);
-        paintMe = paintArticle;
-        break;
-      case "Landing":
-        type = SRC.querySelector(".Landing").cloneNode(true);
-        paintMe = paintLanding;
-        break;
-      case "Cart":
-        type = SRC.querySelector(".Cart").cloneNode(true);
-        paintMe = paintCart;
-        break;
-      case "Contact":
-        type = SRC.querySelector(".Contact").cloneNode(true);
-        paintMe = paintContact;
-        break;
-      case "Map":
-        type = SRC.querySelector(".Map").cloneNode(true);
-        paintMe = paintMap;
-        break;
-      case "Timeline":
-        type = SRC.querySelector(".Timeline").cloneNode(true);
-        paintMe = paintTimeline;
-        break;
-    }
-    block.appendChild(type);
-
-    // Create the two different views of the block
-    const stroked = block.cloneNode(true); // BW
-    const painted = block.cloneNode(true); // COLOR
-    block.remove(); // Garbage collection
-
-    // BLACK AND WHITE
-    // BW.node.appendChild(stroked);
-    var paths = stroked.querySelectorAll("path");
-    paths.forEach(path => {
-      path.style.fill = "#FFF";
-      path.style.stroke = "#000";
-      path.style.strokeWidth = 2;
-      path.style.opacity = .25;
-    })
-    var background = stroked.querySelector(".background");
-    background.style.opacity = .1;
-
-    // COLOR
-    var palette = random(Settings.colors);
-    paintChrome(painted, palette);
-    paintMe(painted, palette);
-
-    // Return the block's coords so something else can use them (e.g. adding a roof)
-    return [stroked, painted];
-   
+    // Tell Painter to work its magic on the block and
+    return Painter.paintBlockframe(block, SRC, TYPES);
   } 
+
+  function scaleFace(face, side) {
+    // Skew and scale the face (note that we can't do this properly until it has been added to the DOM)
+    face.forEach(f => {
+      const rect = f.getBBox();
+      const scaleX = SIZE/rect.width;
+      const scaleY = SIZE/rect.height;
+      const scale = Math.min(scaleX, scaleY)// Uniform scaling
+      const skewYangle = side % 2 === 0 ? ANGLE : ANGLE * -1;
+      const x = ( side === 0 ? 0 : SIZE );
+      f.setAttribute("transform",`translate(${x}, 0) skewY(${skewYangle}) translate(${-SIZE / 2}, ${-SIZE / 2}) scale(${scale})`);
+    })
+    
+  }

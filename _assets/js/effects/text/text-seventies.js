@@ -1,28 +1,24 @@
 gsap.registerPlugin(CustomEase, CustomWiggle) 
 import * as MathUtils from "/assets/js/utils/math.js";
 var CONTAINER, SETTINGS, SRC, DUPES;
-export function SeventiesNewsShow(id, params) {
-    CONTAINER = document.getElementById(id);
+export function SeventiesNewsShow(elem, params) {
+
+    CONTAINER = elem;
     SETTINGS = params;
     SRC = CONTAINER.innerText;
     DUPES = [];
+
     buildView();
-    // gsap.set(DUPES, {autoAlpha: 0});
-    var tl = gsap.timeline();
+
+    var tl = gsap.timeline({id: params.id});
     tl.add(moveRot());
-    tl.add(moveXY(), ">");
-    tl.add(wiggle(), ">");
+    // stl.add(moveXY(), ">");
+    // tl.add(wiggle(), ">");
     tl.id;
     return tl;
 };
 
 function buildView() {
-    // Style the source text with the first color
-    ///CONTAINER.classList.add("wandering-gel", SETTINGS.colors[0]);
-    // Hide the source text
-    CONTAINER.innerHTML = `<span class="block invisible">${CONTAINER.innerText}</span>`;
-    // For every other color, create a new instance of the text
-
     for (var i = 0; i < 6; i++) {
         var dupe = document.createElement('div');
         dupe.id = "wg-" + i;
@@ -31,7 +27,6 @@ function buildView() {
         CONTAINER.appendChild(dupe);
         DUPES.push(dupe);
     };
-
     for (var i = 0; i < 6; i++) {
         var dupe = document.createElement('div');
         dupe.id = "wg-" + i;
@@ -50,16 +45,17 @@ function moveRot() {
     var interleaved = color0.map((item, index) => [item, color1[index]]).flat();
     return gsap.to(interleaved, {
         duration: SETTINGS.duration,
-        autoAlpha: .8,
+        autoAlpha: .5,
         rotate: 0,
         stagger: {
             // wrap advanced options in an object
             each: 0.1,
-            ease: 'sine.in',
+            ease: 'power3.inOut',
         },
         ease: "sine.in"
     }, "<25%");
 };
+
 
 function moveXY() {
     var color = DUPES.filter(item => item.classList.contains("origin-right"));
@@ -70,7 +66,7 @@ function moveXY() {
         y: "+=" + SETTINGS.h * SETTINGS.range,
         stagger: .1,
     });
-}
+};
 
 function wiggle() {
     // Create a Brownian motion wiggle configuration
@@ -81,4 +77,4 @@ function wiggle() {
     });
     return gsap.timeline({    }).to(DUPES, {repeat: -1, repeatRefresh: true, duration: 5, x: "*=" + "random(-2, 2)", ease: "textWiggle" })
     .to(DUPES, {repeat: -1, repeatRefresh: true, duration: 5, y: "*=" + "random(-2, 2)", ease: "textWiggle"  }, "<")
-}
+};

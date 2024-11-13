@@ -1,3 +1,4 @@
+import { findFarthestColor } from "../../../utils/color.js";
 export function paint(image, palette) {
     var base = findFarthestColor(palette[0], palette);
     var background = image.querySelector(".background"

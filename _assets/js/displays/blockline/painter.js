@@ -1,18 +1,79 @@
-import * as Article from "./blocks/article.js";
-import * as Calendar from "./blocks/calendar.js";
-import * as Cart from "./blocks/cart.js";
-import * as Chrome from "./blocks/chrome.js";
-import * as Contact from "./blocks/contact.js";
-import * as Image from "./blocks/image.js";
-import * as Landing from "./blocks/landing.js";
-import * as Map from "./blocks/map.js";
-import * as Timeline from "./blocks/timeline.js";
+import * as Article from "./types/article.js";
+import * as Calendar from "./types/calendar.js";
+import * as Cart from "./types/cart.js";
+import * as Chrome from "./types/chrome.js";
+import * as Contact from "./types/contact.js";
+import * as Image from "./types/image.js";
+import * as Landing from "./types/landing.js";
+import * as Map from "./types/map.js";
+import * as Timeline from "./types/timeline.js";
 
-export function paintBlock() {
-    
+// const PALETTES = await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
+
+export function paintBlockframe(block, src, types) {
+    // Add the blockframe's content
+    var type;
+    var paintMe;
+  
+    switch (types[Math.floor(Math.random() * types.length)]) {
+      case "Calendar":
+        type = src.querySelector(".Calendar").cloneNode(true);
+        paintMe = Calendar.paint;
+        break;
+      case "Article":
+        type = src.querySelector(".Article").cloneNode(true);
+        paintMe = Article.paint;
+        break;
+      case "Landing":
+        type = src.querySelector(".Landing").cloneNode(true);
+        paintMe = Landing.paint;
+        break;
+      case "Cart":
+        type = src.querySelector(".Cart").cloneNode(true);
+        paintMe = Cart.paint;
+        break;
+      case "Contact":
+        type = src.querySelector(".Contact").cloneNode(true);
+        paintMe = Contact.paint;
+        break;
+      case "Map":
+        type = src.querySelector(".Map").cloneNode(true);
+        paintMe = Map.paint;
+        break;
+      case "Timeline":
+        type = src.querySelector(".Timeline").cloneNode(true);
+        paintMe = Timeline.paint;
+        break;
+    }
+
+    // Added the selected blockframe on top of the Chrome instance
+    block.appendChild(type);
+
+    // Create the two different views of the block
+    const stroked = block.cloneNode(true); // BW
+    const painted = block.cloneNode(true); // COLOR
+    block.remove(); // Garbage collection
+
+    // BLACK AND WHITE
+    // BW.node.appendChild(stroked);
+    var paths = stroked.querySelectorAll("path");
+    paths.forEach(path => {
+      path.style.fill = "#FFF";
+      path.style.stroke = "#000";
+      path.style.strokeWidth = 4;
+      path.style.opacity = 1;
+    })
+    var background = stroked.querySelector(".background");
+    background.style.opacity = .5;
+
+    // COLOR
+    var palette = types[Math.floor(Math.random() * types.length)];; // TODO: Select from the collection of palettes (currently in blockline)
+    Chrome.paint(painted, palette, paintElement);
+    paintMe(painted, palette);
+    return [stroked, painted];
 }
 
-function paintElement(element, color, opacity) {
+export function paintElement(element, color, opacity) {
     switch (element.nodeName) {
         // Container elements
         case "svg":
@@ -21,7 +82,7 @@ function paintElement(element, color, opacity) {
         case "symbol":
         case "use":
         element.childNodes.forEach((child) => {
-            paint(child, color, opacity);
+            paintElement(child, color, opacity);
         });
         break;
         // Basic shapes
@@ -63,14 +124,14 @@ function getColors(len) {
 }
 
 // SVG FILTERS
-export function createFilters(e) {
+export function createFilters(svg, brightness) {
     // Append the filter to the SVG's defs section
     let defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-    e.node.appendChild(defs);
-    defs.appendChild(getBrightnessFilter());
+    svg.node.appendChild(defs);
+    defs.appendChild(getBrightnessFilter(brightness));
 }
 
-function getBrightnessFilter() {
+function getBrightnessFilter(brightness) {
     // Create a filter element
     const filter = document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -91,7 +152,7 @@ function getBrightnessFilter() {
         `feFunc${channel}`
       );
       feFunc.setAttribute("type", "linear");
-      feFunc.setAttribute("slope", Settings.brightness);
+      feFunc.setAttribute("slope", brightness);
       feComponentTransfer.appendChild(feFunc);
     });
 
