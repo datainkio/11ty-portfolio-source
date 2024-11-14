@@ -8,69 +8,54 @@ import * as Landing from "./types/landing.js";
 import * as Map from "./types/map.js";
 import * as Timeline from "./types/timeline.js";
 
-// const PALETTES = await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
 
-export function paintBlockframe(block, src, types) {
-    // Add the blockframe's content
-    var type;
-    var paintMe;
-  
-    switch (types[Math.floor(Math.random() * types.length)]) {
-      case "Calendar":
-        type = src.querySelector(".Calendar").cloneNode(true);
-        paintMe = Calendar.paint;
-        break;
-      case "Article":
-        type = src.querySelector(".Article").cloneNode(true);
-        paintMe = Article.paint;
-        break;
-      case "Landing":
-        type = src.querySelector(".Landing").cloneNode(true);
-        paintMe = Landing.paint;
-        break;
-      case "Cart":
-        type = src.querySelector(".Cart").cloneNode(true);
-        paintMe = Cart.paint;
-        break;
-      case "Contact":
-        type = src.querySelector(".Contact").cloneNode(true);
-        paintMe = Contact.paint;
-        break;
-      case "Map":
-        type = src.querySelector(".Map").cloneNode(true);
-        paintMe = Map.paint;
-        break;
-      case "Timeline":
-        type = src.querySelector(".Timeline").cloneNode(true);
-        paintMe = Timeline.paint;
-        break;
-    }
+export async function paint(blockline) {
+  console.log("Painter.paint");
+  const colors = [["#06161f", "#f15025", "#776472", "#9888a5", "#f3e8ee"]]; // await loadColors("https://unpkg.com/nice-color-palettes@3.0.0/100.json");
+  console.log(colors)
+  const faces = blockline.node.querySelectorAll(".face");
+  faces.forEach(face => {
+    // console.log(face, colors);
+    paintBlockframe(face, colors[Math.floor(Math.random()*colors.length)]);
+  });
+}
 
-    // Added the selected blockframe on top of the Chrome instance
-    block.appendChild(type);
+function paintBlockframe(face, colors) {
+  var paintMe;
+  if (face.classList.contains("face-Calendar")) {
+    paintMe = Calendar.paint;
+  } else if (face.classList.contains("face-Article")) {
+    paintMe = Article.paint;
+  } else if (face.classList.contains("face-Landing")) {
+    paintMe = Landing.paint;
+  } else if (face.classList.contains("face-Cart")) {
+    paintMe = Cart.paint;
+  } else if (face.classList.contains("face-Contact")) {
+    paintMe = Contact.paint;
+  } else if (face.classList.contains("face-Map")) {
+    paintMe = Map.paint;
+  } else if (face.classList.contains("face-Timeline")) {
+    paintMe = Timeline.paint;
+  } else {
+    console.log("Painter.paintBlockframe does not recognize anything in the classlist:" + face.classList);
+  }
 
-    // Create the two different views of the block
-    const stroked = block.cloneNode(true); // BW
-    const painted = block.cloneNode(true); // COLOR
-    block.remove(); // Garbage collection
+  // BLACK AND WHITE
+  // BW.node.appendChild(stroked);
+  var paths = face.querySelectorAll("path");
+  paths.forEach(path => {
+    // path.style.fill = "#FFF";
+    // path.style.stroke = "#000";
+    path.style.strokeWidth = 4;
+    path.style.opacity = 1;
+  });
+  var background = face.querySelector(".background");
+  background.style.opacity = .5;
 
-    // BLACK AND WHITE
-    // BW.node.appendChild(stroked);
-    var paths = stroked.querySelectorAll("path");
-    paths.forEach(path => {
-      path.style.fill = "#FFF";
-      path.style.stroke = "#000";
-      path.style.strokeWidth = 4;
-      path.style.opacity = 1;
-    })
-    var background = stroked.querySelector(".background");
-    background.style.opacity = .5;
-
-    // COLOR
-    var palette = types[Math.floor(Math.random() * types.length)];; // TODO: Select from the collection of palettes (currently in blockline)
-    Chrome.paint(painted, palette, paintElement);
-    paintMe(painted, palette);
-    return [stroked, painted];
+  // var palette = types[Math.floor(Math.random() * types.length)];; // TODO: Select from the collection of palettes (currently in blockline)
+  Chrome.paint(face, colors, paintElement);
+  paintMe(face, colors);
+  // return [stroked, painted];
 }
 
 export function paintElement(element, color, opacity) {
@@ -161,8 +146,8 @@ function getBrightnessFilter(brightness) {
     return filter;
 }
 
-
-
-
-
-
+async function loadColors(url) {
+  const response = await fetch(url); // .then((response) => response.json());
+  const data = await response.json();
+  return data;
+};

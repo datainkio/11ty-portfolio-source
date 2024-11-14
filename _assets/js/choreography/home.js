@@ -21,7 +21,7 @@ window.onload = function() {
     });
 
     const MAIN = gsap.timeline();
-    const HERO = gsap.timeline();
+    const HERO = gsap.timeline(); // {yoyo: true, repeat: -1}
     /**
      * The hero sequence focuses on animating the landing view by manipulating the title text.
      */
@@ -36,8 +36,9 @@ window.onload = function() {
      */
     // HERO.add(TextParty.gel(h1, Config.WGParams));
     // HERO.add(TextParty.radar(h1, Config.RadarParams));
-    HERO.add(TextParty.gel(h1, Config.WGParams), ">");
     HERO.add(BlockLine(Config.BlockLineParams));
+    HERO.add(TextParty.gel(h1, Config.WGParams), ">");
+
     // HERO.add(TextParty.roll(document.getElementById(Config.RadarParams.id + "_0"), Config.TRollParams), ">");
     
 };

@@ -1,7 +1,6 @@
 import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
-import * as Painter from "./painter.js";
 
-var SRC, COLOR, BW, COLS, ROWS, SIZE, ANGLE, OPACITY, TYPES;
+var SRC, COLOR, BW, COLS, ROWS, SIZE, ANGLE, OPACITY, TYPES, PALETTES;
 
 export function build(params) {
   console.log("Builder.build");
@@ -12,6 +11,8 @@ export function build(params) {
   ANGLE = params.angle;
   OPACITY = params.opacity;
   TYPES = params.types;
+  PALETTES = params.palettes;
+  // PALETTES = await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
 
   // Create the SVG objects that will display the blockline
   COLOR = SVG().size("100%", "100%").viewbox(`0 0 ${COLS * SIZE} ${ROWS * SIZE} `);
@@ -178,13 +179,56 @@ function roof(color = "#AAA") {
    * @returns Two SVG nodes representing the color and BW versions of a given face
    */
   function drawFace(s, side) {
+    var type;
     // Every face starts with an instance of Chrome as its foundation
-    // console.log(SRC.querySelector(".Chrome").getBBox());
     const block = SRC.querySelector(".Chrome").cloneNode(true);
     block.classList.remove("Chrome");
     block.classList.add("face");
-    // Tell Painter to work its magic on the block and
-    return Painter.paintBlockframe(block, SRC, TYPES);
+
+    var random = TYPES[Math.floor(Math.random() * TYPES.length)];
+    // Next we add a randomly selected type of blockframe to add to the chrome
+    switch (random) {
+      case "Calendar":
+        type = SRC.querySelector(".Calendar").cloneNode(true);
+        // paintMe = Calendar.paint;
+        break;
+      case "Article":
+        type = SRC.querySelector(".Article").cloneNode(true);
+        // paintMe = Article.paint;
+        break;
+      case "Landing":
+        type = SRC.querySelector(".Landing").cloneNode(true);
+        // paintMe = Landing.paint;
+        break;
+      case "Cart":
+        type = SRC.querySelector(".Cart").cloneNode(true);
+        // paintMe = Cart.paint;
+        break;
+      case "Contact":
+        type = SRC.querySelector(".Contact").cloneNode(true);
+        // paintMe = Contact.paint;
+        break;
+      case "Map":
+        type = SRC.querySelector(".Map").cloneNode(true);
+        // paintMe = Map.paint;
+        break;
+      case "Timeline":
+        type = SRC.querySelector(".Timeline").cloneNode(true);
+        // paintMe = Timeline.paint;
+        break;
+    }
+    block.classList.add("face-" + random);
+        // Added the selected blockframe on top of the Chrome instance
+    block.appendChild(type);
+
+    // Create the two different views of the block
+    const stroked = block.cloneNode(true); // BW
+    const painted = block.cloneNode(true); // COLOR
+    block.remove(); // Garbage collection
+
+    return [stroked, painted];
+
+    // return Painter.paintBlockframe(block, SRC, TYPES, colors);
   } 
 
   function scaleFace(face, side) {

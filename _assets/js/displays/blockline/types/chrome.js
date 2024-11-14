@@ -5,6 +5,7 @@ export function paint(chrome, palette, method) {
 
     // BACKGROUND
     var background = chrome.querySelector(".background");
+    console.log(palette[0]);
     method(background, palette[0]);
 
     // TOOLBAR
@@ -12,11 +13,11 @@ export function paint(chrome, palette, method) {
     
     // background
     var tbg = toolbar.querySelector(".background");
-    method(tbg, findFarthestColor(palette[0], palette));
-    tbg.setAttribute("opacity", 0.25);
+    method(tbg, palette[2]);
+    tbg.setAttribute("opacity", 1);
     tbg.setAttribute("style", "mix-blend-mode: hard-light;");
 
     // dots
     var dots = toolbar.querySelector(".dots");
-    method(dots, palette[0]);
+    method(dots, palette[4]);
 }

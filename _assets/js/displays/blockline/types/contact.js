@@ -1,7 +1,7 @@
 import { findFarthestColor } from "../../../utils/color.js";
 import { paintElement } from "../painter.js";
 export function paint(contact, palette) {
-    var background = contact.querySelector(".background");
+    var background = contact.querySelector(".bg");
     var fields = contact.querySelector(".fields");
     var title = contact.querySelector(".title");
     var button = contact.querySelector(".submit");

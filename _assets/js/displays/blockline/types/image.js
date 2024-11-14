@@ -1,12 +1,14 @@
 import { findFarthestColor } from "../../../utils/color.js";
+import { paintElement } from "../painter.js";
 export function paint(image, palette) {
+    console.log("Image.paint");
     var base = findFarthestColor(palette[0], palette);
     var background = image.querySelector(".background"
     );
-    paint(background, "#FFFFFF");
+    paintElement(background, "#FFFFFF80");
     var mountains = image.querySelector(".mountains"
     );
-    paint(mountains, base, 0.5);
+    paintElement(mountains, base, 0.5);
     var sun = image.querySelector(".sun");
-    paint(sun, base, 1);
+    paintElement(sun, base, 1);
 }
