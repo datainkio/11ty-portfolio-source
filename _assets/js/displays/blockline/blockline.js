@@ -1,8 +1,20 @@
 /**
- * Takes a set of blockframes contained in a given SVG and renders them
+ * Takes a set of blockframes contained in a given SVG (blockframes.svg) and renders them
  * onscreen in multiple variations and positions.
  * 
- * Implement using the CSS class bg-blockline
+ * Example:
+ *  gsap.timeline.add(BlockLine({
+*     type: "background", // "element" or "background" depending on purpose
+      id: "BlockframeLibrary",
+      container: "page-content",
+      colCount: 24,  // Number of buildings * 2
+      rowCount: 8,
+      size: 100, // WTF is this for now other than not being 0?
+      angle: 12,
+      brightness: 0.25,
+      opacity: 1,
+      types: ["Article","Calendar","Cart","Contact","Landing","Map","Timeline"]
+ * })
  */
 
 // import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
@@ -19,8 +31,7 @@ var SETTINGS, SRC, COLOR, BW, CONTAINER;
  * @param {*} settings 
  * @returns gsap.timeline instance describing how the blockline presents itself
  */
-export async function BlockLine(settings) {
-
+export async function BlockLine(elem, settings) {
   var main = gsap.timeline({
     id: "blockline",
     onUpdate: updateView,
@@ -29,7 +40,7 @@ export async function BlockLine(settings) {
   try {
     SETTINGS = settings;
     // SETTINGS.palettes = getColors("https://unpkg.com/nice-color-palettes@3.0.0/100.json"); // await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
-    SRC = document.getElementById(SETTINGS.id);
+    SRC = elem;
     SRC.classList.add("hidden"); // hide it by default
     CONTAINER = document.getElementById(SETTINGS.container);
 

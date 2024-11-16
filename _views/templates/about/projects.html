@@ -1,0 +1,26 @@
+<figure id="projects" class="col-span-full bg-graphpaper-dark grid grid-cols-3 gap-4 p-12">
+    <figcaption class="sr-only">Project List</figcaption>
+    <!-- Project category controls-->
+    <ul id="types" class="menu menu-horizontal mx-auto gap-2 col-span-full">
+        <li>
+            <a id="featured"
+                class="btn btn-sm  btn-outline text-neutral-200 btn-neutral-800 category btn-active">Featured</a>
+        </li>
+        {% for category in ia %}
+        <li>
+            <a id="{{ category.Slug | slugify }}"
+                class="btn btn-sm btn-outline text-neutral-600 btn-neutral-600  category">{{ category.Title
+                }}</a>
+        </li>
+        {% endfor %}
+        <li class="aspect-video">
+            <a id="all" class="btn btn-sm btn-outline text-neutral-600 btn-neutral-600  category">All</a>
+        </li>
+    </ul>
+    {% for project in projects | sortByAttribute('Weight') %}
+    {% set href = ["/case-studies/",project.Name | slugify, "/"] | join %}
+    {% set action = ["modal_", project.id, ".showModal()"] | join %}
+    {% include "templates/project/card-image.html" %}
+    {% include "templates/project/modal.html" %}
+    {% endfor %}
+</figure>

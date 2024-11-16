@@ -1,7 +1,6 @@
 export const BlockLineParams = {
     type: "background", // "element" or "background" depending on purpose
     id: "BlockframeLibrary",
-    container: "main-header",
     colCount: 24,  // Number of buildings * 2
     rowCount: 8,
     size: 100, // WTF is this for now other than not being 0?

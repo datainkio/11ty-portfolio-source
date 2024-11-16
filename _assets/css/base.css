@@ -15,11 +15,11 @@
 @layer base {
 
   body {
-    @apply bg-neutral-200;
+    @apply bg-neutral-200 overflow-x-hidden;
   }
 
   main {
-    @apply relative;
+    @apply relative h-dvh;
   }
 
   h1 {

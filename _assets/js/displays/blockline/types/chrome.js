@@ -5,7 +5,6 @@ export function paint(chrome, palette, method) {
 
     // BACKGROUND
     var background = chrome.querySelector(".background");
-    console.log(palette[0]);
     method(background, palette[0]);
 
     // TOOLBAR

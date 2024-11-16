@@ -1,24 +1,4 @@
-<section id="approach" class="col-span-full h-dvh content-center">
+<section id="approach" class="col-span-full h-dvh content-center z-10 bg-neutral-200">
     <p class="mx-auto prose">{{ statement.approach }}</p>
-    <figure id="awards" class="p-6">
-        <figcaption class="sr-only">
-            <h3>Awards</h3>
-        </figcaption>
-        <ul class="col-span-full columns-xs">
-            {% for img in images %}
-            {% if img.Recognition %}
-            <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
-                {% for award in awards | find("id", img.Recognition) %}
-                {% if loop.index === 1 %}
-                <h4 class="font-bold text-xs">{{ award.Organization }}</h4>
-                <ul class="sm:col-span-8">
-                    {% endif %}
-                    <li class="font-light text-xs">{{ award.Title }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </figure>
+
 </section>

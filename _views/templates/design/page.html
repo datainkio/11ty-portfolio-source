@@ -1,12 +1,55 @@
 {% extends "species/landing.html" %}
-{% set main_styles = "design grid grid-cols-12" %}
 {% block primary %}
-<section id="background" class="scene col-span-full">
-	<h2>Background</h2>
-	<figure>
-		<figcaption class="bg-blocklines"><h3>.bg-blocklines</h3></figcaption>
-	</figure>
-</section>
+
+
+<figure tabindex="0" class="collapse">
+	<figcaption class="collapse-title text-xl font-medium"><h2>Backgrounds</h2></figcaption>
+	<div class="collapse-content">
+		<p class="bg-gradient-to-t from-primary-950 to-primary-800 w-full h-dvh mix-blend-multiply">tabindex="0" attribute is necessary to make the div focusable</p>
+	</div>
+</figure>
+
+<figure tabindex="0" class="collapse">
+	<figcaption class="collapse-title text-xl font-medium">
+		<h2>Palette</h2>
+	</figcaption>
+	<div class="collapse-content">
+		{% include "templates/design/palette.html" %}
+	</div>
+</figure>
+
+<figure tabindex="0" class="collapse">
+	<figcaption class="collapse-title text-xl font-medium">
+		<h2>SVG Filters</h2>
+	</figcaption>
+	<div class="collapse-content">
+		<!-- Embed the external SVG filter -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+	<filter id="grunge">
+		<feTurbulence type="fractalNoise" baseFrequency="1" numOctaves="4" result="noise" />
+		<feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R"
+			yChannelSelector="G" />
+	</filter>
+</svg>
+		
+		<div class="font-display bg-neutral-400 filter [filter:url('#grunge')] size-24">
+			grunge-filter
+		</div>
+	</div>
+</figure>
+
+
+<!-- Embed the external SVG filter -->
+<object id="svg-object" type="image/svg+xml" data="grunge-filter.svg" style="display:none;"></object>
+
+<h1 id="main-title" data-text="{{ title }}"
+	class="text-fluid font-display font-bold tracking-tighter px-12 text-neutral-200 filter [filter:url('#grunge')]">
+	{{title}}
+</h1>
+
+<!--
+
+
 <section id="text-styles" class="scene col-span-full">
 	<h2>Text Styles</h2>
 	<h3 class="wandering-gel dupe">.text-outline</h3>
@@ -15,13 +58,9 @@
 	<h3 class="text-radar">.text-radar</h3>
 	<h3 class="text-radar-dupe">.text-radar-dupe</h3>
 	<h3 class="text-radar-dupe stroked">.text-radar-dupe.stroked</h3>
-</section>
-<section id="palette" class="scene col-span-full">
-	<h2>Palette</h2>
-	<div class="wandering-gel alpha">Alpha</div>
-	<div class="wandering-gel charlie">Bravo</div>
-	<div class="wandering-gel bravo">Charlie</div>
-	{% include "templates/design/palette.html" %}
+	<h3 class="wandering-gel alpha">Alpha</h3>
+	<h3 class="wandering-gel charlie">Bravo</h3>
+	<h3 class="wandering-gel bravo">Charlie</h3>
 </section>
 <section id="transformations" class="scene col-span-full">
 	<h2>Transformations</h2>
@@ -46,4 +85,5 @@
 <section id="layouts" class="scene">
 	<h2>Layouts</h2>
 </section>
+-->
 {% endblock %}

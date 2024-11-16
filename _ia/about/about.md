@@ -25,8 +25,7 @@ scripts: >
   <script src="/assets/js/gsap/SplitText.js"></script>
   <script src="/assets/js/gsap/CustomEase.js"></script>
   <script src="/assets/js/gsap/CustomWiggle.js"></script>
-  <script type="module" src="/assets/js/choreography/home.js"></script>
-  <script type="module" src="/assets/js/effects/parallax.js"></script>
+  <script type="module" src="/assets/js/choreography/Director.js"></script>
 ---
 
 <!-- @format -->

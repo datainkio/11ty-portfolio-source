@@ -1,4 +1,12 @@
-<h1 id="main-title" data-text="{{ title }}" class="relative text-8xl mx-auto flex justify-center font-display font-bold tracking-tighter">
+<svg width="0" height="0">
+    <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency=".5" numOctaves="4" result="noise" />
+        <feComposite operator="in" in2="SourceGraphic" in="noise" result="maskedNoise" />
+        <feBlend in="SourceGraphic" in2="maskedNoise" mode="screen" />
+    </filter>
+</svg>
+<h1 id="main-title"
+    data-text="{{ title }}" 
+    class="text-8xl font-display font-bold tracking-tighter p-12 text-neutral-300">
     {{title}}
 </h1>
-
