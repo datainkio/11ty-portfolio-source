@@ -1,4 +1,5 @@
 // import '/assets/js/utils/trace.js';
+import * as TextParty from '../effects/TextParty.js';
 import StageManager from '/assets/js/choreography/StageManager.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -8,11 +9,10 @@ window.onload = function() {
     const SM = new StageManager(document.getElementById("page-content"));
     SM.video = "/assets/video/Robert Lougheed.mp4";
     
-    
-    const title = ["#main-header", SM.acetate];
+    const header = document.getElementById("main-header");
     const h1 = document.getElementById("main-title");
     const intro = document.getElementById("intro");
-
+    const twenty_yrs = document.getElementById("twenty-years").getElementsByClassName("stat-value")[0];
     const MAIN = gsap.timeline();
     const HERO = gsap.timeline(); // {yoyo: true, repeat: -1}
 
@@ -21,8 +21,8 @@ window.onload = function() {
 
     // const f = filters("/assets/svg/filters.svg");
 
-    // Landing view
-    gsap.to(title, {
+    // HERO
+    HERO.to([header, SM.acetate], {
         scrollTrigger: {
             trigger: "#main-header",
             start: "top top-=75px",
@@ -30,10 +30,11 @@ window.onload = function() {
             scrub: true,
         },
         transformOrigin: "bottom left",
-        rotation: -20, // Rotate the element in the direction of the scroll});
+        rotation: -20,
         ease: "sine.in"
     })
     
+    // INTRO
     gsap.to(intro, {
         rotation: 0,
         ease: "sine.inOut",
@@ -43,6 +44,21 @@ window.onload = function() {
             scrub: true,
         },
     });
+
+    // 20 YEARS
+    const gel_params = {
+        id: "wg",
+        paused: true,
+        w: -6,
+        h: -6,
+        range: 1,
+        envelope: 0,
+        duration: 2, 
+        colors: ["bravo", "alpha"], 
+        wiggles: 50,
+    };
+    const gelTL = TextParty.gel(twenty_yrs, gel_params);
+    
 /*
     gsap.utils.toArray(".project").reverse().forEach(project => {
         gsap.from(project, {

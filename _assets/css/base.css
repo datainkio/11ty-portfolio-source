@@ -223,7 +223,7 @@
 
   /** WANDERING GEL **/
   .wandering-gel {
-    @apply absolute inset-0 flex items-center justify-center mix-blend-multiply;
+    @apply absolute inset-0 mix-blend-multiply;
   }
 
   .wandering-gel.alpha {
