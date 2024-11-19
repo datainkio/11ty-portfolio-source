@@ -19,7 +19,7 @@
   }
 
   main {
-    @apply relative h-dvh;
+    @apply relative;
   }
 
   h1 {
@@ -278,10 +278,6 @@
 
   .bg-graphpaper-light {
     @apply bg-graphpaper bg-neutral-200;
-  }
-
-  .bg-blocklines {
-    @apply bg-contain bg-no-repeat bg-bottom;
   }
 
   .bg-fibonacci {

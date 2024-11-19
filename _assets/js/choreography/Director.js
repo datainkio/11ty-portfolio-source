@@ -8,42 +8,26 @@ window.onload = function() {
 
     const SM = new StageManager(document.getElementById("page-content"));
     SM.video = "/assets/video/Robert Lougheed.mp4";
-    
+    SM.blockline = document.getElementById("blocklines");
     const header = document.getElementById("main-header");
+
     const h1 = document.getElementById("main-title");
     const intro = document.getElementById("intro");
     const twenty_yrs = document.getElementById("twenty-years").getElementsByClassName("stat-value")[0];
     const MAIN = gsap.timeline();
     const HERO = gsap.timeline(); // {yoyo: true, repeat: -1}
 
-    
-
-
-    // const f = filters("/assets/svg/filters.svg");
-
-    // HERO
-    HERO.to([header, SM.acetate], {
+    const landingTL = initLandingView([header, SM.acetate]);
+    const introTL = initIntroView(intro, header);
+    const testTL = gsap.timeline({
         scrollTrigger: {
-            trigger: "#main-header",
-            start: "top top-=75px",
-            end: "bottom 100px",
-            scrub: true,
-        },
-        transformOrigin: "bottom left",
-        rotation: -20,
-        ease: "sine.in"
-    })
-    
-    // INTRO
-    gsap.to(intro, {
-        rotation: 0,
-        ease: "sine.inOut",
-        scrollTrigger: {
-           trigger: "#main-header",
-            start: "bottom center",
-            scrub: true,
-        },
+                trigger: "#blocklines",
+                start: "top top",
+                pin: true
+            }
     });
+
+    testTL.add(SM.blockline._timeline);
 
     // 20 YEARS
     const gel_params = {
@@ -57,9 +41,13 @@ window.onload = function() {
         colors: ["bravo", "alpha"], 
         wiggles: 50,
     };
-    const gelTL = TextParty.gel(twenty_yrs, gel_params);
+    // const twentyTL = TextParty.gel(twenty_yrs, gel_params);
+    // twentyTL.pause();
+
+    // INTRO
+
     
-/*
+
     gsap.utils.toArray(".project").reverse().forEach(project => {
         gsap.from(project, {
             scrollTrigger: {
@@ -71,7 +59,7 @@ window.onload = function() {
             y: "+=" + 25, 
             ease: "sine.inOut"});
     })
-*/
+
  
     /**
      * The trick for sequencing is to reference specific elements created by other animations rather than
@@ -89,6 +77,37 @@ window.onload = function() {
     // StageManager.update("update stage!");
       
 };
+
+function initLandingView(arr) {
+    return gsap.to(arr, {
+        scrollTrigger: {
+            trigger: "#main-header",
+            start: "top top-=75px",
+            end: "bottom 100px",
+            scrub: true,
+        },
+        transformOrigin: "bottom left",
+        rotation: -20,
+        ease: "sine.in"
+    })
+}
+
+function initIntroView(elem, trigger) {
+    gsap.set(elem, {x: 500, y: window.innerHeight, rotation: -20});
+    return gsap.to(intro, {
+        rotation: 0,
+        x: 0,
+        y: window.innerHeight / 2,
+        ease: "sine.inOut",
+        scrollTrigger: {
+           trigger: trigger,
+            start: "top top",
+            stop: "bottom top",
+            scrub: true,
+        },
+        // onComplete: twentyTL.play()
+    });
+}
 
 
 function onStart(id) {

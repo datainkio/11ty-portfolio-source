@@ -9,11 +9,11 @@ import * as Map from "./types/map.js";
 import * as Timeline from "./types/timeline.js";
 
 
-export async function paint(blockline) {
-  // console.log("Painter.paint");
+export async function paint(view) {
+  console.log("Painter.paint");
   const colors = [["#06161f", "#f15025", "#776472", "#9888a5", "#f3e8ee"]]; // await loadColors("https://unpkg.com/nice-color-palettes@3.0.0/100.json");
   // console.log(colors)
-  const faces = blockline.node.querySelectorAll(".face");
+  const faces = view.node.querySelectorAll(".face");
   faces.forEach(face => {
     // console.log(face, colors);
     paintBlockframe(face, colors[Math.floor(Math.random()*colors.length)]);

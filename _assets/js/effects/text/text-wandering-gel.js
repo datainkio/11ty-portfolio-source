@@ -15,7 +15,7 @@ export function WanderingGel(elem, params) {
 };
 
 function buildView() {
-    CONTAINER.innerText = '';
+    // CONTAINER.innerText = '';
     for (var i = 0; i < SETTINGS.colors.length; i++) {
         var dupe = document.createElement('div');
         dupe.id = "wg-" + i;

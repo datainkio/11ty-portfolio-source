@@ -6,7 +6,7 @@
  *  gsap.timeline.add(BlockLine({
 *     type: "background", // "element" or "background" depending on purpose
       id: "BlockframeLibrary",
-      container: "page-content",
+      this._container: "page-content",
       colCount: 24,  // Number of buildings * 2
       rowCount: 8,
       size: 100, // WTF is this for now other than not being 0?
@@ -19,85 +19,107 @@
 
 // import { random } from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.37";
 // PALETTES = await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
-// import * as Settings from "./settings.js";
+// import * as . from "./..js";
+
+// Builder knows how the SVG doc is structured and is responsible for adding the right elements
+// to the page.
 import * as Builder from "./builder.js";
+// Painter knows how each type of block is structured and is responsible for applying colors
+// to suit each type.
 import * as Painter from "./painter.js";
-
-
-var SETTINGS, SRC, COLOR, BW, CONTAINER;
 
 /**
  * 
- * @param {*} settings 
+ * @param {*} . 
  * @returns gsap.timeline instance describing how the blockline presents itself
  */
-export async function BlockLine(elem, settings) {
-  var main = gsap.timeline({
-    id: "blockline",
-    onUpdate: updateView,
-  }); // the timeline we'll return
+export default class BlockLine {
+  constructor(container, settings) {
+    console.log("marco");
+    this._isInited = false;
+    this._container = container;
+    this._type = settings.type; // "element" or "background", depending on implementation
+    this._blockFrames = document.getElementById(settings.id); // the source SVG
+    this._colCount = settings.colCount;
+    this._rowCount = settings.rowCount;
+    this._size = settings.size; // Have lost track of what this is for. :(
+    this._angle = settings.angle;
+    this._brightness = settings.brightness;
+    this._opacity = settings.opacity;
+    this._types = settings.types;
+    this._timeline = gsap.timeline({id: "blockline"});
+
+    this.blockframes.classList.add("hidden");
+
+    // Build the view
+    this._views = Builder.build(this);
+    console.log(this._views);
+    Painter.paint(this.color);
+
+    // Animate things all pretty-like
+    this.color.node.querySelectorAll(".building").forEach(building => {
+      var stories = building.querySelectorAll(".story");
+      gsap.set(stories, {autoAlpha: 0,});
+      this._timeline.add(gsap.to(stories, {autoAlpha: 1, onUpdate: this.update, onUpdateParams: [this], stagger: .05}, "<+=.25" ));
+    });
+
+    // this._timeline.play();
+
+    // this.update(this);
   
-  try {
-    SETTINGS = settings;
-    // SETTINGS.palettes = getColors("https://unpkg.com/nice-color-palettes@3.0.0/100.json"); // await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
-    SRC = elem;
-    SRC.classList.add("hidden"); // hide it by default
-    CONTAINER = document.getElementById(SETTINGS.container);
+  };
 
-    // Account for possible user error w/incorrect element id for SETTINGS.container
-    if (CONTAINER) {
-      CONTAINER.classList.add("bg-blocklines");
-
-      // Populate the view with a collection of SVG nodes arranged in a series of columns representing
-      // individual buildings, with each story of a building composed of a pair of left and right 
-      // "faces".
-      var views = Builder.build({
-        src: SRC, 
-        cols: SETTINGS.colCount, // the number of buildings x 2
-        rows: SETTINGS.rowCount, // the max number of stories/building
-        size: SETTINGS.size, // the size (in pixels) of a square blockframe
-        angle: SETTINGS.angle, // the angle at which the face of each floor is skewed (for depth)
-        types: SETTINGS.types,
-        palettes: SETTINGS.palettes}); // the types of blockframes contained in the source SVG for display
-
-        COLOR = views[0]; // the color instance of the blockline
-        BW = views[1]; // the black-and-white instance of the blockline
-        BW.remove();
-
-        Painter.paint(COLOR);
-
-        // Animate things all pretty-like
-        var buildings = COLOR.node.querySelectorAll(".building");
-        buildings.forEach(building => {
-          var stories = building.querySelectorAll(".story");
-          gsap.set(stories, {autoAlpha: 0,});
-          main.to(stories, {autoAlpha: 1, onUpdate: updateView, stagger: .05}, "<+=.25" );
-        })
-
-        // We have everything we need to either add the blockline as an element or use it to supply
-        // the image data for the specified element's background
-        // updateView();
- 
-     } else {
-        // Account for an easy error - an invalid element id
-        console.log("Blockline could not find an element with the specified id: " + SETTINGS.id);
-     }
-  } catch (e) {
-      console.log("There was a problem instantiating Blockline");
-      console.log(e);
+  update(blockline) {
+    console.log(blockline.type);
+    switch (blockline.type) {
+      case "element":
+        blockline.container.innerHTML = blockline.color.svg();
+        break;
+      case "background":
+        blockline.container.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(blockline.color.svg())}")`
+        break;
+      default:
+        console.log("unrecognized container type for BlockLine.update: " + blockline.type);
+    }
   }
 
-  return main;
-};
-
-function updateView() {
-  // console.log("updateView");
-  if (SETTINGS.type == "element") {
-    // console.log("...adding to the DOM");
-    CONTAINER.innerHTML = COLOR.svg();
-  } else {
-    // console.log("...adding as background image data");
-    CONTAINER.style.backgroundImage = `url("data:image/svg+xml;charset=UTF-8,${escape(COLOR.svg())}")`
+  get angle() {
+    return this._angle;
   }
-
+  get blockframes() {
+    return this._blockFrames;
+  }
+  get brightness() {
+    return this._brightness;
+  }
+  get bw() {
+    return this._views[1];
+  };
+  get color() {
+    return this._views[0];
+  };
+  get container() {
+    return  this._container;
+  }
+  get cols() {
+    return this._colCount;
+  }
+  get rows() {
+    return this._rowCount;
+  }
+  get size() {
+    return this._size;
+  }
+  get timeline() {
+    return this._timeline;
+  }
+  get type() {
+    return this._type;
+  }
+  get types() {
+    return this._types;
+  }
+  get opacity() {
+    return this._opacity;
+  }
 };

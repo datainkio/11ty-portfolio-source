@@ -1,3 +1,5 @@
+import BlockLine from '/assets/js/displays/blockline/BlockLine.js';
+
 export default class StageManager {
   constructor(container) {
     this._container = container;
@@ -13,11 +15,31 @@ export default class StageManager {
     this._acetate.classList.add("bg-gradient-to-t","from-primary-950","to-primary-800","w-full", "h-dvh", "mix-blend-multiply");
     this._view.appendChild(this._acetate);
 
-  };
+  }
 
   get acetate() {
     return this._acetate;
   };
+
+  set blockline(elem) {
+    // Apply blocklines to a given container
+    this._blockline = new BlockLine(elem, 
+    {
+      type: "background", // "element" or "background" depending on purpose
+      id: "BlockframeLibrary",
+      colCount: 24,  // Number of buildings * 2
+      rowCount: 8,
+      size: 100, // WTF is this for now other than not being 0?
+      angle: 12,
+      brightness: 0.25,
+      opacity: 1,
+      types: ["Article","Calendar","Cart","Contact","Landing","Map","Timeline"]
+    });
+  };
+
+  get blockline() {
+    return this._blockline;
+  }
 
   set video(url) {
     if (typeof url === 'string' && url.length > 0) {

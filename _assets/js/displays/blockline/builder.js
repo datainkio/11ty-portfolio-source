@@ -2,16 +2,16 @@ import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
 
 var SRC, COLOR, BW, COLS, ROWS, SIZE, ANGLE, OPACITY, TYPES, PALETTES;
 
-export function build(params) {
+export function build(blockline) {
   console.log("Builder.build");
-  SRC = params.src;
-  COLS = params.cols;
-  ROWS = params.rows;
-  SIZE = params.size;
-  ANGLE = params.angle;
-  OPACITY = params.opacity;
-  TYPES = params.types;
-  PALETTES = params.palettes;
+  SRC = blockline.container
+  COLS = blockline.cols;
+  ROWS = blockline.rows;
+  SIZE = blockline.size;
+  ANGLE = blockline.angle;
+  OPACITY = blockline.opacity;
+  TYPES = blockline.types;
+  PALETTES = blockline.palettes;
   // PALETTES = await fetch("https://unpkg.com/nice-color-palettes@3.0.0/100.json").then((response) => response.json());
 
   // Create the SVG objects that will display the blockline
@@ -124,7 +124,7 @@ function drawStory(building, b, s, r) {
   scaleFace(face_right, 1);
 
   // Size things to suit
-    // Style one of the faces to provide a bit of shadow relative to the other
+  // Style one of the faces to provide a bit of shadow relative to the other
   // face_right[0].setAttribute("opacity", ".5");
   face_right[1].setAttribute("filter", "url(#brightness)");
 
