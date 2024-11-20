@@ -4,6 +4,10 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const { DateTime } = require("luxon");
 const { DOMParser } = require("xmldom");
 
+// const postcss = require("postcss");
+// const tailwindcss = require("tailwindcss");
+// const autoprefixer = require("autoprefixer");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);

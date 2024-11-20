@@ -8,7 +8,7 @@ window.onload = function() {
 
     const SM = new StageManager(document.getElementById("page-content"));
     SM.video = "/assets/video/Robert Lougheed.mp4";
-    SM.blockline = document.getElementById("blocklines");
+    // SM.blockline = document.getElementById("blocklines");
     const header = document.getElementById("main-header");
 
     const h1 = document.getElementById("main-title");
@@ -17,8 +17,10 @@ window.onload = function() {
     const MAIN = gsap.timeline();
     const HERO = gsap.timeline(); // {yoyo: true, repeat: -1}
 
-    const landingTL = initLandingView([header, SM.acetate]);
+    const landingTL = initLandingView([header, SM.blue]);
     const introTL = initIntroView(intro, header);
+    const projectsTL = initProjectsView();
+    /**
     const testTL = gsap.timeline({
         scrollTrigger: {
                 trigger: "#blocklines",
@@ -26,21 +28,12 @@ window.onload = function() {
                 pin: true
             }
     });
+    **/
 
-    testTL.add(SM.blockline._timeline);
+    // testTL.add(SM.blockline._timeline);
 
     // 20 YEARS
-    const gel_params = {
-        id: "wg",
-        paused: true,
-        w: -6,
-        h: -6,
-        range: 1,
-        envelope: 0,
-        duration: 2, 
-        colors: ["bravo", "alpha"], 
-        wiggles: 50,
-    };
+
     // const twentyTL = TextParty.gel(twenty_yrs, gel_params);
     // twentyTL.pause();
 
@@ -48,17 +41,7 @@ window.onload = function() {
 
     
 
-    gsap.utils.toArray(".project").reverse().forEach(project => {
-        gsap.from(project, {
-            scrollTrigger: {
-            trigger: project,
-                start: "top bottom",
-                end: "top bottom"
-            },
-            opacity: 0, 
-            y: "+=" + 25, 
-            ease: "sine.inOut"});
-    })
+
 
  
     /**
@@ -78,6 +61,20 @@ window.onload = function() {
       
 };
 
+function initProjectsView() {
+   return gsap.utils.toArray(".project").reverse().forEach(project => {
+        gsap.from(project, {
+            scrollTrigger: {
+            trigger: project,
+                start: "top bottom",
+                end: "top bottom"
+            },
+            opacity: 0, 
+            y: "+=" + 25, 
+            ease: "sine.inOut"});
+    })
+}
+
 function initLandingView(arr) {
     return gsap.to(arr, {
         scrollTrigger: {
@@ -93,20 +90,38 @@ function initLandingView(arr) {
 }
 
 function initIntroView(elem, trigger) {
-    gsap.set(elem, {x: 500, y: window.innerHeight, rotation: -20});
-    return gsap.to(intro, {
+
+    const gel_params = {
+        id: "wg",
+        paused: true,
+        w: -6,
+        h: -6,
+        range: 1,
+        envelope: 0,
+        duration: 2, 
+        colors: ["text-bravo", "text-alpha"], 
+        wiggles: 50,
+    };
+
+    gsap.set(elem, {x: 300, y: "+=" + 150, rotation: -20});
+    const result = gsap.timeline({id: "intro"});
+    // bring the container into view
+    result.add(gsap.to(intro, {
         rotation: 0,
         x: 0,
         y: window.innerHeight / 2,
         ease: "sine.inOut",
         scrollTrigger: {
            trigger: trigger,
-            start: "top top",
-            stop: "bottom top",
+            start: "bottom bottom",
+            stop: "bottom 50%",
             scrub: true,
         },
         // onComplete: twentyTL.play()
-    });
+    }))
+    // sex up the number
+    // .add(TextParty.gel(document.getElementById("twenty-years").getElementsByClassName("stat-value")[0], gel_params));
+    return 
 }
 
 

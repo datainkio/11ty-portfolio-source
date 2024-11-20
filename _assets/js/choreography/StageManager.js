@@ -10,16 +10,31 @@ export default class StageManager {
     this._view.classList.add("absolute","top-0","w-full","h-dvh","col-span-full");
     this._container.prepend(this._view); // Assume that we want this under everything else
 
-    // Create the acetate overlay
-    this._acetate = document.createElement("div");
-    this._acetate.classList.add("bg-gradient-to-t","from-primary-950","to-primary-800","w-full", "h-dvh", "mix-blend-multiply");
-    this._view.appendChild(this._acetate);
+    // Create the acetate overlays
+    this._blue = document.createElement("div");
+    this._blue.classList.add("bg-gradient-to-t","from-primary-950","to-primary-800","w-full", "h-dvh", "mix-blend-multiply");
+    this._view.appendChild(this._blue);
 
+    this._yellow = document.createElement("div");
+    this._yellow.classList.add("bg-gradient-to-t","from-accent-950","to-accent-800","w-full", "h-dvh", "mix-blend-multiply");
+    this._view.appendChild(this._yellow);
+
+    this._red = document.createElement("div");
+    this._red.classList.add("bg-gradient-to-t","from-secondary-950","to-secondary-800","w-full", "h-dvh", "mix-blend-multiply");
+    this._view.appendChild(this._red); 
   }
 
-  get acetate() {
-    return this._acetate;
+  get blue() {
+    return this._blue;
   };
+
+  get yellow() {
+    return this._yellow;
+  }
+
+  get red() {
+    return this._red;
+  }
 
   set blockline(elem) {
     // Apply blocklines to a given container

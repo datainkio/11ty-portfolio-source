@@ -9,6 +9,19 @@ module.exports = {
     centered: "0 0 96px rgba(0, 0, 0, 1)",
     outlined: "0 0 2px rgba(0, 0, 0, 1)",
   },
+  skittles: {
+    /** See https://coolors.co/palette/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226 */
+    background: {
+      DEFAULT: "001219",
+      mid: "005F73",
+      fore: "0A9396"
+    },
+    text: {
+      DEFAULT: "001219",
+      dark: "E9D8A6",
+      light: "001219"
+    }
+  },
   bauhaus: {
     ink: {
       light: "#D0CAD3",

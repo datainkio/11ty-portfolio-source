@@ -13,7 +13,6 @@
 }
 
 @layer base {
-
   body {
     @apply bg-neutral-200 overflow-x-hidden;
   }
@@ -87,8 +86,7 @@
     @apply link-hover font-medium;
   }
 
-  .card,
-  .stat {
+  .card {
     @apply hover:no-underline hover:bg-neutral-900;
   }
 
@@ -166,8 +164,8 @@
     @apply prose;
   }
 
-  /** LANDING **/s
-  .landing h1 {
+  /** LANDING **/
+  s .landing h1 {
     @apply pt-1 lowercase 
     text-5xl md:text-6xl;
   }
@@ -222,12 +220,9 @@
   }
 
   /** WANDERING GEL **/
-  .wandering-gel {
-    @apply absolute inset-0 mix-blend-multiply;
-  }
 
   .wandering-gel.alpha {
-    @apply text-semantic-failure-600 
+    @apply text-semantic-failure-600;
   }
   .wandering-gel.bravo {
     @apply text-primary-600;
@@ -235,11 +230,9 @@
   .wandering-gel.charlie {
     @apply text-accent-400;
   }
-
 }
 
 @layer utilities {
-
   .faded {
     @apply opacity-0;
   }
@@ -262,7 +255,7 @@
   }
 
   .bg-horizontal-stripes {
-    background-image: linear-gradient(180deg, #000 75%, #2182E3 25%);
+    background-image: linear-gradient(180deg, #000 75%, #2182e3 25%);
     background-size: 100% 20px;
   }
 
