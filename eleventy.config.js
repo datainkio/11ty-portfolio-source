@@ -30,8 +30,8 @@ module.exports = function (eleventyConfig) {
   // SHORTCODES
   require("./_config/shortcodes/")(eleventyConfig);
 
-  // const filters = require('./_config/filters/index.js');
-  // filters(eleventyConfig);
+  // STYLES (for the design guide)
+  eleventyConfig.addGlobalData('styles', require('./tailwind.config.js').theme.extend);
 
   return {
     dir: {

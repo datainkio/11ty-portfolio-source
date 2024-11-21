@@ -1,105 +1,20 @@
-{% extends "species/landing.html" %}
+<!-- @format -->
+{% extends "species/base.html" %}
+{% set body_styles = "" %}
+{% set main_styles = "" %}
+{% block header %}
+<header id="main-header" class="">
+	<h1>Design Guide</h1>
+	<p>Presenting the styles used throughout the site. This provides guidance for direction and implementation while also ensuring that classes assigned at runtime are available (b/c otherwise Tailwind will not include them)</p>
+</header>
+{% endblock %}
 {% block primary %}
 <script>
 	window.onload = function () {
-		console.log("here we are");
+		// console.log("here we are");
 		
 	}
 </script>
-
-
-<figure tabindex="0" class="collapse">
-	<figcaption class="collapse-title text-xl font-medium"><h2>Backgrounds</h2></figcaption>
-	<div class="collapse-content">
-		<h3>Gels</h3>
-		<ul class="columns-3">
-			<li id="blue" class="aspect-square bg-gradient-to-t from-primary to-primary-50 mix-blend-multiply">primary</li>
-			<li id="yellow" class="aspect-square bg-gradient-to-t from-accent to-accent-800 mix-blend-multiply">accent</li>
-			<li id="red" class="aspect-square bg-gradient-to-t from-secondary-950 to-secondary-800 mix-blend-multiply">secondary</li>
-		</ul>
-		<h3>svg</h3>
-		<ul>
-			<li id="blocklines" class="aspect-square bg-neutral-200">BlockLine</li>
-		</ul>
-		
-	</div>
-</figure>
-
-<figure tabindex="0" class="collapse">
-	<figcaption class="collapse-title text-xl font-medium">
-		<h2>Palette</h2>
-	</figcaption>
-	<div class="collapse-content">
-		{% include "templates/design/palette.html" %}
-	</div>
-</figure>
-
-<figure tabindex="0" class="collapse">
-	<figcaption class="collapse-title text-xl font-medium">
-		<h2>SVG Filters</h2>
-	</figcaption>
-	<div class="collapse-content">
-		<!-- Embed the external SVG filter -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-	<filter id="grunge">
-		<feTurbulence type="fractalNoise" baseFrequency="1" numOctaves="4" result="noise" />
-		<feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R"
-			yChannelSelector="G" />
-	</filter>
-</svg>
-		
-		<div class="font-display bg-neutral-400 filter [filter:url('#grunge')] size-24">
-			grunge-filter
-		</div>
-	</div>
-</figure>
-
-
-<!-- Embed the external SVG filter -->
-<object id="svg-object" type="image/svg+xml" data="grunge-filter.svg" style="display:none;"></object>
-
-<h1 id="main-title" data-text="{{ title }}"
-	class="text-fluid font-display font-bold tracking-tighter px-12 text-neutral-200 filter [filter:url('#grunge')]">
-	{{title}}
-</h1>
-
-<!--
-
-
-<section id="text-styles" class="scene col-span-full">
-	<h2>Text Styles</h2>
-	<h3 class="wandering-gel dupe">.text-outline</h3>
-	<h3 class="text-roll-char">.text-roll-char</h3>
-	<h3 class="text-roll-line">.text-roll-line</h3>
-	<h3 class="text-radar">.text-radar</h3>
-	<h3 class="text-radar-dupe">.text-radar-dupe</h3>
-	<h3 class="text-radar-dupe stroked">.text-radar-dupe.stroked</h3>
-	<h3 class="wandering-gel alpha">Alpha</h3>
-	<h3 class="wandering-gel charlie">Bravo</h3>
-	<h3 class="wandering-gel bravo">Charlie</h3>
-</section>
-<section id="transformations" class="scene col-span-full">
-	<h2>Transformations</h2>
-	<div class="origin-right">origin-right</div>
-	<div class="origin-left">origin-left</div>
-</section>
-<section id="visibility" class="scene col-span-full">
-	<h2>Visibility</h2>
-	<div class="invisible">invisible</div>
-</section>
-<section id="components" class="scene col-span-full">
-	<h2>Components</h2>
-	<section class="grid grid-cols-subgrid col-span-full bg-neutral-200">
-		<h3 class="col-span-full ">Body Block 01</h3>
-		<p class="col-span-3 order-last">This is the lead paragraph for the body block. Use it to present the main statement
-			of the
-			block.</p>
-		<p class="col-span-3">This is a secondary statement.</p>
-		<p class="col-span-3">This is another secondary statement.</p>
-	</section>
-</section>
-<section id="layouts" class="scene">
-	<h2>Layouts</h2>
-</section>
--->
+{% include "templates/design/text.html" %}
+{% include "templates/design/palette.html" %}
 {% endblock %}

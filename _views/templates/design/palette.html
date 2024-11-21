@@ -1,132 +1,30 @@
-<ul class="grid grid-cols-4">
-    <li>
-        <h3>primary</h3>
-        <ul>
-            <li class="text-primary-50">50</li>
-            <li class="text-primary-100">100</li>
-            <li class="text-primary-200">200</li>
-            <li class="text-primary-300">300</li>
-            <li class="text-primary-400">400</li>
-            <li class="text-primary-500">500</li>
-            <li class="text-primary-600">600</li>
-            <li class="text-primary-700">700</li>
-            <li class="text-primary-800">800</li>
-            <li class="text-primary-900">900</li>
-            <li class="text-primary-950">950</li>
-        </ul>
-    </li>
-    <li>
-        <h3>secondary</h3>
-        <ul>
-            <li class="text-secondary-50">50</li>
-            <li class="text-secondary-100">100</li>
-            <li class="text-secondary-200">200</li>
-            <li class="text-secondary-300">300</li>
-            <li class="text-secondary-400">400</li>
-            <li class="text-secondary-500">500</li>
-            <li class="text-secondary-600">600</li>
-            <li class="text-secondary-700">700</li>
-            <li class="text-secondary-800">800</li>
-            <li class="text-secondary-900">900</li>
-            <li class="text-secondary-950">950</li>
-        </ul>
-    </li>
-    <li>
-        <h3>accent</h3>
-        <ul>
-            <li class="text-accent-50">50</li>
-            <li class="text-accent-100">100</li>
-            <li class="text-accent-200">200</li>
-            <li class="text-accent-300">300</li>
-            <li class="text-accent-400">400</li>
-            <li class="text-accent-500">500</li>
-            <li class="text-accent-600">600</li>
-            <li class="text-accent-700">700</li>
-            <li class="text-accent-800">800</li>
-            <li class="text-accent-900">900</li>
-            <li class="text-accent-950">950</li>
-        </ul>
-    </li>
-    <li>
-        <h3>neutral</h3>
-        <ul>
-            <li class="text-neutral-50">50</li>
-            <li class="text-neutral-100">100</li>
-            <li class="text-neutral-200">200</li>
-            <li class="text-neutral-300">300</li>
-            <li class="text-neutral-400">400</li>
-            <li class="text-neutral-500">500</li>
-            <li class="text-neutral-600">600</li>
-            <li class="text-neutral-700">700</li>
-            <li class="text-neutral-800">800</li>
-            <li class="text-neutral-900">900</li>
-            <li class="text-neutral-950">950</li>
-        </ul>
-    </li>
-</ul>
-<ul class="grid grid-cols-4">
-    <li>
-        <h3>primary</h3>
-        <ul>
-            <li class="bg-primary-50">50</li>
-            <li class="bg-primary-100">100</li>
-            <li class="bg-primary-200">200</li>
-            <li class="bg-primary-300">300</li>
-            <li class="bg-primary-400">400</li>
-            <li class="bg-primary-500">500</li>
-            <li class="bg-primary-600">600</li>
-            <li class="bg-primary-700">700</li>
-            <li class="bg-primary-800">800</li>
-            <li class="bg-primary-900">900</li>
-            <li class="bg-primary-950">950</li>
-        </ul>
-    </li>
-    <li>
-        <h3>secondary</h3>
-        <ul>
-            <li class="bg-secondary-50">50</li>
-            <li class="bg-secondary-100">100</li>
-            <li class="bg-secondary-200">200</li>
-            <li class="bg-secondary-300">300</li>
-            <li class="bg-secondary-400">400</li>
-            <li class="bg-secondary-500">500</li>
-            <li class="bg-secondary-600">600</li>
-            <li class="bg-secondary-700">700</li>
-            <li class="bg-secondary-800">800</li>
-            <li class="bg-secondary-900">900</li>
-            <li class="bg-secondary-950">950</li>
-        </ul>
-    </li>
-    <li>
-        <h3>accent</h3>
-        <ul>
-            <li class="bg-accent-50">50</li>
-            <li class="bg-accent-100">100</li>
-            <li class="bg-accent-200">200</li>
-            <li class="bg-accent-300">300</li>
-            <li class="bg-accent-400">400</li>
-            <li class="bg-accent-500">500</li>
-            <li class="bg-accent-600">600</li>
-            <li class="bg-accent-700">700</li>
-            <li class="bg-accent-800">800</li>
-            <li class="bg-accent-900">900</li>
-            <li class="bg-accent-950">950</li>
-        </ul>
-    </li>
-    <li>
-        <h3>neutral</h3>
-        <ul>
-            <li class="bg-neutral-50">50</li>
-            <li class="bg-neutral-100">100</li>
-            <li class="bg-neutral-200">200</li>
-            <li class="bg-neutral-300">300</li>
-            <li class="bg-neutral-400">400</li>
-            <li class="bg-neutral-500">500</li>
-            <li class="bg-neutral-600">600</li>
-            <li class="bg-neutral-700">700</li>
-            <li class="bg-neutral-800">800</li>
-            <li class="bg-neutral-900">900</li>
-            <li class="bg-neutral-950">950</li>
-        </ul>
-    </li>
-</ul>
+<figure>
+    <figcaption>Background Colors</figcaption>
+    <ul>
+        {% for key, value in styles.colors %}
+        <li>
+            <p>{{ key }}</p>
+            <ul class="flex columns-{{ value | length }}" >
+                {% for k, v in value %}
+                <li class="p-4 content-center bg-{{ key }}-{{ k }}">bg-{{ key }}-{{ k }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</figure>
+<figure>
+    <figcaption>Text Colors</figcaption>
+    <ul>
+        {% for key, value in styles.colors %}
+        <li>
+            <p>{{ key }}</p>
+            <ul>
+                {% for k, v in value %}
+                <li class="text-{{ key }}-{{ k }}">text-{{ key }}-{{ k }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</figure>
