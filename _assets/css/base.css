@@ -12,6 +12,13 @@
 @font-face {
 }
 
+/**
+* The base layer is for resetting and applying foundational styles. These styles typically apply to HTML elements globally and serve as the starting point for all components.
+* Best Practics:
+* - Use this layer for global resets or typography defaults. 
+* - Modify or extend the @tailwind base styles only for consistency across your project. 
+* - Avoid overloading this layer with specific styles that belong to components.
+*/
 @layer base {
   body {
     @apply bg-neutral-200 overflow-x-hidden;
@@ -74,9 +81,7 @@
     @apply link-hover font-medium;
   }
 
-  .card {
-    @apply hover:no-underline hover:bg-neutral-900;
-  }
+
 
   picture.logo img {
     @apply w-full h-full object-contain;
@@ -89,7 +94,18 @@
   }
 }
 
+/**
+* The components layer is for reusable UI elements like buttons, cards, or navigation bars. These styles are specific and reusable across your project.
+* Best Practices:
+* - Define distinct, reusable patterns. 
+* - Name components semantically (e.g., .btn, .card). 
+* - Avoid using raw utilities directly here; prefer combining them with @apply for maintainability.
+*/
 @layer components {
+  .card {
+    @apply hover:no-underline hover:bg-neutral-900;
+  }
+
   .divider {
     @apply col-span-full text-3xl font-bold;
   }
@@ -220,6 +236,13 @@
   }
 }
 
+/**
+* The utilities layer is for low-level, single-purpose classes. These are provided by Tailwind and used throughout your templates for rapid prototyping and customization. 
+* Best Practices:
+* - Extend the utilities layer only when adding custom functionality not available in default Tailwind. 
+* - Avoid clutter by extending only with utility patterns that are reusable. 
+* - Keep these styles concise and atomic.
+*/
 @layer utilities {
   .faded {
     @apply opacity-0;
@@ -266,5 +289,11 @@
   }
 }
 
+/**
+* The variants layer allows you to define custom states or modifications for your styles, such as hover, focus, or responsive variations. 
+* Best Practices: 
+* - Add variants for specific use cases (e.g., hover styles, dark mode). 
+* - Name your custom variants semantically and ensure they align with the design language.
+*/
 @layer variants {
 }

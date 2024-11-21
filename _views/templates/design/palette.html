@@ -28,3 +28,18 @@
         {% endfor %}
     </ul>
 </figure>
+<figure>
+    <figcaption>Gels</figcaption>
+    <ul>
+        {% for key, value in styles.colors %}
+        <li>
+            <p>{{ key }}</p>
+            <ul>
+                {% for k, v in value %}
+                <li class="text-{{ key }}-{{ k }}">text-{{ key }}-{{ k }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</figure>
