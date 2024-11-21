@@ -4,24 +4,47 @@ export default class StageManager {
   constructor(container) {
     this._container = container;
 
-    // Create the elem that will contain all the things
-    this._view = document.createElement("div");
-    this._view.setAttribute("aria-hidden", true);
-    this._view.classList.add("absolute","top-0","w-full","h-dvh","col-span-full");
-    this._container.prepend(this._view); // Assume that we want this under everything else
+    let v = this.view;
 
-    // Create the acetate overlays
-    this._blue = document.createElement("div");
-    this._blue.classList.add("bg-gradient-to-t","from-primary-950","to-primary-800","w-full", "h-dvh", "mix-blend-multiply");
-    this._view.appendChild(this._blue);
+    this._container.prepend(v); // Assume that we want this under everything else
+    console.log(v);
+  }
 
-    this._yellow = document.createElement("div");
-    this._yellow.classList.add("bg-gradient-to-t","from-accent-950","to-accent-800","w-full", "h-dvh", "mix-blend-multiply");
-    this._view.appendChild(this._yellow);
+  get view() {
+    if (document.getElementById("stage-manager")) {
+      // all good. send it.
+      return document.getElementById("stage-manager")
+    } else {
+      // Create the elem that will contain all the things and place it at the very bottom of the z stack
+      var v = document.createElement("div");
+      v.setAttribute("aria-hidden", true);
+      v.id = "stage-manager";
+      v.classList.add("absolute","top-0","w-full","h-dvh","col-span-full");
+      return v;
+    }
+    ;
+  }
 
-    this._red = document.createElement("div");
-    this._red.classList.add("bg-gradient-to-t","from-secondary-950","to-secondary-800","w-full", "h-dvh", "mix-blend-multiply");
-    this._view.appendChild(this._red); 
+  /**
+   * Add layers of color to the stage
+   * Important: Make sure to explicitly state the generated colors somewhere (e.g. Design) so that Tailwind
+   * knows what to do.
+   */
+  set gels(colors) {
+    colors.forEach(color => {
+      var a = document.createElement("div");
+      a.id = color.id;
+      a.classList.add("gel", "bg-gradient-to-t","from-" + color.from,"to-" + color.to,"w-full", "h-dvh", "mix-blend-multiply");
+      this.view.appendChild(a);
+    })
+  }
+
+  get gels() {
+    return document.getElementsByClassName("gel");
+  }
+
+  getGel(id) {
+    return document.getElementById(id);
   }
 
   get blue() {
@@ -57,33 +80,33 @@ export default class StageManager {
   }
 
   set video(url) {
-    if (typeof url === 'string' && url.length > 0) {
+    this.videos = [url];
+  }
 
+  set videos(urls) {
+    urls.forEach(src => {
         // Create the video element
-        this._video = document.createElement("video");
-        this._video.setAttribute("autoplay", true);
-        this._video.setAttribute("loop", true);
-        this._video.setAttribute("muted", true);
-        this._video.setAttribute("playsinline", true);
-        this._video.setAttribute("aria-hidden", "true"); // Mark as decorative
-        this._video.id = "bgVideo";
-        this._video.classList.add("fixed", "inset-0", "w-full", "h-full", "object-cover");  
+        var video = document.createElement("video");
+        video.setAttribute("autoplay", true);
+        video.setAttribute("loop", true);
+        video.setAttribute("muted", true);
+        video.setAttribute("playsinline", true);
+        video.setAttribute("aria-hidden", "true"); // Mark as decorative
+        video.id = "bgVideo";
+        video.classList.add("fixed", "inset-0", "w-full", "h-full", "object-cover");  
         
         // Add the video sources
         const sourceMP4 = document.createElement("source");
-        sourceMP4.src = url;
+        sourceMP4.src = src;
         sourceMP4.type = "video/mp4";
 
-        this._video.appendChild(sourceMP4);
-        this._view.prepend(this._video);
-
-    } else {
-      console.error('Invalid video URL');
-    }
+        video.appendChild(sourceMP4);
+        this.view.prepend(video);
+    })
   };
 
-  get video() {
-    return this._video;
+  get videos() {
+    return this._videos;
   };
 
 }

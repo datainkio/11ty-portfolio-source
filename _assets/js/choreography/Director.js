@@ -7,7 +7,20 @@ gsap.registerPlugin(ScrollTrigger);
 window.onload = function() {
 
     const SM = new StageManager(document.getElementById("page-content"));
-    SM.video = "/assets/video/Robert Lougheed.mp4";
+    SM.video = "/assets/video/zabiela test.mp4";
+    SM.gels = [
+        {
+            id: "primary",
+            from: "primary",
+            to: "primary-200"
+        },
+        {
+            id: "accent",
+            from: "accent",
+            to: "accent-200"
+        },
+    ];
+    console.log(SM.getGel("accent"));
     // SM.blockline = document.getElementById("blocklines");
     const header = document.getElementById("main-header");
 

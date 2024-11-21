@@ -11,15 +11,23 @@ module.exports = {
   },
   skittles: {
     /** See https://coolors.co/palette/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226 */
-    background: {
-      DEFAULT: "001219",
-      mid: "005F73",
-      fore: "0A9396"
+    primary: {
+      DEFAULT: "#001219",
+      50: "#E9D8A6",
+      100: "#94D2BD",
+      200: "#0A9396",
+      300: "#005F73",
+      400: "#001219"
     },
-    text: {
-      DEFAULT: "001219",
-      dark: "E9D8A6",
-      light: "001219"
+    accent: {
+      DEFAULT: "#EE9B00",
+      100: "#CA6702",
+      200: "#BB3E03",
+      300: "#AE2012",
+      400: "#9B2226"
+    },
+    borderColor: {
+      DEFAULT: "#00573"
     }
   },
   bauhaus: {

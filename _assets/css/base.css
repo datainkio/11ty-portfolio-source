@@ -45,14 +45,6 @@
     @apply prose prose-sm hover:no-underline mb-4;
   }
 
-  .bg-ink-dark {
-    @apply text-ink-light;
-  }
-
-  .bg-ink-light {
-    @apply text-ink-dark;
-  }
-
   .lead {
     @apply first-line:uppercase first-line:tracking-widest
     first-letter:text-7xl first-letter:font-black
@@ -63,10 +55,6 @@
     @apply text-center md:text-left font-light 
     text-pretty leading-tight pt-4
     text-xl sm:text-2xl md:text-3xl;
-  }
-
-  header.title {
-    @apply: relative z-50;
   }
 
   header p {
@@ -154,7 +142,7 @@
   }
   .modal h2,
   .modal p {
-    @apply text-ink-light mb-4;
+    @apply text-primary-50 mb-4;
   }
 
   .stat {
@@ -197,7 +185,7 @@
 
   /** TEXT OUTLINE **/
   .text-outline {
-    @apply text-stroke text-stroke-[1px] text-stroke-ink-dark text-transparent;
+    @apply text-stroke text-stroke-[1px] text-stroke-primary text-transparent;
   }
 
   /** TEXT RADAR **/
@@ -205,7 +193,7 @@
     @apply relative;
   }
   .text-radar-dupe {
-    @apply absolute inset-0 flex items-center justify-center text-stroke text-stroke-[2px] text-stroke-primary-600 text-transparent;
+    @apply absolute inset-0 flex items-center justify-center text-stroke text-stroke-[2px] text-stroke-primary-400 text-transparent;
   }
 
   /** TEXT ROLL **/
@@ -222,13 +210,13 @@
   /** WANDERING GEL **/
 
   .wandering-gel.alpha {
-    @apply text-semantic-failure-600;
+    @apply text-accent-300;
   }
   .wandering-gel.bravo {
-    @apply text-primary-600;
+    @apply text-primary-300;
   }
   .wandering-gel.charlie {
-    @apply text-accent-400;
+    @apply text-accent;
   }
 }
 
@@ -266,11 +254,11 @@
   }
 
   .bg-graphpaper-dark {
-    @apply bg-graphpaper bg-neutral-900 bg-blend-screen;
+    @apply bg-graphpaper bg-primary bg-blend-screen;
   }
 
   .bg-graphpaper-light {
-    @apply bg-graphpaper bg-neutral-200;
+    @apply bg-graphpaper bg-primary-50;
   }
 
   .bg-fibonacci {

@@ -1,0 +1,270 @@
+/**
+ * src/_assets/css/tailwind.css
+ *
+ * @format
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@font-face {
+}
+
+@layer base {
+  body {
+    @apply bg-neutral-200 overflow-x-hidden;
+  }
+
+  main {
+    @apply relative;
+  }
+
+  h1 {
+    @apply text-2xl hover:no-underline 
+    tracking-tight leading-none;
+  }
+  h2 {
+    @apply font-medium hover:no-underline
+    leading-tight text-center md:text-left
+    text-lg sm:text-xl text-pretty;
+  }
+  h3 {
+    @apply font-medium hover:no-underline
+    text-balance leading-none 
+    text-2xl my-0 col-span-full;
+  }
+  figcaption {
+    @apply hover:no-underline
+    text-balance leading-tight
+    my-0 col-span-full;
+  }
+
+  p {
+    @apply prose prose-sm hover:no-underline mb-4;
+  }
+
+  .lead {
+    @apply first-line:uppercase first-line:tracking-widest
+    first-letter:text-7xl first-letter:font-black
+    first-letter:mr-3 first-letter:float-left first-letter:leading-[5.5rem];
+  }
+
+  .subtitle {
+    @apply text-center md:text-left font-light 
+    text-pretty leading-tight pt-4
+    text-xl sm:text-2xl md:text-3xl;
+  }
+
+  header p {
+    @apply font-light 
+    text-pretty leading-relaxed
+    text-xl;
+  }
+
+  section p.description {
+    @apply text-center md:text-left font-light 
+    text-pretty leading-tight
+    text-xl sm:text-2xl
+    mx-auto p-0;
+  }
+
+  a {
+    @apply link-hover font-medium;
+  }
+
+  .card {
+    @apply hover:no-underline hover:bg-neutral-900;
+  }
+
+  picture.logo img {
+    @apply w-full h-full object-contain;
+  }
+
+  /* Custom dashed stroke class */
+  .stroke-dashed {
+    stroke-dasharray: 2 4;
+    /* Dash length and gap */
+  }
+}
+
+@layer components {
+  .divider {
+    @apply col-span-full text-3xl font-bold;
+  }
+
+  .card figure {
+    @apply aspect-video;
+  }
+  .card picture {
+    @apply w-full h-full;
+  }
+  .card img {
+    @apply w-full h-full object-cover object-center;
+  }
+
+  /** Set display of card based on its column in the display */
+  .card.even-column {
+    @apply flex-col-reverse;
+  }
+  .card.even-column .card-body {
+    @apply grid grid-cols-1 content-end;
+  }
+  .card.current {
+    @apply flex;
+  }
+
+  /** Reveal card information as needed **/
+  .project.card .card-body {
+    @apply opacity-0 transform transition-all duration-300 ease-in-out opacity-0;
+  }
+  .project.card .card-body {
+    @apply -translate-y-5;
+  }
+  .project.card:hover .card-body {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .project.card.even-column .card-body {
+    @apply translate-y-5;
+  }
+
+  .project.card.even-column:hover .card-body {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .modal {
+    @apply bg-black bg-opacity-75 p-0;
+  }
+  .modal-box {
+    @apply bg-transparent m-0 max-w-none shadow-none;
+  }
+  .modal h2,
+  .modal p {
+    @apply text-primary-50 mb-4;
+  }
+
+  .stat {
+    @apply py-2 m-0 content-start;
+  }
+  .stat-desc {
+    @apply prose;
+  }
+
+  /** LANDING **/
+  s .landing h1 {
+    @apply pt-1 lowercase 
+    text-5xl md:text-6xl;
+  }
+
+  .user-guide h1 {
+    @apply sticky top-0;
+  }
+
+  .landing > section {
+    @apply scene;
+  }
+  .scene {
+    @apply col-span-full flex flex-col sm:grid;
+  }
+
+  /** ARTICLE **/
+  .article h1 {
+    @apply text-4xl text-left;
+  }
+
+  #header {
+    @apply transition-transform;
+  }
+
+  /** BLOCKFRAMES **/
+  .blockframe-container {
+    @apply w-full mx-auto absolute -top-16 left-0;
+  }
+
+  /** TEXT OUTLINE **/
+  .text-outline {
+    @apply text-stroke text-stroke-[1px] text-stroke-primary text-transparent;
+  }
+
+  /** TEXT RADAR **/
+  .text-radar {
+    @apply relative;
+  }
+  .text-radar-dupe {
+    @apply absolute inset-0 flex items-center justify-center text-stroke text-stroke-[2px] text-stroke-primary-400 text-transparent;
+  }
+
+  /** TEXT ROLL **/
+  .text-roll {
+    @apply my-auto;
+  }
+  .text-roll-char {
+    @apply origin-bottom-left leading-none;
+  }
+  .text-roll-line {
+    @apply overflow-hidden leading-none h-28;
+  }
+
+  /** WANDERING GEL **/
+
+  .wandering-gel.alpha {
+    @apply text-accent-300;
+  }
+  .wandering-gel.bravo {
+    @apply text-primary-300;
+  }
+  .wandering-gel.charlie {
+    @apply text-accent;
+  }
+}
+
+@layer utilities {
+  .faded {
+    @apply opacity-0;
+  }
+
+  /** ANIMATIONS **/
+  .transition-transform {
+    @apply duration-500 ease-in-out;
+  }
+  .fade-in {
+    @apply transition-transform transition-opacity opacity-100;
+  }
+  .fade-out {
+    @apply transition-transform transition-opacity opacity-0;
+  }
+
+  /** BACKGROUNDS **/
+
+  .bg-main {
+    @apply bg-hair bg-no-repeat bg-bottom bg-default;
+  }
+
+  .bg-horizontal-stripes {
+    background-image: linear-gradient(180deg, #000 75%, #2182e3 25%);
+    background-size: 100% 20px;
+  }
+
+  .bg-graphpaper {
+    @apply inset-0 w-full 
+		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
+		bg-[size:1rem_1rem];
+  }
+
+  .bg-graphpaper-dark {
+    @apply bg-graphpaper bg-primary bg-blend-screen;
+  }
+
+  .bg-graphpaper-light {
+    @apply bg-graphpaper bg-primary-50;
+  }
+
+  .bg-fibonacci {
+    @apply bg-cover bg-no-repeat bg-top;
+  }
+}
+
+@layer variants {
+}

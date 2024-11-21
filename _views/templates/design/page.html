@@ -3,20 +3,25 @@
 <script>
 	window.onload = function () {
 		console.log("here we are");
-		const blockline = new BlockLine(document.getElementById("blocklines"));
+		
 	}
 </script>
 
 
 <figure tabindex="0" class="collapse">
 	<figcaption class="collapse-title text-xl font-medium"><h2>Backgrounds</h2></figcaption>
-	<div class="collapse-content grid grid-cols-4">
-		<p id="blue" class="aspect-square bg-gradient-to-t from-primary-950 to-primary-800 mix-blend-multiply">tabindex="0" attribute is necessary to make the div focusable</p>
-		<p id="yellow" class="aspect-square bg-gradient-to-t from-accent-950 to-accent-800 mix-blend-multiply">tabindex="0"
-			attribute is necessary to make the div focusable</p>
-		<p id="red" class="aspect-square bg-gradient-to-t from-secondary-950 to-secondary-800 mix-blend-multiply">tabindex="0"
-			attribute is necessary to make the div focusable</p>
-		<p id="blocklines" class="aspect-square bg-neutral-200">BlockLine</p>
+	<div class="collapse-content">
+		<h3>Gels</h3>
+		<ul class="columns-3">
+			<li id="blue" class="aspect-square bg-gradient-to-t from-primary to-primary-50 mix-blend-multiply">primary</li>
+			<li id="yellow" class="aspect-square bg-gradient-to-t from-accent to-accent-800 mix-blend-multiply">accent</li>
+			<li id="red" class="aspect-square bg-gradient-to-t from-secondary-950 to-secondary-800 mix-blend-multiply">secondary</li>
+		</ul>
+		<h3>svg</h3>
+		<ul>
+			<li id="blocklines" class="aspect-square bg-neutral-200">BlockLine</li>
+		</ul>
+		
 	</div>
 </figure>
 
