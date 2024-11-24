@@ -9,9 +9,6 @@
 @tailwind utilities;
 @tailwind variants;
 
-@font-face {
-}
-
 /**
 * The base layer is for resetting and applying foundational styles. These styles typically apply to HTML elements globally and serve as the starting point for all components.
 * Best Practics:
@@ -21,7 +18,7 @@
 */
 @layer base {
   body {
-    @apply bg-neutral-200 overflow-x-hidden;
+    @apply overflow-x-hidden;
   }
 
   main {
@@ -80,8 +77,6 @@
   a {
     @apply link-hover font-medium;
   }
-
-
 
   picture.logo img {
     @apply w-full h-full object-contain;
@@ -233,6 +228,17 @@
   }
   .wandering-gel.charlie {
     @apply text-accent;
+  }
+
+  /** BACKGROUND GEL **/
+  .gel {
+    @apply bg-gradient-to-t mix-blend-multiply backdrop-blur-sm;
+  }
+  .gel-primary {
+    @apply gel from-primary-300 to-primary-100;
+  }
+  .gel-accent {
+    @apply gel from-accent-400 to-accent-100;
   }
 }
 

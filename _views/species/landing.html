@@ -1,12 +1,13 @@
 <!-- @format -->
 {% extends "species/base.html" %}
-{% set body_styles = "bg-graphpaper bg-fixed bg-cover" %}
+{% set body_styles = "" %}
 {% block preloader %}{% endblock %}
 {% block cap %}{%endblock%} 
 {% block accessibility %}ACCESSIBILITY{% endblock %}
 {% block primary %} 
     {{ content | safe }} 
 {% endblock %} 
+{% block shoe %}{%endblock%} 
 {% block footer %} 
     {% include "organisms/footers/sitemap.html" %} 
 {% endblock %}

@@ -1,0 +1,15 @@
+<figure class="col-span-full text-neutral-800 grid-cols-3 p-0">
+    <figcaption>
+        <h2>{{ change.title }}</h2>
+        <p>{{ change.body }}</p>
+    </figcaption>
+    <ul class="row-start-1 col-span-2 grid grid-cols-2">
+        {% for stat in outcomes %}
+        <li class="stat">
+            <h4 class="stat-title font-bold text-xs text-wrap leading-tight">{{ stat.Title }}</h4>
+            <div class="stat-value text-2xl sm:text-4xl">{{ stat.Value }}</div>
+            <div class="stat-desc text-xs text-wrap leading-tight ">{{ stat.Description }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</figure>

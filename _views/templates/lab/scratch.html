@@ -1,23 +1,41 @@
 {% extends "species/base.html" %}
-{% set main_styles = "bg-graphpaper-dark h-dvh" %}
+{% set main_styles = "" %}
 {% block primary %}
-<script>
+<style>
+    #testy {
+        position: relative;
+        width: 400px;
+        height: 300px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+    }
 
-    // Apply blocklines to a given container
-    const BL = new BlockLine(document.getElementById("blocklines"),
-        {
-            type: "background", // "element" or "background" depending on purpose
-            id: "BlockframeLibrary",
-            colCount: 24,  // Number of buildings * 2
-            rowCount: 8,
-            size: 100, // WTF is this for now other than not being 0?
-            angle: 12,
-            brightness: 0.25,
-            opacity: 1,
-            types: ["Article", "Calendar", "Cart", "Contact", "Landing", "Map", "Timeline"]
+    canvas {
+        display: block;
+    }
+
+    div {
+        font-family: Arial, sans-serif;
+    }
+</style>
+<picture id="testy" class="w-72 mx-auto">
+    <img src="/assets/images/halftone.png" alt="A description of the image">
+</picture>
+
+<aside id="controls" class="w-144 mx-auto"></aside>
+
+<script type="module">
+    // Import the Halftone class from your JavaScript modules
+    import Halftone from '/assets/js/effects/image/halftone/Halftone.js';
+
+    // Initialize the Halftone effect
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('#testy');
+        new Halftone(container, {
+            dotSize: 24,
+            gridSize: 26,
+            color: true,
         });
+    });
 </script>
-<section id="blocklines" class="col-span-full h-dvh z-50 bg-blocklines">
-    {% include "atoms/svg/blockframes.svg" %}
-</section>
 {% endblock %}

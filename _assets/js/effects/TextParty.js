@@ -68,6 +68,7 @@ export function fadeInChars(elem) {
 };
 
 function onStart(tl, st) {
+    console.log(tl);
     switch (tl.id) {
         case "fadeInChars":
             gsap.set(st.chars, {opacity: 0});
@@ -77,6 +78,7 @@ function onStart(tl, st) {
 }
 
 function onComplete(tl, params) {
+    console.log(tl);
     switch (tl.id) {
         case "fadeInChars":
             tl.revert();

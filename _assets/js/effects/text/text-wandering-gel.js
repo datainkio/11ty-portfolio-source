@@ -2,16 +2,14 @@ gsap.registerPlugin(CustomEase, CustomWiggle);
 
 var CONTAINER, SETTINGS, DUPES, SRC;
 export function WanderingGel(elem, params) {
-
+    console.log("WanderingGel for " + elem);
     CONTAINER = elem;
     SETTINGS = params;
     SRC = CONTAINER.innerText;
     DUPES = [];
 
     buildView();
-    var tl = gsap.timeline({id: params.id});
-    tl.add(moveXY());
-    return tl;
+    return moveXY(params.id);
 };
 
 function buildView() {
@@ -29,9 +27,10 @@ function buildView() {
     };
 };
 
-function moveXY() {
+function moveXY(id) {
+    console.log("moveXY");
     var color = DUPES.filter(item => item.classList.contains(SETTINGS.colors[1]));
-    var tl = gsap.timeline();
+    var tl = gsap.timeline({id: id});
     tl.add(gsap.from(DUPES, {autoAlpha: 0}));
     tl.add (gsap.to(color, {
         duration: SETTINGS.duration,

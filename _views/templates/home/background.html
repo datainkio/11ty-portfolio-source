@@ -1,0 +1,11 @@
+<header class="col-span-2">
+    <h2 class="uppercase text-[.75rem]">{{ count }}/4 Background</h2>
+</header>
+<p class="text-neutral-200 col-span-6 self-center">{{ background }}</p>
+{# recOI5orvHfbhojhP #}
+{% for image in decorations %} {# Fix find/pluck filters #}
+{% if image.id == "rec55N5oOKXbEUyWi" %}
+{{ image.pictureElement | stylePicture("-z-[6] absolute bottom-0 h-full col-span-full block", "stroke-2", "", "clamp(.9)")|
+safe }}
+{% endif %}
+{% endfor %}

@@ -1,6 +1,7 @@
 ---
-title: "Russell S. Lebo: Full-Stack Experience Designer"
-layout: "about/page.html"
+title: "data:ink:io"
+subtitle: "The online studio for Russ Lebo"
+layout: "home/page.html"
 permalink: "/"
 data: pages
 statement:
@@ -20,6 +21,7 @@ scripts: >
   <script src="/assets/js/gsap/gsap.js"></script>
   <script src="/assets/js/gsap/DrawSVGPlugin.js"></script>
   <script src="/assets/js/gsap/ScrollTrigger.js"></script>
+   <script src="/assets/js/gsap/ScrollSmoother.min.js"></script>
   <script src="/assets/js/gsap/SplitText.js"></script>
   <script src="/assets/js/gsap/CustomEase.js"></script>
   <script src="/assets/js/gsap/CustomWiggle.js"></script>

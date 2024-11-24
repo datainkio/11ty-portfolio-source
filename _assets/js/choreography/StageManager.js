@@ -3,11 +3,9 @@ import BlockLine from '/assets/js/displays/blockline/BlockLine.js';
 export default class StageManager {
   constructor(container) {
     this._container = container;
-
+    this._gels = [];
     let v = this.view;
-
     this._container.prepend(v); // Assume that we want this under everything else
-    console.log(v);
   }
 
   get view() {
@@ -19,7 +17,7 @@ export default class StageManager {
       var v = document.createElement("div");
       v.setAttribute("aria-hidden", true);
       v.id = "stage-manager";
-      v.classList.add("absolute","top-0","w-full","h-dvh","col-span-full");
+      v.classList.add("top-0","w-full","h-dvh","col-span-full");
       return v;
     }
     ;
@@ -31,20 +29,21 @@ export default class StageManager {
    * knows what to do.
    */
   set gels(colors) {
+    this._gels = [];
     colors.forEach(color => {
-      var a = document.createElement("div");
-      a.id = color.id;
-      a.classList.add("gel", "bg-gradient-to-t","from-" + color.from,"to-" + color.to,"w-full", "h-dvh", "mix-blend-multiply");
-      this.view.appendChild(a);
+      var c = document.createElement("div");
+      c.classList.add("gel-" + color, "absolute", "w-full", "h-dvh", "top-0");
+      this._gels.push(c);
+      this.view.appendChild(c);
     })
   }
 
   get gels() {
-    return document.getElementsByClassName("gel");
+    return this._gels;
   }
 
-  getGel(id) {
-    return document.getElementById(id);
+  getGel(color) {
+    return this._gels.find(g => g.classList.contains("gel-" + color));
   }
 
   get blue() {
@@ -87,10 +86,10 @@ export default class StageManager {
     urls.forEach(src => {
         // Create the video element
         var video = document.createElement("video");
-        video.setAttribute("autoplay", true);
-        video.setAttribute("loop", true);
-        video.setAttribute("muted", true);
-        video.setAttribute("playsinline", true);
+        video.setAttribute("autoplay", "");
+        video.setAttribute("loop", "");
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
         video.setAttribute("aria-hidden", "true"); // Mark as decorative
         video.id = "bgVideo";
         video.classList.add("fixed", "inset-0", "w-full", "h-full", "object-cover");  
@@ -99,7 +98,7 @@ export default class StageManager {
         const sourceMP4 = document.createElement("source");
         sourceMP4.src = src;
         sourceMP4.type = "video/mp4";
-
+        
         video.appendChild(sourceMP4);
         this.view.prepend(video);
     })

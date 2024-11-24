@@ -13,10 +13,10 @@ module.exports = {
     /** See https://coolors.co/palette/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226 */
     primary: {
       DEFAULT: "#001219",
-      50: "#E9D8A6",
+      50: "#E4F0FC",
       100: "#94D2BD",
       200: "#0A9396",
-      300: "#005F73",
+      300: "#2182E3",
       400: "#001219"
     },
     accent: {
@@ -25,9 +25,6 @@ module.exports = {
       200: "#BB3E03",
       300: "#AE2012",
       400: "#9B2226"
-    },
-    borderColor: {
-      DEFAULT: "#00573"
     }
   },
   bauhaus: {
@@ -35,9 +32,6 @@ module.exports = {
       light: "#D0CAD3",
       dark: "#1A171C",
       transparent: "#FFFFFF00"
-    },
-    borderColor: {
-      DEFAULT: "#342E37"
     },
     primary: {
       50: "#F1F7FD",

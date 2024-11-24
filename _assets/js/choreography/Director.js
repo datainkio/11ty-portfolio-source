@@ -2,25 +2,21 @@
 import * as TextParty from '../effects/TextParty.js';
 import StageManager from '/assets/js/choreography/StageManager.js';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 window.onload = function() {
 
     const SM = new StageManager(document.getElementById("page-content"));
-    SM.video = "/assets/video/zabiela test.mp4";
-    SM.gels = [
-        {
-            id: "primary",
-            from: "primary",
-            to: "primary-200"
-        },
-        {
-            id: "accent",
-            from: "accent",
-            to: "accent-200"
-        },
-    ];
-    console.log(SM.getGel("accent"));
+    SM.video = "/assets/video/Zabiela Background Composite.mp4";
+    SM.gels = ["primary"];
+
+    // Initialize ScrollSmoother for smooth scrolling
+    // const smoother = ScrollSmoother.create({
+    //     wrapper: "page-content", // The outer wrapper
+    //     smooth: 1, // Smoothing amount (higher is smoother)
+    //     effects: true, // Enables built-in effects
+    // });
+
     // SM.blockline = document.getElementById("blocklines");
     const header = document.getElementById("main-header");
 
@@ -30,9 +26,9 @@ window.onload = function() {
     const MAIN = gsap.timeline();
     const HERO = gsap.timeline(); // {yoyo: true, repeat: -1}
 
-    const landingTL = initLandingView([header, SM.blue]);
+    const landingTL = initLandingView([header, SM.getGel("primary")]);
     const introTL = initIntroView(intro, header);
-    const projectsTL = initProjectsView();
+    // const projectsTL = initProjectsView();
     /**
     const testTL = gsap.timeline({
         scrollTrigger: {
@@ -75,6 +71,7 @@ window.onload = function() {
 };
 
 function initProjectsView() {
+    console.log("initProjectsView()");
    return gsap.utils.toArray(".project").reverse().forEach(project => {
         gsap.from(project, {
             scrollTrigger: {
@@ -89,6 +86,7 @@ function initProjectsView() {
 }
 
 function initLandingView(arr) {
+    console.log("initLandingView()");
     return gsap.to(arr, {
         scrollTrigger: {
             trigger: "#main-header",
@@ -98,12 +96,13 @@ function initLandingView(arr) {
         },
         transformOrigin: "bottom left",
         rotation: -20,
+        x: -96,
         ease: "sine.in"
     })
 }
 
 function initIntroView(elem, trigger) {
-
+    console.log("initIntroView()", document.getElementById("twenty-years").getElementsByClassName("stat-value")[0]);
     const gel_params = {
         id: "wg",
         paused: true,
@@ -112,29 +111,31 @@ function initIntroView(elem, trigger) {
         range: 1,
         envelope: 0,
         duration: 2, 
-        colors: ["text-bravo", "text-alpha"], 
-        wiggles: 50,
+        colors: ["text-primary-300", "text-accent-300"], 
     };
 
-    gsap.set(elem, {x: 300, y: "+=" + 150, rotation: -20});
-    const result = gsap.timeline({id: "intro"});
-    // bring the container into view
-    result.add(gsap.to(intro, {
-        rotation: 0,
-        x: 0,
-        y: window.innerHeight / 2,
-        ease: "sine.inOut",
+    // 1. Prepare the view to move in
+    gsap.set(elem, {x: 300, y: "+=" + 200, rotation: -10, transformOrigin: "top 75%"});
+    const result = gsap.timeline({
+        id: elem,
         scrollTrigger: {
            trigger: trigger,
-            start: "bottom bottom",
-            stop: "bottom 50%",
+            start: "top bottom",
+            stop: "top center",
             scrub: true,
         },
+    });
+    // 2. Bring in the view
+    result.add(gsap.to(elem, {
+        rotation: 0,
+        x: 0,
+        y: window.innerHeight/2,
+        ease: "sine.inOut",
         // onComplete: twentyTL.play()
-    }))
-    // sex up the number
-    // .add(TextParty.gel(document.getElementById("twenty-years").getElementsByClassName("stat-value")[0], gel_params));
-    return 
+    }));
+    // 3. Apply the WanderingGel effect to the "20" text
+    result.add(TextParty.gel(document.getElementById("twenty-years").getElementsByClassName("stat-value")[0], gel_params), ">");
+    return result;
 }
 
 
