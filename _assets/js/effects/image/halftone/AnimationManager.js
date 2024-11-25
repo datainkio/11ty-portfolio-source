@@ -5,9 +5,10 @@ export default class AnimationManager {
         this._dots = dots;
         this._canvasManager = canvasManager;
         this._timeline = gsap.timeline({
-            delay: 3,
             timeScale: .1,
             onUpdate: () => this.updateCanvas(), // Redraw the canvas every frame
+            yoyo: true,
+            repeat: -1
         });
         this._duration = 0.05; // Default duration
         this._stagger = "<25%"; // Default stagger
@@ -18,43 +19,42 @@ export default class AnimationManager {
         this._timeline.clear();
         console.log("AnimationManager.initAnimation");
 
-        this._dots.forEach((dot, index) => {
-             this._timeline.add(this.animateScan(dot), this._stagger);
-         });
-
+        // this._dots.forEach((dot, index) => {
+        //      this._timeline.add(this.animateScan(dot), this._stagger);
+        //  });
+        this._timeline.add(this.animateScan(this._dots));
         this._timeline.add(this.animateScatter(this._dots));
     };
 
-    animateScan(dot) {
+    animateScan(dots) {
         return gsap.fromTo(
-                dot,
-                // From: Initial state
-                { radius: 0 },
-                // To: Final state
+                dots,
+                {radius: 0},
                 {
-                    radius: dot.radius,
-                    duration: this._duration,
+                    radius: function(index, target, targets) { //function-based value
+                        return target.targetRadius;
+                    },
+                    duration: .1,
                     ease: this._ease,
-                    onUpdate: () => this.updateCanvas(),
+                    stagger: .01
                 }
             )
     }
 
     animateScatter(dots) {
-        return gsap.timeline().to(dots, {
+        return gsap.to(dots, {
             radius: 0,
             duration: 5,
             physics2D: {
             velocity: "random(200, 650)",
             angle: "random(250, 290)",
             gravity: 500,
-            yoyo: true,
-            repeat: -1
             }
         });
     }
 
     updateCanvas() {
+        // console.log(dot);
         const ctx = this._canvasManager.ctx;
         const canvas = this._canvasManager.canvas;
 

@@ -2,6 +2,28 @@ import CanvasManager from "./CanvasManager.js";
 import HalftoneEffect from "./HalftoneEffect.js";
 import AnimationManager from "./AnimationManager.js";
 
+/**
+ * Example implementation:
+ *  <picture id="testy" class="w-72 mx-auto">
+        <img src="/assets/images/halftone.png" alt="A description of the image">
+    </picture>
+    <aside id="controls" class="w-144 mx-auto"></aside>
+
+    <script type="module">
+        // Import the Halftone class from your JavaScript modules
+        import Halftone from '/assets/js/effects/image/halftone/Halftone.js';
+
+        // Initialize the Halftone effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('#testy');
+            new Halftone(container, {
+                dotSize: 24,
+                gridSize: 26,
+                color: true,
+            });
+        });
+    </script>
+ */
 export default class Halftone {
     constructor(container, settings) {
         const image = container.querySelector("img");

@@ -1,27 +1,9 @@
 {% extends "species/base.html" %}
 {% set main_styles = "" %}
 {% block primary %}
-<style>
-    #testy {
-        position: relative;
-        width: 400px;
-        height: 300px;
-        border: 1px solid #ccc;
-        overflow: hidden;
-    }
-
-    canvas {
-        display: block;
-    }
-
-    div {
-        font-family: Arial, sans-serif;
-    }
-</style>
 <picture id="testy" class="w-72 mx-auto">
     <img src="/assets/images/halftone.png" alt="A description of the image">
 </picture>
-
 <aside id="controls" class="w-144 mx-auto"></aside>
 
 <script type="module">

@@ -21,11 +21,13 @@ export default class HalftoneEffect {
                 const { avgR, avgG, avgB, avgBrightness } = this._calculateBlockAverage(data, x, y, width, height);
 
                 const radius = ((255 - avgBrightness) / 255) * (this._dotSize * 0.75);
+                const targetRadius = radius;
 
                 this._dots.push({
                     x: x + this._gridSize / 2,
                     y: y + this._gridSize / 2,
                     radius,
+                    targetRadius,
                     color: `rgb(${avgR}, ${avgG}, ${avgB})`,
                 });
             }
