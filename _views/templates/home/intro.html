@@ -1,15 +1,38 @@
-<section data-speed="1.5" id="intro" class="mx-12 p-12 col-span-full z-10 bg-neutral-200 text-neutral-800 grid grid-cols-3 content-start">
-    <header class="col-span-full grid grid-cols-subgrid gap-4">
-        <h2 class="uppercase text-[.75rem] m-0 col-span-full">{{ count }}/4 What I've Done</h2>
-    </header>
-    <aside id="twenty-years" class="stat">
-        <div class="stat-value font-display font-bold text-2xl sm:text-fluid text-transparent h-36 mix-blend-multiply">20</div>
-        <div class="stat-desc text-3xl text-pretty text-wrap leading-tight ">years of award-winning work</div>
-    </aside>
-    <div class="col-span-2">
-        {% include "templates/home/awards.html" %}
+<section
+  data-speed="1.5"
+  id="intro"
+  class="mx-12 p-12 col-span-full z-10 grid grid-cols-3 gap-4 content-start bg-neutral-light text-neutral"
+>
+  <header class="col-span-full grid grid-cols-subgrid gap-4">
+    <h2 class="uppercase text-[.75rem] m-0 col-span-full">
+      {{ count }}/4 What I've Done
+    </h2>
+  </header>
+
+  <aside id="twenty-years">
+    <figure class="stat align-top p-0 mb-6">
+      <span class="stat-value text-12xl leading-none font-display p-0">20</span>
+      <span
+        class="stat-desc text-4xl font-display text-wrap text-neutral leading-tight"
+      >
+        years of award-winning work
+      </span>
+    </figure>
+    {% include "templates/home/stats.html" %}
+  </aside>
+  <div class="col-span-2">
+    <p class="prose">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper
+      sollicitudin feugiat. Curabitur congue metus ut bibendum commodo. Proin
+      rhoncus suscipit mollis. Cras euismod eu odio a molestie. Sed bibendum
+      eros fermentum, volutpat mauris eu, sollicitudin dui. Integer sit amet
+      rhoncus tortor. Donec luctus id metus vel suscipit. Curabitur et massa in
+      mauris ullamcorper congue in nec sem. Morbi facilisis scelerisque ex, non
+      sollicitudin urna dictum imperdiet.
+    </p>
+    <div id="awards">{% include "templates/home/awards.html" %}</div>
+    <div id="organizations">
+      {% include "templates/home/organizations.html" %}
     </div>
-    <div class="col-span-full">
-        {% include "templates/home/organizations.html" %}
-    </div>
+  </div>
 </section>

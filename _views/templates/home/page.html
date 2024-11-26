@@ -1,21 +1,13 @@
 <!-- @format -->
-{% extends "species/landing.html" %}
-{% set body_styles = "w-screen overflow-clipped" %}
-{% set main_styles = "top-0 grid grid-cols-12 opacity-0 px-0" %}
-
-{% block cap %}
-{% endblock %}
-
-{% block header %}
-	<header data-speed="1" id="main-header" class="col-span-full w-full h-dvh flex items-end ">
-		{% include "templates/home/title.html" %}
-	</header>
-{% endblock %}
-
-{% block primary %}
-	{% set count = 0 %}
-	{% include "templates/home/intro.html" %}
-{% endblock %}
-
-{% block shoe %}
-{% endblock %}
+{% extends "species/landing.html" %} {% set body_styles = "w-screen
+overflow-clipped" %} {% set main_styles = "top-0 grid grid-cols-12 opacity-0
+px-0" %} {% block cap %} {% endblock %} {% block header %}
+<header
+  data-speed="1"
+  id="main-header"
+  class="col-span-full w-full h-dvh flex items-end"
+>
+  {% include "templates/home/title.html" %}
+</header>
+{% endblock %} {% block primary %} {% set count = 0 %} {% include
+"templates/home/intro.html" %} {% endblock %} {% block shoe %} {% endblock %}

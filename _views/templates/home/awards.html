@@ -1,21 +1,17 @@
-<figure id="awards" class="col-span-full bg-neutral-200">
-    <figcaption class="sr-only">
-        <h3>Awards</h3>
-    </figcaption>
-    <ul class="col-span-full columns-4">
-        {% for img in images %}
-        {% if img.Recognition %}
-        <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
-            {% for award in awards | find("id", img.Recognition) %}
-            {% if loop.index === 1 %}
-            <h4 class="font-bold text-xs">{{ award.Organization }}</h4>
-            <ul class="sm:col-span-8">
-                {% endif %}
-                <li class="font-light text-xs">{{ award.Title }}</li>
-                {% endfor %}
-            </ul>
-        </li>
+<figure class="col-span-full">
+  <figcaption>Recognition</figcaption>
+  <ul class="col-span-full columns-4">
+    {% for img in images %} {% if img.Recognition %}
+    <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
+      {% for award in awards | find("id", img.Recognition) %} {% if loop.index
+      === 1 %}
+      <h4 class="font-bold text-xs">{{ award.Organization }}</h4>
+      <ul class="sm:col-span-8">
         {% endif %}
+        <li class="font-light text-xs">{{ award.Title }}</li>
         {% endfor %}
-    </ul>
+      </ul>
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
 </figure>

@@ -22,7 +22,7 @@
   }
 
   main {
-    @apply relative;
+    @apply relative text-neutral;
   }
 
   h1 {
@@ -97,6 +97,10 @@
 * - Avoid using raw utilities directly here; prefer combining them with @apply for maintainability.
 */
 @layer components {
+  .stat {
+    @apply content-start;
+  }
+
   .card {
     @apply hover:no-underline hover:bg-neutral-dark;
   }
@@ -156,15 +160,9 @@
     @apply text-primary-light mb-4;
   }
 
-  .stat {
-    @apply py-2 m-0 content-start;
-  }
-  .stat-desc {
-    @apply prose;
-  }
 
   /** LANDING **/
-  s .landing h1 {
+ .landing h1 {
     @apply pt-1 lowercase 
     text-5xl md:text-6xl;
   }
