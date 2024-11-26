@@ -1,5 +1,6 @@
 // import '/assets/js/utils/trace.js';
 import * as TextParty from '../effects/TextParty.js';
+import * as PrinterMarks from '../displays/PrinterMarks.js';
 import StageManager from '/assets/js/choreography/StageManager.js';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -28,6 +29,12 @@ window.onload = function() {
 
     const landingTL = initLandingView([header, SM.getGel("primary")]);
     const introTL = initIntroView(intro, header);
+
+    PrinterMarks.addTrim(intro, 12);
+    PrinterMarks.addMargins(intro, 16);
+    PrinterMarks.addRegistrationBar(intro, 4);
+    PrinterMarks.addBleed(intro, 8);
+    // PrinterMarks.addStarTarget(intro, 4);
     // const projectsTL = initProjectsView();
     /**
     const testTL = gsap.timeline({

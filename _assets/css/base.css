@@ -98,7 +98,7 @@
 */
 @layer components {
   .card {
-    @apply hover:no-underline hover:bg-neutral-900;
+    @apply hover:no-underline hover:bg-neutral-dark;
   }
 
   .divider {
@@ -128,7 +128,7 @@
 
   /** Reveal card information as needed **/
   .project.card .card-body {
-    @apply opacity-0 transform transition-all duration-300 ease-in-out opacity-0;
+    @apply opacity-0 transform transition-all duration-300 ease-in-out;
   }
   .project.card .card-body {
     @apply -translate-y-5;
@@ -146,14 +146,14 @@
   }
 
   .modal {
-    @apply bg-black bg-opacity-75 p-0;
+    @apply bg-neutral bg-opacity-75 p-0;
   }
   .modal-box {
     @apply bg-transparent m-0 max-w-none shadow-none;
   }
   .modal h2,
   .modal p {
-    @apply text-primary-50 mb-4;
+    @apply text-primary-light mb-4;
   }
 
   .stat {
@@ -204,7 +204,7 @@
     @apply relative;
   }
   .text-radar-dupe {
-    @apply absolute inset-0 flex items-center justify-center text-stroke text-stroke-[2px] text-stroke-primary-400 text-transparent;
+    @apply absolute inset-0 flex items-center justify-center text-stroke text-stroke-[2px] text-stroke-primary text-transparent;
   }
 
   /** TEXT ROLL **/
@@ -221,13 +221,13 @@
   /** WANDERING GEL **/
 
   .wandering-gel.alpha {
-    @apply text-accent-300;
+    @apply text-accent;
   }
   .wandering-gel.bravo {
-    @apply text-primary-300;
+    @apply text-primary;
   }
   .wandering-gel.charlie {
-    @apply text-accent;
+    @apply text-accent-light;
   }
 
   /** BACKGROUND GEL **/
@@ -235,10 +235,54 @@
     @apply bg-gradient-to-t mix-blend-multiply backdrop-blur-sm;
   }
   .gel-primary {
-    @apply gel from-primary-300 to-primary-100;
+    @apply gel from-primary-dark to-primary-light;
   }
   .gel-accent {
-    @apply gel from-accent-400 to-accent-100;
+    @apply gel from-accent-dark to-accent-light;
+  }
+
+  /** PRINT MARKS **/
+  .printmark-bleed {
+    @apply border border-neutral-dark border-dashed;
+  }
+
+  .printmark-trim-horiz,
+  .printmark-trim-vert {
+    @apply bg-neutral-dark;
+  }
+  .printmark-trim-horiz {
+    @apply w-4 h-0.5;
+  }
+  .printmark-trim-vert {
+    @apply w-0.5 h-4;
+  }
+  .printmark-registration {
+    @apply mx-auto pointer-events-none size-6 bg-neutral-dark gap-[.05rem] grid grid-cols-2 mix-blend-multiply;
+  }
+
+  .printmark-registration li {
+    @apply bg-neutral-light;
+  }
+  .printmark-margins {
+    @apply outline outline-accent -outline-offset-[4px];
+  }
+  .printmark-registration-bar {
+    @apply absolute w-full flex flex-row items-center bg-inherit -mt-6 p-1 px-2;
+  }
+  .printmark-colors,
+  .printmark-neutrals {
+    @apply flex flex-row items-center h-full w-36;
+  }
+  .printmark-colors li,
+  .printmark-neutrals li {
+    @apply flex-1 h-4;
+  }
+
+  ul.printmark-colors {
+    @apply justify-self-start;
+  }
+  ul.printmark-neutrals {
+    @apply justify-self-end;
   }
 }
 
@@ -250,6 +294,37 @@
 * - Keep these styles concise and atomic.
 */
 @layer utilities {
+  /** REGISTRATION MARK CIRCLE **/
+  .printmark-registration li:last-child {
+    @apply bg-white rounded-full size-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-difference;
+  }
+
+  /** REGISTRATION COLOR GRADIENTS **/
+  .printmark-colors li:nth-child(1) {
+    @apply bg-primary;
+  }
+  .printmark-colors li:nth-child(2) {
+    @apply bg-semantic-alert;
+  }
+  .printmark-colors li:nth-child(3) {
+    @apply bg-accent-light;
+  }
+  .printmark-colors li:nth-child(4) {
+    @apply bg-neutral;
+  }
+
+  .printmark-neutrals li:nth-child(1) {
+    @apply bg-neutral;
+  }
+  .printmark-neutrals li:nth-child(2) {
+    @apply bg-neutral brightness-125 opacity-85;
+  }
+  .printmark-neutrals li:nth-child(3) {
+    @apply bg-neutral brightness-150 opacity-50;
+  }
+  .printmark-neutrals li:nth-child(4) {
+    @apply bg-neutral brightness-200 opacity-25;
+  }
   .faded {
     @apply opacity-0;
   }
@@ -287,7 +362,7 @@
   }
 
   .bg-graphpaper-light {
-    @apply bg-graphpaper bg-primary-50;
+    @apply bg-graphpaper bg-primary-light;
   }
 
   .bg-fibonacci {

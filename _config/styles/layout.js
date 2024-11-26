@@ -2,6 +2,9 @@
 
 module.exports = {
 	spacing: {
+		'printmark-line-length': '12px',
+		'printmark-thickness': '2px',
+		'printmark-offset': '10px',
 		360: "90rem",
 	},
 	margin: {

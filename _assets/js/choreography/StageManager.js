@@ -1,4 +1,5 @@
 import BlockLine from '/assets/js/displays/blockline/BlockLine.js';
+import * as PrinterMarks from '/assets/js/displays/PrinterMarks.js';
 
 export default class StageManager {
   constructor(container) {
@@ -17,7 +18,7 @@ export default class StageManager {
       var v = document.createElement("div");
       v.setAttribute("aria-hidden", true);
       v.id = "stage-manager";
-      v.classList.add("top-0","w-full","h-dvh","col-span-full");
+      v.classList.add("absolute", "top-0","w-full","h-dvh","col-span-full");
       return v;
     }
     ;
@@ -36,6 +37,7 @@ export default class StageManager {
       this._gels.push(c);
       this.view.appendChild(c);
     })
+
   }
 
   get gels() {
@@ -57,6 +59,19 @@ export default class StageManager {
   get red() {
     return this._red;
   }
+
+  /**
+   * REGISTRATION MARKS
+   */
+  registrationMarks(elem, size) {
+    // PrinterMarks.addBleed(elem, 2);
+    PrinterMarks.addTrim(elem, 1);
+  }
+
+
+  /**
+   * BLOCKLINES
+   */
 
   set blockline(elem) {
     // Apply blocklines to a given container
