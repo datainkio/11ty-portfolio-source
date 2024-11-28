@@ -1,27 +1,48 @@
 <dialog id="modal_{{ project.id }}" class="modal">
-    <form method="dialog">
-        <button class="close btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic">✕</button>
-    </form>
-    <figure class="modal-box grid grid-cols-2 gap-4 relative h-full">
-        <figcaption class="col-span-full">
-            <h3 class="text-3xl font-light m-0 text-neutral-200">{{ project.Name }}</h3>
-        </figcaption>
-        {% for img in images | find("id", project.Featured) %}
-        {{ img.pictureElement | stylePicture("", "") | safe }}
-        {% endfor %}
-        <section class="row-span-3 pl-4">
-            {% include "templates/project/supplemental-info.html" %}
-            {% include "templates/project/awards.html" %}
-        </section>
-        <section id="description" class="description font-light text-neutral-200">
-            {% if project.Description is string %}
-            {{ project.Description | markdownify | safe }}
-            {% endif %}
-        </section>
-        <footer class="join col-span-full w-3/12 mx-auto grid grid-cols-3">
-            <button id="prev_{{ project.id }}" class="prev join-item btn btn-outline btn-primary">Previous page</button>
-            <button id="view_{{ project.id }}" class="view join-item btn btn-outline btn-primary">View</button>
-            <button id="next_{{ project.id }}" class="next join-item btn btn-outline btn-primary">Next</button>
-        </footer>
-    </figure>
+  <form method="dialog">
+    <button
+      class="close btn btn-xs btn-circle btn-primary absolute right-2 top-2 not-italic"
+    >
+      ✕
+    </button>
+  </form>
+  <figure class="modal-box grid grid-cols-2 gap-4 relative h-full">
+    <figcaption class="col-span-full">
+      <h3 class="text-3xl font-light m-0 text-accent-light">
+        {{ project.Name }}
+      </h3>
+    </figcaption>
+    {% for img in images | find("id", project.Featured) %} {{ img.pictureElement
+    | stylePicture("", "") | safe }} {% endfor %}
+    <section class="row-span-3 pl-4 text-accent-light">
+      {% include "templates/project/supplemental-info.html" %} {% include
+      "templates/project/awards.html" %}
+    </section>
+    <section
+      id="description"
+      class="description mt-4 font-light text-accent-light"
+    >
+      {{ project.Description | markdownify | safe }}
+    </section>
+    <footer class="join col-span-full w-3/12 mx-auto grid grid-cols-3">
+      <button
+        id="prev_{{ project.id }}"
+        class="prev join-item btn btn-outline btn-primary"
+      >
+        Previous page
+      </button>
+      <button
+        id="view_{{ project.id }}"
+        class="view join-item btn btn-outline btn-primary"
+      >
+        View
+      </button>
+      <button
+        id="next_{{ project.id }}"
+        class="next join-item btn btn-outline btn-primary"
+      >
+        Next
+      </button>
+    </footer>
+  </figure>
 </dialog>

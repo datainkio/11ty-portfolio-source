@@ -1,10 +1,9 @@
-<a class="link link-hover flex font-light text-xs items-center"
-	href="/recognition/{{award.Organization | slugify }}/{{ award.Title | slugify}}/">
-	{% for logo in images | find("id", award.logo_id) %}
-	{{ logo.pictureElement | stylePicture("logo bg-black p-1 w-10 h-10 flex-none not-prose") | safe }}
-	{% endfor %}
-	<span>
-		{{ award.Organization }}:
-		{{ award.Title }}
-	</span>
+<a
+  class="link link-hover flex font-light text-xs items-center pb-1"
+  href="/recognition/{{award.Organization | slugify }}/{{ award.Title | slugify}}/"
+>
+  {% for logo in images | find("id", award.logo_id) %} {{ logo.pictureElement |
+  stylePicture("logo p-1 w-10 h-10 mr-2 flex-none not-prose") | safe }} {%
+  endfor %}
+  <span> {{ award.Organization }}: {{ award.Title }} </span>
 </a>

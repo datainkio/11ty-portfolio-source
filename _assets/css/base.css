@@ -18,7 +18,7 @@
 */
 @layer base {
   body {
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden bg-neutral;
   }
 
   main {
@@ -160,9 +160,8 @@
     @apply text-primary-light mb-4;
   }
 
-
   /** LANDING **/
- .landing h1 {
+  .landing h1 {
     @apply pt-1 lowercase 
     text-5xl md:text-6xl;
   }
@@ -356,7 +355,7 @@
   }
 
   .bg-graphpaper-dark {
-    @apply bg-graphpaper bg-primary bg-blend-screen;
+    @apply bg-graphpaper bg-neutral bg-blend-screen;
   }
 
   .bg-graphpaper-light {

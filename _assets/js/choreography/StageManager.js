@@ -1,6 +1,8 @@
 import BlockLine from '/assets/js/displays/blockline/BlockLine.js';
 import * as PrinterMarks from '/assets/js/displays/PrinterMarks.js';
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
 export default class StageManager {
   constructor(container) {
     this._container = container;
@@ -60,14 +62,6 @@ export default class StageManager {
     return this._red;
   }
 
-  /**
-   * REGISTRATION MARKS
-   */
-  registrationMarks(elem, size) {
-    // PrinterMarks.addBleed(elem, 2);
-    PrinterMarks.addTrim(elem, 1);
-  }
-
 
   /**
    * BLOCKLINES
@@ -101,13 +95,14 @@ export default class StageManager {
     urls.forEach(src => {
         // Create the video element
         var video = document.createElement("video");
+        video.setAttribute("data-speed", ".85");
         video.setAttribute("autoplay", "");
         video.setAttribute("loop", "");
         video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
         video.setAttribute("aria-hidden", "true"); // Mark as decorative
         video.id = "bgVideo";
-        video.classList.add("fixed", "inset-0", "w-full", "h-full", "object-cover");  
+        video.classList.add("absolute", "top-0", "inset-0", "w-full", "h-dvh", "object-cover", "-z-1", "bg-neutral");  
         
         // Add the video sources
         const sourceMP4 = document.createElement("source");
@@ -115,6 +110,7 @@ export default class StageManager {
         sourceMP4.type = "video/mp4";
         
         video.appendChild(sourceMP4);
+        
         this.view.prepend(video);
     })
   };

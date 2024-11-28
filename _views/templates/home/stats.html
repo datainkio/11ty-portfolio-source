@@ -1,6 +1,6 @@
 <figure class="p-4">
   <ul class="row-start-1">
-    {% for stat in outcomes %}
+    {% for stat in outcomes %} {% if loop.index <= 5 %}
     <li class="stat px-0 mx-0">
       <h4 class="stat-title font-bold text-xs text-wrap leading-tight">
         {{ stat.Title }}
@@ -10,6 +10,6 @@
         {{ stat.Description }}
       </div>
     </li>
-    {% endfor %}
+    {% endif %} {% endfor %}
   </ul>
 </figure>
