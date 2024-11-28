@@ -33,7 +33,6 @@ module.exports = {
     "9xl": "9rem",
     "10xl": "10rem",
     "12xl": "12rem",
-    "fluid": 'calc(100vw/6)',
     jumbo: "15rem",
   },
   lineHeight: {

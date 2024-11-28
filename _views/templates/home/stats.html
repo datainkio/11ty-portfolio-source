@@ -1,12 +1,20 @@
-<figure class="p-4">
+<!-- @format -->
+
+<figure class="pr-12">
   <ul class="row-start-1">
     {% for stat in outcomes %} {% if loop.index <= 5 %}
     <li class="stat px-0 mx-0">
-      <h4 class="stat-title font-bold text-xs text-wrap leading-tight">
+      <h4
+        class="stat-title font-bold text-neutral text-xs text-wrap leading-tight"
+      >
         {{ stat.Title }}
       </h4>
-      <div class="stat-value text-2xl sm:text-4xl">{{ stat.Value }}</div>
-      <div class="stat-desc font-light text-xs text-wrap leading-tight w-5/6">
+      <div class="stat-value text-2xl text-neutral sm:text-4xl">
+        {{ stat.Value }}
+      </div>
+      <div
+        class="stat-desc font-light text-neutral text-xs text-wrap leading-tight w-5/6"
+      >
         {{ stat.Description }}
       </div>
     </li>
