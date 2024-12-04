@@ -1,6 +1,6 @@
-import { findFarthestColor } from "../../../utils/color.js";
-import { paintElement } from "../painter.js";
-import * as Image from "../types/image.js";
+import { findFarthestColor } from "../../../../utils/color.js";
+import { paintElement } from "../../Painter.js";
+import * as Image from "./Image.js";
 
 export function paint(article, palette) {
     var text = article.querySelector(".text");

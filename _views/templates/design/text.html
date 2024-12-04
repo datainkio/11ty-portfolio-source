@@ -1,24 +1,27 @@
+<!-- @format -->
+
 <figure>
-    <figcaption>Font Families</figcaption>
-    <ul>
-        {% for key, value in styles.fontFamily %}
-        <li class="font-{{ key }}">font-{{ key }}: {{ value }}</li>
-        {% endfor %}
-    </ul>
+  <figcaption>Font Families</figcaption>
+  <ul>
+    {% for key, value in styles.fontFamily %}
+    <li class="font-{{ key }}">font-{{ key }}: {{ value }}</li>
+    {% endfor %}
+  </ul>
 </figure>
 <figure>
-    <figcaption>Type Sizes</figcaption>
-    <ul>
-        {% for key, value in styles.fontSize %}
-        <li class="text-{{ key }}">text-{{ key }}: {{ value }}</li>
-        {% endfor %}
-    </ul>
+  <figcaption>Type Sizes</figcaption>
+  <ul>
+    {% for key, value in styles.fontSize %}
+    <li class="text-{{ key }}">text-{{ key }}: {{ value }}</li>
+    {% endfor %}
+  </ul>
 </figure>
 <figure>
-    <figcaption>Line Heights</figcaption>
-    <ul>
-        {% for key, value in styles.lineHeight %}
-        <li class="leading-{{ key }}">leading-{{ key }}: {{ value }}</li>
-        {% endfor %}
-    </ul>
+  <figcaption>Line Heights</figcaption>
+  <ul>
+    {% for key, value in styles.lineHeight %}
+    <li class="leading-{{ key }}">leading-{{ key }}: {{ value }}</li>
+    {% endfor %}
+  </ul>
 </figure>
+<p class="first-line:text-3xl">First line</p>

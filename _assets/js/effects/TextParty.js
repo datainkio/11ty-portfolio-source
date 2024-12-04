@@ -20,6 +20,12 @@ export function roll(container, settings) {
     return tl;
 }
 
+/**
+ * Given a container, display multiple instances of its inner text at slight offsets from each other
+ * @param {*} container 
+ * @param {*} params 
+ * @returns 
+ */
 export function gel(container, params) {
     let tl = WanderingGel(container, params);
     tl.eventCallback('onStart', onStart, [tl, params]);
@@ -68,7 +74,6 @@ export function fadeInChars(elem) {
 };
 
 function onStart(tl, st) {
-    console.log(tl);
     switch (tl.id) {
         case "fadeInChars":
             gsap.set(st.chars, {opacity: 0});
@@ -78,7 +83,6 @@ function onStart(tl, st) {
 }
 
 function onComplete(tl, params) {
-    console.log(tl);
     switch (tl.id) {
         case "fadeInChars":
             tl.revert();

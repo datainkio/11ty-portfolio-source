@@ -1,34 +1,32 @@
+<!-- @format -->
+
 <figure
   id="projects"
-  class="col-span-full bg-graphpaper-dark grid grid-cols-3 gap-4 mx-12 p-12 z-10"
+  class="col-span-full bg-graphpaper-dark grid grid-cols-3 gap-4 mx-12 z-10"
 >
   <figcaption class="sr-only">Project List</figcaption>
   <!-- Project category controls-->
-  <ul id="types" class="menu menu-horizontal mx-auto gap-2 col-span-full">
-    <li>
-      <a
-        id="featured"
-        class="btn btn-sm btn-outline text-neutral-200 btn-neutral-800 category btn-active"
-        >Featured</a
-      >
-    </li>
+  <div
+    id="types"
+    role="tablist"
+    class="tabs tabs-bordered tabs-lg mx-auto gap-2 col-span-full"
+  >
+    <a
+      role="tab"
+      id="featured"
+      class="tab tab-active border-accent text-neutral-light"
+      >Featured</a
+    >
     {% for category in ia %}
-    <li>
-      <a
-        id="{{ category.Slug | slugify }}"
-        class="btn btn-sm btn-outline text-neutral-600 btn-neutral-600 category"
-        >{{ category.Title }}</a
-      >
-    </li>
+    <a
+      role="tab"
+      id="{{ category.Slug | slugify }}"
+      class="tab text-neutral-light"
+      >{{ category.Title }}</a
+    >
     {% endfor %}
-    <li class="aspect-video">
-      <a
-        id="all"
-        class="btn btn-sm btn-outline text-neutral-600 btn-neutral-600 category"
-        >All</a
-      >
-    </li>
-  </ul>
+    <a role="tab" id="all" class="tab text-neutral-light">All</a>
+  </div>
   {% for project in projects | sortByAttribute('Weight') %} {% set href =
   ["/case-studies/",project.Name | slugify, "/"] | join %} {% set action =
   ["modal_", project.id, ".showModal()"] | join %} {% include

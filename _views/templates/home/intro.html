@@ -1,9 +1,8 @@
 <!-- @format -->
 
 <section
-  data-speed="1.5"
   id="intro"
-  class="mx-12 p-12 col-span-full z-10 grid grid-cols-3 gap-8 content-start bg-neutral-light text-neutral"
+  class="max-w-5xl p-12 mx-auto mt-16 col-span-full z-10 grid grid-cols-3 gap-4 content-start bg-neutral-light text-neutral"
 >
   <header class="col-span-full grid grid-cols-subgrid gap-4">
     <h2 class="uppercase text-[.75rem] m-0 col-span-full">
@@ -11,30 +10,40 @@
     </h2>
   </header>
 
-  <aside id="twenty-years">
-    <figure class="align-top p-0 mb-6 flex flex-col">
-      <span class="text-jumbo/none font-display font-bold align-baseline"
-        >20</span
-      >
-      <span class="text-3xl font-display text-wrap text-neutral leading-tight">
-        Years of award-winning work
-      </span>
-    </figure>
-    {% include "templates/home/stats.html" %}
-  </aside>
-  <div class="col-span-2 space-y-12">
-    <p id="statement" class="prose">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper
-      sollicitudin feugiat. Curabitur congue metus ut bibendum commodo. Proin
-      rhoncus suscipit mollis. Cras euismod eu odio a molestie. Sed bibendum
-      eros fermentum, volutpat mauris eu, sollicitudin dui. Integer sit amet
-      rhoncus tortor. Donec luctus id metus vel suscipit. Curabitur et massa in
-      mauris ullamcorper congue in nec sem. Morbi facilisis scelerisque ex, non
-      sollicitudin urna dictum imperdiet.
-    </p>
-    <div id="awards">{% include "templates/home/awards.html" %}</div>
-    <div id="organizations">
-      {% include "templates/home/organizations.html" %}
+  <figure class="align-top mb-6 flex flex-col">
+    <div
+      id="twenty-years"
+      data-text="20"
+      class="text-[16rem]/none font-display font-bold text-neutral leading-none tracking-tight"
+    >
+      20
     </div>
+    <figcaption class="text-lg font-bold">
+      Years of award-winning work for global brands, museums, governments,
+      hospitals, artists, and social organizations
+    </figcaption>
+  </figure>
+
+  <p
+    id="statement"
+    class="prose prose-lg px-6 first-line:text-3xl col-span-2 flex flex-col text-left justify-center h-full"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper
+    sollicitudin feugiat. Curabitur congue metus ut bibendum commodo. Proin
+    rhoncus suscipit mollis. Cras euismod eu odio a molestie. Sed bibendum eros
+    fermentum, volutpat mauris eu, sollicitudin dui. Integer sit amet rhoncus
+    tortor. Donec luctus id metus vel suscipit. Curabitur et massa in mauris
+    ullamcorper congue in nec sem. Morbi facilisis scelerisque ex, non
+    sollicitudin urna dictum imperdiet.
+  </p>
+  <div class="col-span-full space-y-12">
+    <div class="divider divider-primary">
+      <img
+        src="/assets/svg/laurel-wreath.svg"
+        class="size-8"
+        alt="Recognition"
+      />
+    </div>
+    <div id="awards">{% include "templates/home/awards.html" %}</div>
   </div>
 </section>

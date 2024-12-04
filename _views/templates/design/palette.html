@@ -1,37 +1,56 @@
+<!-- @format -->
+
 <figure>
-    <figcaption>Background Colors</figcaption>
-    <ul>
-        {% for key, value in styles.colors %}
-        <li>
-            <p>{{ key }}</p>
-            <ul class="flex columns-{{ value | length }}" >
-                {% for k, v in value %}
-                <li class="p-4 content-center bg-{{ key }}-{{ k }}">bg-{{ key }}-{{ k }}</li>
-                {% endfor %}
-            </ul>
+  <figcaption>Background Colors</figcaption>
+  <ul>
+    {% for key, value in styles.colors %}
+    <li>
+      <p>{{ key }}</p>
+      <ul class="flex columns-{{ value | length }}">
+        {% for k, v in value %}
+        <li class="p-4 content-center bg-{{ key }}-{{ k }}">
+          bg-{{ key }}-{{ k }}
         </li>
         {% endfor %}
-    </ul>
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
 </figure>
 <figure>
-    <figcaption>Text Colors</figcaption>
-    <ul>
-        {% for key, value in styles.colors %}
-        <li>
-            <p>{{ key }}</p>
-            <ul>
-                {% for k, v in value %}
-                <li class="text-{{ key }}-{{ k }}">text-{{ key }}-{{ k }}</li>
-                {% endfor %}
-            </ul>
-        </li>
+  <figcaption>Text Colors</figcaption>
+  <ul>
+    {% for key, value in styles.colors %}
+    <li>
+      <p>{{ key }}</p>
+      <ul>
+        {% for k, v in value %}
+        <li class="text-{{ key }}-{{ k }}">text-{{ key }}-{{ k }}</li>
         {% endfor %}
-    </ul>
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
 </figure>
 <figure>
-    <figcaption>Gels</figcaption>
-    <ul>
-        <li class="gel-primary">gel-primary</li>
-        <li class="gel-accent">gel-primary</li>
-    </ul>
+  <figcaption>Gels</figcaption>
+  <ul class="relative">
+    <li class="fill-primary stroke-primary">SVG</li>
+    <li class="fill-neutral-dark stroke-neutral-dark mix-blend-darken">SVG</li>
+    <li
+      class="absolute from-primary-dark to-primary-light bg-gradient-to-t mix-blend-multiply backdrop-blur-sm"
+    >
+      Text
+    </li>
+    <li
+      class="absolute transform -translate-x-1 translate-y-1 text-primary/90 mix-blend-multiply"
+    >
+      Text
+    </li>
+    <li
+      class="absolute transform translate-x-1 -translate-y-1 text-accent/90 mix-blend-multiply"
+    >
+      Text
+    </li>
+  </ul>
 </figure>

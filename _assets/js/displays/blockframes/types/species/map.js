@@ -1,5 +1,5 @@
-import { findFarthestColor } from "../../../utils/color.js";
-import { paintElement } from "../painter.js";
+import { findFarthestColor } from "../../../../utils/color.js";
+import { paintElement } from "../../Painter.js";
 export function paint(map, palette) {
     var background = map.querySelector(".bg");
     var streets = map.querySelector(".streets");

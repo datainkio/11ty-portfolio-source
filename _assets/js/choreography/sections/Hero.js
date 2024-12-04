@@ -16,8 +16,8 @@ export default class Hero {
     }
 
     initGel() {
-        // GEL
-        this.GEL.classList.add("gel-primary", "absolute", "top-0", "w-full", "h-dvh", "z-9");
+        // GEL  from-primary-dark to-primary-light bg-gradient-to-t mix-blend-multiply backdrop-blur-sm
+        this.GEL.classList.add("from-primary-dark", "to-primary-light", "bg-gradient-to-t", "mix-blend-multiply", "backdrop-blur-sm", "absolute", "top-0", "w-full", "h-dvh", "z-10");
         this.CONTAINER.prepend(this.GEL);
     }
 

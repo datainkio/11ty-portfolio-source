@@ -2,6 +2,7 @@
 import * as TextParty from '../effects/TextParty.js';
 import Hero from '/assets/js/choreography/sections/Hero.js';
 import Intro from '/assets/js/choreography/sections/Intro.js';
+import Approach from '/assets/js/choreography/sections/Approach.js';
 import StageManager from '/assets/js/choreography/StageManager.js';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -22,6 +23,7 @@ window.onload = function() {
     
     const HERO = new Hero("/assets/video/Robert Lougheed.mp4");
     const INTRO = new Intro();
+    const APPROACH = new Approach();
 
 
     // HERO.text.setAttribute("data-speed", "1.25");

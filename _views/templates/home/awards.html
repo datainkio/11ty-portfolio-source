@@ -1,12 +1,19 @@
+<!-- @format -->
+
 <figure class="col-span-full">
-  <figcaption>Recognition</figcaption>
-  <ul class="col-span-full columns-4">
+  <figcaption class="sr-only">Recognition</figcaption>
+  <ul class="col-span-full columns-3">
     {% for img in images %} {% if img.Recognition %}
-    <li class="flex flex-col content-start pt-2 pb-4 break-inside-avoid-column">
+    <li
+      class="award-organization relative pt-2 pb-4 grid grid-cols-3 break-inside-avoid-column"
+    >
       {% for award in awards | find("id", img.Recognition) %} {% if loop.index
-      === 1 %}
-      <h4 class="font-bold text-xs">{{ award.Organization }}</h4>
-      <ul class="sm:col-span-8">
+      === 1 %} {{ img.pictureElement | stylePicture("logo flex place-self-start
+      row-span-2 w-full p-2 fill-primary stroke-primary") | safe }}
+      <h4 class="font-bold text-lg leading-snug col-span-2">
+        {{ award.Organization }}
+      </h4>
+      <ul class="col-start-2 col-span-2 place-items-start">
         {% endif %}
         <li class="font-light text-xs">{{ award.Title }}</li>
         {% endfor %}

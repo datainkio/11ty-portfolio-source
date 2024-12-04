@@ -18,11 +18,11 @@
 */
 @layer base {
   body {
-    @apply overflow-x-hidden bg-neutral;
+    @apply overflow-x-hidden bg-neutral-dark;
   }
 
   main {
-    @apply relative text-neutral;
+    @apply relative text-neutral-dark;
   }
 
   h1 {
@@ -350,12 +350,12 @@
 
   .bg-graphpaper {
     @apply inset-0 w-full 
-		bg-[linear-gradient(to_right,#80808025_1px,transparent_1px),linear-gradient(to_bottom,#80808025_1px,transparent_1px)] 
+		bg-[linear-gradient(to_right,#80808015_1px,transparent_1px),linear-gradient(to_bottom,#80808015_1px,transparent_1px)] 
 		bg-[size:1rem_1rem];
   }
 
   .bg-graphpaper-dark {
-    @apply bg-graphpaper bg-neutral bg-blend-screen;
+    @apply bg-graphpaper bg-neutral-dark bg-blend-screen;
   }
 
   .bg-graphpaper-light {

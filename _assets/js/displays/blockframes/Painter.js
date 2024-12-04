@@ -1,12 +1,12 @@
-import * as Article from "./types/article.js";
-import * as Calendar from "./types/calendar.js";
-import * as Cart from "./types/cart.js";
+import * as Article from "./types/Article.js";
+import * as Calendar from "./types/Calendar.js";
+import * as Cart from "./types/Cart.js";
 import * as Chrome from "./types/chrome.js";
-import * as Contact from "./types/contact.js";
-import * as Image from "./types/image.js";
-import * as Landing from "./types/landing.js";
+import * as Contact from "./types/Contact.js";
+import * as Image from "./types/Image.js";
+import * as Landing from "./types/Landing.js";
 import * as Map from "./types/map.js";
-import * as Timeline from "./types/timeline.js";
+import * as Timeline from "./types/Timeline.js";
 
 
 export async function paint(view) {

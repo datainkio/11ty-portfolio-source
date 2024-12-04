@@ -13,32 +13,29 @@ module.exports = {
     'print-mark-red': 'rgba(255,0,0,0.8',
     'print-mark-black': '#000000', 
     /** See Coolers palette in datainkio project **/
-    neutral: {
-      DEFAULT: "#001219",
-      dark: "#001219",
-      light: "#FFFBFE"
-    },
     primary: {
       DEFAULT: "#005F73",
-      dark: "#005F73",
-      light: "#0A9396",
+      dark: "#003843",
+      light: "#1F8599",
+    },
+    secondary: {
+      DEFAULT: "#EE9B00",
+      dark: "#895900",
+      light: "#D9A545",
     },
     accent: {
       DEFAULT: "#BB3E03",
-      dark: "#BB3E03",
-      light: "#EE9B00",
+      dark: "#6A2201",
+      light: "#C85D2C",
     },
     semantic: {
-      alert: {
-        DEFAULT: "#9B2226",
-        dark: "#9B2226",
-        light: "#ED6A5A"
-      },
-      success: {
-        DEFAULT: "#58641D",
-        dark: "#58641D",
-        light: "#5EA461"
-      }
-    }
+      alert: "#9B2226",
+      success: "#58641D",
+    },
+    neutral: {
+      DEFAULT: "#3A525D",
+      dark: "#001219",
+      light: "#DAE8F8"
+    },
   },
 };

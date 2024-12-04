@@ -25,10 +25,10 @@
           <p class="text-pretty">{{ introduction | safe }}</p>
         </header>
         {% endblock %} {% block primary %}PRIMARY CONTENT{% endblock %}
+        <!-- FOOTER -->
+        {% block footer %}{% endblock %} {% include
+        "organisms/footers/global.html" %}
       </main>
-      <!-- FOOTER -->
-      {% block footer %}{% endblock %} {% include
-      "organisms/footers/global.html" %}
     </div>
   </body>
 </html>

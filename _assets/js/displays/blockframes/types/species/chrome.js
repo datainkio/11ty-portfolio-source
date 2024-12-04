@@ -1,4 +1,4 @@
-import { findFarthestColor } from "../../../utils/color.js";
+import { findFarthestColor } from "../../../../utils/color.js";
 export function paint(chrome, palette, method) {
     // Set Settings.size and scale
     // chrome.setAttribute("transform", `scale(${scale})`);

@@ -1,25 +1,29 @@
-/**
- * See the primary palette - _assets/design-tokens/palette.js - for reference
- */
+const palettes = require("./palettes.js");
 module.exports = {
-  primary: "#FBC30B",
-  secondary: "#85C5E5",
-  accent: "#92DCE5",
-  semantic: {
-    success: "#6AAF69",
-    failure: "#F7652B",
-    pending: "#9DB7B0",
-    disabled: "#65C0E7",
-  },
-  neutral: "#FFFFFF",
-  "base-100": "#F4F4F6",
-  "--rounded-box": "1rem", // border radius rounded-box utility class, used in card and other large boxes
-  "--rounded-btn": "1rem", // border radius rounded-btn utility class, used in buttons and similar element
-  "--rounded-badge": "1rem", // border radius rounded-badge utility class, used in badges and similar
-  "--animation-btn": "0.25s", // duration of animation when you click on button
-  "--animation-input": "0.2s", // duration of animation for inputs like checkbox, toggle, radio, etc
-  "--btn-focus-scale": "0.95", // scale transform of button when you focus on it
-  "--border-btn": "1px", // border width of buttons
-  "--tab-border": "1px", // border width of tabs
-  "--tab-radius": "0.5rem", // border radius of tabs
+    /** See Coolers palette in datainkio project **/
+    primary: {
+      DEFAULT: "#005F73",
+      dark: "#003843",
+      light: "#1F8599",
+    },
+    secondary: {
+      DEFAULT: "#EE9B00",
+      dark: "#895900",
+      light: "#D9A545",
+    },
+    accent: {
+      DEFAULT: "#BB3E03",
+      dark: "#6A2201",
+      light: "#C85D2C",
+    },
+    semantic: {
+      alert: "#9B2226",
+      success: "#58641D",
+    },
+    neutral: {
+      DEFAULT: "#3A525D",
+      dark: "#001219",
+      light: "#CCD9F"
+    },
+
 };

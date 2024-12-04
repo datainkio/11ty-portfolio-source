@@ -1,43 +1,43 @@
 gsap.registerPlugin(CustomEase, CustomWiggle);
 
-var CONTAINER, SETTINGS, DUPES, SRC;
-export function WanderingGel(elem, params) {
-    console.log("WanderingGel for " + elem);
+var CONTAINER, DUPES, SRC;
+export function WanderingGel(elem, colors) {
     CONTAINER = elem;
-    SETTINGS = params;
-    SRC = CONTAINER.innerText;
+    SRC = CONTAINER.getAttribute("data-text");
     DUPES = [];
 
-    buildView();
-    return moveXY(params.id);
+    buildView(colors);
+    return animate();
 };
 
-function buildView() {
-    // CONTAINER.innerText = '';
+function buildView(colors) {
+    CONTAINER.innerText = '';
+    CONTAINER.classList.add("relative");
     // For each color value, create a duplicate of the text
-    for (var i = 0; i < SETTINGS.colors.length; i++) {
+    for (var i = 0; i < colors.length; i++) {
+        var dir = i % 2 === 0 ? 1 : -1;
         var dupe = document.createElement('div');
         dupe.id = "wg-" + i;
-        // dupe.innerText = SRC;
-        dupe.classList.add(...CONTAINER.classList);
-        dupe.classList.replace("text-transparent", SETTINGS.colors[i]);
-        dupe.classList.add("absolute");
+        dupe.innerText = SRC;
+        dupe.classList.add(colors[i], "mix-blend-multiply");
+        if (dir > 0) {
+            dupe.classList.add("absolute");
+        }
         CONTAINER.appendChild(dupe);
         DUPES.push(dupe);
     };
 };
 
-function moveXY(id) {
-    console.log("moveXY");
-    var color = DUPES.filter(item => item.classList.contains(SETTINGS.colors[1]));
-    var tl = gsap.timeline({id: id});
-    tl.add(gsap.from(DUPES, {autoAlpha: 0}));
-    tl.add (gsap.to(color, {
-        duration: SETTINGS.duration,
-        // autoAlpha: 1,
-        x: "+=" + SETTINGS.w * SETTINGS.range,
-        y: "+=" + SETTINGS.h * SETTINGS.range,
-        stagger: .1,
-    }));
+export function animate() {
+    var tl = gsap.timeline({});
+    DUPES.forEach( (dupe, index) => {
+        var dir =  index % 2 === 0 ? 1 : -1;
+        tl.add(gsap.to(dupe, {
+            duration: 1,
+            x: 4 * dir,
+            y: 4 * dir,
+     
+        }), "<");
+    });
     return tl;
 };

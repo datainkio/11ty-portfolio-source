@@ -23,10 +23,10 @@
 
 // Builder knows how the SVG doc is structured and is responsible for adding the right elements
 // to the page.
-import * as Builder from "./builder.js";
+import * as Builder from "../Builder..js";
 // Painter knows how each type of block is structured and is responsible for applying colors
 // to suit each type.
-import * as Painter from "./painter.js";
+import * as Painter from "../Painter.js";
 
 /**
  * 
@@ -35,7 +35,6 @@ import * as Painter from "./painter.js";
  */
 export default class BlockLine {
   constructor(container, settings) {
-    console.log("marco");
     this._isInited = false;
     this._container = container;
     this._type = settings.type; // "element" or "background", depending on implementation
