@@ -1,23 +1,39 @@
-{% extends "species/base.html" %}
-{% set main_styles = "" %}
-{% block primary %}
-<picture id="testy" class="w-72 mx-auto">
-    <img src="/assets/images/halftone.png" alt="A description of the image">
+<!-- @format -->
+
+{% extends "species/base.html" %} {% set main_styles = "" %} {% block primary %}
+{#
+<picture id="halftone" class="w-72 mx-auto">
+  <img src="/assets/images/halftone.png" alt="A description of the image" />
 </picture>
-<aside id="controls" class="w-144 mx-auto"></aside>
+#}
+
+<div id="blockframes" class="w-full h-dvh text-primary"></div>
 
 <script type="module">
-    // Import the Halftone class from your JavaScript modules
-    import Halftone from '/assets/js/effects/image/halftone/Halftone.js';
 
-    // Initialize the Halftone effect
-    document.addEventListener('DOMContentLoaded', () => {
-        const container = document.querySelector('#testy');
-        new Halftone(container, {
-            dotSize: 24,
-            gridSize: 26,
-            color: true,
-        });
+  {# import Halftone from "/assets/js/effects/image/halftone/Halftone.js";
+
+  // Initialize the Halftone effect
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector("#halftone");
+    new Halftone(container, {
+      dotSize: 24,
+      gridSize: 26,
+      color: true
+    });
+  }); #}
+
+    import Blockframes from "/assets/js/displays/blockframes/Blockframes.js";
+    document.addEventListener('DOMContentLoaded', async () => {
+        const bfms = new Blockframes('/assets/svg/blockframes/Blocks.svg');
+        await bfms.load();
+        // bfms.changeFillColor('blue');
+        bfms.makeResponsive();
+        bfms.paintBlock(".Article"); // BLEURG!!!
+        bfms.insertInto('#blockframes');
     });
 </script>
+<div class="fill-accent text-accent">Hmmm...</div>
+<div class="fill-primary text-primary-dark">Hmmm...</div>
+<div class="fill-secondary text-secondary">Hmmm...</div>
 {% endblock %}
