@@ -7,8 +7,9 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all -p dev:*",
-    "build": "run-s build:*",
+    "start": "run-s build:generateColors && npm-run-all -p dev:*",
+    "build": "run-s build:generateColors build:css build:11ty",
+    "build:generateColors": "node scripts/generateThemeColors.js",
     "dev:11ty": "eleventy --serve --quiet",
     "dev:css": "tailwindcss -i ./_assets/css/base.css -o ../dist/styles.css --watch",
     "build:11ty": "eleventy",

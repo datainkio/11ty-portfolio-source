@@ -1,5 +1,7 @@
+export function paint(elem, theme) {
 
-export function paint(elem) {
+    console.log(theme);
+    
     const image = elem.querySelector(".Image");
     const sun = image.querySelector(".sun");
     const sky = image.querySelector(".sky");
@@ -9,8 +11,11 @@ export function paint(elem) {
     const intro = elem.querySelector(".Introduction");
     const chrome = elem.querySelector(".Chrome");
 
-    sun.classList.add("text-accent");
+    chrome.setAttribute("stroke", theme.getColor("primary").dark);
+    chrome.setAttribute("stroke-width", 10);
+    image.setAttribute("stroke", theme.getColor("primary").dark);
+    image.setAttribute("stroke-width", 10);
+
     mountains.classList.add("text-accent");
     chrome.classList.add("text-secondary");
-    console.log(sun);
 }

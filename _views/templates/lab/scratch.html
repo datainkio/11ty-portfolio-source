@@ -24,12 +24,13 @@
   }); #}
 
     import Blockframes from "/assets/js/displays/blockframes/Blockframes.js";
+    import ThemeColors from "/assets/js/utils/tailwind/ThemeColors.js";
     document.addEventListener('DOMContentLoaded', async () => {
         const bfms = new Blockframes('/assets/svg/blockframes/Blocks.svg');
         await bfms.load();
         // bfms.changeFillColor('blue');
         bfms.makeResponsive();
-        bfms.paintBlock(".Article"); // BLEURG!!!
+        bfms.paintBlock(".Article", new ThemeColors());
         bfms.insertInto('#blockframes');
     });
 </script>

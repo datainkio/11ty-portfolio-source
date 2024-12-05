@@ -85,8 +85,13 @@ export default class Blockframes {
     return this.svgElement.querySelector(type);
   }
 
-  paintBlock(type) {
+  paintBlock(type, palette) {
     const elem = this.getBlock(type);
-    Article.paint(elem);
+    switch (type) {
+        case ".Article":
+            Article.paint(elem, palette);
+    }
+    
+    
   }
 }
