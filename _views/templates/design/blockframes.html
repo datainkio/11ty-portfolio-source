@@ -1,0 +1,42 @@
+<!-- @format -->
+
+{% extends "species/documentation.html" %} {% set main_styles = "" %} {% block
+primary %}
+
+<section
+  id="bfms-inventory"
+  class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 p-4 auto-rows-min border border-primary text-neutral-light"
+></section>
+
+<script type="module">
+  import Blockframes from "/assets/js/displays/blockframes/Blockframes.js";
+  import ThemeColors from "/assets/js/utils/tailwind/ThemeColors.js";
+  document.addEventListener("DOMContentLoaded", async () => {
+    const theme = new ThemeColors();
+    const bfms = new Blockframes("/assets/svg/blockframes/Blocks.svg");
+    const container = document.getElementById("bfms-inventory");
+    await bfms.load();
+    bfms.makeResponsive();
+    bfms.paintAll(theme.colors);
+    // bfms.paintType(".Article", theme.colors);
+    // bfms.paintType(".Basic", theme.colors);
+    // bfms.paintType(".Blog", theme.colors);
+    // bfms.paintType(".Calendar", theme.colors);
+    // bfms.paintType(".Cart", theme.colors);
+    // bfms.paintType(".Contact", theme.colors);
+    // bfms.paintType(".Features", theme.colors);
+    // bfms.insertInto(document.getElementById("bfms-intro"));
+    const inventory = document.getElementById("bfms-inventory");
+    bfms.inventory.forEach((block) => {
+      const view = document.createElement("div");
+      const title = document.createElement("h3");
+      title.innerText = block.classList;
+      view.appendChild(title);
+      container.appendChild(view);
+      title.classList.add("w-full", "text-lg", "font-normal");
+      bfms.paintBlock(block, theme.colors);
+      bfms.placeBlock(block, view);
+    });
+  });
+</script>
+{% endblock %}

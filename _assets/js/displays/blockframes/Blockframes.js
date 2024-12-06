@@ -1,8 +1,10 @@
-import * as Article from "./types/species/Article.js";
+import * as Builder from "./Builder.js";
+import * as Painter from "./Painter.js";
 export default class Blockframes {
   constructor(url) {
     this.url = url;           // URL of the SVG file to load
     this.svgElement = null;   // Will hold the loaded SVG element
+    this.timeline = gsap.timeline({});
   }
 
   // Method to load the SVG file
@@ -62,36 +64,43 @@ export default class Blockframes {
   }
 
 
-  insertInto(parentSelector) {
-    if (this.svgElement) {
-      const parent = document.querySelector(parentSelector);
+  insertInto(container, svg) {
+    container.appendChild(svg);
+  }
 
-      if (parent) {
-        // Append the SVG element to the parent
-        parent.appendChild(this.svgElement.cloneNode(true));
-      } else {
-        const errorMessage = `Parent element not found: ${parentSelector}`;
-        console.error(errorMessage);
-        throw new Error(errorMessage);
-      }
-    } else {
-      const errorMessage = "SVG element is not loaded yet. Call load() first.";
-      console.error(errorMessage);
-      throw new Error(errorMessage);
-    }
+  /**
+   * Return an array of SVG objects. Each object contains one instance of a given block type (species).
+   */
+  get inventory() {
+    const result = [];
+    /**
+     * this.svgElement.querySelector(".Blocks").children returns an HTMLCollection, which does not have 
+     * a forEach method. forEach is available on arrays, but not on HTMLCollection objects. 
+     * To get around this, convert the HTMLCollection into an array before iterating. You can use either 
+     * Array.from() or the spread syntax ([...]).
+     */
+    const blocks = [...this.svgElement.querySelector(".Blocks").children];
+    blocks.forEach(block => {
+      result.push(block);
+    });
+    return result;
   }
 
   getBlock(type) {
     return this.svgElement.querySelector(type);
   }
 
-  paintBlock(type, palette) {
-    const elem = this.getBlock(type);
-    switch (type) {
-        case ".Article":
-            Article.paint(elem, palette);
-    }
-    
-    
+  paintAll(palette) {
+    this.svgElement.setAttribute("stroke-width", 2);
+    this.svgElement.setAttribute("stroke", palette.neutral.dark);
+    this.svgElement.setAttribute("fill", palette.neutral.light);
+  }
+
+  paintBlock(block, palette) {
+    Painter.block(block, palette);
+  }
+
+  placeBlock(block, container) {
+    Builder.copyTo(block, container);
   }
 }

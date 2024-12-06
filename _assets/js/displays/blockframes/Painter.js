@@ -1,14 +1,70 @@
-import * as Article from "./types/Article.js";
-import * as Calendar from "./types/Calendar.js";
-import * as Cart from "./types/Cart.js";
-import * as Chrome from "./types/chrome.js";
-import * as Contact from "./types/Contact.js";
-import * as Image from "./types/Image.js";
-import * as Landing from "./types/Landing.js";
-import * as Map from "./types/map.js";
-import * as Timeline from "./types/Timeline.js";
+import * as Article from "./species/Article.js";
+import * as Basic from "./species/Basic.js";
+import * as Blog from "./species/Blog.js";
+import * as Calendar from "./species/Calendar.js";
+import * as Cart from "./species/Cart.js";
+import * as Contact from "./species/Contact.js";
+import * as Features from "./species/Features.js";
 
+export function block(blockNode, palette) {
+  const type = blockNode.classList[0].toLowerCase();
+  blockNode.classList.add("block", "h-auto");
+  switch (type) {
+      case "article":
+          article(blockNode, palette);
+          break;
+      case "basic":
+          basic(blockNode, palette);
+          break;
+      case "blog":
+          blog(blockNode, palette);
+          break;
+      case "calendar":
+          calendar(blockNode, palette);
+          break;
+      case "cart":
+          cart(blockNode, palette);
+          break;
+      case "contact":
+          contact(blockNode, palette);
+          break;
+      case "features":
+          features(blockNode, palette);
+          break;
+      default:
+          console.log("Painter.block does not recognize '" + blockNode.classList + "'");
+  }
+}
 
+export function article(elem, palette) {
+    Article.paint(elem, palette);
+}
+
+export function basic(elem, palette) {
+    Basic.paint(elem, palette);
+}
+
+export function blog(elem, palette) {
+    Blog.paint(elem, palette);
+}
+
+export function calendar(elem, palette) {
+    Calendar.paint(elem, palette);
+}
+
+export function cart(elem, palette) {
+    Cart.paint(elem, palette);
+}
+
+export function contact(elem, palette) {
+    Contact.paint(elem, palette);
+}
+
+export function features(elem, palette) {
+    Features.paint(elem, palette);
+}
+
+/**
 export async function paint(view) {
   console.log("Painter.paint");
   const colors = [["#06161f", "#f15025", "#776472", "#9888a5", "#f3e8ee"]]; // await loadColors("https://unpkg.com/nice-color-palettes@3.0.0/100.json");
@@ -151,3 +207,4 @@ async function loadColors(url) {
   const data = await response.json();
   return data;
 };
+*/

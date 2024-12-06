@@ -1,0 +1,42 @@
+<!-- @format -->
+<!DOCTYPE html>
+<html data-theme="skittles" lang="en">
+  <!-- HEAD -->
+  {% include "partials/head.html" %}
+  <body class="{{ body_styles }} p-12 relative">
+    <!-- GTM -->
+    {% include "partials/gtm_body.html" %}
+    <!-- PRELOADER -->
+    {% block preloader %}{% endblock %}
+    <!-- SCRIPT -->
+    {% block script %}{% endblock %}
+    <!-- A11Y -->
+    <section id="skip" tabindex=" -2" class="sr-only">
+      {% block accessibility %}NO SKIP LINKS DEFINED{% endblock %}
+    </section>
+    <!-- GLOBAL HEADER -->
+    {# {% include "organisms/headers/global.html" %} #}
+    <!-- CONTENT -->
+    <main
+      id="page-content"
+      tabindex=" -1"
+      class="grid grid-cols-6 {{ main_styles }}"
+    >
+      <header class="col-span-full text-neutral-light p-12">
+        {% block header %}
+        <h1 class="font-6xl font-display font-bold">{{ title }}</h1>
+        <p class="text-pretty">{{ introduction | safe }}</p>
+        {% endblock %}
+      </header>
+      <aside>{% block sidebar %}SIDEBAR{% endblock %}</aside>
+      <section class="col-span-5">
+        {% block primary %}PRIMARY CONTENT{% endblock %}
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+      {% block footer %}FOOTER{% endblock %} {% include
+      "organisms/footers/global.html" %}
+    </footer>
+  </body>
+</html>

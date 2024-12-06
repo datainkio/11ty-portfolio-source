@@ -7,7 +7,7 @@
 </picture>
 #}
 
-<div id="blockframes" class="w-full h-dvh text-primary"></div>
+<div id="blockframes" class="w-full h-dvh"></div>
 
 <script type="module">
 
@@ -26,11 +26,19 @@
     import Blockframes from "/assets/js/displays/blockframes/Blockframes.js";
     import ThemeColors from "/assets/js/utils/tailwind/ThemeColors.js";
     document.addEventListener('DOMContentLoaded', async () => {
+        const theme = new ThemeColors();
         const bfms = new Blockframes('/assets/svg/blockframes/Blocks.svg');
         await bfms.load();
-        // bfms.changeFillColor('blue');
+
         bfms.makeResponsive();
-        bfms.paintBlock(".Article", new ThemeColors());
+        bfms.paintAll(theme.colors)
+        bfms.paintBlock(".Article", theme.colors);
+        // bfms.paintBlock(".Basic", theme.colors);
+        // bfms.paintBlock(".Blog", theme.colors);
+        // bfms.paintBlock(".Calendar", theme.colors);
+        // bfms.paintBlock(".Cart", theme.colors);
+        // bfms.paintBlock(".Contact", theme.colors);
+        // bfms.paintBlock(".Features", theme.colors);
         bfms.insertInto('#blockframes');
     });
 </script>

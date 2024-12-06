@@ -73,7 +73,7 @@
       </g>
     </g>
     <g class="Features">
-      <g class="Chrome">
+      <g class="chrome">
         <g class="background">
           <path fill-rule="evenodd" d="M659.07 0h548.75c7.17 0 9.77.993 12.39 2.857 2.62 1.864 4.68 4.6 6.08 8.085 1.41 3.485 2.15 6.942 2.15 16.477v551.163c0 9.534-.74 12.991-2.15 16.476-1.4 3.486-3.46 6.221-6.08 8.085-2.62 1.864-5.22 2.857-12.39 2.857H659.07c-7.172 0-9.773-.993-12.395-2.857-2.623-1.864-4.681-4.599-6.083-8.085-1.402-3.485-2.149-6.942-2.149-16.476V27.419c0-9.535.747-12.992 2.149-16.477 1.402-3.486 3.46-6.221 6.083-8.085C649.297.993 651.898 0 659.07 0Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
         </g>
@@ -82,7 +82,7 @@
           <path fill-rule="evenodd" d="M662.583 19.654c4.526 0 8.195 3.666 8.195 8.19 0 4.522-3.669 8.188-8.195 8.188-4.525 0-8.194-3.666-8.194-8.189s3.669-8.189 8.194-8.189Zm26.223 0a8.19 8.19 0 0 1 8.194 8.19c0 4.522-3.669 8.188-8.194 8.188-4.526 0-8.195-3.666-8.195-8.189s3.669-8.189 8.195-8.189Zm26.222 0a8.189 8.189 0 0 1 8.194 8.19c0 4.522-3.668 8.188-8.194 8.188-4.526 0-8.195-3.666-8.195-8.189s3.669-8.189 8.195-8.189Z" class="dots" clip-rule="evenodd" opacity=".499"/>
         </g>
       </g>
-      <g class="Profiles">
+      <g class="profiles">
         <g class="Profile">
           <g class="Header">
             <path fill-rule="evenodd" d="M671 527h131v16H671v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
@@ -141,7 +141,7 @@
           </g>
         </g>
       </g>
-      <g class="Text">
+      <g class="text">
         <g class="Text/Line/Left/1_line" opacity=".197">
           <path fill-rule="evenodd" d="M673 282h524v9.875H673V282Z" class="text_line" clip-rule="evenodd"/>
         </g>
@@ -155,7 +155,7 @@
           <path fill-rule="evenodd" d="M673 351.125h386.95V361H673v-9.875Z" class="text_line" clip-rule="evenodd"/>
         </g>
       </g>
-      <g class="Banner">
+      <g class="banner">
         <path fill-rule="evenodd" d="M673 95.555c0-3.62 2.949-6.555 6.536-6.555h511.374c3.61 0 6.53 2.917 6.53 6.555v104.89c0 3.62-2.94 6.555-6.53 6.555H679.536a6.534 6.534 0 0 1-6.536-6.555V95.555Z" class="sky" clip-rule="evenodd" opacity=".197"/>
         <g class="mountains">
           <path d="M818.799 116c-56.538 0-100.707 20.277-145.743 48.078v39.369c0 1.97 2.907 3.553 6.525 3.553h350.479c-74.345-47.594-128.116-91-211.261-91Z" class="left" opacity=".198"/>
@@ -165,7 +165,7 @@
       </g>
     </g>
     <g class="Blog" clip-path="url(#d)">
-      <g class="Molecules/Chrome">
+      <g class="chrome">
         <g class="Background">
           <path fill-rule="evenodd" d="M1297.07 0h548.75c7.17 0 9.77.993 12.39 2.857 2.62 1.864 4.68 4.6 6.08 8.085 1.41 3.485 2.15 6.942 2.15 16.477v551.163c0 9.534-.74 12.991-2.15 16.476-1.4 3.486-3.46 6.221-6.08 8.085-2.62 1.864-5.22 2.857-12.39 2.857h-548.75c-7.17 0-9.77-.993-12.4-2.857-2.62-1.864-4.68-4.599-6.08-8.085-1.4-3.485-2.15-6.942-2.15-16.476V27.419c0-9.535.75-12.992 2.15-16.477 1.4-3.486 3.46-6.221 6.08-8.085C1287.3.993 1289.9 0 1297.07 0Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
         </g>
@@ -174,9 +174,9 @@
           <path fill-rule="evenodd" d="M1300.58 19.654c4.53 0 8.2 3.666 8.2 8.19 0 4.522-3.67 8.188-8.2 8.188a8.191 8.191 0 0 1-8.19-8.189 8.191 8.191 0 0 1 8.19-8.189Zm26.23 0c1.07 0 2.14.211 3.13.623 1 .411 1.9 1.014 2.66 1.775.76.76 1.36 1.663 1.78 2.657.41.994.62 2.06.62 3.135 0 4.522-3.67 8.188-8.19 8.188-4.53 0-8.2-3.666-8.2-8.189s3.67-8.189 8.2-8.189Zm26.22 0a8.186 8.186 0 0 1 5.79 2.398c.76.76 1.37 1.663 1.78 2.657.41.994.62 2.06.62 3.135 0 4.522-3.67 8.188-8.19 8.188-4.53 0-8.2-3.666-8.2-8.189s3.67-8.189 8.2-8.189Z" class="Vector" clip-rule="evenodd" opacity=".499"/>
         </g>
       </g>
-      <g class="Cards">
+      <g class="cards">
         <g class="Card">
-          <g class="Image">
+          <g class="image">
             <path d="M1826.67 488.222h-216.34a6.551 6.551 0 0 0-6.55 6.556v124.555a6.551 6.551 0 0 0 6.55 6.556h216.34c3.62 0 6.55-2.935 6.55-6.556V494.778a6.551 6.551 0 0 0-6.55-6.556Z" class="sky" opacity=".197"/>
             <g class="mountains">
               <path d="M1667.93 556.222c-24.87 0-44.29 15.598-64.1 36.983v30.284c0 1.515 1.28 2.733 2.87 2.733h154.13c-32.69-36.61-56.34-70-92.9-70Z" class="left" opacity=".198"/>
@@ -186,16 +186,16 @@
           </g>
         </g>
         <g class="Card">
-          <g class="Par 0" opacity=".25">
+          <g class="text" opacity=".25">
             <path fill-rule="evenodd" d="M1604 419h209.78v9.833H1604V419Zm0 22.944h124.56v9.834H1604v-9.834Z" class="text_line" clip-rule="evenodd"/>
           </g>
-          <g class="Header">
+          <g class="title">
             <path fill-rule="evenodd" d="M1604 385h163.89v16.389H1604V385Z" class="Header" clip-rule="evenodd" opacity=".5"/>
           </g>
-          <g class="Breadcrumb">
+          <g class="breadcrumb">
             <path fill-rule="evenodd" d="M1604 365.778h39.33v9.833H1604v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
           </g>
-          <g class="Image">
+          <g class="image">
             <path d="M1826.67 218.222h-216.34a6.551 6.551 0 0 0-6.55 6.556v124.555a6.551 6.551 0 0 0 6.55 6.556h216.34c3.62 0 6.55-2.935 6.55-6.556V224.778a6.551 6.551 0 0 0-6.55-6.556Z" class="sky" opacity=".197"/>
             <g class="mountains">
               <path d="M1667.93 286.222c-24.87 0-44.29 15.598-64.1 36.983v30.284c0 1.515 1.28 2.733 2.87 2.733h154.13c-32.69-36.61-56.34-70-92.9-70Z" class="left" opacity=".198"/>
@@ -205,16 +205,16 @@
           </g>
         </g>
         <g class="Card">
-          <g class="Par 0" opacity=".25">
+          <g class="text" opacity=".25">
             <path fill-rule="evenodd" d="M1309 557h209.78v9.833H1309V557Zm0 22.944h124.56v9.834H1309v-9.834Z" class="text_line" clip-rule="evenodd"/>
           </g>
-          <g class="Header">
+          <g class="title">
             <path fill-rule="evenodd" d="M1309 523h163.89v16.389H1309V523Z" class="Header" clip-rule="evenodd" opacity=".5"/>
           </g>
-          <g class="Breadcrumb">
+          <g class="breadcrumb">
             <path fill-rule="evenodd" d="M1309 503.778h39.33v9.833H1309v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
           </g>
-          <g class="Image">
+          <g class="image">
             <path d="M1531.67 356.222h-216.34a6.551 6.551 0 0 0-6.55 6.556v124.555a6.551 6.551 0 0 0 6.55 6.556h216.34c3.62 0 6.55-2.935 6.55-6.556V362.778a6.551 6.551 0 0 0-6.55-6.556Z" class="sky" opacity=".197"/>
             <g class="mountains">
               <path d="M1372.93 424.222c-24.87 0-44.29 15.598-64.1 36.983v30.284c0 1.515 1.28 2.733 2.87 2.733h154.13c-32.69-36.61-56.34-70-92.9-70Z" class="left" opacity=".198"/>
@@ -224,16 +224,16 @@
           </g>
         </g>
         <g class="Card">
-          <g class="Par 0" opacity=".25">
+          <g class="text" opacity=".25">
             <path fill-rule="evenodd" d="M1309 282h209.78v9.833H1309V282Zm0 22.944h124.56v9.834H1309v-9.834Z" class="text_line" clip-rule="evenodd"/>
           </g>
-          <g class="Header">
+          <g class="title">
             <path fill-rule="evenodd" d="M1309 248h163.89v16.389H1309V248Z" class="Header" clip-rule="evenodd" opacity=".5"/>
           </g>
-          <g class="Breadcrumb">
+          <g class="breadcrumb">
             <path fill-rule="evenodd" d="M1309 228.778h39.33v9.833H1309v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
           </g>
-          <g class="Image">
+          <g class="image">
             <path d="M1531.67 81.222h-216.34a6.551 6.551 0 0 0-6.55 6.556v124.555a6.551 6.551 0 0 0 6.55 6.556h216.34c3.62 0 6.55-2.935 6.55-6.556V87.778c0-3.62-2.93-6.556-6.55-6.556Z" class="sky" opacity=".197"/>
             <g class="mountains">
               <path d="M1372.93 149.222c-24.87 0-44.29 15.598-64.1 36.983v30.284c0 1.515 1.28 2.733 2.87 2.733h154.13c-32.69-36.61-56.34-70-92.9-70Z" class="left" opacity=".198"/>
@@ -369,7 +369,7 @@
       </g>
     </g>
     <g class="Contact">
-      <g class="Molecules/Chrome">
+      <g class="chrome">
         <g class="Background">
           <path fill-rule="evenodd" d="M3211.07 0h548.75c7.17 0 9.77.993 12.39 2.857 2.62 1.864 4.68 4.6 6.08 8.085 1.41 3.485 2.15 6.942 2.15 16.477v551.163c0 9.534-.74 12.991-2.15 16.476-1.4 3.486-3.46 6.221-6.08 8.085-2.62 1.864-5.22 2.857-12.39 2.857h-548.75c-7.17 0-9.77-.993-12.4-2.857-2.62-1.864-4.68-4.599-6.08-8.085-1.4-3.485-2.15-6.942-2.15-16.476V27.419c0-9.535.75-12.992 2.15-16.477 1.4-3.486 3.46-6.221 6.08-8.085C3201.3.993 3203.9 0 3211.07 0Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
         </g>
@@ -379,10 +379,10 @@
         </g>
       </g>
       <path fill-rule="evenodd" d="M3269.16 157.232h433.68c4.38 0 5.97.457 7.57 1.313a8.908 8.908 0 0 1 3.72 3.715c.86 1.601 1.31 3.189 1.31 7.57v374.436c0 4.381-.45 5.97-1.31 7.571a8.898 8.898 0 0 1-3.72 3.713c-1.6.86-3.19 1.315-7.57 1.315h-433.68c-4.38 0-5.97-.455-7.57-1.315a8.898 8.898 0 0 1-3.72-3.713c-.86-1.601-1.32-3.19-1.32-7.571V169.83c0-4.381.46-5.969 1.32-7.57a8.908 8.908 0 0 1 3.72-3.715c1.6-.856 3.19-1.313 7.57-1.313Z" class="background" clip-rule="evenodd" opacity=".197"/>
-      <g class="Button">
+      <g class="button">
         <path fill-rule="evenodd" d="M3290 494.526c0-3.607 2.93-6.526 6.54-6.526h183.58c3.62 0 6.55 2.948 6.55 6.526v22.979c0 3.608-2.94 6.527-6.55 6.527h-183.58c-3.61 0-6.54-2.948-6.54-6.527v-22.979Z" class="Button" clip-rule="evenodd"/>
       </g>
-      <g class="Textfield">
+      <g class="textfield">
         <g class="Textfield">
           <g class="field">
             <path d="M3678.04 390H3299.4c-2.43 0-4.4 3.059-4.4 6.833v47.834c0 3.774 1.97 6.833 4.4 6.833h378.64c2.43 0 4.4-3.059 4.4-6.833v-47.834c0-3.774-1.97-6.833-4.4-6.833Z"/>
@@ -393,7 +393,7 @@
           <path fill-rule="evenodd" d="M3292 366h166v11h-166v-11Z" class="Header" clip-rule="evenodd" opacity=".5"/>
         </g>
       </g>
-      <g class="Textfield">
+      <g class="textfield">
         <g class="Textfield">
           <g class="field">
             <path d="M3675.04 301H3296.4c-2.43 0-4.4 1.468-4.4 3.278v22.944c0 1.81 1.97 3.278 4.4 3.278h378.64c2.43 0 4.4-1.468 4.4-3.278v-22.944c0-1.81-1.97-3.278-4.4-3.278Z"/>
@@ -404,7 +404,7 @@
           <path fill-rule="evenodd" d="M3289 277h166v11h-166v-11Z" class="Header" clip-rule="evenodd" opacity=".5"/>
         </g>
       </g>
-      <g class="Dropdown">
+      <g class="dropdown">
         <g class="Textfield">
           <g class="field">
             <path d="M3675.23 213.698h-376.84c-2.42 0-4.38 1.449-4.38 3.236v22.647c0 1.786 1.96 3.235 4.38 3.235h376.84c2.42 0 4.38-1.449 4.38-3.235v-22.647c0-1.787-1.96-3.236-4.38-3.236Z"/>
@@ -418,12 +418,12 @@
           <path fill-rule="evenodd" d="M3290 190.009h205.37v10.858H3290v-10.858Z" class="Header" clip-rule="evenodd" opacity=".5"/>
         </g>
       </g>
-      <g class="Header">
+      <g class="header">
         <path fill-rule="evenodd" d="M3405 99h164v26h-164V99Z" class="Header" clip-rule="evenodd" opacity=".5"/>
       </g>
     </g>
     <g class="Cart">
-      <g class="Molecules/Chrome">
+      <g class="chrome">
         <g class="Background">
           <path fill-rule="evenodd" d="M21.07 654.389h548.745c7.173 0 9.774.993 12.396 2.857 2.622 1.864 4.68 4.599 6.083 8.085 1.402 3.485 2.149 6.942 2.149 16.476v551.163c0 9.53-.747 12.99-2.149 16.48-1.403 3.48-3.461 6.22-6.083 8.08-2.622 1.87-5.223 2.86-12.396 2.86H21.07c-7.172 0-9.773-.99-12.395-2.86-2.623-1.86-4.68-4.6-6.083-8.08-1.402-3.49-2.15-6.95-2.15-16.48V681.807c0-9.534.748-12.991 2.15-16.476 1.402-3.486 3.46-6.221 6.083-8.085 2.622-1.864 5.223-2.857 12.395-2.857Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
         </g>
@@ -432,209 +432,199 @@
           <path fill-rule="evenodd" d="M24.583 674.043c4.526 0 8.195 3.666 8.195 8.19 0 4.522-3.669 8.188-8.195 8.188-4.525 0-8.194-3.666-8.194-8.189s3.669-8.189 8.194-8.189Zm26.223 0a8.187 8.187 0 0 1 5.793 2.398A8.183 8.183 0 0 1 59 682.233c0 4.522-3.669 8.188-8.194 8.188-4.526 0-8.195-3.666-8.195-8.189s3.669-8.189 8.195-8.189Zm26.222 0a8.196 8.196 0 0 1 8.194 8.19c0 4.522-3.668 8.188-8.194 8.188-4.526 0-8.195-3.666-8.195-8.189s3.669-8.189 8.195-8.189Z" class="Vector" clip-rule="evenodd" opacity=".499"/>
         </g>
       </g>
-      <g class="Cart Item">
-        <g class="Group 2">
-          <g class="Image">
-            <mask id="g" width="79" height="59" x="33" y="1106" class="g" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-              <path d="M33 1112.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="Vector"/>
-            </mask>
-            <g mask="url(#g)">
-              <path fill-rule="evenodd" d="M33 1112.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="bg" clip-rule="evenodd" opacity=".197"/>
-              <g class="mountains">
-                <path fill-rule="evenodd" d="M44.238 1132.82c16.032 0 27.81 15.34 42.143 32.18H4.905c13.845-16.84 23.301-32.18 39.333-32.18Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
-                <path fill-rule="evenodd" d="M100.429 1138.18c15.188 0 24.534 11.45 39.333 26.82H61.095c12.852-12.66 24.145-26.82 39.334-26.82Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
-              </g>
-              <path d="M75.143 1134.61c5.43 0 9.833-4.41 9.833-9.84s-4.402-9.83-9.833-9.83c-5.43 0-9.833 4.4-9.833 9.83s4.402 9.84 9.833 9.84Z" class="sun" opacity=".499"/>
+      <g class="item">
+        <g class="image">
+          <mask id="g" width="79" height="59" x="33" y="1106" class="g" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+            <path d="M33 1112.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="Vector"/>
+          </mask>
+          <g mask="url(#g)">
+            <path fill-rule="evenodd" d="M33 1112.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="bg" clip-rule="evenodd" opacity=".197"/>
+            <g class="mountains">
+              <path fill-rule="evenodd" d="M44.238 1132.82c16.032 0 27.81 15.34 42.143 32.18H4.905c13.845-16.84 23.301-32.18 39.333-32.18Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
+              <path fill-rule="evenodd" d="M100.429 1138.18c15.188 0 24.534 11.45 39.333 26.82H61.095c12.852-12.66 24.145-26.82 39.334-26.82Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
             </g>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M144 1106.78h45.233v9.83H144v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Header">
-            <path fill-rule="evenodd" d="M144 1126h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M272 1132.78h70.8v9.83H272v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M399 1132.78h30.483v9.83H399v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M485 1132.78h70.8v9.83H485v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+            <path d="M75.143 1134.61c5.43 0 9.833-4.41 9.833-9.84s-4.402-9.83-9.833-9.83c-5.43 0-9.833 4.4-9.833 9.83s4.402 9.84 9.833 9.84Z" class="sun" opacity=".499"/>
           </g>
         </g>
-        <g class="Group 1">
-          <g class="Minus">
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M144 1106.78h45.233v9.83H144v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="title">
+          <path fill-rule="evenodd" d="M144 1126h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M272 1132.78h70.8v9.83H272v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M399 1132.78h30.483v9.83H399v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M485 1132.78h70.8v9.83H485v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="operators">
+          <g class="minus">
             <path fill-rule="evenodd" d="M377 1136h16.389v3.28H377V1136Z" class="Vector" clip-rule="evenodd"/>
           </g>
-          <g class="Plus">
+          <g class="plus">
             <path fill-rule="evenodd" d="M445.834 1130v6.55h6.555v3.28h-6.555v6.55h-3.278v-6.55H436v-3.28h6.556V1130h3.278Z" class="Vector" clip-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g class="Cart Item">
-        <g class="Group 2">
-          <g class="Image">
-            <mask id="h" width="79" height="59" x="33" y="866" class="h" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-              <path d="M33 872.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="Vector"/>
-            </mask>
-            <g mask="url(#h)">
-              <path fill-rule="evenodd" d="M33 872.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="bg" clip-rule="evenodd" opacity=".197"/>
-              <g class="mountains">
-                <path fill-rule="evenodd" d="M44.238 892.818c16.032 0 27.81 15.345 42.143 32.182H4.905c13.845-16.837 23.301-32.182 39.333-32.182Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
-                <path fill-rule="evenodd" d="M100.429 898.182c15.188 0 24.534 11.45 39.333 26.818H61.095c12.852-12.656 24.145-26.818 39.334-26.818Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
-              </g>
-              <path d="M75.143 894.606c5.43 0 9.833-4.402 9.833-9.833s-4.402-9.834-9.833-9.834c-5.43 0-9.833 4.403-9.833 9.834s4.402 9.833 9.833 9.833Z" class="sun" opacity=".499"/>
+      <g class="item">
+        <g class="image">
+          <mask id="h" width="79" height="59" x="33" y="866" class="h" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+            <path d="M33 872.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="Vector"/>
+          </mask>
+          <g mask="url(#h)">
+            <path fill-rule="evenodd" d="M33 872.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="bg" clip-rule="evenodd" opacity=".197"/>
+            <g class="mountains">
+              <path fill-rule="evenodd" d="M44.238 892.818c16.032 0 27.81 15.345 42.143 32.182H4.905c13.845-16.837 23.301-32.182 39.333-32.182Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
+              <path fill-rule="evenodd" d="M100.429 898.182c15.188 0 24.534 11.45 39.333 26.818H61.095c12.852-12.656 24.145-26.818 39.334-26.818Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
             </g>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M144 866.778h45.233v9.833H144v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Header">
-            <path fill-rule="evenodd" d="M144 886h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M272 892.778h70.8v9.833H272v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M399 892.778h30.483v9.833H399v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M485 892.778h70.8v9.833H485v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+            <path d="M75.143 894.606c5.43 0 9.833-4.402 9.833-9.833s-4.402-9.834-9.833-9.834c-5.43 0-9.833 4.403-9.833 9.834s4.402 9.833 9.833 9.833Z" class="sun" opacity=".499"/>
           </g>
         </g>
-        <g class="Group 1">
-          <g class="Minus">
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M144 866.778h45.233v9.833H144v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="title">
+          <path fill-rule="evenodd" d="M144 886h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M272 892.778h70.8v9.833H272v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M399 892.778h30.483v9.833H399v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M485 892.778h70.8v9.833H485v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="operators">
+          <g class="minus">
             <path fill-rule="evenodd" d="M377 896h16.389v3.276H377V896Z" class="Vector" clip-rule="evenodd"/>
           </g>
-          <g class="Plus">
+          <g class="plus">
             <path fill-rule="evenodd" d="M445.834 890v6.551h6.555v3.276h-6.555v6.551h-3.278v-6.551H436v-3.276h6.556V890h3.278Z" class="Vector" clip-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g class="Cart Item">
-        <g class="Group 2">
-          <g class="Image">
-            <mask id="i" width="79" height="59" x="33" y="786" class="i" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-              <path d="M33 792.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="Vector"/>
-            </mask>
-            <g mask="url(#i)">
-              <path fill-rule="evenodd" d="M33 792.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="bg" clip-rule="evenodd" opacity=".197"/>
-              <g class="mountains">
-                <path fill-rule="evenodd" d="M44.238 812.818c16.032 0 27.81 15.345 42.143 32.182H4.905c13.845-16.837 23.301-32.182 39.333-32.182Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
-                <path fill-rule="evenodd" d="M100.429 818.182c15.188 0 24.534 11.45 39.333 26.818H61.095c12.852-12.656 24.145-26.818 39.334-26.818Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
-              </g>
-              <path d="M75.143 814.606c5.43 0 9.833-4.402 9.833-9.833s-4.402-9.834-9.833-9.834c-5.43 0-9.833 4.403-9.833 9.834s4.402 9.833 9.833 9.833Z" class="sun" opacity=".499"/>
+      <g class="item">
+        <g class="image">
+          <mask id="i" width="79" height="59" x="33" y="786" class="i" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+            <path d="M33 792.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="Vector"/>
+          </mask>
+          <g mask="url(#i)">
+            <path fill-rule="evenodd" d="M33 792.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="bg" clip-rule="evenodd" opacity=".197"/>
+            <g class="mountains">
+              <path fill-rule="evenodd" d="M44.238 812.818c16.032 0 27.81 15.345 42.143 32.182H4.905c13.845-16.837 23.301-32.182 39.333-32.182Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
+              <path fill-rule="evenodd" d="M100.429 818.182c15.188 0 24.534 11.45 39.333 26.818H61.095c12.852-12.656 24.145-26.818 39.334-26.818Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
             </g>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M144 786.778h45.233v9.833H144v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Header">
-            <path fill-rule="evenodd" d="M144 806h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M272 812.778h70.8v9.833H272v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M399 812.778h30.483v9.833H399v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M485 812.778h70.8v9.833H485v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+            <path d="M75.143 814.606c5.43 0 9.833-4.402 9.833-9.833s-4.402-9.834-9.833-9.834c-5.43 0-9.833 4.403-9.833 9.834s4.402 9.833 9.833 9.833Z" class="sun" opacity=".499"/>
           </g>
         </g>
-        <g class="Group 1">
-          <g class="Minus">
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M144 786.778h45.233v9.833H144v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="title">
+          <path fill-rule="evenodd" d="M144 806h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M272 812.778h70.8v9.833H272v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M399 812.778h30.483v9.833H399v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M485 812.778h70.8v9.833H485v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="operators">
+          <g class="minus">
             <path fill-rule="evenodd" d="M377 816h16.389v3.276H377V816Z" class="Vector" clip-rule="evenodd"/>
           </g>
-          <g class="Plus">
+          <g class="plus">
             <path fill-rule="evenodd" d="M445.834 810v6.551h6.555v3.276h-6.555v6.551h-3.278v-6.551H436v-3.276h6.556V810h3.278Z" class="Vector" clip-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g class="Cart Item">
-        <g class="Group 2">
-          <g class="Image">
-            <mask id="j" width="79" height="59" x="33" y="1019" class="j" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-              <path d="M33 1025.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="Vector"/>
-            </mask>
-            <g mask="url(#j)">
-              <path fill-rule="evenodd" d="M33 1025.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="bg" clip-rule="evenodd" opacity=".197"/>
-              <g class="mountains">
-                <path fill-rule="evenodd" d="M44.238 1045.82c16.032 0 27.81 15.34 42.143 32.18H4.905c13.845-16.84 23.301-32.18 39.333-32.18Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
-                <path fill-rule="evenodd" d="M100.429 1051.18c15.188 0 24.534 11.45 39.333 26.82H61.095c12.852-12.66 24.145-26.82 39.334-26.82Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
-              </g>
-              <path d="M75.143 1047.61c5.43 0 9.833-4.41 9.833-9.84s-4.402-9.83-9.833-9.83c-5.43 0-9.833 4.4-9.833 9.83s4.402 9.84 9.833 9.84Z" class="sun" opacity=".499"/>
+      <g class="item">
+        <g class="image">
+          <mask id="j" width="79" height="59" x="33" y="1019" class="j" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+            <path d="M33 1025.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="Vector"/>
+          </mask>
+          <g mask="url(#j)">
+            <path fill-rule="evenodd" d="M33 1025.54c0-3.61 2.94-6.54 6.572-6.54h65.523c3.629 0 6.572 2.93 6.572 6.54v45.92c0 3.61-2.941 6.54-6.572 6.54H39.572c-3.63 0-6.572-2.93-6.572-6.54v-45.92Z" class="bg" clip-rule="evenodd" opacity=".197"/>
+            <g class="mountains">
+              <path fill-rule="evenodd" d="M44.238 1045.82c16.032 0 27.81 15.34 42.143 32.18H4.905c13.845-16.84 23.301-32.18 39.333-32.18Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
+              <path fill-rule="evenodd" d="M100.429 1051.18c15.188 0 24.534 11.45 39.333 26.82H61.095c12.852-12.66 24.145-26.82 39.334-26.82Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
             </g>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M144 1019.78h45.233v9.83H144v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Header">
-            <path fill-rule="evenodd" d="M144 1039h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M272 1045.78h70.8v9.83H272v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M399 1045.78h30.483v9.83H399v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M485 1045.78h70.8v9.83H485v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+            <path d="M75.143 1047.61c5.43 0 9.833-4.41 9.833-9.84s-4.402-9.83-9.833-9.83c-5.43 0-9.833 4.4-9.833 9.83s4.402 9.84 9.833 9.84Z" class="sun" opacity=".499"/>
           </g>
         </g>
-        <g class="Group 1">
-          <g class="Minus">
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M144 1019.78h45.233v9.83H144v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="title">
+          <path fill-rule="evenodd" d="M144 1039h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M272 1045.78h70.8v9.83H272v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M399 1045.78h30.483v9.83H399v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M485 1045.78h70.8v9.83H485v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="operators">
+          <g class="minus">
             <path fill-rule="evenodd" d="M377 1049h16.389v3.28H377V1049Z" class="Vector" clip-rule="evenodd"/>
           </g>
-          <g class="Plus">
+          <g class="plus">
             <path fill-rule="evenodd" d="M445.834 1043v6.55h6.555v3.28h-6.555v6.55h-3.278v-6.55H436v-3.28h6.556V1043h3.278Z" class="Vector" clip-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g class="Cart Item">
-        <g class="Group 2">
-          <g class="Image">
-            <mask id="k" width="79" height="59" x="33" y="941" class="k" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-              <path d="M33 947.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="Vector"/>
-            </mask>
-            <g mask="url(#k)">
-              <path fill-rule="evenodd" d="M33 947.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="bg" clip-rule="evenodd" opacity=".197"/>
-              <g class="mountains">
-                <path fill-rule="evenodd" d="M44.238 967.818c16.032 0 27.81 15.345 42.143 32.182H4.905c13.845-16.837 23.301-32.182 39.333-32.182Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
-                <path fill-rule="evenodd" d="M100.429 973.182c15.188 0 24.534 11.45 39.333 26.818H61.095c12.852-12.656 24.145-26.818 39.334-26.818Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
-              </g>
-              <path d="M75.143 969.606c5.43 0 9.833-4.402 9.833-9.833s-4.402-9.834-9.833-9.834c-5.43 0-9.833 4.403-9.833 9.834s4.402 9.833 9.833 9.833Z" class="sun" opacity=".499"/>
+      <g class="item">
+        <g class="image">
+          <mask id="k" width="79" height="59" x="33" y="941" class="k" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+            <path d="M33 947.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="Vector"/>
+          </mask>
+          <g mask="url(#k)">
+            <path fill-rule="evenodd" d="M33 947.539c0-3.611 2.94-6.539 6.572-6.539h65.523c3.629 0 6.572 2.926 6.572 6.539v45.922c0 3.611-2.941 6.539-6.572 6.539H39.572c-3.63 0-6.572-2.926-6.572-6.539v-45.922Z" class="sky" clip-rule="evenodd" opacity=".197"/>
+            <g class="mountains">
+              <path fill-rule="evenodd" d="M44.238 967.818c16.032 0 27.81 15.345 42.143 32.182H4.905c13.845-16.837 23.301-32.182 39.333-32.182Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
+              <path fill-rule="evenodd" d="M100.429 973.182c15.188 0 24.534 11.45 39.333 26.818H61.095c12.852-12.656 24.145-26.818 39.334-26.818Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>
             </g>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M144 941.778h45.233v9.833H144v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Header">
-            <path fill-rule="evenodd" d="M144 961h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M272 967.778h70.8v9.833H272v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M399 967.778h30.483v9.833H399v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
-          </g>
-          <g class="Breadcrumb">
-            <path fill-rule="evenodd" d="M485 967.778h70.8v9.833H485v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+            <path d="M75.143 969.606c5.43 0 9.833-4.402 9.833-9.833s-4.402-9.834-9.833-9.834c-5.43 0-9.833 4.403-9.833 9.834s4.402 9.833 9.833 9.833Z" class="sun" opacity=".499"/>
           </g>
         </g>
-        <g class="Group 1">
-          <g class="Minus">
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M144 941.778h45.233v9.833H144v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="title">
+          <path fill-rule="evenodd" d="M144 961h99v16h-99v-16Z" class="Header" clip-rule="evenodd" opacity=".5"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M272 967.778h70.8v9.833H272v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M399 967.778h30.483v9.833H399v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="breadcrumb">
+          <path fill-rule="evenodd" d="M485 967.778h70.8v9.833H485v-9.833Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
+        </g>
+        <g class="operators">
+          <g class="minus">
             <path fill-rule="evenodd" d="M377 971h16.389v3.276H377V971Z" class="Vector" clip-rule="evenodd"/>
           </g>
-          <g class="Plus">
+          <g class="plus">
             <path fill-rule="evenodd" d="M445.834 965v6.551h6.555v3.276h-6.555v6.551h-3.278v-6.551H436v-3.276h6.556V965h3.278Z" class="Vector" clip-rule="evenodd"/>
           </g>
         </g>
       </g>
     </g>
     <g class="Calendar">
-      <g class="Molecules/Chrome">
+      <g class="chrome">
         <g class="Background">
           <path fill-rule="evenodd" d="M659.849 654.708h548.741c7.18 0 9.78.993 12.4 2.857 2.62 1.864 4.68 4.599 6.08 8.085 1.4 3.485 2.15 6.942 2.15 16.476v551.164c0 9.53-.75 12.99-2.15 16.48-1.4 3.48-3.46 6.22-6.08 8.08-2.62 1.87-5.22 2.86-12.4 2.86H659.849c-7.173 0-9.774-.99-12.396-2.86-2.623-1.86-4.681-4.6-6.083-8.08-1.402-3.49-2.149-6.95-2.149-16.48V682.126c0-9.534.747-12.991 2.149-16.476 1.402-3.486 3.46-6.221 6.083-8.085 2.622-1.864 5.223-2.857 12.396-2.857Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
         </g>
@@ -643,17 +633,17 @@
           <path fill-rule="evenodd" d="M663.361 674.362c4.526 0 8.195 3.666 8.195 8.19 0 4.522-3.669 8.188-8.195 8.188-4.525 0-8.194-3.666-8.194-8.189s3.669-8.189 8.194-8.189Zm26.223 0a8.185 8.185 0 0 1 5.793 2.398 8.184 8.184 0 0 1 2.401 5.792c0 4.522-3.669 8.188-8.194 8.188-4.526 0-8.195-3.666-8.195-8.189s3.669-8.189 8.195-8.189Zm26.222 0a8.186 8.186 0 0 1 7.57 5.055 8.186 8.186 0 0 1-7.57 11.323c-4.526 0-8.195-3.666-8.195-8.189s3.669-8.189 8.195-8.189Z" class="Vector" clip-rule="evenodd" opacity=".499"/>
         </g>
       </g>
-      <g class="Background">
+      <g class="background">
         <path fill-rule="evenodd" d="M737.824 806h394.356c5.15 0 7.02.531 8.9 1.527 1.89.997 3.37 2.46 4.38 4.323 1 1.864 1.54 3.712 1.54 8.809v294.681c0 5.1-.54 6.95-1.54 8.81a10.428 10.428 0 0 1-4.38 4.32c-1.88 1-3.75 1.53-8.9 1.53H737.824c-5.155 0-7.024-.53-8.908-1.53a10.418 10.418 0 0 1-4.371-4.32c-1.008-1.86-1.545-3.71-1.545-8.81V820.659c0-5.097.537-6.945 1.545-8.809a10.447 10.447 0 0 1 4.371-4.323c1.884-.996 3.753-1.527 8.908-1.527Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
       </g>
-      <g class="Days">
+      <g class="days">
         <path fill-rule="evenodd" d="M766.611 897.108h22.945c5.431 0 9.833 4.4 9.833 9.827v22.93c0 5.427-4.402 9.827-9.833 9.827h-22.945c-5.431 0-9.833-4.4-9.833-9.827v-22.93c0-5.427 4.402-9.827 9.833-9.827Zm52.445 0H842c5.431 0 9.834 4.4 9.834 9.827v22.93c0 5.427-4.403 9.827-9.834 9.827h-22.944c-5.431 0-9.834-4.4-9.834-9.827v-22.93c0-5.427 4.403-9.827 9.834-9.827Z" class="Vector" clip-rule="evenodd" opacity=".097"/>
         <path fill-rule="evenodd" d="M874.273 897.108h17.399c4.384 0 5.973.456 7.575 1.313a8.921 8.921 0 0 1 3.717 3.714c.858 1.602 1.314 3.19 1.314 7.571v17.388c0 4.381-.456 5.969-1.314 7.57a8.924 8.924 0 0 1-3.717 3.715c-1.602.857-3.191 1.313-7.575 1.313h-17.399c-4.384 0-5.973-.456-7.576-1.313a8.93 8.93 0 0 1-3.717-3.715c-.857-1.601-1.313-3.189-1.313-7.57v-17.388c0-4.381.456-5.969 1.313-7.571a8.933 8.933 0 0 1 3.717-3.714c1.603-.857 3.192-1.313 7.576-1.313Zm52.444 0h17.4c4.383 0 5.972.456 7.575 1.313a8.933 8.933 0 0 1 3.717 3.714c.857 1.602 1.313 3.19 1.313 7.571v17.388c0 4.381-.456 5.969-1.313 7.57a8.93 8.93 0 0 1-3.717 3.715c-1.603.857-3.192 1.313-7.575 1.313h-17.4c-4.383 0-5.973-.456-7.575-1.313a8.924 8.924 0 0 1-3.717-3.715c-.857-1.601-1.314-3.189-1.314-7.57v-17.388c0-4.381.457-5.969 1.314-7.571a8.921 8.921 0 0 1 3.717-3.714c1.602-.857 3.192-1.313 7.575-1.313Zm52.445 0h17.399c4.389 0 5.969.456 7.579 1.313a8.94 8.94 0 0 1 3.71 3.714c.86 1.602 1.32 3.19 1.32 7.571v17.388c0 4.381-.46 5.969-1.32 7.57a8.884 8.884 0 0 1-3.71 3.715c-1.61.857-3.19 1.313-7.579 1.313h-17.399c-4.384 0-5.973-.456-7.576-1.313a8.93 8.93 0 0 1-3.717-3.715c-.857-1.601-1.313-3.189-1.313-7.57v-17.388c0-4.381.456-5.969 1.313-7.571a8.933 8.933 0 0 1 3.717-3.714c1.603-.857 3.192-1.313 7.576-1.313Zm52.448 0H1049c4.39 0 5.98.456 7.58 1.313a8.963 8.963 0 0 1 3.72 3.714c.86 1.602 1.31 3.19 1.31 7.571v17.388c0 4.381-.45 5.969-1.31 7.57a8.965 8.965 0 0 1-3.72 3.715c-1.6.857-3.19 1.313-7.58 1.313h-17.39c-4.39 0-5.98-.456-7.58-1.313a8.965 8.965 0 0 1-3.72-3.715c-.85-1.601-1.31-3.189-1.31-7.57v-17.388c0-4.381.46-5.969 1.31-7.571a8.963 8.963 0 0 1 3.72-3.714c1.6-.857 3.19-1.313 7.58-1.313Zm52.44 0h17.4c4.38 0 5.97.456 7.57 1.313a8.906 8.906 0 0 1 3.72 3.714c.86 1.602 1.32 3.19 1.32 7.571v17.388c0 4.381-.46 5.969-1.32 7.57a8.914 8.914 0 0 1-3.72 3.715c-1.6.857-3.19 1.313-7.57 1.313h-17.4c-4.38 0-5.97-.456-7.57-1.313a8.908 8.908 0 0 1-3.72-3.715c-.86-1.601-1.31-3.189-1.31-7.57v-17.388c0-4.381.45-5.969 1.31-7.571a8.906 8.906 0 0 1 3.72-3.714c1.6-.857 3.19-1.313 7.57-1.313Zm-314.666 52.411h17.399c4.384 0 5.973.456 7.576 1.313a8.933 8.933 0 0 1 3.717 3.714c.857 1.602 1.313 3.19 1.313 7.571v17.388c0 4.381-.456 5.969-1.313 7.57a8.93 8.93 0 0 1-3.717 3.715c-1.603.856-3.192 1.313-7.576 1.313h-17.399c-4.384 0-5.973-.457-7.575-1.313a8.924 8.924 0 0 1-3.717-3.715c-.858-1.601-1.314-3.189-1.314-7.57v-17.388c0-4.381.456-5.969 1.314-7.571a8.921 8.921 0 0 1 3.717-3.714c1.602-.857 3.191-1.313 7.575-1.313Zm52.444 0h17.4c4.383 0 5.973.456 7.575 1.313a8.933 8.933 0 0 1 3.717 3.714c.857 1.602 1.314 3.19 1.314 7.571v17.388c0 4.381-.457 5.969-1.314 7.57a8.93 8.93 0 0 1-3.717 3.715c-1.602.856-3.192 1.313-7.575 1.313h-17.4c-4.383 0-5.973-.457-7.575-1.313a8.93 8.93 0 0 1-3.717-3.715c-.857-1.601-1.314-3.189-1.314-7.57v-17.388c0-4.381.457-5.969 1.314-7.571a8.933 8.933 0 0 1 3.717-3.714c1.602-.857 3.192-1.313 7.575-1.313Zm52.445 0h17.399c4.384 0 5.973.456 7.575 1.313a8.921 8.921 0 0 1 3.717 3.714c.858 1.602 1.314 3.19 1.314 7.571v17.388c0 4.381-.456 5.969-1.314 7.57a8.924 8.924 0 0 1-3.717 3.715c-1.602.856-3.191 1.313-7.575 1.313h-17.399c-4.384 0-5.973-.457-7.576-1.313a8.93 8.93 0 0 1-3.717-3.715c-.857-1.601-1.313-3.189-1.313-7.57v-17.388c0-4.381.456-5.969 1.313-7.571a8.933 8.933 0 0 1 3.717-3.714c1.603-.857 3.192-1.313 7.576-1.313Zm52.444 0h17.4c4.383 0 5.972.456 7.575 1.313a8.933 8.933 0 0 1 3.717 3.714c.857 1.602 1.313 3.19 1.313 7.571v17.388c0 4.381-.456 5.969-1.313 7.57a8.93 8.93 0 0 1-3.717 3.715c-1.603.856-3.192 1.313-7.575 1.313h-17.4c-4.383 0-5.973-.457-7.575-1.313a8.924 8.924 0 0 1-3.717-3.715c-.857-1.601-1.314-3.189-1.314-7.57v-17.388c0-4.381.457-5.969 1.314-7.571a8.921 8.921 0 0 1 3.717-3.714c1.602-.857 3.192-1.313 7.575-1.313Zm52.445 0h17.399c4.389 0 5.969.456 7.579 1.313a8.94 8.94 0 0 1 3.71 3.714c.86 1.602 1.32 3.19 1.32 7.571v17.388c0 4.381-.46 5.969-1.32 7.57a8.884 8.884 0 0 1-3.71 3.715c-1.61.856-3.19 1.313-7.579 1.313h-17.399c-4.384 0-5.973-.457-7.576-1.313a8.93 8.93 0 0 1-3.717-3.715c-.857-1.601-1.313-3.189-1.313-7.57v-17.388c0-4.381.456-5.969 1.313-7.571a8.933 8.933 0 0 1 3.717-3.714c1.603-.857 3.192-1.313 7.576-1.313Zm52.448 0H1049c4.39 0 5.98.456 7.58 1.313a8.963 8.963 0 0 1 3.72 3.714c.86 1.602 1.31 3.19 1.31 7.571v17.388c0 4.381-.45 5.969-1.31 7.57a8.965 8.965 0 0 1-3.72 3.715c-1.6.856-3.19 1.313-7.58 1.313h-17.39c-4.39 0-5.98-.457-7.58-1.313a8.965 8.965 0 0 1-3.72-3.715c-.85-1.601-1.31-3.189-1.31-7.57v-17.388c0-4.381.46-5.969 1.31-7.571a8.963 8.963 0 0 1 3.72-3.714c1.6-.857 3.19-1.313 7.58-1.313Zm52.44 0h17.4c4.38 0 5.97.456 7.57 1.313a8.906 8.906 0 0 1 3.72 3.714c.86 1.602 1.32 3.19 1.32 7.571v17.388c0 4.381-.46 5.969-1.32 7.57a8.914 8.914 0 0 1-3.72 3.715c-1.6.856-3.19 1.313-7.57 1.313h-17.4c-4.38 0-5.97-.457-7.57-1.313a8.908 8.908 0 0 1-3.72-3.715c-.86-1.601-1.31-3.189-1.31-7.57v-17.388c0-4.381.45-5.969 1.31-7.571a8.906 8.906 0 0 1 3.72-3.714c1.6-.857 3.19-1.313 7.57-1.313Zm-314.666 52.411h17.399c4.384 0 5.973.46 7.576 1.31a8.924 8.924 0 0 1 3.717 3.72c.857 1.6 1.313 3.19 1.313 7.57v17.39c0 4.38-.456 5.96-1.313 7.57a8.958 8.958 0 0 1-3.717 3.71c-1.603.86-3.192 1.31-7.576 1.31h-17.399c-4.384 0-5.973-.45-7.575-1.31a8.946 8.946 0 0 1-3.717-3.71c-.858-1.61-1.314-3.19-1.314-7.57v-17.39c0-4.38.456-5.97 1.314-7.57a8.913 8.913 0 0 1 3.717-3.72c1.602-.85 3.191-1.31 7.575-1.31Zm52.444 0h17.4c4.383 0 5.973.46 7.575 1.31a8.924 8.924 0 0 1 3.717 3.72c.857 1.6 1.314 3.19 1.314 7.57v17.39c0 4.38-.457 5.96-1.314 7.57a8.958 8.958 0 0 1-3.717 3.71c-1.602.86-3.192 1.31-7.575 1.31h-17.4c-4.383 0-5.973-.45-7.575-1.31a8.958 8.958 0 0 1-3.717-3.71c-.857-1.61-1.314-3.19-1.314-7.57v-17.39c0-4.38.457-5.97 1.314-7.57a8.924 8.924 0 0 1 3.717-3.72c1.602-.85 3.192-1.31 7.575-1.31Zm52.445 0h17.399c4.384 0 5.973.46 7.575 1.31a8.913 8.913 0 0 1 3.717 3.72c.858 1.6 1.314 3.19 1.314 7.57v17.39c0 4.38-.456 5.96-1.314 7.57a8.946 8.946 0 0 1-3.717 3.71c-1.602.86-3.191 1.31-7.575 1.31h-17.399c-4.384 0-5.973-.45-7.576-1.31a8.958 8.958 0 0 1-3.717-3.71c-.857-1.61-1.313-3.19-1.313-7.57v-17.39c0-4.38.456-5.97 1.313-7.57a8.924 8.924 0 0 1 3.717-3.72c1.603-.85 3.192-1.31 7.576-1.31Z" class="Vector" clip-rule="evenodd" opacity=".499"/>
         <path fill-rule="evenodd" d="M926.717 1001.93h17.4c4.383 0 5.972.46 7.575 1.31a8.924 8.924 0 0 1 3.717 3.72c.857 1.6 1.313 3.19 1.313 7.57v17.39c0 4.38-.456 5.96-1.313 7.57a8.958 8.958 0 0 1-3.717 3.71c-1.603.86-3.192 1.31-7.575 1.31h-17.4c-4.383 0-5.973-.45-7.575-1.31a8.946 8.946 0 0 1-3.717-3.71c-.857-1.61-1.314-3.19-1.314-7.57v-17.39c0-4.38.457-5.97 1.314-7.57a8.924 8.924 0 0 1 3.717-3.72c1.602-.85 3.192-1.31 7.575-1.31Z" class="Vector" clip-rule="evenodd"/>
         <path fill-rule="evenodd" d="M979.162 1001.93h17.399c4.389 0 5.969.46 7.579 1.31a8.93 8.93 0 0 1 3.71 3.72c.86 1.6 1.32 3.19 1.32 7.57v17.39c0 4.38-.46 5.96-1.32 7.57a8.964 8.964 0 0 1-3.71 3.71c-1.61.86-3.19 1.31-7.579 1.31h-17.399c-4.384 0-5.973-.45-7.576-1.31a8.958 8.958 0 0 1-3.717-3.71c-.857-1.61-1.313-3.19-1.313-7.57v-17.39c0-4.38.456-5.97 1.313-7.57a8.924 8.924 0 0 1 3.717-3.72c1.603-.85 3.192-1.31 7.576-1.31Zm52.448 0H1049c4.39 0 5.98.46 7.58 1.31 1.58.84 2.88 2.13 3.72 3.72.86 1.6 1.31 3.19 1.31 7.57v17.39c0 4.38-.45 5.96-1.31 7.57a8.988 8.988 0 0 1-3.72 3.71c-1.6.86-3.19 1.31-7.58 1.31h-17.39c-4.39 0-5.98-.45-7.58-1.31a8.988 8.988 0 0 1-3.72-3.71c-.85-1.61-1.31-3.19-1.31-7.57v-17.39c0-4.38.46-5.97 1.31-7.57a8.954 8.954 0 0 1 3.72-3.72c1.6-.85 3.19-1.31 7.58-1.31Zm52.44 0h17.4c4.38 0 5.97.46 7.57 1.31 1.59.84 2.88 2.13 3.72 3.72.86 1.6 1.32 3.19 1.32 7.57v17.39c0 4.38-.46 5.96-1.32 7.57a8.93 8.93 0 0 1-3.72 3.71c-1.6.86-3.19 1.31-7.57 1.31h-17.4c-4.38 0-5.97-.45-7.57-1.31a8.93 8.93 0 0 1-3.72-3.71c-.86-1.61-1.31-3.19-1.31-7.57v-17.39c0-4.38.45-5.97 1.31-7.57a8.897 8.897 0 0 1 3.72-3.72c1.6-.85 3.19-1.31 7.57-1.31Zm-314.666 52.41h17.399c4.384 0 5.973.46 7.576 1.31a8.913 8.913 0 0 1 3.717 3.72c.857 1.6 1.313 3.19 1.313 7.57v17.38c0 4.39-.456 5.97-1.313 7.58a8.958 8.958 0 0 1-3.717 3.71c-1.603.86-3.192 1.31-7.576 1.31h-17.399c-4.384 0-5.973-.45-7.575-1.31a8.946 8.946 0 0 1-3.717-3.71c-.858-1.61-1.314-3.19-1.314-7.58v-17.38c0-4.38.456-5.97 1.314-7.57a8.913 8.913 0 0 1 3.717-3.72c1.602-.85 3.191-1.31 7.575-1.31Zm52.444 0h17.4c4.383 0 5.973.46 7.575 1.31a8.913 8.913 0 0 1 3.717 3.72c.857 1.6 1.314 3.19 1.314 7.57v17.38c0 4.39-.457 5.97-1.314 7.58a8.958 8.958 0 0 1-3.717 3.71c-1.602.86-3.192 1.31-7.575 1.31h-17.4c-4.383 0-5.973-.45-7.575-1.31a8.958 8.958 0 0 1-3.717-3.71c-.857-1.61-1.314-3.19-1.314-7.58v-17.38c0-4.38.457-5.97 1.314-7.57a8.913 8.913 0 0 1 3.717-3.72c1.602-.85 3.192-1.31 7.575-1.31Zm52.445 0h17.399c4.384 0 5.973.46 7.575 1.31a8.913 8.913 0 0 1 3.717 3.72c.858 1.6 1.314 3.19 1.314 7.57v17.38c0 4.39-.456 5.97-1.314 7.58a8.946 8.946 0 0 1-3.717 3.71c-1.602.86-3.191 1.31-7.575 1.31h-17.399c-4.384 0-5.973-.45-7.576-1.31a8.958 8.958 0 0 1-3.717-3.71c-.857-1.61-1.313-3.19-1.313-7.58v-17.38c0-4.38.456-5.97 1.313-7.57a8.913 8.913 0 0 1 3.717-3.72c1.603-.85 3.192-1.31 7.576-1.31Zm52.444 0h17.4c4.383 0 5.972.46 7.575 1.31a8.913 8.913 0 0 1 3.717 3.72c.857 1.6 1.313 3.19 1.313 7.57v17.38c0 4.39-.456 5.97-1.313 7.58a8.958 8.958 0 0 1-3.717 3.71c-1.603.86-3.192 1.31-7.575 1.31h-17.4c-4.383 0-5.973-.45-7.575-1.31a8.946 8.946 0 0 1-3.717-3.71c-.857-1.61-1.314-3.19-1.314-7.58v-17.38c0-4.38.457-5.97 1.314-7.57a8.913 8.913 0 0 1 3.717-3.72c1.602-.85 3.192-1.31 7.575-1.31Zm52.445 0h17.399c4.389 0 5.969.46 7.579 1.31 1.58.84 2.88 2.13 3.71 3.72.86 1.6 1.32 3.19 1.32 7.57v17.38c0 4.39-.46 5.97-1.32 7.58a8.964 8.964 0 0 1-3.71 3.71c-1.61.86-3.19 1.31-7.579 1.31h-17.399c-4.384 0-5.973-.45-7.576-1.31a8.958 8.958 0 0 1-3.717-3.71c-.857-1.61-1.313-3.19-1.313-7.58v-17.38c0-4.38.456-5.97 1.313-7.57a8.913 8.913 0 0 1 3.717-3.72c1.603-.85 3.192-1.31 7.576-1.31Z" class="Vector" clip-rule="evenodd" opacity=".499"/>
         <path fill-rule="evenodd" d="M1028.83 1054.34h22.95c5.43 0 9.83 4.4 9.83 9.83v22.93c0 5.42-4.4 9.82-9.83 9.82h-22.95c-5.43 0-9.83-4.4-9.83-9.82v-22.93c0-5.43 4.4-9.83 9.83-9.83Zm52.45 0h22.94c5.43 0 9.84 4.4 9.84 9.83v22.93c0 5.42-4.41 9.82-9.84 9.82h-22.94c-5.43 0-9.83-4.4-9.83-9.82v-22.93c0-5.43 4.4-9.83 9.83-9.83Z" class="Vector" clip-rule="evenodd" opacity=".097"/>
       </g>
-      <g class="Pagination">
+      <g class="pagination">
         <g class="Header">
           <path fill-rule="evenodd" d="M852 835h164v26H852v-26Z" class="Header" clip-rule="evenodd" opacity=".5"/>
         </g>
@@ -804,7 +794,7 @@
       </g>
     </g>
     <g class="Article">
-      <g class="Chrome">
+      <g class="chrome">
         <g class="Background">
           <path fill-rule="evenodd" d="M3212.07 654.389h548.75c7.17 0 9.77.993 12.39 2.857 2.62 1.864 4.68 4.599 6.08 8.085 1.41 3.485 2.15 6.942 2.15 16.476v551.163c0 9.53-.74 12.99-2.15 16.48-1.4 3.48-3.46 6.22-6.08 8.08-2.62 1.87-5.22 2.86-12.39 2.86h-548.75c-7.17 0-9.77-.99-12.4-2.86-2.62-1.86-4.68-4.6-6.08-8.08-1.4-3.49-2.15-6.95-2.15-16.48V681.807c0-9.534.75-12.991 2.15-16.476 1.4-3.486 3.46-6.221 6.08-8.085 2.63-1.864 5.23-2.857 12.4-2.857Z" class="rounded" clip-rule="evenodd" opacity=".25"/>
         </g>
@@ -813,16 +803,16 @@
           <path fill-rule="evenodd" d="M3215.58 674.043c4.53 0 8.2 3.666 8.2 8.19 0 4.522-3.67 8.188-8.2 8.188a8.191 8.191 0 0 1-8.19-8.189 8.191 8.191 0 0 1 8.19-8.189Zm26.23 0c1.07 0 2.14.211 3.13.623 1 .411 1.9 1.014 2.66 1.775.76.76 1.36 1.663 1.78 2.657.41.994.62 2.059.62 3.135 0 4.522-3.67 8.188-8.19 8.188-4.53 0-8.2-3.666-8.2-8.189s3.67-8.189 8.2-8.189Zm26.22 0a8.186 8.186 0 0 1 5.79 2.398c.76.76 1.37 1.663 1.78 2.657.41.994.62 2.059.62 3.135 0 4.522-3.67 8.188-8.19 8.188-4.53 0-8.2-3.666-8.2-8.189s3.67-8.189 8.2-8.189Z" class="Vector" clip-rule="evenodd" opacity=".499"/>
         </g>
       </g>
-      <g class="Introduction">
+      <g class="introduction">
         <path fill-rule="evenodd" d="M3279.5 1149.02h413v9.82h-413v-9.82Zm0-22.93h413v9.82h-413v-9.82Zm0-22.93h413v9.82h-413v-9.82Zm0 68.79h413v9.82h-413v-9.82Zm0 22.93h413v9.82h-413v-9.82Zm81.94 22.92h249.12v9.83h-249.12v-9.83Z" class="Vector" clip-rule="evenodd" opacity=".197"/>
       </g>
-      <g class="Header">
+      <g class="header">
         <path fill-rule="evenodd" d="M3405 1060h164v27h-164v-27Z" class="Header" clip-rule="evenodd" opacity=".5"/>
       </g>
-      <g class="Breadcrumb">
+      <g class="breadcrumb">
         <path fill-rule="evenodd" d="M3466 1040.78h39.33v9.83H3466v-9.83Z" class="breadcrumb" clip-rule="evenodd" opacity=".25"/>
       </g>
-      <g class="Image">
+      <g class="image">
         <path d="M3741.89 739h-511.33a6.56 6.56 0 0 0-6.56 6.556v255.664c0 3.62 2.94 6.56 6.56 6.56h511.33c3.62 0 6.55-2.94 6.55-6.56V745.556a6.551 6.551 0 0 0-6.55-6.556Z" class="sky" opacity=".197"/>
         <g class="mountains">
           <path d="M3369.82 841c-56.52 0-100.68 37.275-145.71 88.38v72.37c0 3.62 2.91 6.53 6.53 6.53h350.4C3506.71 920.793 3452.95 841 3369.82 841Z" class="left" opacity=".198"/>
@@ -1122,7 +1112,7 @@
             <path d="M2584.78 1433.93c0-3.61 2.94-6.54 6.57-6.54h65.52c3.63 0 6.57 2.92 6.57 6.54v45.92c0 3.61-2.94 6.54-6.57 6.54h-65.52c-3.63 0-6.57-2.93-6.57-6.54v-45.92Z" class="Vector"/>
           </mask>
           <g mask="url(#r)">
-            <path fill-rule="evenodd" d="M2584.78 1433.93c0-3.61 2.94-6.54 6.57-6.54h65.52c3.63 0 6.57 2.92 6.57 6.54v45.92c0 3.61-2.94 6.54-6.57 6.54h-65.52c-3.63 0-6.57-2.93-6.57-6.54v-45.92Z" class="bg" clip-rule="evenodd" opacity=".197"/>
+            <path fill-rule="evenodd" d="M2584.78 1433.93c0-3.61 2.94-6.54 6.57-6.54h65.52c3.63 0 6.57 2.92 6.57 6.54v45.92c0 3.61-2.94 6.54-6.57 6.54h-65.52c-3.63 0-6.57-2.93-6.57-6.54v-45.92Z" class="sky" clip-rule="evenodd" opacity=".197"/>
             <g class="mountains">
               <path fill-rule="evenodd" d="M2596.02 1454.21c16.03 0 27.81 15.34 42.14 32.18h-81.48c13.85-16.84 23.3-32.18 39.34-32.18Z" class="left_mountain" clip-rule="evenodd" opacity=".198"/>
               <path fill-rule="evenodd" d="M2652.21 1459.57c15.18 0 24.53 11.45 39.33 26.82h-78.67c12.85-12.66 24.15-26.82 39.34-26.82Z" class="right_mountain" clip-rule="evenodd" opacity=".197"/>

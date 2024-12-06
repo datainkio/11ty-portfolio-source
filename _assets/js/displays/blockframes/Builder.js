@@ -1,5 +1,31 @@
 import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
 
+export function copyTo(block, container) {
+  const blockSVG = SVG();
+  const cloned = block.cloneNode(true);
+  blockSVG.add(cloned);
+
+  const elem = blockSVG.first();
+  elem.untransform();
+  const bbox = elem.bbox();
+  // Set the coords to 0,0 to 100,100
+  const vw = 100;
+  const vh = 100;
+  const scale = Math.min(vw / bbox.width, vh/ bbox.height);
+
+  elem.scale(scale, 0, 0);
+  elem.move(0,0);
+
+  blockSVG.viewbox(0,0,vw,vh);
+
+  container.appendChild(blockSVG.node);
+ return blockSVG;
+}
+
+
+
+
+
 var SRC, COLOR, BW, COLS, ROWS, SIZE, ANGLE, OPACITY, TYPES, PALETTES;
 
 export function build(blockline) {
