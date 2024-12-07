@@ -1,3 +1,11 @@
+# MEDIA
+# Keep the repo from throwing errors when faced with large files
+*.mp4
+*.wav
+*.mp3
+*.qt
+*.mov
+
 # ELEVENTY
 # Misc
 *.log
