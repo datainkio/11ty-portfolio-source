@@ -1,22 +1,20 @@
 import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js@3.1.1";
 
-export function copyTo(block, container) {
+export function insert(block, container, clone) {
   const blockSVG = SVG();
-  const cloned = block.cloneNode(true);
+  const cloned = clone ? block.cloneNode(true) : block;
   blockSVG.add(cloned);
 
   const elem = blockSVG.first();
-  elem.untransform();
+  // elem.untransform();
   const bbox = elem.bbox();
-  // Set the coords to 0,0 to 100,100
   const vw = 100;
   const vh = 100;
   const scale = Math.min(vw / bbox.width, vh/ bbox.height);
 
   elem.scale(scale, 0, 0);
   elem.move(0,0);
-
-  blockSVG.viewbox(0,0,vw,vh);
+  blockSVG.node.classList.add("w-full", "h-full"); // Let the SVG change size without impacting the size or position of the child elements
 
   container.appendChild(blockSVG.node);
  return blockSVG;

@@ -2,5 +2,25 @@
 
 <section id="approach" class="relative col-span-full h-dvh content-center z-10">
   <p class="mx-auto prose">{{ statement.approach }}</p>
-  {% include "atoms/svg/blockframes.svg" %}
+
+  <script type="module">
+    import Blockframes from "/assets/js/displays/blockframes/Blockframes.js";
+    import ThemeColors from "/assets/js/utils/tailwind/ThemeColors.js";
+    document.addEventListener("DOMContentLoaded", async () => {
+      const theme = new ThemeColors();
+      const bfms = new Blockframes("/assets/svg/blockframes/Blocks.svg");
+      const container = document.getElementById("approach");
+      await bfms.load();
+      bfms.makeResponsive();
+      bfms.paintAll(theme.colors);
+      // bfms.paintType(".Article", theme.colors);
+      // bfms.paintType(".Basic", theme.colors);
+      // bfms.paintType(".Blog", theme.colors);
+      // bfms.paintType(".Calendar", theme.colors);
+      // bfms.paintType(".Cart", theme.colors);
+      // bfms.paintType(".Contact", theme.colors);
+      // bfms.paintType(".Features", theme.colors);
+      approach.appendChild(bfms.svgElement);
+    });
+  </script>
 </section>

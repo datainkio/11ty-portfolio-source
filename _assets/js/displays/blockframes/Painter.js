@@ -8,7 +8,6 @@ import * as Features from "./species/Features.js";
 
 export function block(blockNode, palette) {
   const type = blockNode.classList[0].toLowerCase();
-  blockNode.classList.add("block", "h-auto");
   switch (type) {
       case "article":
           article(blockNode, palette);
@@ -34,6 +33,7 @@ export function block(blockNode, palette) {
       default:
           console.log("Painter.block does not recognize '" + blockNode.classList + "'");
   }
+  // blockNode.classList.add("block", "h-auto");
 }
 
 export function article(elem, palette) {

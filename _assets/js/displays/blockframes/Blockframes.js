@@ -1,5 +1,6 @@
 import * as Builder from "./Builder.js";
 import * as Painter from "./Painter.js";
+import * as Animator from "./Animator.js";
 export default class Blockframes {
   constructor(url) {
     this.url = url;           // URL of the SVG file to load
@@ -54,6 +55,7 @@ export default class Blockframes {
       const width = this.svgElement.getAttribute('width') || '100';
       const height = this.svgElement.getAttribute('height') || '100';
       this.svgElement.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      this.svgElement.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     }
 
     // Ensure preserveAspectRatio is set
@@ -92,7 +94,7 @@ export default class Blockframes {
 
   paintAll(palette) {
     this.svgElement.setAttribute("stroke-width", 2);
-    this.svgElement.setAttribute("stroke", palette.neutral.dark);
+    // this.svgElement.setAttribute("stroke", palette.neutral.dark);
     this.svgElement.setAttribute("fill", palette.neutral.light);
   }
 
@@ -100,7 +102,11 @@ export default class Blockframes {
     Painter.block(block, palette);
   }
 
-  placeBlock(block, container) {
-    Builder.copyTo(block, container);
+  placeBlock(block, container, clone = true) {
+    Builder.insert(block, container, clone);
+  }
+
+  animateBlock(block) {
+    return Animator.wipe(block);
   }
 }

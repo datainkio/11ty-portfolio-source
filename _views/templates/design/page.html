@@ -1,21 +1,14 @@
 <!-- @format -->
-{% extends "species/base.html" %}
-{% set body_styles = "" %}
-{% set main_styles = "" %}
-{% block header %}
+{% extends "species/base.html" %} {% set body_styles = "" %} {% set main_styles
+= "" %} {% block header %}
 <header id="main-header" class="">
-	<h1>Design Guide</h1>
-	<p>Presenting the styles used throughout the site. This provides guidance for direction and implementation while also ensuring that classes assigned at runtime are available (b/c otherwise Tailwind will not include them)</p>
+  <h1>Design Guide</h1>
+  <p>
+    Presenting the styles used throughout the site. This provides guidance for
+    direction and implementation while also ensuring that classes assigned at
+    runtime are available (b/c otherwise Tailwind will not include them)
+  </p>
 </header>
-{% endblock %}
-{% block primary %}
-<script>
-	window.onload = function () {
-		// console.log("here we are");
-		
-	}
-</script>
-{% include "templates/design/text.html" %}
-{% include "templates/design/palette.html" %}
-{% include "templates/design/decoration.html" %}
-{% endblock %}
+{% endblock %} {% block primary %} {% include "templates/design/text.html" %} {%
+include "templates/design/palette.html" %} {% include
+"templates/design/decoration.html" %} {% endblock %}
